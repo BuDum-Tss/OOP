@@ -4,36 +4,39 @@ import org.jetbrains.annotations.NotNull;
 
 /** Class HeapSort contains a method for sorting an array. */
 public class HeapSort {
-  /** Method heapsrt sorts the array. */
-  public static void heapsrt(int @NotNull [] arr) {
-    int n = arr.length;
+  /**
+   *  Method heapSort sorts the array.
+   * @param array - passes an array and returns a sorted array.
+   */
+  public static void heapSort(int @NotNull [] array) {
+    int n = array.length;
     int i;
     for (i = n / 2 - 1; i >= 0; --i) {
-      heapify(arr, n, i);
+      heapify(array, n, i);
     }
     for (i = n - 1; i > 0; --i) {
-      int tmp = arr[0];
-      arr[0] = arr[i];
-      arr[i] = tmp;
-      heapify(arr, i, 0);
+      int temp = array[0];
+      array[0] = array[i];
+      array[i] = temp;
+      heapify(array, i, 0);
     }
   }
 
-  private static void heapify(int[] arr, int n, int i) {
+  private static void heapify(int[] array, int n, int i) {
     int largest = i;
     int l = 2 * i + 1;
     int r = 2 * i + 2;
-    if (l < n && arr[l] > arr[i]) {
+    if (l < n && array[l] > array[i]) {
       largest = l;
     }
-    if (r < n && arr[r] > arr[largest]) {
+    if (r < n && array[r] > array[largest]) {
       largest = r;
     }
     if (largest != i) {
-      int swap = arr[i];
-      arr[i] = arr[largest];
-      arr[largest] = swap;
-      heapify(arr, n, largest);
+      int swap = array[i];
+      array[i] = array[largest];
+      array[largest] = swap;
+      heapify(array, n, largest);
     }
   }
 }
