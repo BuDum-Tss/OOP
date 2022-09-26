@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 public class HeapSort {
   /**
    *  Method heapSort sorts the array.
+   *  
    * @param array - passes an array and returns a sorted array.
    */
   public static void heapSort(int @NotNull [] array) {
