@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class Stack<T> {
 
-  int size = 32;
+  private int size = 32;
   private T[] stack = (T[]) new Object[size];
   private int top = -1;
 
