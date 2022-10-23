@@ -58,7 +58,7 @@ public class Stack<T> {
    */
   public T pop() {
     if (top == -1) {
-      return null;
+      throw new ArrayIndexOutOfBoundsException("Out of bounds");
     }
     return stack[top--];
   }
@@ -71,7 +71,7 @@ public class Stack<T> {
    */
   public Stack<T> popStack(int n) {
     if (n > top + 1) {
-      return null;
+      throw new ArrayIndexOutOfBoundsException("Out of bounds");
     }
     Stack<T> container = new Stack<>();
     for (int i = 0; i < n; i++) {
