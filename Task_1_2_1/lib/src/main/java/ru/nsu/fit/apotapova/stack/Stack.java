@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
+
 /**
  * Class Stack contains methods for working with this data storage method.
  *
@@ -12,9 +13,16 @@ import org.jetbrains.annotations.NotNull;
  */
 
 public class Stack<T> {
+
   int size = 32;
-  private final T[] stack = (T[]) new Object[size];
+  private T[] stack = (T[]) new Object[size];
   private int top = -1;
+
+  private void resize() {
+    T[] newStack = (T[]) new Object[size * 2];
+    System.arraycopy(stack, 0, newStack, 0, size);
+    size *= 2;
+  }
 
   /**
    * add an element to the stack.
@@ -22,19 +30,24 @@ public class Stack<T> {
    * @param element - element
    */
   public void push(T element) {
+    if (size - 1 == top) {
+      resize();
+    }
     stack[++top] = element;
   }
 
   /**
-   * add collection of elements to the stack.
+   * add elements from stack to the stack.
    *
-   * @param elements - collection of elements
+   * @param elements - stack of elements
    */
-  public void pushStack(@NotNull Collection<T> elements) {
-    int n = elements.size();
-    T[] array = (T[]) elements.toArray();
-    while (n-- > 0) {
-      stack[++top] = array[n];
+  public void pushStack(@NotNull Stack<T> elements) {
+    if (size - 1 == top) {
+      resize();
+    }
+    int n = elements.count();
+    for (int i = 0; i < n; i++) {
+      stack[++top] = elements.stack[i];
     }
   }
 
@@ -44,6 +57,9 @@ public class Stack<T> {
    * @return - element
    */
   public T pop() {
+    if (top == -1) {
+      return null;
+    }
     return stack[top--];
   }
 
@@ -54,10 +70,15 @@ public class Stack<T> {
    * @return - stack of elements
    */
   public Stack<T> popStack(int n) {
-    Stack<T> container = new Stack<>();
-    while (n-- > 0) {
-      container.stack[++container.top] = stack[top--];
+    if (n > top + 1) {
+      return null;
     }
+    Stack<T> container = new Stack<>();
+    for (int i = 0; i < n; i++) {
+      container.stack[i] = stack[top - n + 1 + i];
+    }
+    top -= n;
+    container.top += n;
     return container;
   }
 
@@ -68,16 +89,5 @@ public class Stack<T> {
    */
   public int count() {
     return top + 1;
-  }
-
-  /**
-   * converts stack to list.
-   *
-   * @return List
-   */
-  public List<T> toList() {
-    List<T> ans = (List<T>) new ArrayList<T>(top);
-    ans.addAll(Arrays.asList(stack).subList(0, top + 1));
-    return ans;
   }
 }
