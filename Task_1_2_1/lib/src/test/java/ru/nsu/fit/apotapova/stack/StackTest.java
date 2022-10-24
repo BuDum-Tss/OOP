@@ -37,7 +37,7 @@ class StackTest {
   @Test
   void pop() {
     test.push(1);
-    Assertions.assertEquals(test.pop(), 1);
+    Assertions.assertEquals(test.pop(),1);
     assertThrows(RuntimeException.class, () -> test.pop());
   }
 
