@@ -11,14 +11,15 @@ import java.util.List;
  */
 public class Node<T> implements Iterable<Node<T>> {
 
-  private Node.IteratorMode mode=null;
   private final List<Node<T>> children = new ArrayList<>();
+  private Node.IteratorMode mode = null;
   private Node<T> root;
   private T value;
-  Node(T value)
-  {
-    this.value=value;
+
+  Node(T value) {
+    this.value = value;
   }
+
   public Node.IteratorMode getMode() {
     return mode;
   }
@@ -45,6 +46,13 @@ public class Node<T> implements Iterable<Node<T>> {
     return newNode;
   }
 
+  /**
+   * Creates a node with the value nodeValue and adds it from the local root of the tree.
+   *
+   * @param localRoot local root
+   * @param nodeValue value of node
+   * @return created node
+   */
   public Node<T> add(Node<T> localRoot, T nodeValue) {
     Node<T> newNode = new Node<>(nodeValue);
     newNode.setMode(mode);
@@ -78,7 +86,6 @@ public class Node<T> implements Iterable<Node<T>> {
   /**
    * Returns list of children of this root.
    *
-   *
    * @return list of children of root
    */
   public List<Node<T>> getChildren() {
@@ -94,13 +101,16 @@ public class Node<T> implements Iterable<Node<T>> {
   public Iterator<Node<T>> iterator() {
     switch (mode) {
       case BFS -> {
-        return new BFSIterator<>(this);
+        return new BfsIterator<>(this);
       }
       case DFS -> {
-        return new DFSIterator<>(this);
+        return new DfsIterator<>(this);
+      }
+      default -> {
+        return null;
       }
     }
-    return null;
+
   }
 
   public T getValue() {
