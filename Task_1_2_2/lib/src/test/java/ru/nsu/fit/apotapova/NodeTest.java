@@ -23,9 +23,9 @@ class NodeTest {
     java.util.Iterator<Node<Integer>> iterator = root.iterator();
     root.add(11);
     Node<Integer> node = root.add(12);
-    root.add(node, 121);
-    node = root.add(node, 122);
-    root.add(node, 1221);
+    node.add(121);
+    node = node.add(122);
+    node.add(1221);
     iterator = root.iterator();
     Assertions.assertEquals(1, iterator.next().value);
     Assertions.assertEquals(11, iterator.next().value);
@@ -50,9 +50,9 @@ class NodeTest {
     java.util.Iterator<Node<Integer>> iterator = root.iterator();
     root.add(11);
     Node<Integer> node = root.add(12);
-    root.add(node, 121);
-    node = root.add(node, 122);
-    root.add(node, 1221);
+    node.add(121);
+    node = node.add(122);
+    node.add(1221);
     iterator = root.iterator();
     Assertions.assertEquals(1, root.remove(iterator.next()).value);
     Assertions.assertEquals(12, root.remove(iterator.next()).value);
@@ -83,12 +83,12 @@ class NodeTest {
     root.setMode(BFS);
     Node<Integer> node1 = root.add(11);
     Node<Integer> node2 = root.add(12);
-    root.add(node1, 111);
-    root.add(node1, 112);
-    node1 = root.add(node2, 121);
-    root.add(node2, 122);
-    root.add(node1, 1211);
-    root.add(node1, 1212);
+    node1.add(111);
+    node1.add(112);
+    node1 = node2.add(121);
+    node2.add(122);
+    node1.add(1211);
+    node1.add(1212);
     java.util.Iterator<Node<Integer>> iterator = root.iterator();
     /*
                   1
@@ -126,12 +126,12 @@ class NodeTest {
     root.setMode(DFS);
     Node<Integer> node1 = root.add(11);
     Node<Integer> node2 = root.add(12);
-    root.add(node1, 111);
-    root.add(node1, 112);
-    node1 = root.add(node2, 121);
-    root.add(node2, 122);
-    root.add(node1, 1211);
-    root.add(node1, 1212);
+    node1.add(111);
+    node1.add(112);
+    node1 = node2.add(121);
+    node2.add(122);
+    node1.add(1211);
+    node1.add(1212);
     java.util.Iterator<Node<Integer>> iterator = root.iterator();
     /*
                   1

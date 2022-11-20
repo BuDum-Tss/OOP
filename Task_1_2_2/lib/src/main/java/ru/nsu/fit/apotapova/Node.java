@@ -14,7 +14,12 @@ public class Node<T> implements Iterable<Node<T>> {
   private final List<Node<T>> children = new ArrayList<>();
   public T value;
   private IteratorMode mode = null;
-  private Node<T> root;
+
+  public Node<T> getParent() {
+    return parent;
+  }
+
+  private Node<T> parent;
 
   Node(T value) {
     this.value = value;
@@ -46,23 +51,48 @@ public class Node<T> implements Iterable<Node<T>> {
    */
   public Node<T> add(T nodeValue) {
     Node<T> newNode = new Node<>(nodeValue);
+    newNode.parent=this;
     newNode.setMode(mode);
     children.add(newNode);
     return newNode;
   }
 
   /**
-   * Creates a node with the value nodeValue and adds it from the local root of the tree.
+   * Adds a node to the tree and returns true, otherwise returns false.
    *
-   * @param localRoot local root
-   * @param nodeValue value of node
-   * @return created node
+   * @param node local root
+   * @return is node added or not
    */
-  public Node<T> add(Node<T> localRoot, T nodeValue) {
-    Node<T> newNode = new Node<>(nodeValue);
-    newNode.setMode(mode);
-    localRoot.children.add(newNode);
-    return newNode;
+  public boolean add(Node<T> node) {
+    List<Node<T>> ancestors = new ArrayList<>();
+    List<Node<T>> descendants = getDescendants();
+    Node<T> now=this;
+    while (now!=null)
+    {
+      ancestors.add(now.getParent());
+      now=now.getParent();
+    }
+    boolean haveCycle=false;
+    now=node;
+    Iterator<Node<T>> iterator = descendants.iterator();
+    while (iterator.hasNext())
+    {
+      if (ancestors.contains(iterator.next()))
+      {
+        haveCycle=true;
+        break;
+      }
+    }
+    if (haveCycle)
+      return false;
+    children.add(node);
+    return true;
+  }
+  private List<Node<T>> getDescendants(){
+    List<Node<T>> list = new ArrayList<>();
+    list.addAll(this.children);
+    this.children.forEach(child -> list.addAll(child.getDescendants()));
+    return list;
   }
 
   /**
@@ -73,18 +103,6 @@ public class Node<T> implements Iterable<Node<T>> {
    */
   public Node<T> remove(Node<T> node) {
     children.remove(node);
-    return node;
-  }
-
-  /**
-   * Removes node from list of localRoot' children.
-   *
-   * @param localRoot the node whose child will be deleted
-   * @param node      node being deleted
-   * @return removed node
-   */
-  public Node<T> remove(Node<T> localRoot, Node<T> node) {
-    localRoot.children.remove(node);
     return node;
   }
 
