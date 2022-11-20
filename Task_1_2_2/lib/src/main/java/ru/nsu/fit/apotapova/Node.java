@@ -12,9 +12,9 @@ import java.util.List;
 public class Node<T> implements Iterable<Node<T>> {
 
   private final List<Node<T>> children = new ArrayList<>();
+  public T value;
   private Node.IteratorMode mode = null;
   private Node<T> root;
-  public T value;
 
   Node(T value) {
     this.value = value;

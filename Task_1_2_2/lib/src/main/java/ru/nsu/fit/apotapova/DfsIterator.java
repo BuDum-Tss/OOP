@@ -35,6 +35,7 @@ public class DfsIterator<T> implements Iterator<Node<T>> {
       throw new NoSuchElementException("There are no nodes left");
     }
   }
+
   @Override
   public void forEachRemaining(Consumer<? super Node<T>> action) {
     Iterator.super.forEachRemaining(action);

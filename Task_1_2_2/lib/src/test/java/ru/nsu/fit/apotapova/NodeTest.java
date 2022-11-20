@@ -27,12 +27,12 @@ class NodeTest {
     node = root.add(node, 122);
     root.add(node, 1221);
     iterator = root.iterator();
-    Assertions.assertEquals(1, iterator.next().getValue());
-    Assertions.assertEquals(11, iterator.next().getValue());
-    Assertions.assertEquals(12, iterator.next().getValue());
-    Assertions.assertEquals(121, iterator.next().getValue());
-    Assertions.assertEquals(122, iterator.next().getValue());
-    Assertions.assertEquals(1221, iterator.next().getValue());
+    Assertions.assertEquals(1, iterator.next().value);
+    Assertions.assertEquals(11, iterator.next().value);
+    Assertions.assertEquals(12, iterator.next().value);
+    Assertions.assertEquals(121, iterator.next().value);
+    Assertions.assertEquals(122, iterator.next().value);
+    Assertions.assertEquals(1221, iterator.next().value);
   }
 
   @Test
@@ -54,12 +54,12 @@ class NodeTest {
     node = root.add(node, 122);
     root.add(node, 1221);
     iterator = root.iterator();
-    Assertions.assertEquals(1, root.remove(iterator.next()).getValue());
-    Assertions.assertEquals(12, root.remove(iterator.next()).getValue());
-    Assertions.assertEquals(122, root.remove(iterator.next()).getValue());
-    Assertions.assertEquals(1221, root.remove(iterator.next()).getValue());
-    Assertions.assertEquals(121, root.remove(iterator.next()).getValue());
-    Assertions.assertEquals(11, root.remove(iterator.next()).getValue());
+    Assertions.assertEquals(1, root.remove(iterator.next()).value);
+    Assertions.assertEquals(12, root.remove(iterator.next()).value);
+    Assertions.assertEquals(122, root.remove(iterator.next()).value);
+    Assertions.assertEquals(1221, root.remove(iterator.next()).value);
+    Assertions.assertEquals(121, root.remove(iterator.next()).value);
+    Assertions.assertEquals(11, root.remove(iterator.next()).value);
   }
 
   @Test
@@ -67,7 +67,7 @@ class NodeTest {
     Node<Integer> root = new Node(0);
     root.setMode(BFS);
     root.add(1);
-    Assertions.assertEquals(1, root.getChildren().get(0).getValue());
+    Assertions.assertEquals(1, root.getChildren().get(0).value);
   }
 
   @Test
@@ -100,23 +100,23 @@ class NodeTest {
                 1211    1212
      */
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(1, iterator.next().getValue());
+    Assertions.assertEquals(1, iterator.next().value);
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(11, iterator.next().getValue());
+    Assertions.assertEquals(11, iterator.next().value);
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(12, iterator.next().getValue());
+    Assertions.assertEquals(12, iterator.next().value);
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(111, iterator.next().getValue());
+    Assertions.assertEquals(111, iterator.next().value);
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(112, iterator.next().getValue());
+    Assertions.assertEquals(112, iterator.next().value);
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(121, iterator.next().getValue());
+    Assertions.assertEquals(121, iterator.next().value);
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(122, iterator.next().getValue());
+    Assertions.assertEquals(122, iterator.next().value);
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(1211, iterator.next().getValue());
+    Assertions.assertEquals(1211, iterator.next().value);
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(1212, iterator.next().getValue());
+    Assertions.assertEquals(1212, iterator.next().value);
     Assertions.assertFalse(iterator.hasNext());
   }
 
@@ -143,23 +143,23 @@ class NodeTest {
                 1211    1212
      */
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(1, iterator.next().getValue());
+    Assertions.assertEquals(1, iterator.next().value);
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(12, iterator.next().getValue());
+    Assertions.assertEquals(12, iterator.next().value);
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(122, iterator.next().getValue());
+    Assertions.assertEquals(122, iterator.next().value);
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(121, iterator.next().getValue());
+    Assertions.assertEquals(121, iterator.next().value);
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(1212, iterator.next().getValue());
+    Assertions.assertEquals(1212, iterator.next().value);
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(1211, iterator.next().getValue());
+    Assertions.assertEquals(1211, iterator.next().value);
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(11, iterator.next().getValue());
+    Assertions.assertEquals(11, iterator.next().value);
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(112, iterator.next().getValue());
+    Assertions.assertEquals(112, iterator.next().value);
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(111, iterator.next().getValue());
+    Assertions.assertEquals(111, iterator.next().value);
     Assertions.assertFalse(iterator.hasNext());
   }
 }
