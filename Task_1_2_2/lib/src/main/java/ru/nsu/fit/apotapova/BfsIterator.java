@@ -1,5 +1,6 @@
 package ru.nsu.fit.apotapova;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
@@ -15,15 +16,19 @@ public class BfsIterator<T> implements Iterator<Node<T>> {
 
   private final Node<T> root;
   private final Queue<Node<T>> queue = new LinkedList();
-
+  private int numberOfChanges;
   public BfsIterator(Node<T> root) {
     this.root = root;
     queue.add(this.root);
+    numberOfChanges = root.getNumberOfChanges();
   }
 
   @Override
   public boolean hasNext() {
-    return !(queue.isEmpty());
+    boolean isEmpty=(queue.isEmpty());
+    if (!(isEmpty) && numberOfChanges<queue.peek().getNumberOfChanges())
+      throw new ConcurrentModificationException();
+    return !(isEmpty);
   }
 
   @Override

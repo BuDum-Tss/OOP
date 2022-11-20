@@ -57,7 +57,6 @@ class NodeTest {
     root.add(11);
     Node<Integer> node = root.add(12);
     node.add(121);
-
     Node<Integer> node2 = new Node(122);
     node2.add(1221);
 

@@ -1,5 +1,6 @@
 package ru.nsu.fit.apotapova;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Stack;
@@ -14,15 +15,19 @@ public class DfsIterator<T> implements Iterator<Node<T>> {
 
   private final Node<T> root;
   private final Stack<Node<T>> stack = new Stack<>();
-
+  private int numberOfChanges;
   DfsIterator(Node<T> root) {
     this.root = root;
     stack.add(this.root);
+    numberOfChanges = root.getNumberOfChanges();
   }
 
   @Override
   public boolean hasNext() {
-    return !(stack.empty());
+    boolean isEmpty=stack.isEmpty();
+    if (!(isEmpty) && numberOfChanges<stack.peek().getNumberOfChanges())
+      throw new ConcurrentModificationException();
+    return !(isEmpty);
   }
 
   @Override

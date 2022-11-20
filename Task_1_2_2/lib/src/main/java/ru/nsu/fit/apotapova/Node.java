@@ -14,15 +14,20 @@ public class Node<T> implements Iterable<Node<T>> {
   private final List<Node<T>> children = new ArrayList<>();
   public T value;
   private IteratorMode mode = null;
-
-  public Node<T> getParent() {
-    return parent;
-  }
-
   private Node<T> parent;
+  private int numberOfChanges = 0;
 
   Node(T value) {
     this.value = value;
+  }
+
+  /**
+   * Gets parent of node.
+   *
+   * @return parent of node
+   */
+  public Node<T> getParent() {
+    return parent;
   }
 
   /**
@@ -51,10 +56,17 @@ public class Node<T> implements Iterable<Node<T>> {
    */
   public Node<T> add(T nodeValue) {
     Node<T> newNode = new Node<>(nodeValue);
-    newNode.parent=this;
+    newNode.parent = this;
     newNode.setMode(mode);
     children.add(newNode);
+    addChanges();
     return newNode;
+  }
+
+  private void addChanges() {
+    numberOfChanges++;
+    if (parent==null) return;
+    parent.addChanges();
   }
 
   /**
@@ -67,29 +79,29 @@ public class Node<T> implements Iterable<Node<T>> {
     List<Node<T>> ancestors = new ArrayList<>();
     List<Node<T>> descendants = node.getDescendants();
     descendants.add(node);
-    Node<T> now=this;
-    while (now!=null)
-    {
+    Node<T> now = this;
+    while (now != null) {
       ancestors.add(now);
-      now=now.getParent();
+      now = now.getParent();
     }
-    boolean haveCycle=false;
-    now=node;
+    boolean haveCycle = false;
+    now = node;
     Iterator<Node<T>> iterator = descendants.iterator();
-    while (iterator.hasNext())
-    {
-      if (ancestors.contains(iterator.next()))
-      {
-        haveCycle=true;
+    while (iterator.hasNext()) {
+      if (ancestors.contains(iterator.next())) {
+        haveCycle = true;
         break;
       }
     }
-    if (haveCycle)
+    if (haveCycle) {
       return false;
+    }
     children.add(node);
+    addChanges();
     return true;
   }
-  private List<Node<T>> getDescendants(){
+
+  private List<Node<T>> getDescendants() {
     List<Node<T>> list = new ArrayList<>();
     list.addAll(this.children);
     this.children.forEach(child -> list.addAll(child.getDescendants()));
@@ -104,6 +116,7 @@ public class Node<T> implements Iterable<Node<T>> {
    */
   public Node<T> remove(Node<T> node) {
     children.remove(node);
+    addChanges();
     return node;
   }
 
@@ -134,5 +147,9 @@ public class Node<T> implements Iterable<Node<T>> {
         return null;
       }
     }
+  }
+
+  public int getNumberOfChanges() {
+    return numberOfChanges;
   }
 }
