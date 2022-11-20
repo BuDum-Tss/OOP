@@ -78,6 +78,7 @@ public class Node<T> implements Iterable<Node<T>> {
   /**
    * Returns list of children of this root.
    *
+   *
    * @return list of children of root
    */
   public List<Node<T>> getChildren() {
