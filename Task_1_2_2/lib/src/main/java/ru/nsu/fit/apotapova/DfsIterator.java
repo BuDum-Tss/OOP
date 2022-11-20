@@ -13,20 +13,25 @@ import java.util.function.Consumer;
  */
 public class DfsIterator<T> implements Iterator<Node<T>> {
 
-  private final Node<T> root;
   private final Stack<Node<T>> stack = new Stack<>();
-  private int numberOfChanges;
-  DfsIterator(Node<T> root) {
-    this.root = root;
-    stack.add(this.root);
+  private final int numberOfChanges;
+
+  /**
+   * DfsIterator used for iterating through a tree.
+   *
+   * @param root root of the tree
+   */
+  public DfsIterator(Node<T> root) {
+    stack.add(root);
     numberOfChanges = root.getNumberOfChanges();
   }
 
   @Override
   public boolean hasNext() {
-    boolean isEmpty=stack.isEmpty();
-    if (!(isEmpty) && numberOfChanges<stack.peek().getNumberOfChanges())
+    boolean isEmpty = stack.isEmpty();
+    if (!(isEmpty) && numberOfChanges < stack.peek().getNumberOfChanges()) {
       throw new ConcurrentModificationException();
+    }
     return !(isEmpty);
   }
 

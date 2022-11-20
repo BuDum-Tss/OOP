@@ -17,7 +17,7 @@ public class Node<T> implements Iterable<Node<T>> {
   private Node<T> parent;
   private int numberOfChanges = 0;
 
-  Node(T value) {
+  public Node(T value) {
     this.value = value;
   }
 
@@ -48,6 +48,14 @@ public class Node<T> implements Iterable<Node<T>> {
     this.mode = mode;
   }
 
+  private void addChanges() {
+    numberOfChanges++;
+    if (parent == null) {
+      return;
+    }
+    parent.addChanges();
+  }
+
   /**
    * Creates a node with the value nodeValue and adds it from the root of the tree.
    *
@@ -61,12 +69,6 @@ public class Node<T> implements Iterable<Node<T>> {
     children.add(newNode);
     addChanges();
     return newNode;
-  }
-
-  private void addChanges() {
-    numberOfChanges++;
-    if (parent==null) return;
-    parent.addChanges();
   }
 
   /**
@@ -85,10 +87,8 @@ public class Node<T> implements Iterable<Node<T>> {
       now = now.getParent();
     }
     boolean haveCycle = false;
-    now = node;
-    Iterator<Node<T>> iterator = descendants.iterator();
-    while (iterator.hasNext()) {
-      if (ancestors.contains(iterator.next())) {
+    for (Node<T> descendant : descendants) {
+      if (ancestors.contains(descendant)) {
         haveCycle = true;
         break;
       }
@@ -102,8 +102,7 @@ public class Node<T> implements Iterable<Node<T>> {
   }
 
   private List<Node<T>> getDescendants() {
-    List<Node<T>> list = new ArrayList<>();
-    list.addAll(this.children);
+    List<Node<T>> list = new ArrayList<>(this.children);
     this.children.forEach(child -> list.addAll(child.getDescendants()));
     return list;
   }
@@ -136,17 +135,10 @@ public class Node<T> implements Iterable<Node<T>> {
    */
   @Override
   public Iterator<Node<T>> iterator() {
-    switch (mode) {
-      case BFS: {
-        return new BfsIterator<>(this);
-      }
-      case DFS: {
-        return new DfsIterator<>(this);
-      }
-      default: {
-        return null;
-      }
+    if (mode == IteratorMode.DFS) {
+      return new DfsIterator<>(this);
     }
+    return new BfsIterator<>(this);
   }
 
   public int getNumberOfChanges() {

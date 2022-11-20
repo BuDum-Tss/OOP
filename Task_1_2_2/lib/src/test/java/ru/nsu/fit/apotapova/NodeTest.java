@@ -10,21 +10,23 @@ class NodeTest {
 
   @Test
   void testGetMode() {
-    Node<Integer> root = new Node(0);
+    Node<Integer> root = new Node<>(0);
     Assertions.assertNull(root.getMode());
     root.setMode(BFS);
     Assertions.assertEquals(BFS, root.getMode());
   }
+
   @Test
   void testSetMode() {
-    Node<Integer> root = new Node(0);
+    Node<Integer> root = new Node<>(0);
     Assertions.assertNull(root.getMode());
     root.setMode(DFS);
     Assertions.assertEquals(DFS, root.getMode());
   }
+
   @Test
   void testAdd() {
-    Node<Integer> root = new Node(1);
+    Node<Integer> root = new Node<>(1);
     root.setMode(BFS);
     java.util.Iterator<Node<Integer>> iterator;
     root.add(11);
@@ -49,15 +51,16 @@ class NodeTest {
     Assertions.assertEquals(122, iterator.next().value);
     Assertions.assertEquals(1221, iterator.next().value);
   }
+
   @Test
   void testAdd2() {
-    Node<Integer> root = new Node(1);
+    Node<Integer> root = new Node<>(1);
     root.setMode(BFS);
     java.util.Iterator<Node<Integer>> iterator;
     root.add(11);
     Node<Integer> node = root.add(12);
     node.add(121);
-    Node<Integer> node2 = new Node(122);
+    Node<Integer> node2 = new Node<>(122);
     node2.add(1221);
 
     Assertions.assertTrue(node.add(node2));
@@ -82,9 +85,9 @@ class NodeTest {
 
   @Test
   void testRemove() {
-    Node<Integer> root = new Node(1);
+    Node<Integer> root = new Node<>(1);
     root.setMode(DFS);
-    java.util.Iterator<Node<Integer>> iterator = root.iterator();
+    java.util.Iterator<Node<Integer>> iterator;
     root.add(11);
     Node<Integer> node = root.add(12);
     node.add(121);
@@ -101,7 +104,7 @@ class NodeTest {
 
   @Test
   void testGetChildren() {
-    Node<Integer> root = new Node(0);
+    Node<Integer> root = new Node<>(0);
     root.setMode(BFS);
     root.add(1);
     Assertions.assertEquals(1, root.getChildren().get(0).value);
@@ -109,14 +112,17 @@ class NodeTest {
 
   @Test
   void testIterator() {
-    Node<Integer> root = new Node(0);
+    Node<Integer> root = new Node<>(1);
     root.setMode(BFS);
     java.util.Iterator<Node<Integer>> iterator = root.iterator();
+    Assertions.assertTrue(iterator.hasNext());
+    Assertions.assertEquals(1,iterator.next().value);
+    Assertions.assertFalse(iterator.hasNext());
   }
 
   @Test
   void testBfsIterator() {
-    Node<Integer> root = new Node(1);
+    Node<Integer> root = new Node<>(1);
     root.setMode(BFS);
     Node<Integer> node1 = root.add(11);
     Node<Integer> node2 = root.add(12);
@@ -159,7 +165,7 @@ class NodeTest {
 
   @Test
   void testDfsIterator() {
-    Node<Integer> root = new Node(1);
+    Node<Integer> root = new Node<>(1);
     root.setMode(DFS);
     Node<Integer> node1 = root.add(11);
     Node<Integer> node2 = root.add(12);
