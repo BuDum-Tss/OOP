@@ -35,7 +35,7 @@ class NodeTest {
     Node<Integer> root = new Node(0);
     Assertions.assertNull(root.getMode());
     root.setMode(DFS);
-    Assertions.assertEquals(DFS,root.getMode());
+    Assertions.assertEquals(DFS, root.getMode());
   }
 
   @Test
@@ -46,8 +46,8 @@ class NodeTest {
     root.add(1);
     root.add(2);
     root.add(3);
-    Assertions.assertEquals(0 , root.remove(iterator.next()).getValue());
-    Assertions.assertEquals(1 , root.remove(iterator.next()).getValue());
+    Assertions.assertEquals(0, root.remove(iterator.next()).getValue());
+    Assertions.assertEquals(1, root.remove(iterator.next()).getValue());
     Assertions.assertEquals(2, root.remove(iterator.next()).getValue());
     Assertions.assertEquals(3, root.remove(iterator.next()).getValue());
   }
@@ -57,7 +57,7 @@ class NodeTest {
     Node<Integer> root = new Node(0);
     root.setMode(BFS);
     root.add(1);
-    Assertions.assertEquals( 1, root.getChildren().get(0).getValue());
+    Assertions.assertEquals(1, root.getChildren().get(0).getValue());
   }
 
   @Test
