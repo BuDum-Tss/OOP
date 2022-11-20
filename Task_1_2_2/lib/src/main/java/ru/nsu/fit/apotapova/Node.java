@@ -100,17 +100,16 @@ public class Node<T> implements Iterable<Node<T>> {
   @Override
   public Iterator<Node<T>> iterator() {
     switch (mode) {
-      case BFS -> {
+      case BFS: {
         return new BfsIterator<>(this);
       }
-      case DFS -> {
+      case DFS: {
         return new DfsIterator<>(this);
       }
-      default -> {
+      default: {
         return null;
       }
     }
-
   }
 
   public T getValue() {
