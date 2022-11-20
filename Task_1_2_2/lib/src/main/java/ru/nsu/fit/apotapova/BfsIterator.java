@@ -3,6 +3,7 @@ package ru.nsu.fit.apotapova;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.function.Consumer;
 
 /**
  * BfsIterator used for iterating through a tree.
@@ -35,9 +36,9 @@ public class BfsIterator<T> implements Iterator<Node<T>> {
       throw new RuntimeException("There are no nodes left");
     }
   }
-  /*
   @Override
-  public void forEachRemaining(Consumer<? super T> action) {
+  public void forEachRemaining(Consumer<? super Node<T>> action) {
+
     Iterator.super.forEachRemaining(action);
-  }*/
+  }
 }

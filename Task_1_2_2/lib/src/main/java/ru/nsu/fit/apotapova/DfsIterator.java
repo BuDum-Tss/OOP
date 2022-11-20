@@ -2,6 +2,7 @@ package ru.nsu.fit.apotapova;
 
 import java.util.Iterator;
 import java.util.Stack;
+import java.util.function.Consumer;
 
 /**
  * DFSIterator used for iterating through a tree.
@@ -33,9 +34,8 @@ public class DfsIterator<T> implements Iterator<Node<T>> {
       throw new RuntimeException("There are no nodes left");
     }
   }
-  /*
   @Override
   public void forEachRemaining(Consumer<? super Node<T>> action) {
     Iterator.super.forEachRemaining(action);
-  }*/
+  }
 }
