@@ -99,15 +99,25 @@ class NodeTest {
                    /   \
                 1211    1212
      */
+    Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(1, iterator.next().getValue());
+    Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(11, iterator.next().getValue());
+    Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(12, iterator.next().getValue());
+    Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(111, iterator.next().getValue());
+    Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(112, iterator.next().getValue());
+    Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(121, iterator.next().getValue());
+    Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(122, iterator.next().getValue());
+    Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(1211, iterator.next().getValue());
+    Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(1212, iterator.next().getValue());
+    Assertions.assertFalse(iterator.hasNext());
   }
 
   @Test
@@ -132,15 +142,24 @@ class NodeTest {
                    /   \
                 1211    1212
      */
+    Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(1, iterator.next().getValue());
+    Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(12, iterator.next().getValue());
+    Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(122, iterator.next().getValue());
+    Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(121, iterator.next().getValue());
+    Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(1212, iterator.next().getValue());
+    Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(1211, iterator.next().getValue());
+    Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(11, iterator.next().getValue());
+    Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(112, iterator.next().getValue());
+    Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(111, iterator.next().getValue());
-
+    Assertions.assertFalse(iterator.hasNext());
   }
 }
