@@ -15,17 +15,32 @@ class NodeTest {
     root.setMode(BFS);
     Assertions.assertEquals(BFS, root.getMode());
   }
-
+  @Test
+  void testSetMode() {
+    Node<Integer> root = new Node(0);
+    Assertions.assertNull(root.getMode());
+    root.setMode(DFS);
+    Assertions.assertEquals(DFS, root.getMode());
+  }
   @Test
   void testAdd() {
     Node<Integer> root = new Node(1);
     root.setMode(BFS);
-    java.util.Iterator<Node<Integer>> iterator = root.iterator();
+    java.util.Iterator<Node<Integer>> iterator;
     root.add(11);
     Node<Integer> node = root.add(12);
     node.add(121);
     node = node.add(122);
     node.add(1221);
+    /*
+                   1
+                /      \
+              11        12
+                      /    \
+                    121    122
+                              \
+                             1221
+     */
     iterator = root.iterator();
     Assertions.assertEquals(1, iterator.next().value);
     Assertions.assertEquals(11, iterator.next().value);
@@ -34,13 +49,36 @@ class NodeTest {
     Assertions.assertEquals(122, iterator.next().value);
     Assertions.assertEquals(1221, iterator.next().value);
   }
-
   @Test
-  void testSetMode() {
-    Node<Integer> root = new Node(0);
-    Assertions.assertNull(root.getMode());
-    root.setMode(DFS);
-    Assertions.assertEquals(DFS, root.getMode());
+  void testAdd2() {
+    Node<Integer> root = new Node(1);
+    root.setMode(BFS);
+    java.util.Iterator<Node<Integer>> iterator;
+    root.add(11);
+    Node<Integer> node = root.add(12);
+    node.add(121);
+
+    Node<Integer> node2 = new Node(122);
+    node2.add(1221);
+
+    Assertions.assertTrue(node.add(node2));
+    Assertions.assertFalse(node.add(node));
+    /*
+                   1
+                /      \
+              11        12
+                      /    \
+                    121    122
+                              \
+                             1221
+     */
+    iterator = root.iterator();
+    Assertions.assertEquals(1, iterator.next().value);
+    Assertions.assertEquals(11, iterator.next().value);
+    Assertions.assertEquals(12, iterator.next().value);
+    Assertions.assertEquals(121, iterator.next().value);
+    Assertions.assertEquals(122, iterator.next().value);
+    Assertions.assertEquals(1221, iterator.next().value);
   }
 
   @Test

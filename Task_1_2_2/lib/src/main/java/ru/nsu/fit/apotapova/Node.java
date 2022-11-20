@@ -65,11 +65,12 @@ public class Node<T> implements Iterable<Node<T>> {
    */
   public boolean add(Node<T> node) {
     List<Node<T>> ancestors = new ArrayList<>();
-    List<Node<T>> descendants = getDescendants();
+    List<Node<T>> descendants = node.getDescendants();
+    descendants.add(node);
     Node<T> now=this;
     while (now!=null)
     {
-      ancestors.add(now.getParent());
+      ancestors.add(now);
       now=now.getParent();
     }
     boolean haveCycle=false;
