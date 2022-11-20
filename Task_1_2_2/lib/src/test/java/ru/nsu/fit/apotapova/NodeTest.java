@@ -46,7 +46,7 @@ class NodeTest {
   @Test
   void testRemove() {
     Node<Integer> root = new Node(1);
-    root.setMode(BFS);
+    root.setMode(DFS);
     java.util.Iterator<Node<Integer>> iterator = root.iterator();
     root.add(11);
     Node<Integer> node = root.add(12);
@@ -55,13 +55,12 @@ class NodeTest {
     root.add(node,1221);
     iterator = root.iterator();
     Assertions.assertEquals(1, root.remove(iterator.next()).getValue());
-    Assertions.assertEquals(11, root.remove(iterator.next()).getValue());
     Assertions.assertEquals(12, root.remove(iterator.next()).getValue());
-    Assertions.assertEquals(121, root.remove(iterator.next()).getValue());
     Assertions.assertEquals(122, root.remove(iterator.next()).getValue());
     Assertions.assertEquals(1221, root.remove(iterator.next()).getValue());
+    Assertions.assertEquals(121, root.remove(iterator.next()).getValue());
+    Assertions.assertEquals(11, root.remove(iterator.next()).getValue());
   }
-
   @Test
   void testGetChildren() {
     Node<Integer> root = new Node(0);
