@@ -185,11 +185,10 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#add(ru.nsu.fit.apotapova.Node,T)">add</a></span>&#8203;(<a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&nbsp;localRoot,
-   <a href="Node.html" title="type parameter in Node">T</a>&nbsp;nodeValue)</code></th>
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#add(ru.nsu.fit.apotapova.Node)">add</a></span>&#8203;(<a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&nbsp;node)</code></th>
 <td class="colLast">
-<div class="block">Creates a node with the value nodeValue and adds it from the local root of the tree.</div>
+<div class="block">Adds a node to the tree and returns true, otherwise returns false.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
@@ -214,25 +213,22 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 </td>
 </tr>
 <tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getParent()">getParent</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.util.Iterator&lt;<a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#iterator()">iterator</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Returns iterator.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#remove(ru.nsu.fit.apotapova.Node)">remove</a></span>&#8203;(<a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&nbsp;node)</code></th>
 <td class="colLast">
 <div class="block">Removes node from list of root' children.</div>
-</td>
-</tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code><a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#remove(ru.nsu.fit.apotapova.Node,ru.nsu.fit.apotapova.Node)">remove</a></span>&#8203;(<a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&nbsp;localRoot,
-      <a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&nbsp;node)</code></th>
-<td class="colLast">
-<div class="block">Removes node from list of localRoot' children.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
@@ -292,6 +288,15 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="getParent()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getParent</h4>
+<pre class="methodSignature">public&nbsp;<a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&nbsp;getParent()</pre>
+</li>
+</ul>
 <a id="getMode()">
 <!--   -->
 </a>
@@ -338,23 +343,19 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 </dl>
 </li>
 </ul>
-<a id="add(ru.nsu.fit.apotapova.Node,java.lang.Object)">
-<!--   -->
-</a><a id="add(ru.nsu.fit.apotapova.Node,T)">
+<a id="add(ru.nsu.fit.apotapova.Node)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>add</h4>
-<pre class="methodSignature">public&nbsp;<a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&nbsp;add&#8203;(<a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&nbsp;localRoot,
-                   <a href="Node.html" title="type parameter in Node">T</a>&nbsp;nodeValue)</pre>
-<div class="block">Creates a node with the value nodeValue and adds it from the local root of the tree.</div>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;add&#8203;(<a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&nbsp;node)</pre>
+<div class="block">Adds a node to the tree and returns true, otherwise returns false.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>localRoot</code> - local root</dd>
-<dd><code>nodeValue</code> - value of node</dd>
+<dd><code>node</code> - local root</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>created node</dd>
+<dd>is node added or not</dd>
 </dl>
 </li>
 </ul>
@@ -368,24 +369,6 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <div class="block">Removes node from list of root' children.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>node</code> - node being deleted</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>removed node</dd>
-</dl>
-</li>
-</ul>
-<a id="remove(ru.nsu.fit.apotapova.Node,ru.nsu.fit.apotapova.Node)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>remove</h4>
-<pre class="methodSignature">public&nbsp;<a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&nbsp;remove&#8203;(<a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&nbsp;localRoot,
-                      <a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&nbsp;node)</pre>
-<div class="block">Removes node from list of localRoot' children.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>localRoot</code> - the node whose child will be deleted</dd>
 <dd><code>node</code> - node being deleted</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>removed node</dd>
