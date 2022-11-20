@@ -1,7 +1,7 @@
 package ru.nsu.fit.apotapova;
 
-import static ru.nsu.fit.apotapova.Node.IteratorMode.BFS;
-import static ru.nsu.fit.apotapova.Node.IteratorMode.DFS;
+import static ru.nsu.fit.apotapova.IteratorMode.BFS;
+import static ru.nsu.fit.apotapova.IteratorMode.DFS;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

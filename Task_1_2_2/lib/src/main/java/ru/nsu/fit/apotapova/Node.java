@@ -13,7 +13,7 @@ public class Node<T> implements Iterable<Node<T>> {
 
   private final List<Node<T>> children = new ArrayList<>();
   public T value;
-  private Node.IteratorMode mode = null;
+  private IteratorMode mode = null;
   private Node<T> root;
 
   Node(T value) {
@@ -25,7 +25,7 @@ public class Node<T> implements Iterable<Node<T>> {
    *
    * @return iterator mode
    */
-  public Node.IteratorMode getMode() {
+  public IteratorMode getMode() {
     return mode;
   }
 
@@ -34,7 +34,7 @@ public class Node<T> implements Iterable<Node<T>> {
    *
    * @param mode iterator mode
    */
-  public void setMode(Node.IteratorMode mode) {
+  public void setMode(IteratorMode mode) {
     this.mode = mode;
   }
 
@@ -115,10 +115,5 @@ public class Node<T> implements Iterable<Node<T>> {
         return null;
       }
     }
-  }
-
-  enum IteratorMode {
-    BFS,
-    DFS
   }
 }
