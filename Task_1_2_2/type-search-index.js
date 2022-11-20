@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.fit.apotapova","l":"BfsIterator"},{"p":"ru.nsu.fit.apotapova","l":"DfsIterator"},{"p":"ru.nsu.fit.apotapova","l":"Node"}]
