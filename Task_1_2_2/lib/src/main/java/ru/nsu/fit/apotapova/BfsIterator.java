@@ -2,6 +2,7 @@ package ru.nsu.fit.apotapova;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 import java.util.Queue;
 import java.util.function.Consumer;
 
@@ -33,7 +34,7 @@ public class BfsIterator<T> implements Iterator<Node<T>> {
       return node;
     }
     else {
-      throw new RuntimeException("There are no nodes left");
+      throw new NoSuchElementException("There are no nodes left");
     }
   }
   @Override

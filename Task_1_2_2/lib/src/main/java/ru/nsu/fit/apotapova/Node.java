@@ -14,12 +14,17 @@ public class Node<T> implements Iterable<Node<T>> {
   private final List<Node<T>> children = new ArrayList<>();
   private Node.IteratorMode mode = null;
   private Node<T> root;
-  private T value;
+  public T value;
 
   Node(T value) {
     this.value = value;
   }
 
+  /**
+   * Gets mode of iterator(BFS or DFS).
+   *
+   * @return iterator mode
+   */
   public Node.IteratorMode getMode() {
     return mode;
   }
@@ -110,10 +115,6 @@ public class Node<T> implements Iterable<Node<T>> {
         return null;
       }
     }
-  }
-
-  public T getValue() {
-    return value;
   }
 
   enum IteratorMode {

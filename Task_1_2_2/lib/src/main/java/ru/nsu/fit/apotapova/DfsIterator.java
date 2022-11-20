@@ -1,6 +1,7 @@
 package ru.nsu.fit.apotapova;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Stack;
 import java.util.function.Consumer;
 
@@ -31,7 +32,7 @@ public class DfsIterator<T> implements Iterator<Node<T>> {
       stack.addAll(node.getChildren());
       return node;
     } else {
-      throw new RuntimeException("There are no nodes left");
+      throw new NoSuchElementException("There are no nodes left");
     }
   }
   @Override
