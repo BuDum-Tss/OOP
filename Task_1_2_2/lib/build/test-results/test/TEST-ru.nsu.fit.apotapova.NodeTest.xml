@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.nsu.fit.apotapova.NodeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-20T05:14:59" hostname="ZEPHYRUS-G14" time="0.017">
+  <properties/>
+  <testcase name="testIterator()" classname="ru.nsu.fit.apotapova.NodeTest" time="0.017"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
