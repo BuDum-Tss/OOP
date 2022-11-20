@@ -26,8 +26,14 @@ public class BfsIterator<T> implements Iterator<Node<T>> {
 
   @Override
   public Node<T> next() {
-    queue.addAll(root.getChildren());
-    return queue.poll();
+    if (hasNext()){
+      Node<T> node = queue.poll();
+      queue.addAll(node.getChildren());
+      return node;
+    }
+    else {
+      throw new RuntimeException("There are no nodes left");
+    }
   }
   /*
   @Override

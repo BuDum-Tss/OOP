@@ -18,16 +18,21 @@ class NodeTest {
 
   @Test
   void testAdd() {
-    Node<Integer> root = new Node(0);
+    Node<Integer> root = new Node(1);
     root.setMode(BFS);
     java.util.Iterator<Node<Integer>> iterator = root.iterator();
-    root.add(1);
-    root.add(2);
-    root.add(3);
-    Assertions.assertEquals(0, iterator.next().getValue());
+    root.add(11);
+    Node<Integer> node = root.add(12);
+    root.add(node,121);
+    node = root.add(node,122);
+    root.add(node,1221);
+    iterator = root.iterator();
     Assertions.assertEquals(1, iterator.next().getValue());
-    Assertions.assertEquals(2, iterator.next().getValue());
-    Assertions.assertEquals(3, iterator.next().getValue());
+    Assertions.assertEquals(11, iterator.next().getValue());
+    Assertions.assertEquals(12, iterator.next().getValue());
+    Assertions.assertEquals(121, iterator.next().getValue());
+    Assertions.assertEquals(122, iterator.next().getValue());
+    Assertions.assertEquals(1221, iterator.next().getValue());
   }
 
   @Test
@@ -40,16 +45,21 @@ class NodeTest {
 
   @Test
   void testRemove() {
-    Node<Integer> root = new Node(0);
+    Node<Integer> root = new Node(1);
     root.setMode(BFS);
     java.util.Iterator<Node<Integer>> iterator = root.iterator();
-    root.add(1);
-    root.add(2);
-    root.add(3);
-    Assertions.assertEquals(0, root.remove(iterator.next()).getValue());
+    root.add(11);
+    Node<Integer> node = root.add(12);
+    root.add(node,121);
+    node = root.add(node,122);
+    root.add(node,1221);
+    iterator = root.iterator();
     Assertions.assertEquals(1, root.remove(iterator.next()).getValue());
-    Assertions.assertEquals(2, root.remove(iterator.next()).getValue());
-    Assertions.assertEquals(3, root.remove(iterator.next()).getValue());
+    Assertions.assertEquals(11, root.remove(iterator.next()).getValue());
+    Assertions.assertEquals(12, root.remove(iterator.next()).getValue());
+    Assertions.assertEquals(121, root.remove(iterator.next()).getValue());
+    Assertions.assertEquals(122, root.remove(iterator.next()).getValue());
+    Assertions.assertEquals(1221, root.remove(iterator.next()).getValue());
   }
 
   @Test

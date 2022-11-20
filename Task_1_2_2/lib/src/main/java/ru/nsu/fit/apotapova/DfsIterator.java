@@ -25,8 +25,13 @@ public class DfsIterator<T> implements Iterator<Node<T>> {
 
   @Override
   public Node<T> next() {
-    stack.addAll(root.getChildren());
-    return stack.pop();
+    if (hasNext()) {
+      Node<T> node = stack.pop();
+      stack.addAll(node.getChildren());
+      return node;
+    } else {
+      throw new RuntimeException("There are no nodes left");
+    }
   }
   /*
   @Override
