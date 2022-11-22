@@ -75,30 +75,25 @@ public class Node<T> implements Iterable<Node<T>> {
    * Adds a node to the tree and returns true, otherwise returns false.
    *
    * @param node local root
-   * @return is node added or not
    */
-  public boolean add(Node<T> node) {
+  public void add(Node<T> node) throws Exception {
     List<Node<T>> ancestors = new ArrayList<>();
-    List<Node<T>> descendants = node.getDescendants();
-    descendants.add(node);
     Node<T> now = this;
     while (now != null) {
       ancestors.add(now);
       now = now.getParent();
     }
-    boolean haveCycle = false;
-    for (Node<T> descendant : descendants) {
-      if (ancestors.contains(descendant)) {
-        haveCycle = true;
-        break;
+    boolean haveCycle = ancestors.contains(node);
+    if (!haveCycle) {
+      if (node.parent != null) {
+        node.parent.children.remove(node);
       }
+      node.parent = this;
+      children.add(node);
+      addChanges();
+    } else {
+      throw new Exception("Аttempt to create a loop in the tree");
     }
-    if (haveCycle) {
-      return false;
-    }
-    children.add(node);
-    addChanges();
-    return true;
   }
 
   private List<Node<T>> getDescendants() {

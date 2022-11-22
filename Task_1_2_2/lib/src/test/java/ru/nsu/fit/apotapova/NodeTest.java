@@ -53,7 +53,7 @@ class NodeTest {
   }
 
   @Test
-  void testAdd2() {
+  void testAdd2() throws Exception {
     Node<Integer> root = new Node<>(1);
     root.setMode(BFS);
     java.util.Iterator<Node<Integer>> iterator;
@@ -62,9 +62,7 @@ class NodeTest {
     node.add(121);
     Node<Integer> node2 = new Node<>(122);
     node2.add(1221);
-
-    Assertions.assertTrue(node.add(node2));
-    Assertions.assertFalse(node.add(node));
+    node.add(node2);
     /*
                    1
                 /      \

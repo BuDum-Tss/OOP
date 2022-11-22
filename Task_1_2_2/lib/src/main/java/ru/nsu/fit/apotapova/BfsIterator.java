@@ -15,6 +15,7 @@ import java.util.function.Consumer;
  * @param <T> type of tree value
  */
 public class BfsIterator<T> implements Iterator<Node<T>> {
+
   private final Queue<Node<T>> queue = new LinkedList();
   private final int numberOfChanges;
 
@@ -29,6 +30,11 @@ public class BfsIterator<T> implements Iterator<Node<T>> {
     numberOfChanges = root.getNumberOfChanges();
   }
 
+  /**
+   * Checks if there is a next value to iterate through the tree.
+   *
+   * @return true/false
+   */
   @Override
   public boolean hasNext() {
     boolean isEmpty = (queue.isEmpty());
@@ -38,6 +44,11 @@ public class BfsIterator<T> implements Iterator<Node<T>> {
     return !(isEmpty);
   }
 
+  /**
+   * Passes the next value to iterate through the tree.
+   *
+   * @return next node
+   */
   @Override
   public Node<T> next() {
     if (hasNext()) {

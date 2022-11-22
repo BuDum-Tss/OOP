@@ -26,6 +26,11 @@ public class DfsIterator<T> implements Iterator<Node<T>> {
     numberOfChanges = root.getNumberOfChanges();
   }
 
+  /**
+   * Checks if there is a next value to iterate through the tree.
+   *
+   * @return true/false
+   */
   @Override
   public boolean hasNext() {
     boolean isEmpty = stack.isEmpty();
@@ -35,6 +40,11 @@ public class DfsIterator<T> implements Iterator<Node<T>> {
     return !(isEmpty);
   }
 
+  /**
+   * Passes the next value to iterate through the tree.
+   *
+   * @return next node
+   */
   @Override
   public Node<T> next() {
     if (hasNext()) {
