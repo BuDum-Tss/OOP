@@ -96,12 +96,6 @@ public class Node<T> implements Iterable<Node<T>> {
     }
   }
 
-  private List<Node<T>> getDescendants() {
-    List<Node<T>> list = new ArrayList<>(this.children);
-    this.children.forEach(child -> list.addAll(child.getDescendants()));
-    return list;
-  }
-
   /**
    * Removes node from list of root' children.
    *

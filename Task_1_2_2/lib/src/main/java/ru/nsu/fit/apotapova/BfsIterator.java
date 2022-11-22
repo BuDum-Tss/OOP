@@ -1,7 +1,5 @@
 package ru.nsu.fit.apotapova;
 
-import static ru.nsu.fit.apotapova.IteratorMode.BFS;
-
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.LinkedList;
