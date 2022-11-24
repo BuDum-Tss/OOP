@@ -6,15 +6,16 @@
 <title>DfsIterator (lib API)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
-<link rel="stylesheet" type="text/css" href="../../../../jquery/jquery-ui.css" title="Style">
+<link rel="stylesheet" type="text/css" href="../../../../jquery/jquery-ui.min.css" title="Style">
+<link rel="stylesheet" type="text/css" href="../../../../jquery-ui.overrides.css" title="Style">
 <script type="text/javascript" src="../../../../script.js"></script>
 <script type="text/javascript" src="../../../../jquery/jszip/dist/jszip.min.js"></script>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils.min.js"></script>
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-ui.min.js"></script>
 </head>
 <body>
 <script type="text/javascript"><!--
@@ -26,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10};
+var data = {"i0":10,"i1":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -148,7 +149,7 @@ implements java.util.Iterator&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <ul class="blockList">
 <li class="blockList">
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="constructor.summary">
 <!--   -->
@@ -171,7 +172,7 @@ implements java.util.Iterator&lt;<a href="Node.html" title="class in ru.nsu.fit.
 </ul>
 </section>
 <!-- ========== METHOD SUMMARY =========== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="method.summary">
 <!--   -->
@@ -185,18 +186,13 @@ implements java.util.Iterator&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#forEachRemaining(java.util.function.Consumer)">forEachRemaining</a></span>&#8203;(java.util.function.Consumer&lt;? super <a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="DfsIterator.html" title="type parameter in DfsIterator">T</a>&gt;&gt;&nbsp;action)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i1" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasNext()">hasNext</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Checks if there is a next value to iterate through the tree.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="DfsIterator.html" title="type parameter in DfsIterator">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#next()">next</a></span>()</code></th>
 <td class="colLast">
@@ -216,7 +212,7 @@ implements java.util.Iterator&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;java.util.Iterator</h3>
-<code>remove</code></li>
+<code>forEachRemaining, remove</code></li>
 </ul>
 </li>
 </ul>
@@ -228,7 +224,7 @@ implements java.util.Iterator&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <ul class="blockList">
 <li class="blockList">
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="constructor.detail">
 <!--   -->
@@ -252,7 +248,7 @@ implements java.util.Iterator&lt;<a href="Node.html" title="class in ru.nsu.fit.
 </ul>
 </section>
 <!-- ============ METHOD DETAIL ========== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="method.detail">
 <!--   -->
@@ -277,7 +273,7 @@ implements java.util.Iterator&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <a id="next()">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>next</h4>
 <pre class="methodSignature">public&nbsp;<a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="DfsIterator.html" title="type parameter in DfsIterator">T</a>&gt;&nbsp;next()</pre>
@@ -287,19 +283,6 @@ implements java.util.Iterator&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <dd><code>next</code>&nbsp;in interface&nbsp;<code>java.util.Iterator&lt;<a href="DfsIterator.html" title="type parameter in DfsIterator">T</a>&gt;</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>next node</dd>
-</dl>
-</li>
-</ul>
-<a id="forEachRemaining(java.util.function.Consumer)">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>forEachRemaining</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;forEachRemaining&#8203;(java.util.function.Consumer&lt;? super <a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="DfsIterator.html" title="type parameter in DfsIterator">T</a>&gt;&gt;&nbsp;action)</pre>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code>forEachRemaining</code>&nbsp;in interface&nbsp;<code>java.util.Iterator&lt;<a href="DfsIterator.html" title="type parameter in DfsIterator">T</a>&gt;</code></dd>
 </dl>
 </li>
 </ul>

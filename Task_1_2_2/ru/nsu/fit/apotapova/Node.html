@@ -6,15 +6,16 @@
 <title>Node (lib API)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
-<link rel="stylesheet" type="text/css" href="../../../../jquery/jquery-ui.css" title="Style">
+<link rel="stylesheet" type="text/css" href="../../../../jquery/jquery-ui.min.css" title="Style">
+<link rel="stylesheet" type="text/css" href="../../../../jquery-ui.overrides.css" title="Style">
 <script type="text/javascript" src="../../../../script.js"></script>
 <script type="text/javascript" src="../../../../jquery/jszip/dist/jszip.min.js"></script>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils.min.js"></script>
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-ui.min.js"></script>
 </head>
 <body>
 <script type="text/javascript"><!--
@@ -26,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -148,7 +149,7 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <ul class="blockList">
 <li class="blockList">
 <!-- =========== FIELD SUMMARY =========== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="field.summary">
 <!--   -->
@@ -171,7 +172,7 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 </ul>
 </section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="constructor.summary">
 <!--   -->
@@ -192,7 +193,7 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 </ul>
 </section>
 <!-- ========== METHOD SUMMARY =========== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="method.summary">
 <!--   -->
@@ -266,6 +267,11 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <div class="block">Sets mode of iterator(BFS or DFS).</div>
 </td>
 </tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>java.util.stream.Stream&lt;<a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#stream()">stream</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
@@ -291,7 +297,7 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <ul class="blockList">
 <li class="blockList">
 <!-- ============ FIELD DETAIL =========== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="field.detail">
 <!--   -->
@@ -310,7 +316,7 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 </ul>
 </section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="constructor.detail">
 <!--   -->
@@ -331,7 +337,7 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 </ul>
 </section>
 <!-- ============ METHOD DETAIL ========== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="method.detail">
 <!--   -->
@@ -463,10 +469,19 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <a id="getNumberOfChanges()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getNumberOfChanges</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getNumberOfChanges()</pre>
+</li>
+</ul>
+<a id="stream()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>stream</h4>
+<pre class="methodSignature">public&nbsp;java.util.stream.Stream&lt;<a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&gt;&nbsp;stream()</pre>
 </li>
 </ul>
 </li>
