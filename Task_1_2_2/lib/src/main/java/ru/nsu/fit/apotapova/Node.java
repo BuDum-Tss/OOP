@@ -132,10 +132,20 @@ public class Node<T> implements Iterable<Node<T>> {
     return new BfsIterator<>(this);
   }
 
+  /**
+   * Gets number of changes of this node.
+   *
+   * @return number of changes.
+   */
   public int getNumberOfChanges() {
     return numberOfChanges;
   }
 
+  /**
+   * Gets a stream of nodes of this tree.
+   *
+   * @return stream
+   */
   public Stream<Node<T>> stream() {
     return StreamSupport.stream(spliterator(), false);
   }
