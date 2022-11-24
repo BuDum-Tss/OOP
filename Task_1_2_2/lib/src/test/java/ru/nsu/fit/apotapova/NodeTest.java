@@ -3,6 +3,7 @@ package ru.nsu.fit.apotapova;
 import static ru.nsu.fit.apotapova.IteratorMode.BFS;
 import static ru.nsu.fit.apotapova.IteratorMode.DFS;
 
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -63,6 +64,7 @@ class NodeTest {
     Node<Integer> node2 = new Node<>(122);
     node2.add(1221);
     node.add(node2);
+    Assertions.assertThrows(Exception.class, () -> node.add(node));
     /*
                    1
                 /      \
@@ -114,7 +116,7 @@ class NodeTest {
     root.setMode(BFS);
     java.util.Iterator<Node<Integer>> iterator = root.iterator();
     Assertions.assertTrue(iterator.hasNext());
-    Assertions.assertEquals(1,iterator.next().value);
+    Assertions.assertEquals(1, iterator.next().value);
     Assertions.assertFalse(iterator.hasNext());
   }
 
@@ -202,5 +204,52 @@ class NodeTest {
     Assertions.assertTrue(iterator.hasNext());
     Assertions.assertEquals(111, iterator.next().value);
     Assertions.assertFalse(iterator.hasNext());
+  }
+
+  @Test
+  void testStream() {
+    Node<Integer> root = new Node<>(1);
+    root.setMode(DFS);
+    Node<Integer> node1 = root.add(11);
+    Node<Integer> node2 = root.add(12);
+    node1.add(111);
+    node1.add(112);
+    node1 = node2.add(121);
+    node2.add(122);
+    node1.add(1211);
+    node1.add(1212);
+    java.util.Iterator<Node<Integer>> iterator = root.iterator();
+    /*
+                  1
+               /     \
+            11         12
+          /    \      /    \
+        111    112  121     122
+                   /   \
+                1211    1212
+     */
+    Stream<Node<Integer>> stream = root.stream();
+    stream.forEach(node -> node.value = node.value + 100000);
+    Assertions.assertTrue(iterator.hasNext());
+    Assertions.assertEquals(100001, iterator.next().value);
+    Assertions.assertTrue(iterator.hasNext());
+    Assertions.assertEquals(100012, iterator.next().value);
+    Assertions.assertTrue(iterator.hasNext());
+    Assertions.assertEquals(100122, iterator.next().value);
+    Assertions.assertTrue(iterator.hasNext());
+    Assertions.assertEquals(100121, iterator.next().value);
+    Assertions.assertTrue(iterator.hasNext());
+    Assertions.assertEquals(101212, iterator.next().value);
+    Assertions.assertTrue(iterator.hasNext());
+    Assertions.assertEquals(101211, iterator.next().value);
+    Assertions.assertTrue(iterator.hasNext());
+    Assertions.assertEquals(100011, iterator.next().value);
+    Assertions.assertTrue(iterator.hasNext());
+    Assertions.assertEquals(100112, iterator.next().value);
+    Assertions.assertTrue(iterator.hasNext());
+    Assertions.assertEquals(100111, iterator.next().value);
+    Assertions.assertFalse(iterator.hasNext());
+    stream = root.stream();
+    Assertions.assertEquals(9, stream.count());
   }
 }

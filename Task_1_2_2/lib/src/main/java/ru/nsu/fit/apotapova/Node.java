@@ -3,6 +3,8 @@ package ru.nsu.fit.apotapova;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * Node implements the tree data type.
@@ -132,5 +134,9 @@ public class Node<T> implements Iterable<Node<T>> {
 
   public int getNumberOfChanges() {
     return numberOfChanges;
+  }
+
+  public Stream<Node<T>> stream() {
+    return StreamSupport.stream(spliterator(), false);
   }
 }
