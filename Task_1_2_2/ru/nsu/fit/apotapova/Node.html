@@ -6,16 +6,15 @@
 <title>Node (lib API)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
-<link rel="stylesheet" type="text/css" href="../../../../jquery/jquery-ui.min.css" title="Style">
-<link rel="stylesheet" type="text/css" href="../../../../jquery-ui.overrides.css" title="Style">
+<link rel="stylesheet" type="text/css" href="../../../../jquery/jquery-ui.css" title="Style">
 <script type="text/javascript" src="../../../../script.js"></script>
 <script type="text/javascript" src="../../../../jquery/jszip/dist/jszip.min.js"></script>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils.min.js"></script>
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../../../../jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
 <script type="text/javascript"><!--
@@ -149,7 +148,7 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <ul class="blockList">
 <li class="blockList">
 <!-- =========== FIELD SUMMARY =========== -->
-<section>
+<section role="region">
 <ul class="blockList">
 <li class="blockList"><a id="field.summary">
 <!--   -->
@@ -172,7 +171,7 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 </ul>
 </section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
-<section>
+<section role="region">
 <ul class="blockList">
 <li class="blockList"><a id="constructor.summary">
 <!--   -->
@@ -193,7 +192,7 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 </ul>
 </section>
 <!-- ========== METHOD SUMMARY =========== -->
-<section>
+<section role="region">
 <ul class="blockList">
 <li class="blockList"><a id="method.summary">
 <!--   -->
@@ -237,7 +236,9 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNumberOfChanges()">getNumberOfChanges</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Gets number of changes of this node.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;</code></td>
@@ -270,7 +271,9 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>java.util.stream.Stream&lt;<a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#stream()">stream</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Gets a stream of nodes of this tree.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -297,7 +300,7 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <ul class="blockList">
 <li class="blockList">
 <!-- ============ FIELD DETAIL =========== -->
-<section>
+<section role="region">
 <ul class="blockList">
 <li class="blockList"><a id="field.detail">
 <!--   -->
@@ -316,7 +319,7 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 </ul>
 </section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
-<section>
+<section role="region">
 <ul class="blockList">
 <li class="blockList"><a id="constructor.detail">
 <!--   -->
@@ -337,7 +340,7 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 </ul>
 </section>
 <!-- ============ METHOD DETAIL ========== -->
-<section>
+<section role="region">
 <ul class="blockList">
 <li class="blockList"><a id="method.detail">
 <!--   -->
@@ -473,6 +476,11 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <li class="blockList">
 <h4>getNumberOfChanges</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getNumberOfChanges()</pre>
+<div class="block">Gets number of changes of this node.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>number of changes.</dd>
+</dl>
 </li>
 </ul>
 <a id="stream()">
@@ -482,6 +490,11 @@ implements java.lang.Iterable&lt;<a href="Node.html" title="class in ru.nsu.fit.
 <li class="blockList">
 <h4>stream</h4>
 <pre class="methodSignature">public&nbsp;java.util.stream.Stream&lt;<a href="Node.html" title="class in ru.nsu.fit.apotapova">Node</a>&lt;<a href="Node.html" title="type parameter in Node">T</a>&gt;&gt;&nbsp;stream()</pre>
+<div class="block">Gets a stream of nodes of this tree.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>stream</dd>
+</dl>
 </li>
 </ul>
 </li>
