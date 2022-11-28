@@ -4,6 +4,7 @@ import static ru.nsu.fit.apotapova.IteratorMode.BFS;
 import static ru.nsu.fit.apotapova.IteratorMode.DFS;
 
 import java.util.ConcurrentModificationException;
+import java.util.Iterator;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -58,14 +59,14 @@ class NodeTest {
   void testAdd2() throws Exception {
     Node<Integer> root = new Node<>(1);
     root.setMode(BFS);
-    java.util.Iterator<Node<Integer>> iterator;
+    Iterator<Node<Integer>> iterator;
     root.add(11);
     Node<Integer> node = root.add(12);
     node.add(121);
     Node<Integer> node2 = new Node<>(122);
     node2.add(1221);
     node.add(node2);
-    Assertions.assertThrows(java.util.ConcurrentModificationException.class, () -> node.add(node));
+    Assertions.assertThrows(Exception.class, () -> node.add(node));
     /*
                    1
                 /      \
@@ -132,7 +133,9 @@ class NodeTest {
     node1 = node2.add(121);
     node2.add(122);
     node1.add(1211);
+    java.util.Iterator<Node<Integer>> newIterator = root.iterator();
     node1.add(1212);
+    Assertions.assertThrows(ConcurrentModificationException.class, newIterator::next);
     java.util.Iterator<Node<Integer>> iterator = root.iterator();
     /*
                   1
@@ -175,7 +178,9 @@ class NodeTest {
     node1 = node2.add(121);
     node2.add(122);
     node1.add(1211);
+    java.util.Iterator<Node<Integer>> newIterator = root.iterator();
     node1.add(1212);
+    Assertions.assertThrows(ConcurrentModificationException.class, newIterator::next);
     java.util.Iterator<Node<Integer>> iterator = root.iterator();
     /*
                   1
