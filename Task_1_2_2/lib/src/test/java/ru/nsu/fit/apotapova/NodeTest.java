@@ -65,7 +65,7 @@ class NodeTest {
     Node<Integer> node2 = new Node<>(122);
     node2.add(1221);
     node.add(node2);
-    Assertions.assertThrows(ConcurrentModificationException.class, () -> node.add(node));
+    Assertions.assertThrows(java.util.ConcurrentModificationException.class, () -> node.add(node));
     /*
                    1
                 /      \
