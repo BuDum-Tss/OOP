@@ -3,6 +3,7 @@ package ru.nsu.fit.apotapova;
 import static ru.nsu.fit.apotapova.IteratorMode.BFS;
 import static ru.nsu.fit.apotapova.IteratorMode.DFS;
 
+import java.util.ConcurrentModificationException;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -64,7 +65,7 @@ class NodeTest {
     Node<Integer> node2 = new Node<>(122);
     node2.add(1221);
     node.add(node2);
-    Assertions.assertThrows(Exception.class, () -> node.add(node));
+    Assertions.assertThrows(ConcurrentModificationException.class, () -> node.add(node));
     /*
                    1
                 /      \
