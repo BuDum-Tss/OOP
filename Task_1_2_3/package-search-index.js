@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"ru.nsu.fit.apotapova"},{"l":"ru.nsu.fit.apotapova.GraphParts"},{"l":"ru.nsu.fit.apotapova.GraphTypes"}]
