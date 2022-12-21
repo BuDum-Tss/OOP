@@ -55,6 +55,7 @@ class AdjacencyListsGraphTest {
     graph.deleteVertex(v1);
     graph.deleteVertex(v2);
     graph.deleteVertex(v3);
+    Assertions.assertThrows(Exception.class, () -> graph.deleteVertex(v3));
     Assertions.assertNull(graph.getVertex("A"));
     Assertions.assertNull(graph.getVertex("B"));
     Assertions.assertNull(graph.getVertex("C"));
@@ -114,6 +115,7 @@ class AdjacencyListsGraphTest {
     graph.deleteEdge(e0);
     graph.deleteEdge(e1);
     graph.deleteEdge(e2);
+    Assertions.assertThrows(Exception.class, () -> graph.deleteEdge(e2));
     Assertions.assertNull(graph.getEdge(1));
     Assertions.assertNull(graph.getEdge(2));
     Assertions.assertNull(graph.getEdge(3));

@@ -56,6 +56,13 @@ public class AdjacencyListsGraph<T> implements Graph<T> {
    */
   @Override
   public Vertex<T> addVertex(Vertex<T> vertex) {
+    if (vertexList.contains(vertex)) {
+      try {
+        throw new Exception("The vertex is already in the graph");
+      } catch (Exception e) {
+        throw new RuntimeException(e);
+      }
+    }
     vertexList.add(vertex);
     int k = vertexList.indexOf(vertex);
     edgeList.add(k, new ArrayList<>());
@@ -115,6 +122,13 @@ public class AdjacencyListsGraph<T> implements Graph<T> {
    */
   @Override
   public Edge<T> addEdge(Edge<T> edge) {
+    if (edgeList.contains(edge)) {
+      try {
+        throw new Exception("The edge is already in the graph");
+      } catch (Exception e) {
+        throw new RuntimeException(e);
+      }
+    }
     try {
       int k = getIndex(edge.firstVertex);
       edgeList.get(k).add(edge);

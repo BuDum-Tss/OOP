@@ -81,6 +81,13 @@ public class AdjacencyMatrixGraph<T> implements Graph<T> {
    */
   @Override
   public Vertex<T> addVertex(Vertex<T> vertex) {
+    if (vertexList.contains(vertex)) {
+      try {
+        throw new Exception("The vertex is already in the graph");
+      } catch (Exception e) {
+        throw new RuntimeException(e);
+      }
+    }
     vertexList.add(vertex);
     initializeVertexInMatrix(vertex);
     return vertex;
@@ -144,6 +151,13 @@ public class AdjacencyMatrixGraph<T> implements Graph<T> {
    */
   @Override
   public Edge<T> addEdge(Edge<T> edge) {
+    if (matrix.get(vertexList.indexOf(edge.firstVertex)).contains(edge)) {
+      try {
+        throw new Exception("The edge is already in the graph");
+      } catch (Exception e) {
+        throw new RuntimeException(e);
+      }
+    }
     try {
       getMatrixLineList(edge.firstVertex).remove(getIndex(edge.secondVertex));
       getMatrixLineList(edge.firstVertex).add(getIndex(edge.secondVertex), edge);
