@@ -8,15 +8,17 @@ import static java.lang.Integer.parseInt;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.nsu.fit.apotapova.GraphParts.Edge;
-import ru.nsu.fit.apotapova.GraphParts.Vertex;
-import ru.nsu.fit.apotapova.GraphTypes.AdjacencyListsGraph;
+import ru.fit.apotapova.Graph;
+import ru.fit.apotapova.GraphParts.Edge;
+import ru.fit.apotapova.GraphParts.Vertex;
+import ru.fit.apotapova.GraphTypes.AdjacencyListsGraph;
 
 class AdjacencyListsGraphTest {
 
-  void initGraph(Graph<String, Integer> graph, File filename) throws Exception {
+  void initGraph(Graph<String> graph, File filename) throws Exception {
     BufferedReader reader = new BufferedReader(new FileReader(filename));
     String str = reader.readLine();
     String[] strList = str.split("\\s+");
@@ -34,7 +36,7 @@ class AdjacencyListsGraphTest {
 
   @Test
   void addVertex() {
-    Graph<String, Integer> graph = new AdjacencyListsGraph<>();
+    Graph<String> graph = new AdjacencyListsGraph<>();
     Vertex<String> v1 = graph.addVertex("A");
     Vertex<String> v2 = graph.addVertex("B");
     Vertex<String> v3 = graph.addVertex("C");
@@ -46,7 +48,7 @@ class AdjacencyListsGraphTest {
 
   @Test
   void deleteVertex() {
-    Graph<String, Integer> graph = new AdjacencyListsGraph<>();
+    Graph<String> graph = new AdjacencyListsGraph<>();
     Vertex<String> v1 = graph.addVertex("A");
     Vertex<String> v2 = graph.addVertex("B");
     Vertex<String> v3 = graph.addVertex("C");
@@ -60,7 +62,7 @@ class AdjacencyListsGraphTest {
 
   @Test
   void getVertex() {
-    Graph<String, Integer> graph = new AdjacencyListsGraph<>();
+    Graph<String> graph = new AdjacencyListsGraph<>();
     Vertex<String> v1 = graph.addVertex("A");
     Vertex<String> v2 = graph.addVertex("B");
     Vertex<String> v3 = graph.addVertex("C");
@@ -72,7 +74,7 @@ class AdjacencyListsGraphTest {
 
   @Test
   void changeVertex() {
-    Graph<String, Integer> graph = new AdjacencyListsGraph<>();
+    Graph<String> graph = new AdjacencyListsGraph<>();
     Vertex<String> v0 = graph.addVertex("A");
     Vertex<String> v1 = graph.addVertex("B");
     Vertex<String> v2 = graph.addVertex("C");
@@ -87,13 +89,13 @@ class AdjacencyListsGraphTest {
 
   @Test
   void addEdge() {
-    Graph<String, Integer> graph = new AdjacencyListsGraph<>();
+    Graph<String> graph = new AdjacencyListsGraph<>();
     Vertex<String> v0 = graph.addVertex("A");
     Vertex<String> v1 = graph.addVertex("B");
     Vertex<String> v2 = graph.addVertex("C");
-    Edge<Integer> e0 = graph.addEdge(v0, 1, v1);
-    Edge<Integer> e1 = graph.addEdge(v1, 2, v2);
-    Edge<Integer> e2 = graph.addEdge(v2, 3, v1);
+    Edge<String> e0 = graph.addEdge(v0, 1, v1);
+    Edge<String> e1 = graph.addEdge(v1, 2, v2);
+    Edge<String> e2 = graph.addEdge(v2, 3, v1);
     Assertions.assertEquals(e0, graph.getEdge(1));
     Assertions.assertEquals(e1, graph.getEdge(2));
     Assertions.assertEquals(e2, graph.getEdge(3));
@@ -102,13 +104,13 @@ class AdjacencyListsGraphTest {
 
   @Test
   void deleteEdge() {
-    Graph<String, Integer> graph = new AdjacencyListsGraph<>();
+    Graph<String> graph = new AdjacencyListsGraph<>();
     Vertex<String> v0 = graph.addVertex("A");
     Vertex<String> v1 = graph.addVertex("B");
     Vertex<String> v2 = graph.addVertex("C");
-    Edge<Integer> e0 = graph.addEdge(v0, 1, v1);
-    Edge<Integer> e1 = graph.addEdge(v1, 2, v2);
-    Edge<Integer> e2 = graph.addEdge(v2, 3, v1);
+    Edge<String> e0 = graph.addEdge(v0, 1, v1);
+    Edge<String> e1 = graph.addEdge(v1, 2, v2);
+    Edge<String> e2 = graph.addEdge(v2, 3, v1);
     graph.deleteEdge(e0);
     graph.deleteEdge(e1);
     graph.deleteEdge(e2);
@@ -119,13 +121,13 @@ class AdjacencyListsGraphTest {
 
   @Test
   void getEdge() {
-    Graph<String, Integer> graph = new AdjacencyListsGraph<>();
+    Graph<String> graph = new AdjacencyListsGraph<>();
     Vertex<String> v0 = graph.addVertex("A");
     Vertex<String> v1 = graph.addVertex("B");
     Vertex<String> v2 = graph.addVertex("C");
-    Edge<Integer> e0 = graph.addEdge(v0, 1, v1);
-    Edge<Integer> e1 = graph.addEdge(v1, 2, v2);
-    Edge<Integer> e2 = graph.addEdge(v2, 3, v1);
+    Edge<String> e0 = graph.addEdge(v0, 1, v1);
+    Edge<String> e1 = graph.addEdge(v1, 2, v2);
+    Edge<String> e2 = graph.addEdge(v2, 3, v1);
     Assertions.assertEquals(e0, graph.getEdge(1));
     Assertions.assertEquals(e1, graph.getEdge(2));
     Assertions.assertEquals(e2, graph.getEdge(3));
@@ -134,32 +136,40 @@ class AdjacencyListsGraphTest {
 
   @Test
   void changeEdge() {
-    Graph<String, Integer> graph = new AdjacencyListsGraph<>();
+    Graph<String> graph = new AdjacencyListsGraph<>();
     Vertex<String> v0 = graph.addVertex("A");
     Vertex<String> v1 = graph.addVertex("B");
     Vertex<String> v2 = graph.addVertex("C");
-    Edge<Integer> e0 = graph.addEdge(v0, 1, v1);
-    Edge<Integer> e1 = graph.addEdge(v1, 2, v2);
-    Edge<Integer> e2 = graph.addEdge(v2, 3, v1);
-    Edge<Integer> e4 = new Edge<>(v1, 4, v2);
+    Edge<String> e0 = graph.addEdge(v0, 1, v1);
+    Edge<String> e1 = graph.addEdge(v1, 2, v2);
+    Edge<String> e2 = graph.addEdge(v2, 3, v1);
+    Edge<String> e4 = new Edge<>(v1, 4, v2);
     graph.changeEdge(e0, e2);
     graph.changeEdge(e1, e4);
     Assertions.assertNull(graph.getEdge(1));
     Assertions.assertNull(graph.getEdge(2));
-    Assertions.assertEquals(v0,graph.getEdge(3).firstVertex);
-    Assertions.assertEquals(v1,graph.getEdge(3).secondVertex);
-    Assertions.assertEquals(v1,graph.getEdge(4).firstVertex);
-    Assertions.assertEquals(v2,graph.getEdge(4).secondVertex);
+    Assertions.assertEquals(v0, graph.getEdge(3).firstVertex);
+    Assertions.assertEquals(v1, graph.getEdge(3).secondVertex);
+    Assertions.assertEquals(v1, graph.getEdge(4).firstVertex);
+    Assertions.assertEquals(v2, graph.getEdge(4).secondVertex);
   }
 
   @Test
   void sortVertexes() {
-    Graph<String, Integer> graph = new AdjacencyListsGraph<>();
+    Graph<String> graph = new AdjacencyListsGraph<>();
     try {
       initGraph(graph,
           new File("src/main/resources/test.txt"));
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
+    List<Vertex<String>> list = graph.sortVertexes(graph.getVertex("A"));
+    Assertions.assertEquals("A", list.get(0).value);
+    Assertions.assertEquals("B", list.get(1).value);
+    Assertions.assertEquals("D", list.get(2).value);
+    Assertions.assertEquals("C", list.get(3).value);
+    Assertions.assertEquals("E", list.get(4).value);
+    Assertions.assertEquals("F", list.get(5).value);
+    Assertions.assertEquals("G", list.get(6).value);
   }
 }
