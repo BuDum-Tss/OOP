@@ -161,7 +161,7 @@ class IncidenceMatrixGraphTest {
   void sortVertexes() {
     Graph<String> graph = new IncidenceMatrixGraph<>();
     try {
-      initGraph(graph, new File("src/main/resources/test.txt"));
+      initGraph(graph, new File("src/test/resources/test.txt"));
     } catch (Exception e) {
       throw new RuntimeException(e);
     }

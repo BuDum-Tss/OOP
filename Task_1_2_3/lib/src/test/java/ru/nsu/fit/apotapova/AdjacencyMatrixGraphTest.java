@@ -161,7 +161,7 @@ class AdjacencyMatrixGraphTest {
     Graph<String> graph = new AdjacencyMatrixGraph<>();
     try {
       initGraph(graph,
-          new File("src/main/resources/test.txt"));
+          new File("src/test/resources/test.txt"));
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
