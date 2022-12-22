@@ -7,7 +7,7 @@ package ru.fit.apotapova.GraphParts;
  */
 public class Edge<T> {
 
-  public Integer length;
+  public Double length;
   public Vertex<T> firstVertex;
   public Vertex<T> secondVertex;
 
@@ -18,7 +18,7 @@ public class Edge<T> {
    * @param length       - edge length
    * @param secondVertex - vertex to which the edge goes
    */
-  public Edge(Vertex<T> firstVertex, Integer length, Vertex<T> secondVertex) {
+  public Edge(Vertex<T> firstVertex, Double length, Vertex<T> secondVertex) {
     this.firstVertex = firstVertex;
     this.length = length;
     this.secondVertex = secondVertex;

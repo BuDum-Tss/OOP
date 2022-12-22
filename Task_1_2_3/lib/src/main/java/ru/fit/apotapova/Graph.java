@@ -1,12 +1,6 @@
 package ru.fit.apotapova;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import org.apache.commons.math3.util.Pair;
 import ru.fit.apotapova.GraphParts.Edge;
 import ru.fit.apotapova.GraphParts.Vertex;
 
@@ -66,7 +60,7 @@ public interface Graph<T> {
    * @param secondVertex - vertex to which the edge goes
    * @return - edge object
    */
-  default Edge<T> addEdge(Vertex<T> firstVertex, Integer length, Vertex<T> secondVertex) {
+  default Edge<T> addEdge(Vertex<T> firstVertex, Double length, Vertex<T> secondVertex) {
     return addEdge(new Edge<>(firstVertex, length, secondVertex));
   }
 
@@ -91,7 +85,7 @@ public interface Graph<T> {
    * @param length - edge length
    * @return - received edge
    */
-  Edge<T> getEdge(Integer length);
+  Edge<T> getEdge(Double length);
 
   /**
    * Replaces an edge with another one. The vertices of the edge remain the same.
@@ -108,45 +102,4 @@ public interface Graph<T> {
    * @return - list of exiting edges
    */
   List<Edge<T>> getExitingEdges(Vertex<T> vertex);
-
-  /**
-   * Sorts vertices by distance from the specified one using Dijkstra's algorithm.
-   *
-   * @param vertex - starting vertex
-   * @return - sorted list of vertexes
-   */
-  default List<Vertex<T>> sortVertexes(Vertex<T> vertex) {
-    List<Vertex<T>> newVertexList = new ArrayList<>();
-    Queue<Pair<Integer, Vertex<T>>> frontier = new PriorityQueue<>(
-        Comparator.comparingInt(Pair::getFirst));
-    Pair<Integer, Vertex<T>> pair = new Pair<>(0, vertex);
-    frontier.add(pair);
-    while (!frontier.isEmpty()) {
-      Integer k = frontier.peek().getFirst();
-      Vertex<T> v = frontier.poll().getSecond();
-      newVertexList.add(v);
-      List<Edge<T>> edges = getExitingEdges(v);
-      for (Edge<T> edge : edges) {
-        if (!newVertexList.contains(edge.secondVertex)) {
-          Integer sum = k + edge.length;
-          Iterator<Pair<Integer, Vertex<T>>> iterator = frontier.iterator();
-          boolean hasVertex = false;
-          while (iterator.hasNext()) {
-            Pair<Integer, Vertex<T>> p = iterator.next();
-            if (p.getFirst() > sum && p.getSecond() == edge.secondVertex) {
-              frontier.remove(p);
-              break;
-            } else if (p.getFirst() <= sum && p.getSecond() == edge.secondVertex) {
-              hasVertex = true;
-              break;
-            }
-          }
-          if (!hasVertex) {
-            frontier.add(new Pair<>(sum, edge.secondVertex));
-          }
-        }
-      }
-    }
-    return newVertexList;
-  }
 }

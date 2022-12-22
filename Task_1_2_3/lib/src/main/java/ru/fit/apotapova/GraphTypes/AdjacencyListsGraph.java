@@ -3,6 +3,7 @@ package ru.fit.apotapova.GraphTypes;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import ru.fit.apotapova.Graph;
 import ru.fit.apotapova.GraphParts.Edge;
 import ru.fit.apotapova.GraphParts.Vertex;
@@ -25,26 +26,20 @@ public class AdjacencyListsGraph<T> implements Graph<T> {
     this.edgeList = new ArrayList<>();
   }
 
-  private int getIndex(Vertex<T> vertex) throws Exception {
+  private int getIndex(Vertex<T> vertex) {
     if (vertexList.contains(vertex)) {
       return vertexList.indexOf(vertex);
-    } else {
-      throw new Exception("No vertex from graph");
     }
+    throw new NoSuchElementException("No vertex from graph");
   }
 
   private Point getIndex(Edge<T> edge) {
     Point p = new Point();
-    try {
-      p.x = getIndex(edge.firstVertex);
-      if (edgeList.get(p.x).contains(edge)) {
-        p.y = edgeList.get(p.x).indexOf(edge);
-        return p;
-      } else {
-        throw new Exception("No edge from graph");
-      }
-    } catch (Exception e) {
-      throw new RuntimeException(e);
+    if (edgeList.get(p.x).contains(edge)) {
+      p.y = edgeList.get(p.x).indexOf(edge);
+      return p;
+    } else {
+      throw new NoSuchElementException("No edge from graph");
     }
   }
 
@@ -57,11 +52,7 @@ public class AdjacencyListsGraph<T> implements Graph<T> {
   @Override
   public Vertex<T> addVertex(Vertex<T> vertex) {
     if (vertexList.contains(vertex)) {
-      try {
-        throw new Exception("The vertex is already in the graph");
-      } catch (Exception e) {
-        throw new RuntimeException(e);
-      }
+      throw new RuntimeException("The vertex is already in the graph");
     }
     vertexList.add(vertex);
     int k = vertexList.indexOf(vertex);
@@ -105,13 +96,9 @@ public class AdjacencyListsGraph<T> implements Graph<T> {
    */
   @Override
   public void changeVertex(Vertex<T> changeableVertex, Vertex<T> newVertex) {
-    try {
-      int v = getIndex(changeableVertex);
-      vertexList.remove(v);
-      vertexList.add(v, newVertex);
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
+    int v = getIndex(changeableVertex);
+    vertexList.remove(v);
+    vertexList.add(v, newVertex);
   }
 
   /**
@@ -123,19 +110,11 @@ public class AdjacencyListsGraph<T> implements Graph<T> {
   @Override
   public Edge<T> addEdge(Edge<T> edge) {
     if (edgeList.contains(edge)) {
-      try {
-        throw new Exception("The edge is already in the graph");
-      } catch (Exception e) {
-        throw new RuntimeException(e);
-      }
+      throw new RuntimeException("The edge is already in the graph");
     }
-    try {
-      int k = getIndex(edge.firstVertex);
-      edgeList.get(k).add(edge);
-      return edge;
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
+    int k = getIndex(edge.firstVertex);
+    edgeList.get(k).add(edge);
+    return edge;
   }
 
   /**
@@ -150,13 +129,13 @@ public class AdjacencyListsGraph<T> implements Graph<T> {
   }
 
   /**
-   * Implements {@link Graph#getEdge(Integer)} method.
+   * Implements {@link Graph#getEdge(Double)} method.
    *
    * @param length - edge length
    * @return - received edge
    */
   @Override
-  public Edge<T> getEdge(Integer length) {
+  public Edge<T> getEdge(Double length) {
     for (List<Edge<T>> edgeList : edgeList) {
       for (Edge<T> edge : edgeList) {
         if (edge.length.equals(length)) {
@@ -175,15 +154,11 @@ public class AdjacencyListsGraph<T> implements Graph<T> {
    */
   @Override
   public void changeEdge(Edge<T> changeableEdge, Edge<T> newEdge) {
-    try {
-      Point e = getIndex(changeableEdge);
-      edgeList.get(e.x).remove(changeableEdge);
-      edgeList.get(e.x).add(e.y, newEdge);
-      newEdge.firstVertex = changeableEdge.firstVertex;
-      newEdge.secondVertex = changeableEdge.secondVertex;
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
+    Point e = getIndex(changeableEdge);
+    edgeList.get(e.x).remove(changeableEdge);
+    edgeList.get(e.x).add(e.y, newEdge);
+    newEdge.firstVertex = changeableEdge.firstVertex;
+    newEdge.secondVertex = changeableEdge.secondVertex;
   }
 
   /**
@@ -194,10 +169,6 @@ public class AdjacencyListsGraph<T> implements Graph<T> {
    */
   @Override
   public List<Edge<T>> getExitingEdges(Vertex<T> vertex) {
-    try {
-      return edgeList.get(getIndex(vertex));
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
+    return edgeList.get(getIndex(vertex));
   }
 }
