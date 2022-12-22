@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"ru.nsu.fit.apotapova","c":"SubstringsFinder","l":"someLibraryMethod()"},{"p":"ru.nsu.fit.apotapova","c":"SubstringsFinder","l":"SubstringsFinder()","url":"%3Cinit%3E()"}]
