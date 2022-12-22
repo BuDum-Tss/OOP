@@ -2,6 +2,7 @@ package ru.fit.apotapova.GraphTypes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import ru.fit.apotapova.Graph;
 import ru.fit.apotapova.GraphParts.Edge;
 import ru.fit.apotapova.GraphParts.Vertex;
@@ -27,29 +28,22 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
     matrix = new ArrayList<>();
   }
 
-  private int getIndex(Vertex<T> vertex) throws Exception {
+  private int getIndex(Vertex<T> vertex) {
     if (vertexList.contains(vertex)) {
       return vertexList.indexOf(vertex);
-    } else {
-      throw new Exception("No vertex from graph");
     }
+    throw new NoSuchElementException("No vertex from graph");
   }
 
-  private int getIndex(Edge<T> edge) throws Exception {
+  private int getIndex(Edge<T> edge) {
     if (edgeList.contains(edge)) {
       return edgeList.indexOf(edge);
-    } else {
-      throw new Exception("No edge from graph");
     }
+    throw new NoSuchElementException("No edge from graph");
   }
 
   private void initializeInMatrix(Vertex<T> vertex) {
-    int k;
-    try {
-      k = getIndex(vertex);
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
+    int k = getIndex(vertex);
     matrix.add(k, new ArrayList<>());
     for (int i = 0; i < edgeList.size(); i++) {
       matrix.get(k).add(i, 0);
@@ -57,14 +51,8 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
   }
 
   private void initializeInMatrix(Edge<T> edge) {
-    int from;
-    int to;
-    try {
-      from = getIndex(edge.firstVertex);
-      to = getIndex(edge.secondVertex);
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
+    int from = getIndex(edge.firstVertex);
+    int to = getIndex(edge.secondVertex);
     for (int i = 0; i < vertexList.size(); i++) {
       if (i == from) {
         matrix.get(i).add(1);
@@ -77,23 +65,12 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
   }
 
   private void removeFromMatrix(Vertex<T> vertex) {
-    int k;
-    try {
-      k = getIndex(vertex);
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
+    int k = getIndex(vertex);
     matrix.remove(k);
   }
 
   private void removeFromMatrix(Edge<T> edge) {
-    int k;
-    try {
-      k = getIndex(edge);
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
-
+    int k = getIndex(edge);
     for (int i = 0; i < vertexList.size(); i++) {
       matrix.get(i).remove(k);
     }
@@ -108,11 +85,7 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
   @Override
   public Vertex<T> addVertex(Vertex<T> vertex) {
     if (vertexList.contains(vertex)) {
-      try {
-        throw new Exception("The vertex is already in the graph");
-      } catch (Exception e) {
-        throw new RuntimeException(e);
-      }
+      throw new RuntimeException("The vertex is already in the graph");
     }
     vertexList.add(vertex);
     initializeInMatrix(vertex);
@@ -154,13 +127,9 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
    */
   @Override
   public void changeVertex(Vertex<T> changeableVertex, Vertex<T> newVertex) {
-    try {
-      int k = getIndex(changeableVertex);
-      vertexList.remove(k);
-      vertexList.add(k, newVertex);
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
+    int k = getIndex(changeableVertex);
+    vertexList.remove(k);
+    vertexList.add(k, newVertex);
   }
 
   /**
@@ -172,11 +141,7 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
   @Override
   public Edge<T> addEdge(Edge<T> edge) {
     if (edgeList.contains(edge)) {
-      try {
-        throw new Exception("The edge is already in the graph");
-      } catch (Exception e) {
-        throw new RuntimeException(e);
-      }
+      throw new RuntimeException("The edge is already in the graph");
     }
     edgeList.add(edge);
     initializeInMatrix(edge);
@@ -195,13 +160,13 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
   }
 
   /**
-   * Implements {@link Graph#getEdge(Integer)} method.
+   * Implements {@link Graph#getEdge(Double)} method.
    *
    * @param length - edge length
    * @return - received edge
    */
   @Override
-  public Edge<T> getEdge(Integer length) {
+  public Edge<T> getEdge(Double length) {
     for (Edge<T> edge : edgeList) {
       if (edge.length.equals(length)) {
         return edge;
@@ -218,13 +183,9 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
    */
   @Override
   public void changeEdge(Edge<T> changeableEdge, Edge<T> newEdge) {
-    try {
-      int k = getIndex(changeableEdge);
-      edgeList.remove(k);
-      edgeList.add(k, newEdge);
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
+    int k = getIndex(changeableEdge);
+    edgeList.remove(k);
+    edgeList.add(k, newEdge);
   }
 
   /**
@@ -235,13 +196,7 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
    */
   @Override
   public List<Edge<T>> getExitingEdges(Vertex<T> vertex) {
-    int i;
-    try {
-      i = getIndex(vertex);
-
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
+    int i = getIndex(vertex);
     List<Edge<T>> edges = new ArrayList<>();
     List<Integer> list = matrix.get(i);
     int k = list.size();

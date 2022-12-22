@@ -3,6 +3,7 @@
  */
 package ru.nsu.fit.apotapova;
 
+import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
 import java.io.BufferedReader;
@@ -11,10 +12,12 @@ import java.io.FileReader;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import ru.fit.apotapova.Alhoritms.DeikstraPathFinder;
 import ru.fit.apotapova.Graph;
 import ru.fit.apotapova.GraphParts.Edge;
 import ru.fit.apotapova.GraphParts.Vertex;
 import ru.fit.apotapova.GraphTypes.AdjacencyListsGraph;
+import ru.fit.apotapova.PathFinder;
 
 class AdjacencyListsGraphTest {
 
@@ -30,7 +33,7 @@ class AdjacencyListsGraphTest {
     }
     for (int i = 0; i < numberOfEdges; i++) {
       strList = reader.readLine().split("\\s+");
-      graph.addEdge(graph.getVertex(strList[0]), parseInt(strList[1]), graph.getVertex(strList[2]));
+      graph.addEdge(graph.getVertex(strList[0]), parseDouble(strList[1]), graph.getVertex(strList[2]));
     }
   }
 
@@ -94,13 +97,13 @@ class AdjacencyListsGraphTest {
     Vertex<String> v0 = graph.addVertex("A");
     Vertex<String> v1 = graph.addVertex("B");
     Vertex<String> v2 = graph.addVertex("C");
-    Edge<String> e0 = graph.addEdge(v0, 1, v1);
-    Edge<String> e1 = graph.addEdge(v1, 2, v2);
-    Edge<String> e2 = graph.addEdge(v2, 3, v1);
-    Assertions.assertEquals(e0, graph.getEdge(1));
-    Assertions.assertEquals(e1, graph.getEdge(2));
-    Assertions.assertEquals(e2, graph.getEdge(3));
-    Assertions.assertNull(graph.getEdge(0));
+    Edge<String> e0 = graph.addEdge(v0, 1.0, v1);
+    Edge<String> e1 = graph.addEdge(v1, 2.0, v2);
+    Edge<String> e2 = graph.addEdge(v2, 3.0, v1);
+    Assertions.assertEquals(e0, graph.getEdge(1.0));
+    Assertions.assertEquals(e1, graph.getEdge(2.0));
+    Assertions.assertEquals(e2, graph.getEdge(3.0));
+    Assertions.assertNull(graph.getEdge(0.0));
   }
 
   @Test
@@ -109,16 +112,16 @@ class AdjacencyListsGraphTest {
     Vertex<String> v0 = graph.addVertex("A");
     Vertex<String> v1 = graph.addVertex("B");
     Vertex<String> v2 = graph.addVertex("C");
-    Edge<String> e0 = graph.addEdge(v0, 1, v1);
-    Edge<String> e1 = graph.addEdge(v1, 2, v2);
-    Edge<String> e2 = graph.addEdge(v2, 3, v1);
+    Edge<String> e0 = graph.addEdge(v0, 1.0, v1);
+    Edge<String> e1 = graph.addEdge(v1, 2.0, v2);
+    Edge<String> e2 = graph.addEdge(v2, 3.0, v1);
     graph.deleteEdge(e0);
     graph.deleteEdge(e1);
     graph.deleteEdge(e2);
     Assertions.assertThrows(Exception.class, () -> graph.deleteEdge(e2));
-    Assertions.assertNull(graph.getEdge(1));
-    Assertions.assertNull(graph.getEdge(2));
-    Assertions.assertNull(graph.getEdge(3));
+    Assertions.assertNull(graph.getEdge(1.0));
+    Assertions.assertNull(graph.getEdge(2.0));
+    Assertions.assertNull(graph.getEdge(3.0));
   }
 
   @Test
@@ -127,13 +130,13 @@ class AdjacencyListsGraphTest {
     Vertex<String> v0 = graph.addVertex("A");
     Vertex<String> v1 = graph.addVertex("B");
     Vertex<String> v2 = graph.addVertex("C");
-    Edge<String> e0 = graph.addEdge(v0, 1, v1);
-    Edge<String> e1 = graph.addEdge(v1, 2, v2);
-    Edge<String> e2 = graph.addEdge(v2, 3, v1);
-    Assertions.assertEquals(e0, graph.getEdge(1));
-    Assertions.assertEquals(e1, graph.getEdge(2));
-    Assertions.assertEquals(e2, graph.getEdge(3));
-    Assertions.assertNull(graph.getEdge(0));
+    Edge<String> e0 = graph.addEdge(v0, 1.0, v1);
+    Edge<String> e1 = graph.addEdge(v1, 2.0, v2);
+    Edge<String> e2 = graph.addEdge(v2, 3.0, v1);
+    Assertions.assertEquals(e0, graph.getEdge(1.0));
+    Assertions.assertEquals(e1, graph.getEdge(2.0));
+    Assertions.assertEquals(e2, graph.getEdge(3.0));
+    Assertions.assertNull(graph.getEdge(0.0));
   }
 
   @Test
@@ -142,18 +145,18 @@ class AdjacencyListsGraphTest {
     Vertex<String> v0 = graph.addVertex("A");
     Vertex<String> v1 = graph.addVertex("B");
     Vertex<String> v2 = graph.addVertex("C");
-    Edge<String> e0 = graph.addEdge(v0, 1, v1);
-    Edge<String> e1 = graph.addEdge(v1, 2, v2);
-    Edge<String> e2 = graph.addEdge(v2, 3, v1);
-    Edge<String> e4 = new Edge<>(v1, 4, v2);
+    Edge<String> e0 = graph.addEdge(v0, 1.0, v1);
+    Edge<String> e1 = graph.addEdge(v1, 2.0, v2);
+    Edge<String> e2 = graph.addEdge(v2, 3.0, v1);
+    Edge<String> e4 = new Edge<>(v1, 4.0, v2);
     graph.changeEdge(e0, e2);
     graph.changeEdge(e1, e4);
-    Assertions.assertNull(graph.getEdge(1));
-    Assertions.assertNull(graph.getEdge(2));
-    Assertions.assertEquals(v0, graph.getEdge(3).firstVertex);
-    Assertions.assertEquals(v1, graph.getEdge(3).secondVertex);
-    Assertions.assertEquals(v1, graph.getEdge(4).firstVertex);
-    Assertions.assertEquals(v2, graph.getEdge(4).secondVertex);
+    Assertions.assertNull(graph.getEdge(1.0));
+    Assertions.assertNull(graph.getEdge(2.0));
+    Assertions.assertEquals(v0, graph.getEdge(3.0).firstVertex);
+    Assertions.assertEquals(v1, graph.getEdge(3.0).secondVertex);
+    Assertions.assertEquals(v1, graph.getEdge(4.0).firstVertex);
+    Assertions.assertEquals(v2, graph.getEdge(4.0).secondVertex);
   }
 
   @Test
@@ -165,7 +168,8 @@ class AdjacencyListsGraphTest {
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
-    List<Vertex<String>> list = graph.sortVertexes(graph.getVertex("A"));
+    PathFinder<String> pathFinder = new DeikstraPathFinder<>(graph);
+    List<Vertex<String>> list = pathFinder.sortVertexes(graph.getVertex("A"));
     Assertions.assertEquals("A", list.get(0).value);
     Assertions.assertEquals("B", list.get(1).value);
     Assertions.assertEquals("D", list.get(2).value);
