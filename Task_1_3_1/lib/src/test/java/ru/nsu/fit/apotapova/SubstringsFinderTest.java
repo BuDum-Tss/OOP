@@ -3,12 +3,12 @@
  */
 package ru.nsu.fit.apotapova;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class SubstringsFinderTest {
-    @Test public void someLibraryMethodReturnsTrue() {
+class SubstringsFinderTest {
+    @Test void someLibraryMethodReturnsTrue() {
         SubstringsFinder classUnderTest = new SubstringsFinder();
-        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+        assertTrue(classUnderTest.someLibraryMethod(), "someLibraryMethod should return 'true'");
     }
 }
