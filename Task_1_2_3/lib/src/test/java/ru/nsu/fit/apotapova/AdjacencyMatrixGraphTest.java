@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.List;
+import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.fit.apotapova.Alhoritms.DeikstraPathFinder;
@@ -58,7 +59,7 @@ class AdjacencyMatrixGraphTest {
     graph.deleteVertex(v1);
     graph.deleteVertex(v2);
     graph.deleteVertex(v3);
-    Assertions.assertThrows(Exception.class, () -> graph.deleteVertex(v3));
+    Assertions.assertThrows(NoSuchElementException.class, () -> graph.deleteVertex(v3));
     Assertions.assertNull(graph.getVertex("A"));
     Assertions.assertNull(graph.getVertex("B"));
     Assertions.assertNull(graph.getVertex("C"));
@@ -118,7 +119,7 @@ class AdjacencyMatrixGraphTest {
     graph.deleteEdge(e0);
     graph.deleteEdge(e1);
     graph.deleteEdge(e2);
-    Assertions.assertThrows(Exception.class, () -> graph.deleteEdge(e2));
+    Assertions.assertThrows(NoSuchElementException.class, () -> graph.deleteEdge(e2));
     Assertions.assertNull(graph.getEdge(1.0));
     Assertions.assertNull(graph.getEdge(2.0));
     Assertions.assertNull(graph.getEdge(3.0));

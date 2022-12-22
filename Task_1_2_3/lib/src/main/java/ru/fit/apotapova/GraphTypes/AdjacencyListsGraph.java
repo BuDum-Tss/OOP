@@ -35,12 +35,12 @@ public class AdjacencyListsGraph<T> implements Graph<T> {
 
   private Point getIndex(Edge<T> edge) {
     Point p = new Point();
+    p.x = getIndex(edge.firstVertex);
     if (edgeList.get(p.x).contains(edge)) {
       p.y = edgeList.get(p.x).indexOf(edge);
       return p;
-    } else {
-      throw new NoSuchElementException("No edge from graph");
     }
+    throw new NoSuchElementException("No edge from graph");
   }
 
   /**
@@ -67,7 +67,7 @@ public class AdjacencyListsGraph<T> implements Graph<T> {
    */
   @Override
   public void deleteVertex(Vertex<T> vertex) {
-    int k = vertexList.indexOf(vertex);
+    int k = getIndex(vertex);
     vertexList.remove(vertex);
     edgeList.remove(k);
   }
