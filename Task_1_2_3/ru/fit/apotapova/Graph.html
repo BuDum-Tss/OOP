@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":18,"i2":6,"i3":18,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":18};
+var data = {"i0":6,"i1":18,"i2":6,"i3":18,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],16:["t5","Default Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -162,8 +162,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>default <a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(ru.fit.apotapova.GraphParts.Vertex,java.lang.Integer,ru.fit.apotapova.GraphParts.Vertex)">addEdge</a></span>&#8203;(<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;firstVertex,
-       java.lang.Integer&nbsp;length,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(ru.fit.apotapova.GraphParts.Vertex,java.lang.Double,ru.fit.apotapova.GraphParts.Vertex)">addEdge</a></span>&#8203;(<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;firstVertex,
+       java.lang.Double&nbsp;length,
        <a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;secondVertex)</code></th>
 <td class="colLast">
 <div class="block">Adds edge.</div>
@@ -215,7 +215,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdge(java.lang.Integer)">getEdge</a></span>&#8203;(java.lang.Integer&nbsp;length)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdge(java.lang.Double)">getEdge</a></span>&#8203;(java.lang.Double&nbsp;length)</code></th>
 <td class="colLast">
 <div class="block">Gets edge by length.</div>
 </td>
@@ -232,13 +232,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertex(T)">getVertex</a></span>&#8203;(<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Gets vertex by value.</div>
-</td>
-</tr>
-<tr id="i11" class="rowColor">
-<td class="colFirst"><code>default java.util.List&lt;<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sortVertexes(ru.fit.apotapova.GraphParts.Vertex)">sortVertexes</a></span>&#8203;(<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</code></th>
-<td class="colLast">
-<div class="block">Sorts vertices by distance from the specified one using Dijkstra's algorithm.</div>
 </td>
 </tr>
 </table>
@@ -340,14 +333,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 </li>
 </ul>
-<a id="addEdge(ru.fit.apotapova.GraphParts.Vertex,java.lang.Integer,ru.fit.apotapova.GraphParts.Vertex)">
+<a id="addEdge(ru.fit.apotapova.GraphParts.Vertex,java.lang.Double,ru.fit.apotapova.GraphParts.Vertex)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>addEdge</h4>
 <pre class="methodSignature">default&nbsp;<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;addEdge&#8203;(<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;firstVertex,
-                        java.lang.Integer&nbsp;length,
+                        java.lang.Double&nbsp;length,
                         <a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;secondVertex)</pre>
 <div class="block">Adds edge.</div>
 <dl>
@@ -390,13 +383,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 </li>
 </ul>
-<a id="getEdge(java.lang.Integer)">
+<a id="getEdge(java.lang.Double)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getEdge</h4>
-<pre class="methodSignature"><a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;getEdge&#8203;(java.lang.Integer&nbsp;length)</pre>
+<pre class="methodSignature"><a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;getEdge&#8203;(java.lang.Double&nbsp;length)</pre>
 <div class="block">Gets edge by length.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -425,7 +418,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <a id="getExitingEdges(ru.fit.apotapova.GraphParts.Vertex)">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>getExitingEdges</h4>
 <pre class="methodSignature">java.util.List&lt;<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;&nbsp;getExitingEdges&#8203;(<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</pre>
@@ -435,22 +428,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd><code>vertex</code> - - vertex</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>- list of exiting edges</dd>
-</dl>
-</li>
-</ul>
-<a id="sortVertexes(ru.fit.apotapova.GraphParts.Vertex)">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>sortVertexes</h4>
-<pre class="methodSignature">default&nbsp;java.util.List&lt;<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;&nbsp;sortVertexes&#8203;(<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</pre>
-<div class="block">Sorts vertices by distance from the specified one using Dijkstra's algorithm.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>vertex</code> - - starting vertex</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>- sorted list of vertexes</dd>
 </dl>
 </li>
 </ul>
