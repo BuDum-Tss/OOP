@@ -39,7 +39,23 @@ class IncidenceMatrixGraphTest {
           graph.getVertex(strList[2]));
     }
   }
-
+  @Test
+  void vertex(){
+    Graph<String, String> graph = new IncidenceMatrixGraph<>();
+    Vertex<String, String> v1 = graph.addVertex("", "");
+    v1.setKey("A");
+    v1.setValue("A");
+    Vertex<String, String> v2 = graph.addVertex("", "");
+    v2.setKey("B");
+    v2.setValue("B");
+    Vertex<String, String> v3 = graph.addVertex("", "");
+    v3.setKey("C");
+    v3.setValue("C");
+    Assertions.assertEquals(v1, graph.getVertex("A"));
+    Assertions.assertEquals(v2, graph.getVertex("B"));
+    Assertions.assertEquals(v3, graph.getVertex("C"));
+    Assertions.assertNull(graph.getVertex("D"));
+  }
   @Test
   void addVertex() {
     Graph<String, String> graph = new IncidenceMatrixGraph<>();

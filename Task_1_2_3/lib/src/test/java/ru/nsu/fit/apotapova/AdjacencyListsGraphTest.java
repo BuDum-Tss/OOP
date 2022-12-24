@@ -38,6 +38,23 @@ class AdjacencyListsGraphTest {
           graph.getVertex(strList[2]));
     }
   }
+  @Test
+  void vertex(){
+    Graph<String, String> graph = new AdjacencyListsGraph<>();
+    Vertex<String, String> v1 = graph.addVertex("1", "123");
+    v1.setKey("A");
+    v1.setValue("A");
+    Vertex<String, String> v2 = graph.addVertex("42334", "3453w5");
+    v2.setKey("B");
+    v2.setValue("B");
+    Vertex<String, String> v3 = graph.addVertex("2342", "35234");
+    v3.setKey("C");
+    v3.setValue("C");
+    Assertions.assertEquals(v1, graph.getVertex("A"));
+    Assertions.assertEquals(v2, graph.getVertex("B"));
+    Assertions.assertEquals(v3, graph.getVertex("C"));
+    Assertions.assertNull(graph.getVertex("D"));
+  }
 
   @Test
   void addVertex() {
