@@ -15,6 +15,7 @@ public interface Graph<K, V> {
   /**
    * Adds vertex.
    *
+   * @param key - key
    * @param value - value of vertex
    * @return - vertex
    */

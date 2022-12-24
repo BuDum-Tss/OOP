@@ -105,7 +105,7 @@ public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
   }
 
   /**
-   * Implements {@link Graph#getVertex(V)} method.
+   * Implements {@link Graph#getVertex(Object)} method.
    *
    * @param key - key of vertex
    * @return - received vertex
