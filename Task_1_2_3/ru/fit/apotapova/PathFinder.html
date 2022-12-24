@@ -116,7 +116,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <main role="main">
 <div class="header">
 <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">ru.fit.apotapova</a></div>
-<h2 title="Interface PathFinder" class="title">Interface PathFinder&lt;T&gt;</h2>
+<h2 title="Interface PathFinder" class="title">Interface PathFinder&lt;K,&#8203;V&gt;</h2>
 </div>
 <div class="contentContainer">
 <div class="description">
@@ -124,14 +124,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <dl>
 <dt><span class="paramLabel">Type Parameters:</span></dt>
-<dd><code>T</code> - - type of vertexes in <a href="Graph.html" title="interface in ru.fit.apotapova"><code>Graph</code></a></dd>
+<dd><code>K</code> - - type of keys of vertexes</dd>
+<dd><code>V</code> - - type of value of vertexes in <a href="Graph.html" title="interface in ru.fit.apotapova"><code>Graph</code></a></dd>
 </dl>
 <dl>
 <dt>All Known Implementing Classes:</dt>
 <dd><code><a href="Alhoritms/DeikstraPathFinder.html" title="class in ru.fit.apotapova.Alhoritms">DeikstraPathFinder</a></code></dd>
 </dl>
 <hr>
-<pre>public interface <span class="typeNameLabel">PathFinder&lt;T&gt;</span></pre>
+<pre>public interface <span class="typeNameLabel">PathFinder&lt;K,&#8203;V&gt;</span></pre>
 <div class="block">Interface for the pathfinding algorithm in <a href="Graph.html" title="interface in ru.fit.apotapova"><code>Graph</code></a>.</div>
 </li>
 </ul>
@@ -154,8 +155,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>java.util.List&lt;<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="PathFinder.html" title="type parameter in PathFinder">T</a>&gt;&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sortVertexes(ru.fit.apotapova.GraphParts.Vertex)">sortVertexes</a></span>&#8203;(<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="PathFinder.html" title="type parameter in PathFinder">T</a>&gt;&nbsp;vertex)</code></th>
+<td class="colFirst"><code>java.util.List&lt;<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="PathFinder.html" title="type parameter in PathFinder">K</a>,&#8203;<a href="PathFinder.html" title="type parameter in PathFinder">V</a>&gt;&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sortVertexes(ru.fit.apotapova.GraphParts.Vertex)">sortVertexes</a></span>&#8203;(<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="PathFinder.html" title="type parameter in PathFinder">K</a>,&#8203;<a href="PathFinder.html" title="type parameter in PathFinder">V</a>&gt;&nbsp;vertex)</code></th>
 <td class="colLast">
 <div class="block">Sorts vertices by distance from the specified one using Dijkstra's algorithm.</div>
 </td>
@@ -183,7 +184,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockListLast">
 <li class="blockList">
 <h4>sortVertexes</h4>
-<pre class="methodSignature">java.util.List&lt;<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="PathFinder.html" title="type parameter in PathFinder">T</a>&gt;&gt;&nbsp;sortVertexes&#8203;(<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="PathFinder.html" title="type parameter in PathFinder">T</a>&gt;&nbsp;vertex)</pre>
+<pre class="methodSignature">java.util.List&lt;<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="PathFinder.html" title="type parameter in PathFinder">K</a>,&#8203;<a href="PathFinder.html" title="type parameter in PathFinder">V</a>&gt;&gt;&nbsp;sortVertexes&#8203;(<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="PathFinder.html" title="type parameter in PathFinder">K</a>,&#8203;<a href="PathFinder.html" title="type parameter in PathFinder">V</a>&gt;&nbsp;vertex)</pre>
 <div class="block">Sorts vertices by distance from the specified one using Dijkstra's algorithm.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>

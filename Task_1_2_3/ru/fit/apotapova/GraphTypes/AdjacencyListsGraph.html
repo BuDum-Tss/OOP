@@ -116,14 +116,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <main role="main">
 <div class="header">
 <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">ru.fit.apotapova.GraphTypes</a></div>
-<h2 title="Class AdjacencyListsGraph" class="title">Class AdjacencyListsGraph&lt;T&gt;</h2>
+<h2 title="Class AdjacencyListsGraph" class="title">Class AdjacencyListsGraph&lt;K,&#8203;V&gt;</h2>
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>ru.fit.apotapova.GraphTypes.AdjacencyListsGraph&lt;T&gt;</li>
+<li>ru.fit.apotapova.GraphTypes.AdjacencyListsGraph&lt;K,&#8203;V&gt;</li>
 </ul>
 </li>
 </ul>
@@ -132,16 +132,17 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <dl>
 <dt><span class="paramLabel">Type Parameters:</span></dt>
-<dd><code>T</code> - - vertex type</dd>
+<dd><code>K</code> - - type of key of vertex</dd>
+<dd><code>V</code> - - type of value of vertex</dd>
 </dl>
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;T&gt;</code></dd>
+<dd><code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;K,&#8203;V&gt;</code></dd>
 </dl>
 <hr>
-<pre>public class <span class="typeNameLabel">AdjacencyListsGraph&lt;T&gt;</span>
+<pre>public class <span class="typeNameLabel">AdjacencyListsGraph&lt;K,&#8203;V&gt;</span>
 extends java.lang.Object
-implements <a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;T&gt;</pre>
+implements <a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;K,&#8203;V&gt;</pre>
 <div class="block">A class that implements a <a href="../Graph.html" title="interface in ru.fit.apotapova"><code>Graph</code></a> using an adjacency list.</div>
 </li>
 </ul>
@@ -164,7 +165,7 @@ implements <a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>java.util.List&lt;<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&gt;</code></td>
+<td class="colFirst"><code>java.util.List&lt;<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#vertexList">vertexList</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -210,68 +211,68 @@ implements <a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(ru.fit.apotapova.GraphParts.Edge)">addEdge</a></span>&#8203;(<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;edge)</code></th>
+<td class="colFirst"><code><a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(ru.fit.apotapova.GraphParts.Edge)">addEdge</a></span>&#8203;(<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;edge)</code></th>
 <td class="colLast">
 <div class="block">Implements <a href="../Graph.html#addEdge(ru.fit.apotapova.GraphParts.Edge)"><code>Graph.addEdge(Edge)</code></a> method.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addVertex(ru.fit.apotapova.GraphParts.Vertex)">addVertex</a></span>&#8203;(<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;vertex)</code></th>
+<td class="colFirst"><code><a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addVertex(ru.fit.apotapova.GraphParts.Vertex)">addVertex</a></span>&#8203;(<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;vertex)</code></th>
 <td class="colLast">
 <div class="block">Implements <a href="../Graph.html#addVertex(ru.fit.apotapova.GraphParts.Vertex)"><code>Graph.addVertex(Vertex)</code></a> method.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#changeEdge(ru.fit.apotapova.GraphParts.Edge,ru.fit.apotapova.GraphParts.Edge)">changeEdge</a></span>&#8203;(<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;changeableEdge,
-          <a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;newEdge)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#changeEdge(ru.fit.apotapova.GraphParts.Edge,ru.fit.apotapova.GraphParts.Edge)">changeEdge</a></span>&#8203;(<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;changeableEdge,
+          <a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;newEdge)</code></th>
 <td class="colLast">
 <div class="block">Implements <a href="../Graph.html#changeEdge(ru.fit.apotapova.GraphParts.Edge,ru.fit.apotapova.GraphParts.Edge)"><code>Graph.changeEdge(Edge, Edge)</code></a> method.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#changeVertex(ru.fit.apotapova.GraphParts.Vertex,ru.fit.apotapova.GraphParts.Vertex)">changeVertex</a></span>&#8203;(<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;changeableVertex,
-            <a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;newVertex)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#changeVertex(ru.fit.apotapova.GraphParts.Vertex,ru.fit.apotapova.GraphParts.Vertex)">changeVertex</a></span>&#8203;(<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;changeableVertex,
+            <a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;newVertex)</code></th>
 <td class="colLast">
 <div class="block">Implements <a href="../Graph.html#changeVertex(ru.fit.apotapova.GraphParts.Vertex,ru.fit.apotapova.GraphParts.Vertex)"><code>Graph.changeVertex(Vertex, Vertex)</code></a> method.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteEdge(ru.fit.apotapova.GraphParts.Edge)">deleteEdge</a></span>&#8203;(<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;edge)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteEdge(ru.fit.apotapova.GraphParts.Edge)">deleteEdge</a></span>&#8203;(<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;edge)</code></th>
 <td class="colLast">
 <div class="block">Implements <a href="../Graph.html#deleteEdge(ru.fit.apotapova.GraphParts.Edge)"><code>Graph.deleteEdge(Edge)</code></a> method.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteVertex(ru.fit.apotapova.GraphParts.Vertex)">deleteVertex</a></span>&#8203;(<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;vertex)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteVertex(ru.fit.apotapova.GraphParts.Vertex)">deleteVertex</a></span>&#8203;(<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;vertex)</code></th>
 <td class="colLast">
 <div class="block">Implements <a href="../Graph.html#deleteVertex(ru.fit.apotapova.GraphParts.Vertex)"><code>Graph.deleteVertex(Vertex)</code></a> method.</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code><a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;</code></td>
+<td class="colFirst"><code><a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdge(java.lang.Double)">getEdge</a></span>&#8203;(java.lang.Double&nbsp;length)</code></th>
 <td class="colLast">
 <div class="block">Implements <a href="../Graph.html#getEdge(java.lang.Double)"><code>Graph.getEdge(Double)</code></a> method.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
-<td class="colFirst"><code>java.util.List&lt;<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getExitingEdges(ru.fit.apotapova.GraphParts.Vertex)">getExitingEdges</a></span>&#8203;(<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;vertex)</code></th>
+<td class="colFirst"><code>java.util.List&lt;<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getExitingEdges(ru.fit.apotapova.GraphParts.Vertex)">getExitingEdges</a></span>&#8203;(<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;vertex)</code></th>
 <td class="colLast">
 <div class="block">Implements <a href="../Graph.html#getExitingEdges(ru.fit.apotapova.GraphParts.Vertex)"><code>Graph.getExitingEdges(Vertex)</code></a> method.</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
-<td class="colFirst"><code><a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertex(T)">getVertex</a></span>&#8203;(<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&nbsp;value)</code></th>
+<td class="colFirst"><code><a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertex(K)">getVertex</a></span>&#8203;(<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>&nbsp;key)</code></th>
 <td class="colLast">
-<div class="block">Implements <a href="../Graph.html#getVertex(T)"><code>Graph.getVertex(Object)</code></a> method.</div>
+<div class="block">Implements <a href="../Graph.html#getVertex(K)"><code>Graph.getVertex(Object)</code></a> method.</div>
 </td>
 </tr>
 </table>
@@ -287,7 +288,7 @@ implements <a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;ru.fit.apotapova.<a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a></h3>
-<code><a href="../Graph.html#addEdge(ru.fit.apotapova.GraphParts.Vertex,java.lang.Double,ru.fit.apotapova.GraphParts.Vertex)">addEdge</a>, <a href="../Graph.html#addVertex(T)">addVertex</a></code></li>
+<code><a href="../Graph.html#addEdge(ru.fit.apotapova.GraphParts.Vertex,java.lang.Double,ru.fit.apotapova.GraphParts.Vertex)">addEdge</a>, <a href="../Graph.html#addVertex(K,V)">addVertex</a></code></li>
 </ul>
 </li>
 </ul>
@@ -311,7 +312,7 @@ implements <a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</
 <ul class="blockListLast">
 <li class="blockList">
 <h4>vertexList</h4>
-<pre>public&nbsp;java.util.List&lt;<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&gt; vertexList</pre>
+<pre>public&nbsp;java.util.List&lt;<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&gt; vertexList</pre>
 </li>
 </ul>
 </li>
@@ -350,11 +351,11 @@ implements <a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</
 <ul class="blockList">
 <li class="blockList">
 <h4>addVertex</h4>
-<pre class="methodSignature">public&nbsp;<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;addVertex&#8203;(<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;vertex)</pre>
+<pre class="methodSignature">public&nbsp;<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;addVertex&#8203;(<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;vertex)</pre>
 <div class="block">Implements <a href="../Graph.html#addVertex(ru.fit.apotapova.GraphParts.Vertex)"><code>Graph.addVertex(Vertex)</code></a> method.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../Graph.html#addVertex(ru.fit.apotapova.GraphParts.Vertex)">addVertex</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;</code></dd>
+<dd><code><a href="../Graph.html#addVertex(ru.fit.apotapova.GraphParts.Vertex)">addVertex</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>vertex</code> - - added vertex</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -368,11 +369,11 @@ implements <a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</
 <ul class="blockList">
 <li class="blockList">
 <h4>deleteVertex</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;deleteVertex&#8203;(<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;vertex)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;deleteVertex&#8203;(<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;vertex)</pre>
 <div class="block">Implements <a href="../Graph.html#deleteVertex(ru.fit.apotapova.GraphParts.Vertex)"><code>Graph.deleteVertex(Vertex)</code></a> method.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../Graph.html#deleteVertex(ru.fit.apotapova.GraphParts.Vertex)">deleteVertex</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;</code></dd>
+<dd><code><a href="../Graph.html#deleteVertex(ru.fit.apotapova.GraphParts.Vertex)">deleteVertex</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>vertex</code> - - deleted vertex</dd>
 </dl>
@@ -380,19 +381,19 @@ implements <a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</
 </ul>
 <a id="getVertex(java.lang.Object)">
 <!--   -->
-</a><a id="getVertex(T)">
+</a><a id="getVertex(K)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getVertex</h4>
-<pre class="methodSignature">public&nbsp;<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;getVertex&#8203;(<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&nbsp;value)</pre>
-<div class="block">Implements <a href="../Graph.html#getVertex(T)"><code>Graph.getVertex(Object)</code></a> method.</div>
+<pre class="methodSignature">public&nbsp;<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;getVertex&#8203;(<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>&nbsp;key)</pre>
+<div class="block">Implements <a href="../Graph.html#getVertex(K)"><code>Graph.getVertex(Object)</code></a> method.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../Graph.html#getVertex(T)">getVertex</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;</code></dd>
+<dd><code><a href="../Graph.html#getVertex(K)">getVertex</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>value</code> - - value of vertex</dd>
+<dd><code>key</code> - - key of vertex</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>- received vertex</dd>
 </dl>
@@ -404,12 +405,12 @@ implements <a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</
 <ul class="blockList">
 <li class="blockList">
 <h4>changeVertex</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;changeVertex&#8203;(<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;changeableVertex,
-                         <a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;newVertex)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;changeVertex&#8203;(<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;changeableVertex,
+                         <a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;newVertex)</pre>
 <div class="block">Implements <a href="../Graph.html#changeVertex(ru.fit.apotapova.GraphParts.Vertex,ru.fit.apotapova.GraphParts.Vertex)"><code>Graph.changeVertex(Vertex, Vertex)</code></a> method.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../Graph.html#changeVertex(ru.fit.apotapova.GraphParts.Vertex,ru.fit.apotapova.GraphParts.Vertex)">changeVertex</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;</code></dd>
+<dd><code><a href="../Graph.html#changeVertex(ru.fit.apotapova.GraphParts.Vertex,ru.fit.apotapova.GraphParts.Vertex)">changeVertex</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>changeableVertex</code> - - changeable vertex</dd>
 <dd><code>newVertex</code> - - new vertex</dd>
@@ -422,11 +423,11 @@ implements <a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</
 <ul class="blockList">
 <li class="blockList">
 <h4>addEdge</h4>
-<pre class="methodSignature">public&nbsp;<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;addEdge&#8203;(<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;edge)</pre>
+<pre class="methodSignature">public&nbsp;<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;addEdge&#8203;(<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;edge)</pre>
 <div class="block">Implements <a href="../Graph.html#addEdge(ru.fit.apotapova.GraphParts.Edge)"><code>Graph.addEdge(Edge)</code></a> method.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../Graph.html#addEdge(ru.fit.apotapova.GraphParts.Edge)">addEdge</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;</code></dd>
+<dd><code><a href="../Graph.html#addEdge(ru.fit.apotapova.GraphParts.Edge)">addEdge</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>edge</code> - - added edge</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -440,11 +441,11 @@ implements <a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</
 <ul class="blockList">
 <li class="blockList">
 <h4>deleteEdge</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;deleteEdge&#8203;(<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;edge)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;deleteEdge&#8203;(<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;edge)</pre>
 <div class="block">Implements <a href="../Graph.html#deleteEdge(ru.fit.apotapova.GraphParts.Edge)"><code>Graph.deleteEdge(Edge)</code></a> method.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../Graph.html#deleteEdge(ru.fit.apotapova.GraphParts.Edge)">deleteEdge</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;</code></dd>
+<dd><code><a href="../Graph.html#deleteEdge(ru.fit.apotapova.GraphParts.Edge)">deleteEdge</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>edge</code> - - deleted edge</dd>
 </dl>
@@ -456,11 +457,11 @@ implements <a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</
 <ul class="blockList">
 <li class="blockList">
 <h4>getEdge</h4>
-<pre class="methodSignature">public&nbsp;<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;getEdge&#8203;(java.lang.Double&nbsp;length)</pre>
+<pre class="methodSignature">public&nbsp;<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;getEdge&#8203;(java.lang.Double&nbsp;length)</pre>
 <div class="block">Implements <a href="../Graph.html#getEdge(java.lang.Double)"><code>Graph.getEdge(Double)</code></a> method.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../Graph.html#getEdge(java.lang.Double)">getEdge</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;</code></dd>
+<dd><code><a href="../Graph.html#getEdge(java.lang.Double)">getEdge</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>length</code> - - edge length</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -474,12 +475,12 @@ implements <a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</
 <ul class="blockList">
 <li class="blockList">
 <h4>changeEdge</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;changeEdge&#8203;(<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;changeableEdge,
-                       <a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;newEdge)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;changeEdge&#8203;(<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;changeableEdge,
+                       <a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;newEdge)</pre>
 <div class="block">Implements <a href="../Graph.html#changeEdge(ru.fit.apotapova.GraphParts.Edge,ru.fit.apotapova.GraphParts.Edge)"><code>Graph.changeEdge(Edge, Edge)</code></a> method.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../Graph.html#changeEdge(ru.fit.apotapova.GraphParts.Edge,ru.fit.apotapova.GraphParts.Edge)">changeEdge</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;</code></dd>
+<dd><code><a href="../Graph.html#changeEdge(ru.fit.apotapova.GraphParts.Edge,ru.fit.apotapova.GraphParts.Edge)">changeEdge</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>changeableEdge</code> - - changeable edge</dd>
 <dd><code>newEdge</code> - - new edge</dd>
@@ -492,11 +493,11 @@ implements <a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getExitingEdges</h4>
-<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&gt;&nbsp;getExitingEdges&#8203;(<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;&nbsp;vertex)</pre>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="../GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&gt;&nbsp;getExitingEdges&#8203;(<a href="../GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;&nbsp;vertex)</pre>
 <div class="block">Implements <a href="../Graph.html#getExitingEdges(ru.fit.apotapova.GraphParts.Vertex)"><code>Graph.getExitingEdges(Vertex)</code></a> method.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../Graph.html#getExitingEdges(ru.fit.apotapova.GraphParts.Vertex)">getExitingEdges</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">T</a>&gt;</code></dd>
+<dd><code><a href="../Graph.html#getExitingEdges(ru.fit.apotapova.GraphParts.Vertex)">getExitingEdges</a></code>&nbsp;in interface&nbsp;<code><a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">K</a>,&#8203;<a href="AdjacencyListsGraph.html" title="type parameter in AdjacencyListsGraph">V</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>vertex</code> - - vertex</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
