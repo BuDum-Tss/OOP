@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":18,"i2":18,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6};
+var data = {"i0":6,"i1":18,"i2":18,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],16:["t5","Default Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -230,6 +230,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </td>
 </tr>
 <tr id="i10" class="altColor">
+<td class="colFirst"><code>java.lang.Integer</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNumberOfChanges()">getNumberOfChanges</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Gets number of changes of graph.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code><a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertex(K)">getVertex</a></span>&#8203;(<a href="Graph.html" title="type parameter in Graph">K</a>&nbsp;key)</code></th>
 <td class="colLast">
@@ -422,7 +429,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <a id="getExitingEdges(ru.fit.apotapova.GraphParts.Vertex)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getExitingEdges</h4>
 <pre class="methodSignature">java.util.List&lt;<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&gt;&nbsp;getExitingEdges&#8203;(<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;vertex)</pre>
@@ -432,6 +439,20 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd><code>vertex</code> - - vertex</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>- list of exiting edges</dd>
+</dl>
+</li>
+</ul>
+<a id="getNumberOfChanges()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getNumberOfChanges</h4>
+<pre class="methodSignature">java.lang.Integer&nbsp;getNumberOfChanges()</pre>
+<div class="block">Gets number of changes of graph.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- number of changes</dd>
 </dl>
 </li>
 </ul>
