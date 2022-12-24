@@ -38,8 +38,9 @@ class AdjacencyListsGraphTest {
           graph.getVertex(strList[2]));
     }
   }
+
   @Test
-  void vertex(){
+  void vertex() {
     Graph<String, String> graph = new AdjacencyListsGraph<>();
     Vertex<String, String> v1 = graph.addVertex("1", "123");
     v1.setKey("A");
@@ -196,5 +197,15 @@ class AdjacencyListsGraphTest {
     Assertions.assertEquals("E", list.get(4).getValue());
     Assertions.assertEquals("F", list.get(5).getValue());
     Assertions.assertEquals("G", list.get(6).getValue());
+    graph.deleteEdge(graph.getEdge(2.0));
+    graph.deleteEdge(graph.getEdge(2.0));
+    list = pathFinder.sortVertexes(graph.getVertex("A"));
+    Assertions.assertEquals("A", list.get(0).getValue());
+    Assertions.assertEquals("B", list.get(1).getValue());
+    Assertions.assertEquals("D", list.get(2).getValue());
+    Assertions.assertEquals("G", list.get(3).getValue());
+    Assertions.assertEquals("E", list.get(4).getValue());
+    Assertions.assertEquals("F", list.get(5).getValue());
+    Assertions.assertEquals("C", list.get(6).getValue());
   }
 }

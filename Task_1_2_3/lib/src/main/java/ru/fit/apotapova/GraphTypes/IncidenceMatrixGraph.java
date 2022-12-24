@@ -18,12 +18,14 @@ public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
   List<Vertex<K, V>> vertexList;
   List<Edge<K, V>> edgeList;
   List<List<Integer>> matrix;
+  private int numberOfChanges;
 
   /**
    * Constructor of a class that defines vertexList, edgeList and incidence matrix.
    */
 
   public IncidenceMatrixGraph() {
+    numberOfChanges = 0;
     vertexList = new ArrayList<>();
     edgeList = new ArrayList<>();
     matrix = new ArrayList<>();
@@ -90,6 +92,7 @@ public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
     }
     vertexList.add(vertex);
     initializeInMatrix(vertex);
+    numberOfChanges++;
     return vertex;
   }
 
@@ -102,6 +105,7 @@ public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
   public void deleteVertex(Vertex<K, V> vertex) {
     removeFromMatrix(vertex);
     vertexList.remove(vertex);
+    numberOfChanges++;
   }
 
   /**
@@ -131,6 +135,7 @@ public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
     int k = getIndex(changeableVertex);
     vertexList.remove(k);
     vertexList.add(k, newVertex);
+    numberOfChanges++;
   }
 
   /**
@@ -146,6 +151,7 @@ public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
     }
     edgeList.add(edge);
     initializeInMatrix(edge);
+    numberOfChanges++;
     return edge;
   }
 
@@ -158,6 +164,7 @@ public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
   public void deleteEdge(Edge<K, V> edge) {
     removeFromMatrix(edge);
     edgeList.remove(edge);
+    numberOfChanges++;
   }
 
   /**
@@ -187,6 +194,7 @@ public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
     int k = getIndex(changeableEdge);
     edgeList.remove(k);
     edgeList.add(k, newEdge);
+    numberOfChanges++;
   }
 
   /**
@@ -207,5 +215,15 @@ public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
       }
     }
     return edges;
+  }
+
+  /**
+   * Implements {@link Graph#getNumberOfChanges()} method.
+   *
+   * @return - number of changes
+   */
+  @Override
+  public Integer getNumberOfChanges() {
+    return numberOfChanges;
   }
 }

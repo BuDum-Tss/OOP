@@ -18,11 +18,13 @@ public class AdjacencyListsGraph<K, V> implements Graph<K, V> {
 
   public List<Vertex<K, V>> vertexList;
   List<List<Edge<K, V>>> edgeList;
+  private int numberOfChanges;
 
   /**
    * Constructor of a class that defines vertexList and edgeList.
    */
   public AdjacencyListsGraph() {
+    numberOfChanges = 0;
     this.vertexList = new ArrayList<>();
     this.edgeList = new ArrayList<>();
   }
@@ -58,6 +60,7 @@ public class AdjacencyListsGraph<K, V> implements Graph<K, V> {
     vertexList.add(vertex);
     int k = vertexList.indexOf(vertex);
     edgeList.add(k, new ArrayList<>());
+    numberOfChanges++;
     return vertex;
   }
 
@@ -71,6 +74,7 @@ public class AdjacencyListsGraph<K, V> implements Graph<K, V> {
     int k = getIndex(vertex);
     vertexList.remove(vertex);
     edgeList.remove(k);
+    numberOfChanges++;
   }
 
   /**
@@ -100,6 +104,7 @@ public class AdjacencyListsGraph<K, V> implements Graph<K, V> {
     int v = getIndex(changeableVertex);
     vertexList.remove(v);
     vertexList.add(v, newVertex);
+    numberOfChanges++;
   }
 
   /**
@@ -115,6 +120,7 @@ public class AdjacencyListsGraph<K, V> implements Graph<K, V> {
     }
     int k = getIndex(edge.getFirstVertex());
     edgeList.get(k).add(edge);
+    numberOfChanges++;
     return edge;
   }
 
@@ -127,6 +133,7 @@ public class AdjacencyListsGraph<K, V> implements Graph<K, V> {
   public void deleteEdge(Edge<K, V> edge) {
     Point p = getIndex(edge);
     edgeList.get(p.x).remove(edge);
+    numberOfChanges++;
   }
 
   /**
@@ -160,6 +167,7 @@ public class AdjacencyListsGraph<K, V> implements Graph<K, V> {
     edgeList.get(e.x).add(e.y, newEdge);
     newEdge.setFirstVertex(changeableEdge.getFirstVertex());
     newEdge.setSecondVertex(changeableEdge.getSecondVertex());
+    numberOfChanges++;
   }
 
   /**
@@ -171,5 +179,15 @@ public class AdjacencyListsGraph<K, V> implements Graph<K, V> {
   @Override
   public List<Edge<K, V>> getExitingEdges(Vertex<K, V> vertex) {
     return edgeList.get(getIndex(vertex));
+  }
+
+  /**
+   * Implements {@link Graph#getNumberOfChanges()} method.
+   *
+   * @return - number of changes
+   */
+  @Override
+  public Integer getNumberOfChanges() {
+    return numberOfChanges;
   }
 }

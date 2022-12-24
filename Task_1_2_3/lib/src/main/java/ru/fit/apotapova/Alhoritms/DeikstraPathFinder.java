@@ -21,11 +21,19 @@ import ru.fit.apotapova.PathFinder;
 public class DeikstraPathFinder<K, V> implements PathFinder<K, V> {
 
   private final Graph<K, V> graph;
-  private List<Vertex<K, V>> sortedList;
+  private int numberOfChanges;
+  private List<Vertex<K, V>> vertexList;
+  private List<List<Vertex<K, V>>> sortedVertexes;
   private Queue<Pair<Double, Vertex<K, V>>> frontier;
 
   public DeikstraPathFinder(Graph<K, V> graph) {
     this.graph = graph;
+    vertexList = new ArrayList<>();
+    sortedVertexes = new ArrayList<>();
+  }
+
+  private boolean isChanged() {
+    return numberOfChanges < graph.getNumberOfChanges();
   }
 
   /**
@@ -36,6 +44,10 @@ public class DeikstraPathFinder<K, V> implements PathFinder<K, V> {
    */
   @Override
   public List<Vertex<K, V>> sortVertexes(Vertex<K, V> vertex) {
+    if (!isChanged() && vertexList.contains(vertex)) {
+      return sortedVertexes.get(vertexList.indexOf(vertex));
+    }
+    List<Vertex<K, V>> sortedList;
     sortedList = new ArrayList<>();
     frontier = new PriorityQueue<>(Comparator.comparingDouble(Pair::getFirst));
     Pair<Double, Vertex<K, V>> pair = new Pair<>(0.0, vertex);
@@ -65,6 +77,13 @@ public class DeikstraPathFinder<K, V> implements PathFinder<K, V> {
           }
         }
       }
+    }
+    if (!vertexList.contains(vertex)) {
+      vertexList.add(vertex);
+      sortedVertexes.add(vertexList);
+    } else {
+      sortedVertexes.remove(vertexList.indexOf(vertex));
+      sortedVertexes.add(vertexList.indexOf(vertex), sortedList);
     }
     return sortedList;
   }

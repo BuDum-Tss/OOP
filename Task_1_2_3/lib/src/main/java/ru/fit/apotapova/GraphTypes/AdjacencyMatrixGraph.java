@@ -20,11 +20,13 @@ public class AdjacencyMatrixGraph<K, V> implements Graph<K, V> {
 
   private final List<Vertex<K, V>> vertexList;
   private final List<List<Edge<K, V>>> matrix;
+  private int numberOfChanges;
 
   /**
    * Constructor of a class that defines vertexList, edgeList and adjacency matrix.
    */
   public AdjacencyMatrixGraph() {
+    numberOfChanges = 0;
     vertexList = new ArrayList<>();
     matrix = new ArrayList<>();
   }
@@ -85,6 +87,7 @@ public class AdjacencyMatrixGraph<K, V> implements Graph<K, V> {
     }
     vertexList.add(vertex);
     initializeVertexInMatrix(vertex);
+    numberOfChanges++;
     return vertex;
   }
 
@@ -97,6 +100,7 @@ public class AdjacencyMatrixGraph<K, V> implements Graph<K, V> {
   public void deleteVertex(Vertex<K, V> vertex) {
     deleteVertexFromMatrix(vertex);
     vertexList.remove(vertex);
+    numberOfChanges++;
   }
 
   /**
@@ -127,6 +131,7 @@ public class AdjacencyMatrixGraph<K, V> implements Graph<K, V> {
     vertexList.remove(changeableVertex);
     vertexList.remove(newVertex);
     vertexList.add(index, newVertex);
+    numberOfChanges++;
   }
 
   /**
@@ -142,6 +147,7 @@ public class AdjacencyMatrixGraph<K, V> implements Graph<K, V> {
     }
     getMatrixLineList(edge.getFirstVertex()).remove(getIndex(edge.getSecondVertex()));
     getMatrixLineList(edge.getFirstVertex()).add(getIndex(edge.getSecondVertex()), edge);
+    numberOfChanges++;
     return edge;
   }
 
@@ -155,6 +161,7 @@ public class AdjacencyMatrixGraph<K, V> implements Graph<K, V> {
     Point p = getIndex(edge);
     matrix.get(p.x).add(p.y, null);
     matrix.get(p.x).remove(edge);
+    numberOfChanges++;
   }
 
   /**
@@ -188,6 +195,7 @@ public class AdjacencyMatrixGraph<K, V> implements Graph<K, V> {
     matrix.get(p.x).add(p.y, newEdge);
     newEdge.setFirstVertex(changeableEdge.getFirstVertex());
     newEdge.setSecondVertex(changeableEdge.getSecondVertex());
+    numberOfChanges++;
   }
 
   /**
@@ -202,5 +210,15 @@ public class AdjacencyMatrixGraph<K, V> implements Graph<K, V> {
     List<Edge<K, V>> edges = new ArrayList<>(matrix.get(i));
     edges.removeIf(Objects::isNull);
     return edges;
+  }
+
+  /**
+   * Implements {@link Graph#getNumberOfChanges()} method.
+   *
+   * @return - number of changes
+   */
+  @Override
+  public Integer getNumberOfChanges() {
+    return numberOfChanges;
   }
 }

@@ -39,8 +39,9 @@ class AdjacencyMatrixGraphTest {
           graph.getVertex(strList[2]));
     }
   }
+
   @Test
-  void vertex(){
+  void vertex() {
     Graph<String, String> graph = new AdjacencyMatrixGraph<>();
     Vertex<String, String> v1 = graph.addVertex("", "");
     v1.setKey("A");
@@ -56,6 +57,7 @@ class AdjacencyMatrixGraphTest {
     Assertions.assertEquals(v3, graph.getVertex("C"));
     Assertions.assertNull(graph.getVertex("D"));
   }
+
   @Test
   void addVertex() {
     Graph<String, String> graph = new AdjacencyMatrixGraph<>();
@@ -196,5 +198,15 @@ class AdjacencyMatrixGraphTest {
     Assertions.assertEquals("E", list.get(4).getValue());
     Assertions.assertEquals("F", list.get(5).getValue());
     Assertions.assertEquals("G", list.get(6).getValue());
+    graph.deleteEdge(graph.getEdge(2.0));
+    graph.deleteEdge(graph.getEdge(2.0));
+    list = pathFinder.sortVertexes(graph.getVertex("A"));
+    Assertions.assertEquals("A", list.get(0).getValue());
+    Assertions.assertEquals("B", list.get(1).getValue());
+    Assertions.assertEquals("D", list.get(2).getValue());
+    Assertions.assertEquals("G", list.get(3).getValue());
+    Assertions.assertEquals("E", list.get(4).getValue());
+    Assertions.assertEquals("F", list.get(5).getValue());
+    Assertions.assertEquals("C", list.get(6).getValue());
   }
 }

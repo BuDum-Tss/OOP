@@ -15,7 +15,7 @@ public interface Graph<K, V> {
   /**
    * Adds vertex.
    *
-   * @param key - key
+   * @param key   - key
    * @param value - value of vertex
    * @return - vertex
    */
@@ -104,4 +104,11 @@ public interface Graph<K, V> {
    * @return - list of exiting edges
    */
   List<Edge<K, V>> getExitingEdges(Vertex<K, V> vertex);
+
+  /**
+   * Gets number of changes of graph.
+   *
+   * @return - number of changes
+   */
+  Integer getNumberOfChanges();
 }
