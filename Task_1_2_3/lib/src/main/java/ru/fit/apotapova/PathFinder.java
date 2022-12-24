@@ -6,9 +6,10 @@ import ru.fit.apotapova.GraphParts.Vertex;
 /**
  * Interface for the pathfinding algorithm in {@link Graph}.
  *
- * @param <T> - type of vertexes in {@link Graph}
+ * @param <K> - type of keys of vertexes
+ * @param <V> - type of value of vertexes in {@link Graph}
  */
-public interface PathFinder<T> {
+public interface PathFinder<K, V> {
 
   /**
    * Sorts vertices by distance from the specified one using Dijkstra's algorithm.
@@ -16,5 +17,5 @@ public interface PathFinder<T> {
    * @param vertex - starting vertex
    * @return - sorted list of vertexes
    */
-  List<Vertex<T>> sortVertexes(Vertex<T> vertex);
+  List<Vertex<K, V>> sortVertexes(Vertex<K, V> vertex);
 }

@@ -3,19 +3,38 @@ package ru.fit.apotapova.GraphParts;
 /**
  * Vertex class containing value of vertex.
  *
- * @param <T> - type of vertex
+ * @param <K> - type of key of vertex
+ * @param <V> - type of value of vertex
  */
-public class Vertex<T> {
+public class Vertex<K, V> {
 
-  public T value;
+  private K key;
+  private V value;
 
   /**
    * Constructor of a class that defines value of vertex.
    *
+   * @param key   - value of key
    * @param value - value of vertex
    */
-  public Vertex(T value) {
+  public Vertex(K key, V value) {
+    this.key = key;
     this.value = value;
   }
 
+  public V getValue() {
+    return value;
+  }
+
+  public void setValue(V value) {
+    this.value = value;
+  }
+
+  public K getKey() {
+    return key;
+  }
+
+  public void setKey(K key) {
+    this.key = key;
+  }
 }

@@ -7,9 +7,10 @@ import ru.fit.apotapova.GraphParts.Vertex;
 /**
  * Interface for classes implementing the graph.
  *
- * @param <T> type of vertex
+ * @param <K> - type of key of vertex
+ * @param <V> - type of value of vertex
  */
-public interface Graph<T> {
+public interface Graph<K, V> {
 
   /**
    * Adds vertex.
@@ -17,8 +18,8 @@ public interface Graph<T> {
    * @param value - value of vertex
    * @return - vertex
    */
-  default Vertex<T> addVertex(T value) {
-    return addVertex(new Vertex<>(value));
+  default Vertex<K, V> addVertex(K key, V value) {
+    return addVertex(new Vertex<>(key, value));
   }
 
   /**
@@ -27,22 +28,22 @@ public interface Graph<T> {
    * @param vertex - added vertex
    * @return - added vertex
    */
-  Vertex<T> addVertex(Vertex<T> vertex);
+  Vertex<K, V> addVertex(Vertex<K, V> vertex);
 
   /**
    * Deletes a vertex.
    *
    * @param vertex - deleted vertex
    */
-  void deleteVertex(Vertex<T> vertex);
+  void deleteVertex(Vertex<K, V> vertex);
 
   /**
    * Gets vertex by value.
    *
-   * @param value - value of vertex
+   * @param key - key of vertex
    * @return - received vertex
    */
-  Vertex<T> getVertex(T value);
+  Vertex<K, V> getVertex(K key);
 
   /**
    * Replaces a vertex with another one.
@@ -50,7 +51,7 @@ public interface Graph<T> {
    * @param changeableVertex - changeable vertex
    * @param newVertex        - new vertex
    */
-  void changeVertex(Vertex<T> changeableVertex, Vertex<T> newVertex);
+  void changeVertex(Vertex<K, V> changeableVertex, Vertex<K, V> newVertex);
 
   /**
    * Adds edge.
@@ -60,7 +61,7 @@ public interface Graph<T> {
    * @param secondVertex - vertex to which the edge goes
    * @return - edge object
    */
-  default Edge<T> addEdge(Vertex<T> firstVertex, Double length, Vertex<T> secondVertex) {
+  default Edge<K, V> addEdge(Vertex<K, V> firstVertex, Double length, Vertex<K, V> secondVertex) {
     return addEdge(new Edge<>(firstVertex, length, secondVertex));
   }
 
@@ -70,14 +71,14 @@ public interface Graph<T> {
    * @param edge - added edge
    * @return - added edge
    */
-  Edge<T> addEdge(Edge<T> edge);
+  Edge<K, V> addEdge(Edge<K, V> edge);
 
   /**
    * Deletes edge.
    *
    * @param edge - deleted edge
    */
-  void deleteEdge(Edge<T> edge);
+  void deleteEdge(Edge<K, V> edge);
 
   /**
    * Gets edge by length.
@@ -85,7 +86,7 @@ public interface Graph<T> {
    * @param length - edge length
    * @return - received edge
    */
-  Edge<T> getEdge(Double length);
+  Edge<K, V> getEdge(Double length);
 
   /**
    * Replaces an edge with another one. The vertices of the edge remain the same.
@@ -93,7 +94,7 @@ public interface Graph<T> {
    * @param changeableEdge - changeable edge
    * @param newEdge        - new edge
    */
-  void changeEdge(Edge<T> changeableEdge, Edge<T> newEdge);
+  void changeEdge(Edge<K, V> changeableEdge, Edge<K, V> newEdge);
 
   /**
    * Gets exiting edges of vertex.
@@ -101,5 +102,5 @@ public interface Graph<T> {
    * @param vertex - vertex
    * @return - list of exiting edges
    */
-  List<Edge<T>> getExitingEdges(Vertex<T> vertex);
+  List<Edge<K, V>> getExitingEdges(Vertex<K, V> vertex);
 }
