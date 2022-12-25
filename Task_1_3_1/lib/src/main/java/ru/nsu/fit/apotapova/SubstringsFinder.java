@@ -26,7 +26,7 @@ public class SubstringsFinder {
    */
   public SubstringsFinder(File file) {
     this.file = file;
-    //stringBuffer = new char[BufferSize];
+    stringBuffer = new char[BufferSize];
   }
 
   /**
