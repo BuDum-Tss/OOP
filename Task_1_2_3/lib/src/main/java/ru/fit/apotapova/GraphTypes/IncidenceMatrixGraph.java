@@ -166,7 +166,7 @@ public class IncidenceMatrixGraph<E, K, V> implements Graph<E, K, V> {
   @Override
   public List<Edge<E, K, V>> getExitingEdges(Vertex<K, V> vertex) {
     List<Edge<E, K, V>> edges = new ArrayList<>();
-    for (E key : matrix.get(vertex.getKey()).keySet().stream().toList()) {
+    for (E key : matrix.get(vertex.getKey()).keySet()) {
       if (matrix.get(vertex.getKey()).get(key).equals(1)) {
         edges.add(edgeList.get(key));
       }
