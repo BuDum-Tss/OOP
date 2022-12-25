@@ -9,6 +9,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * A class that implements substring search in a string.
+ */
 public class SubstringsFinder {
 
   private final File file;
@@ -16,11 +19,22 @@ public class SubstringsFinder {
   char[] stringBuffer;
   private BufferedReader reader;
 
+  /**
+   * Constructor of a class that defines file and stringBuffer.
+   *
+   * @param file - file
+   */
   public SubstringsFinder(File file) {
     this.file = file;
-    stringBuffer = new char[BufferSize];
+    //stringBuffer = new char[BufferSize];
   }
 
+  /**
+   * A method that implements a substring search in a string.
+   *
+   * @param substring - substring
+   * @return - the beginning of the substring
+   */
   public Integer findSubstring(String substring) {
     try {
       reader = new BufferedReader(new FileReader(file));
