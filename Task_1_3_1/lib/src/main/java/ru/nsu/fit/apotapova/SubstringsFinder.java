@@ -3,8 +3,61 @@
  */
 package ru.nsu.fit.apotapova;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class SubstringsFinder {
-    public boolean someLibraryMethod() {
-        return true;
+
+  private final File file;
+  public int BufferSize = 32;
+  char[] stringBuffer;
+  private BufferedReader reader;
+
+  public SubstringsFinder(File file) {
+    this.file = file;
+    stringBuffer = new char[BufferSize];
+  }
+
+  public Integer findSubstring(String substring) {
+    try {
+      reader = new BufferedReader(new FileReader(file));
+    } catch (FileNotFoundException e) {
+      throw new RuntimeException(e);
     }
+     char[] substringBuffer = substring.toCharArray();
+    int substringLength = substring.length();
+    int stringPoint = 0;
+    int substringPoint = 0;
+    int substringBeginning = 0;
+    int NumberCharsInBuffer = BufferSize;
+    while (substringPoint < substringLength && stringPoint%BufferSize  <= NumberCharsInBuffer) {
+        if (stringPoint % BufferSize == 0) {
+            NumberCharsInBuffer = updateBuffer();
+        }
+      if (substringBuffer[substringPoint] == stringBuffer[stringPoint % BufferSize]) {
+        substringPoint++;
+      } else {
+        substringBeginning = stringPoint + 1;
+        substringPoint = 0;
+      }
+      stringPoint++;
+    }
+      if (stringPoint%BufferSize > NumberCharsInBuffer) {
+          return null;
+      }
+    return substringBeginning;
+  }
+
+  private Integer updateBuffer() {
+    int n;
+    try {
+      n = reader.read(stringBuffer, 0, BufferSize);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+    return n;
+  }
 }
