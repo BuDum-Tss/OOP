@@ -6,7 +6,6 @@ package ru.nsu.fit.apotapova;
 import java.io.File;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class SubstringsFinderTest {
 
