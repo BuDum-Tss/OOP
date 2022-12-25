@@ -3,7 +3,9 @@ package ru.fit.apotapova.GraphTypes;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 import ru.fit.apotapova.Graph;
@@ -16,10 +18,10 @@ import ru.fit.apotapova.GraphParts.Vertex;
  * @param <K> - type of key of vertex
  * @param <V> - type of value of vertex
  */
-public class AdjacencyMatrixGraph<K, V> implements Graph<K, V> {
+public class AdjacencyMatrixGraph<E, K, V> implements Graph<E, K, V> {
 
-  private final List<Vertex<K, V>> vertexList;
-  private final List<List<Edge<K, V>>> matrix;
+  private final Map<K, Vertex<K, V>> vertexList;
+  private final Map<K, Map<K, Edge<E, K, V>>> matrix;
   private int numberOfChanges;
 
   /**
@@ -27,51 +29,8 @@ public class AdjacencyMatrixGraph<K, V> implements Graph<K, V> {
    */
   public AdjacencyMatrixGraph() {
     numberOfChanges = 0;
-    vertexList = new ArrayList<>();
-    matrix = new ArrayList<>();
-  }
-
-  private int getIndex(Vertex<K, V> vertex) {
-    if (vertexList.contains(vertex)) {
-      return vertexList.indexOf(vertex);
-    }
-    throw new NoSuchElementException("No vertex from graph");
-  }
-
-  private Point getIndex(Edge<K, V> edge) {
-    if (getMatrixLineList(edge.getFirstVertex()).contains(edge)) {
-      return new Point(getIndex(edge.getFirstVertex()),
-          getMatrixLineList(edge.getFirstVertex()).indexOf(edge));
-    }
-    throw new NoSuchElementException("No edge from graph");
-  }
-
-  private List<Edge<K, V>> getMatrixLineList(Vertex<K, V> vertex) {
-    return matrix.get(getIndex(vertex));
-  }
-
-  private void initializeVertexInMatrix(Vertex<K, V> vertex) {
-    int k = getIndex(vertex);
-    for (int i = 0; i < vertexList.size(); i++) {
-      if (k != i && matrix.get(i) != null) {
-        matrix.get(i).add(k, null);
-      }
-    }
-    matrix.add(k, new ArrayList<>());
-    for (int i = 0; i < vertexList.size(); i++) {
-      matrix.get(k).add(i, null);
-    }
-  }
-
-  private void deleteVertexFromMatrix(Vertex<K, V> vertex) {
-    int k = getIndex(vertex);
-    for (int i = 0; i < vertexList.size(); i++) {
-      if (k != i && matrix.get(i) != null) {
-        matrix.get(i).remove(k);
-      }
-    }
-    matrix.add(k, new ArrayList<>());
-    matrix.remove(k);
+    vertexList = new HashMap<>();
+    matrix = new HashMap<>();
   }
 
   /**
@@ -82,11 +41,11 @@ public class AdjacencyMatrixGraph<K, V> implements Graph<K, V> {
    */
   @Override
   public Vertex<K, V> addVertex(Vertex<K, V> vertex) {
-    if (vertexList.contains(vertex)) {
+    if (vertexList.containsValue(vertex)) {
       throw new RuntimeException("The vertex is already in the graph");
     }
-    vertexList.add(vertex);
-    initializeVertexInMatrix(vertex);
+    vertexList.put(vertex.getKey(), vertex);
+    matrix.put(vertex.getKey(), new HashMap<>());
     numberOfChanges++;
     return vertex;
   }
@@ -98,8 +57,14 @@ public class AdjacencyMatrixGraph<K, V> implements Graph<K, V> {
    */
   @Override
   public void deleteVertex(Vertex<K, V> vertex) {
-    deleteVertexFromMatrix(vertex);
-    vertexList.remove(vertex);
+    if (!vertexList.containsValue(vertex)) {
+      throw new NoSuchElementException("No vertex from graph");
+    }
+    vertexList.remove(vertex.getKey());
+    matrix.remove(vertex.getKey());
+    matrix.forEach((v, map) -> {
+      map.remove(vertex.getKey());
+    });
     numberOfChanges++;
   }
 
@@ -111,12 +76,7 @@ public class AdjacencyMatrixGraph<K, V> implements Graph<K, V> {
    */
   @Override
   public Vertex<K, V> getVertex(K key) {
-    for (Vertex<K, V> vertex : vertexList) {
-      if (vertex.getKey().equals(key)) {
-        return vertex;
-      }
-    }
-    return null;
+    return vertexList.get(key);
   }
 
   /**
@@ -127,10 +87,8 @@ public class AdjacencyMatrixGraph<K, V> implements Graph<K, V> {
    */
   @Override
   public void changeVertex(Vertex<K, V> changeableVertex, Vertex<K, V> newVertex) {
-    int index = getIndex(changeableVertex);
-    vertexList.remove(changeableVertex);
-    vertexList.remove(newVertex);
-    vertexList.add(index, newVertex);
+    vertexList.remove(changeableVertex.getKey());
+    vertexList.put(newVertex.getKey(), newVertex);
     numberOfChanges++;
   }
 
@@ -141,12 +99,14 @@ public class AdjacencyMatrixGraph<K, V> implements Graph<K, V> {
    * @return - added edge
    */
   @Override
-  public Edge<K, V> addEdge(Edge<K, V> edge) {
-    if (matrix.get(vertexList.indexOf(edge.getFirstVertex())).contains(edge)) {
+  public Edge<E, K, V> addEdge(Edge<E, K, V> edge) {
+    if (matrix.get(edge.getFirstVertex().getKey()) != null
+        && matrix.get(edge.getFirstVertex().getKey()).get(edge.getSecondVertex().getKey()) != null
+        && !matrix.get(edge.getFirstVertex().getKey()).get(edge.getSecondVertex().getKey())
+        .equals(edge)) {
       throw new RuntimeException("The edge is already in the graph");
     }
-    getMatrixLineList(edge.getFirstVertex()).remove(getIndex(edge.getSecondVertex()));
-    getMatrixLineList(edge.getFirstVertex()).add(getIndex(edge.getSecondVertex()), edge);
+    matrix.get(edge.getFirstVertex().getKey()).put(edge.getSecondVertex().getKey(), edge);
     numberOfChanges++;
     return edge;
   }
@@ -157,24 +117,28 @@ public class AdjacencyMatrixGraph<K, V> implements Graph<K, V> {
    * @param edge - deleted edge
    */
   @Override
-  public void deleteEdge(Edge<K, V> edge) {
-    Point p = getIndex(edge);
-    matrix.get(p.x).add(p.y, null);
-    matrix.get(p.x).remove(edge);
+  public void deleteEdge(Edge<E, K, V> edge) {
+    if (matrix.get(edge.getFirstVertex().getKey()) == null
+        || matrix.get(edge.getFirstVertex().getKey()).get(edge.getSecondVertex().getKey()) == null
+        || !matrix.get(edge.getFirstVertex().getKey()).get(edge.getSecondVertex().getKey())
+        .equals(edge)) {
+      throw new NoSuchElementException("No edge from graph");
+    }
+    matrix.get(edge.getFirstVertex().getKey()).remove(edge.getSecondVertex().getKey());
     numberOfChanges++;
   }
 
   /**
-   * Implements {@link Graph#getEdge(Double)} method.
+   * Implements {@link Graph#getEdge(E)} method.
    *
-   * @param length - edge length
+   * @param key - edge key
    * @return - received edge
    */
   @Override
-  public Edge<K, V> getEdge(Double length) {
-    for (List<Edge<K, V>> edges : matrix) {
-      for (Edge<K, V> edge : edges) {
-        if (edge != null && edge.getLength().equals(length)) {
+  public Edge<E, K, V> getEdge(E key) {
+    for (Map<K, Edge<E, K, V>> edges : matrix.values()) {
+      for (Edge<E, K, V> edge : edges.values()) {
+        if (edge != null && edge.getKey().equals(key)) {
           return edge;
         }
       }
@@ -189,10 +153,14 @@ public class AdjacencyMatrixGraph<K, V> implements Graph<K, V> {
    * @param newEdge        - new edge
    */
   @Override
-  public void changeEdge(Edge<K, V> changeableEdge, Edge<K, V> newEdge) {
-    Point p = getIndex(changeableEdge);
-    matrix.get(p.x).remove(changeableEdge);
-    matrix.get(p.x).add(p.y, newEdge);
+  public void changeEdge(Edge<E, K, V> changeableEdge, Edge<E, K, V> newEdge) {
+    if (changeableEdge.getKey() != changeableEdge.getKey()) {
+      throw new RuntimeException("Keys are not equal");
+    }
+    matrix.get(changeableEdge.getFirstVertex().getKey())
+        .remove(changeableEdge.getSecondVertex().getKey());
+    matrix.get(changeableEdge.getFirstVertex().getKey())
+        .put(changeableEdge.getSecondVertex().getKey(), newEdge);
     newEdge.setFirstVertex(changeableEdge.getFirstVertex());
     newEdge.setSecondVertex(changeableEdge.getSecondVertex());
     numberOfChanges++;
@@ -205,9 +173,8 @@ public class AdjacencyMatrixGraph<K, V> implements Graph<K, V> {
    * @return - list of exiting edges
    */
   @Override
-  public List<Edge<K, V>> getExitingEdges(Vertex<K, V> vertex) {
-    int i = getIndex(vertex);
-    List<Edge<K, V>> edges = new ArrayList<>(matrix.get(i));
+  public List<Edge<E, K, V>> getExitingEdges(Vertex<K, V> vertex) {
+    List<Edge<E, K, V>> edges = new ArrayList<>(matrix.get(vertex.getKey()).values());
     edges.removeIf(Objects::isNull);
     return edges;
   }

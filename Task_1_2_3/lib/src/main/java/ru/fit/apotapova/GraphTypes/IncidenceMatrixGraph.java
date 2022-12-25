@@ -1,7 +1,9 @@
 package ru.fit.apotapova.GraphTypes;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import ru.fit.apotapova.Graph;
 import ru.fit.apotapova.GraphParts.Edge;
@@ -13,11 +15,11 @@ import ru.fit.apotapova.GraphParts.Vertex;
  * @param <K> - type of key of vertex
  * @param <V> - type of value of vertex
  */
-public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
+public class IncidenceMatrixGraph<E, K, V> implements Graph<E, K, V> {
 
-  List<Vertex<K, V>> vertexList;
-  List<Edge<K, V>> edgeList;
-  List<List<Integer>> matrix;
+  private Map<K, Vertex<K, V>> vertexList;
+  private Map<E, Edge<E, K, V>> edgeList;
+  private Map<K, Map<E, Integer>> matrix;
   private int numberOfChanges;
 
   /**
@@ -26,57 +28,9 @@ public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
 
   public IncidenceMatrixGraph() {
     numberOfChanges = 0;
-    vertexList = new ArrayList<>();
-    edgeList = new ArrayList<>();
-    matrix = new ArrayList<>();
-  }
-
-  private int getIndex(Vertex<K, V> vertex) {
-    if (vertexList.contains(vertex)) {
-      return vertexList.indexOf(vertex);
-    }
-    throw new NoSuchElementException("No vertex from graph");
-  }
-
-  private int getIndex(Edge<K, V> edge) {
-    if (edgeList.contains(edge)) {
-      return edgeList.indexOf(edge);
-    }
-    throw new NoSuchElementException("No edge from graph");
-  }
-
-  private void initializeInMatrix(Vertex<K, V> vertex) {
-    int k = getIndex(vertex);
-    matrix.add(k, new ArrayList<>());
-    for (int i = 0; i < edgeList.size(); i++) {
-      matrix.get(k).add(i, 0);
-    }
-  }
-
-  private void initializeInMatrix(Edge<K, V> edge) {
-    int from = getIndex(edge.getFirstVertex());
-    int to = getIndex(edge.getSecondVertex());
-    for (int i = 0; i < vertexList.size(); i++) {
-      if (i == from) {
-        matrix.get(i).add(1);
-      } else if (i == to) {
-        matrix.get(i).add(-1);
-      } else {
-        matrix.get(i).add(0);
-      }
-    }
-  }
-
-  private void removeFromMatrix(Vertex<K, V> vertex) {
-    int k = getIndex(vertex);
-    matrix.remove(k);
-  }
-
-  private void removeFromMatrix(Edge<K, V> edge) {
-    int k = getIndex(edge);
-    for (int i = 0; i < vertexList.size(); i++) {
-      matrix.get(i).remove(k);
-    }
+    vertexList = new HashMap<>();
+    edgeList = new HashMap<>();
+    matrix = new HashMap<>();
   }
 
   /**
@@ -87,11 +41,11 @@ public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
    */
   @Override
   public Vertex<K, V> addVertex(Vertex<K, V> vertex) {
-    if (vertexList.contains(vertex)) {
+    if (vertexList.containsValue(vertex)) {
       throw new RuntimeException("The vertex is already in the graph");
     }
-    vertexList.add(vertex);
-    initializeInMatrix(vertex);
+    vertexList.put(vertex.getKey(), vertex);
+    matrix.put(vertex.getKey(), new HashMap<>());
     numberOfChanges++;
     return vertex;
   }
@@ -103,8 +57,16 @@ public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
    */
   @Override
   public void deleteVertex(Vertex<K, V> vertex) {
-    removeFromMatrix(vertex);
-    vertexList.remove(vertex);
+    if (!vertexList.containsValue(vertex)) {
+      throw new NoSuchElementException("No vertex from graph");
+    }
+    vertexList.remove(vertex.getKey());
+    matrix.get(vertex.getKey()).forEach((edge, value) -> {
+      if (value.equals(1) || value.equals(-1)) {
+        deleteEdge(edgeList.get(edge));
+      }
+    });
+    matrix.remove(vertex.getKey());
     numberOfChanges++;
   }
 
@@ -116,12 +78,7 @@ public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
    */
   @Override
   public Vertex<K, V> getVertex(K key) {
-    for (Vertex<K, V> vertex : vertexList) {
-      if (vertex.getValue().equals(key)) {
-        return vertex;
-      }
-    }
-    return null;
+    return vertexList.get(key);
   }
 
   /**
@@ -132,9 +89,8 @@ public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
    */
   @Override
   public void changeVertex(Vertex<K, V> changeableVertex, Vertex<K, V> newVertex) {
-    int k = getIndex(changeableVertex);
-    vertexList.remove(k);
-    vertexList.add(k, newVertex);
+    vertexList.remove(changeableVertex.getKey());
+    vertexList.put(newVertex.getKey(), newVertex);
     numberOfChanges++;
   }
 
@@ -145,12 +101,13 @@ public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
    * @return - added edge
    */
   @Override
-  public Edge<K, V> addEdge(Edge<K, V> edge) {
-    if (edgeList.contains(edge)) {
+  public Edge<E, K, V> addEdge(Edge<E, K, V> edge) {
+    if (edgeList.containsValue(edge)) {
       throw new RuntimeException("The edge is already in the graph");
     }
-    edgeList.add(edge);
-    initializeInMatrix(edge);
+    edgeList.put(edge.getKey(), edge);
+    matrix.get(edge.getFirstVertex().getKey()).put(edge.getKey(), 1);
+    matrix.get(edge.getSecondVertex().getKey()).put(edge.getKey(), -1);
     numberOfChanges++;
     return edge;
   }
@@ -161,26 +118,25 @@ public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
    * @param edge - deleted edge
    */
   @Override
-  public void deleteEdge(Edge<K, V> edge) {
-    removeFromMatrix(edge);
-    edgeList.remove(edge);
+  public void deleteEdge(Edge<E, K, V> edge) {
+    if (!edgeList.containsValue(edge)) {
+      throw new NoSuchElementException("No vertex from graph");
+    }
+    matrix.get(edge.getFirstVertex().getKey()).remove(edge.getKey());
+    matrix.get(edge.getSecondVertex().getKey()).remove(edge.getKey());
+    edgeList.remove(edge.getKey());
     numberOfChanges++;
   }
 
   /**
-   * Implements {@link Graph#getEdge(Double)} method.
+   * Implements {@link Graph#getEdge(E)} method.
    *
-   * @param length - edge length
+   * @param key - edge key
    * @return - received edge
    */
   @Override
-  public Edge<K, V> getEdge(Double length) {
-    for (Edge<K, V> edge : edgeList) {
-      if (edge.getLength().equals(length)) {
-        return edge;
-      }
-    }
-    return null;
+  public Edge<E, K, V> getEdge(E key) {
+    return edgeList.get(key);
   }
 
   /**
@@ -190,10 +146,14 @@ public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
    * @param newEdge        - new edge
    */
   @Override
-  public void changeEdge(Edge<K, V> changeableEdge, Edge<K, V> newEdge) {
-    int k = getIndex(changeableEdge);
-    edgeList.remove(k);
-    edgeList.add(k, newEdge);
+  public void changeEdge(Edge<E, K, V> changeableEdge, Edge<E, K, V> newEdge) {
+    if (changeableEdge.getKey() != changeableEdge.getKey()) {
+      throw new RuntimeException("Keys are not equal");
+    }
+    edgeList.remove(changeableEdge.getKey());
+    edgeList.put(changeableEdge.getKey(), newEdge);
+    newEdge.setFirstVertex(changeableEdge.getFirstVertex());
+    newEdge.setSecondVertex(changeableEdge.getSecondVertex());
     numberOfChanges++;
   }
 
@@ -204,14 +164,11 @@ public class IncidenceMatrixGraph<K, V> implements Graph<K, V> {
    * @return - list of exiting edges
    */
   @Override
-  public List<Edge<K, V>> getExitingEdges(Vertex<K, V> vertex) {
-    int i = getIndex(vertex);
-    List<Edge<K, V>> edges = new ArrayList<>();
-    List<Integer> list = matrix.get(i);
-    int k = list.size();
-    for (int j = 0; j < k; j++) {
-      if (list.get(j) == 1) {
-        edges.add(edgeList.get(j));
+  public List<Edge<E, K, V>> getExitingEdges(Vertex<K, V> vertex) {
+    List<Edge<E, K, V>> edges = new ArrayList<>();
+    for (E key : matrix.get(vertex.getKey()).keySet().stream().toList()) {
+      if (matrix.get(vertex.getKey()).get(key).equals(1)) {
+        edges.add(edgeList.get(key));
       }
     }
     return edges;

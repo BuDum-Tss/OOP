@@ -5,8 +5,9 @@ package ru.fit.apotapova.GraphParts;
  *
  * @param <V> type of vertexes
  */
-public class Edge<K, V> {
+public class Edge<E, K, V> {
 
+  private final E key;
   private Double length;
   private Vertex<K, V> firstVertex;
   private Vertex<K, V> secondVertex;
@@ -18,10 +19,11 @@ public class Edge<K, V> {
    * @param length       - edge length
    * @param secondVertex - vertex to which the edge goes
    */
-  public Edge(Vertex<K, V> firstVertex, Double length, Vertex<K, V> secondVertex) {
+  public Edge(Vertex<K, V> firstVertex, E key, Double length, Vertex<K, V> secondVertex) {
     this.firstVertex = firstVertex;
     this.length = length;
     this.secondVertex = secondVertex;
+    this.key = key;
   }
 
   public Double getLength() {
@@ -46,5 +48,9 @@ public class Edge<K, V> {
 
   public void setSecondVertex(Vertex<K, V> secondVertex) {
     this.secondVertex = secondVertex;
+  }
+
+  public E getKey() {
+    return key;
   }
 }

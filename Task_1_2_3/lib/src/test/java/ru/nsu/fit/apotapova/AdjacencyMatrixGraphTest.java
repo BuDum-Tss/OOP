@@ -23,7 +23,8 @@ import ru.fit.apotapova.PathFinder;
 
 class AdjacencyMatrixGraphTest {
 
-  void initGraph(Graph<String, String> graph, File filename) throws Exception {
+  void initGraph(Graph<Integer, String, String> graph, File filename) throws Exception {
+    int n = 0;
     BufferedReader reader = new BufferedReader(new FileReader(filename));
     String str = reader.readLine();
     String[] strList = str.split("\\s+");
@@ -35,22 +36,19 @@ class AdjacencyMatrixGraphTest {
     }
     for (int i = 0; i < numberOfEdges; i++) {
       strList = reader.readLine().split("\\s+");
-      graph.addEdge(graph.getVertex(strList[0]), parseDouble(strList[1]),
+      graph.addEdge(graph.getVertex(strList[0]), n++, parseDouble(strList[1]),
           graph.getVertex(strList[2]));
     }
   }
 
   @Test
   void vertex() {
-    Graph<String, String> graph = new AdjacencyMatrixGraph<>();
-    Vertex<String, String> v1 = graph.addVertex("", "");
-    v1.setKey("A");
+    Graph<Integer, String, String> graph = new AdjacencyMatrixGraph<>();
+    Vertex<String, String> v1 = graph.addVertex("A", "");
     v1.setValue("A");
-    Vertex<String, String> v2 = graph.addVertex("", "");
-    v2.setKey("B");
+    Vertex<String, String> v2 = graph.addVertex("B", "");
     v2.setValue("B");
-    Vertex<String, String> v3 = graph.addVertex("", "");
-    v3.setKey("C");
+    Vertex<String, String> v3 = graph.addVertex("C", "");
     v3.setValue("C");
     Assertions.assertEquals(v1, graph.getVertex("A"));
     Assertions.assertEquals(v2, graph.getVertex("B"));
@@ -60,7 +58,7 @@ class AdjacencyMatrixGraphTest {
 
   @Test
   void addVertex() {
-    Graph<String, String> graph = new AdjacencyMatrixGraph<>();
+    Graph<Integer, String, String> graph = new AdjacencyMatrixGraph<>();
     Vertex<String, String> v1 = graph.addVertex("A", "A");
     Vertex<String, String> v2 = graph.addVertex("B", "B");
     Vertex<String, String> v3 = graph.addVertex("C", "C");
@@ -72,7 +70,7 @@ class AdjacencyMatrixGraphTest {
 
   @Test
   void deleteVertex() {
-    Graph<String, String> graph = new AdjacencyMatrixGraph<>();
+    Graph<Integer, String, String> graph = new AdjacencyMatrixGraph<>();
     Vertex<String, String> v1 = graph.addVertex("A", "A");
     Vertex<String, String> v2 = graph.addVertex("B", "B");
     Vertex<String, String> v3 = graph.addVertex("C", "C");
@@ -87,7 +85,7 @@ class AdjacencyMatrixGraphTest {
 
   @Test
   void getVertex() {
-    Graph<String, String> graph = new AdjacencyMatrixGraph<>();
+    Graph<Integer, String, String> graph = new AdjacencyMatrixGraph<>();
     Vertex<String, String> v1 = graph.addVertex("A", "A");
     Vertex<String, String> v2 = graph.addVertex("B", "B");
     Vertex<String, String> v3 = graph.addVertex("C", "C");
@@ -99,7 +97,7 @@ class AdjacencyMatrixGraphTest {
 
   @Test
   void changeVertex() {
-    Graph<String, String> graph = new AdjacencyMatrixGraph<>();
+    Graph<Integer, String, String> graph = new AdjacencyMatrixGraph<>();
     Vertex<String, String> v0 = graph.addVertex("A", "A");
     Vertex<String, String> v1 = graph.addVertex("B", "B");
     Vertex<String, String> v2 = graph.addVertex("C", "C");
@@ -114,82 +112,82 @@ class AdjacencyMatrixGraphTest {
 
   @Test
   void addEdge() {
-    Graph<String, String> graph = new AdjacencyMatrixGraph<>();
+    Graph<Integer, String, String> graph = new AdjacencyMatrixGraph<>();
     Vertex<String, String> v0 = graph.addVertex("A", "A");
     Vertex<String, String> v1 = graph.addVertex("B", "B");
     Vertex<String, String> v2 = graph.addVertex("C", "C");
-    Edge<String, String> e0 = graph.addEdge(v0, 1.0, v1);
-    Edge<String, String> e1 = graph.addEdge(v1, 2.0, v2);
-    Edge<String, String> e2 = graph.addEdge(v2, 3.0, v1);
-    Assertions.assertEquals(e0, graph.getEdge(1.0));
-    Assertions.assertEquals(e1, graph.getEdge(2.0));
-    Assertions.assertEquals(e2, graph.getEdge(3.0));
-    Assertions.assertNull(graph.getEdge(0.0));
+    Edge<Integer, String, String> e0 = graph.addEdge(v0, 1, 1.0, v1);
+    Edge<Integer, String, String> e1 = graph.addEdge(v1, 2, 2.0, v2);
+    Edge<Integer, String, String> e2 = graph.addEdge(v2, 3, 3.0, v1);
+    Assertions.assertEquals(e0, graph.getEdge(1));
+    Assertions.assertEquals(e1, graph.getEdge(2));
+    Assertions.assertEquals(e2, graph.getEdge(3));
+    Assertions.assertNull(graph.getEdge(0));
   }
 
   @Test
   void deleteEdge() {
-    Graph<String, String> graph = new AdjacencyMatrixGraph<>();
+    Graph<Integer, String, String> graph = new AdjacencyMatrixGraph<>();
     Vertex<String, String> v0 = graph.addVertex("A", "A");
     Vertex<String, String> v1 = graph.addVertex("B", "B");
     Vertex<String, String> v2 = graph.addVertex("C", "C");
-    Edge<String, String> e0 = graph.addEdge(v0, 1.0, v1);
-    Edge<String, String> e1 = graph.addEdge(v1, 2.0, v2);
-    Edge<String, String> e2 = graph.addEdge(v2, 3.0, v1);
+    Edge<Integer, String, String> e0 = graph.addEdge(v0, 1, 1.0, v1);
+    Edge<Integer, String, String> e1 = graph.addEdge(v1, 2, 2.0, v2);
+    Edge<Integer, String, String> e2 = graph.addEdge(v2, 3, 3.0, v1);
     graph.deleteEdge(e0);
     graph.deleteEdge(e1);
     graph.deleteEdge(e2);
     Assertions.assertThrows(NoSuchElementException.class, () -> graph.deleteEdge(e2));
-    Assertions.assertNull(graph.getEdge(1.0));
-    Assertions.assertNull(graph.getEdge(2.0));
-    Assertions.assertNull(graph.getEdge(3.0));
+    Assertions.assertNull(graph.getEdge(1));
+    Assertions.assertNull(graph.getEdge(2));
+    Assertions.assertNull(graph.getEdge(3));
   }
 
   @Test
   void getEdge() {
-    Graph<String, String> graph = new AdjacencyMatrixGraph<>();
+    Graph<Integer, String, String> graph = new AdjacencyMatrixGraph<>();
     Vertex<String, String> v0 = graph.addVertex("A", "A");
     Vertex<String, String> v1 = graph.addVertex("B", "B");
     Vertex<String, String> v2 = graph.addVertex("C", "C");
-    Edge<String, String> e0 = graph.addEdge(v0, 1.0, v1);
-    Edge<String, String> e1 = graph.addEdge(v1, 2.0, v2);
-    Edge<String, String> e2 = graph.addEdge(v2, 3.0, v1);
-    Assertions.assertEquals(e0, graph.getEdge(1.0));
-    Assertions.assertEquals(e1, graph.getEdge(2.0));
-    Assertions.assertEquals(e2, graph.getEdge(3.0));
-    Assertions.assertNull(graph.getEdge(0.0));
+    Edge<Integer, String, String> e0 = graph.addEdge(v0, 1, 1.0, v1);
+    Edge<Integer, String, String> e1 = graph.addEdge(v1, 2, 2.0, v2);
+    Edge<Integer, String, String> e2 = graph.addEdge(v2, 3, 3.0, v1);
+    Assertions.assertEquals(e0, graph.getEdge(1));
+    Assertions.assertEquals(e1, graph.getEdge(2));
+    Assertions.assertEquals(e2, graph.getEdge(3));
+    Assertions.assertNull(graph.getEdge(0));
   }
 
   @Test
   void changeEdge() {
-    Graph<String, String> graph = new AdjacencyMatrixGraph<>();
+    Graph<Integer, String, String> graph = new AdjacencyMatrixGraph<>();
     Vertex<String, String> v0 = graph.addVertex("A", "A");
     Vertex<String, String> v1 = graph.addVertex("B", "B");
     Vertex<String, String> v2 = graph.addVertex("C", "C");
-    Edge<String, String> e0 = graph.addEdge(v0, 1.0, v1);
-    Edge<String, String> e1 = graph.addEdge(v1, 2.0, v2);
-    Edge<String, String> e2 = graph.addEdge(v2, 3.0, v1);
-    Edge<String, String> e4 = new Edge<>(v1, 4.0, v2);
+    Edge<Integer, String, String> e0 = graph.addEdge(v0, 1, 1.0, v1);
+    Edge<Integer, String, String> e1 = graph.addEdge(v1, 2, 2.0, v2);
+    Edge<Integer, String, String> e2 = graph.addEdge(v2, 3, 3.0, v1);
+    Edge<Integer, String, String> e4 = new Edge<>(v1, 4, 4.0, v2);
     graph.changeEdge(e0, e2);
     graph.changeEdge(e1, e4);
-    Assertions.assertNull(graph.getEdge(1.0));
-    Assertions.assertNull(graph.getEdge(2.0));
-    Assertions.assertEquals(v0, graph.getEdge(3.0).getFirstVertex());
-    Assertions.assertEquals(v1, graph.getEdge(3.0).getSecondVertex());
-    Assertions.assertEquals(v1, graph.getEdge(4.0).getFirstVertex());
-    Assertions.assertEquals(v2, graph.getEdge(4.0).getSecondVertex());
+    Assertions.assertNull(graph.getEdge(1));
+    Assertions.assertNull(graph.getEdge(2));
+    Assertions.assertEquals(v0, graph.getEdge(3).getFirstVertex());
+    Assertions.assertEquals(v1, graph.getEdge(3).getSecondVertex());
+    Assertions.assertEquals(v1, graph.getEdge(4).getFirstVertex());
+    Assertions.assertEquals(v2, graph.getEdge(4).getSecondVertex());
   }
 
   @Test
   void sortVertexes() {
-    Graph<String, String> graph = new AdjacencyMatrixGraph<>();
+    Graph<Integer, String, String> graph = new AdjacencyMatrixGraph<>();
     try {
       initGraph(graph,
           new File("src/main/resources/test.txt"));
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
-    PathFinder<String, String> pathFinder = new DeikstraPathFinder<>(graph);
+    PathFinder<Integer, String, String> pathFinder = new DeikstraPathFinder<>(graph);
     List<Vertex<String, String>> list = pathFinder.sortVertexes(graph.getVertex("A"));
     Assertions.assertEquals("A", list.get(0).getValue());
     Assertions.assertEquals("B", list.get(1).getValue());
@@ -198,8 +196,8 @@ class AdjacencyMatrixGraphTest {
     Assertions.assertEquals("E", list.get(4).getValue());
     Assertions.assertEquals("F", list.get(5).getValue());
     Assertions.assertEquals("G", list.get(6).getValue());
-    graph.deleteEdge(graph.getEdge(2.0));
-    graph.deleteEdge(graph.getEdge(2.0));
+    graph.deleteEdge(graph.getEdge(5));
+    graph.deleteEdge(graph.getEdge(11));
     list = pathFinder.sortVertexes(graph.getVertex("A"));
     Assertions.assertEquals("A", list.get(0).getValue());
     Assertions.assertEquals("B", list.get(1).getValue());

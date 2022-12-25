@@ -8,7 +8,7 @@ package ru.fit.apotapova.GraphParts;
  */
 public class Vertex<K, V> {
 
-  private K key;
+  private final K key;
   private V value;
 
   /**
@@ -22,19 +22,28 @@ public class Vertex<K, V> {
     this.value = value;
   }
 
+  /**
+   * Gets value of vertex.
+   *
+   * @return value
+   */
   public V getValue() {
     return value;
   }
 
+  /**
+   * Sets value of vertex.
+   */
   public void setValue(V value) {
     this.value = value;
   }
 
+  /**
+   * Gets key of vertex.
+   *
+   * @return - key
+   */
   public K getKey() {
     return key;
-  }
-
-  public void setKey(K key) {
-    this.key = key;
   }
 }

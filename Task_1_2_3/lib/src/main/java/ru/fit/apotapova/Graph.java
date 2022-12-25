@@ -10,7 +10,7 @@ import ru.fit.apotapova.GraphParts.Vertex;
  * @param <K> - type of key of vertex
  * @param <V> - type of value of vertex
  */
-public interface Graph<K, V> {
+public interface Graph<E, K, V> {
 
   /**
    * Adds vertex.
@@ -58,12 +58,14 @@ public interface Graph<K, V> {
    * Adds edge.
    *
    * @param firstVertex  - vertex from which the edge comes
+   * @param key          - edge key
    * @param length       - edge length
    * @param secondVertex - vertex to which the edge goes
    * @return - edge object
    */
-  default Edge<K, V> addEdge(Vertex<K, V> firstVertex, Double length, Vertex<K, V> secondVertex) {
-    return addEdge(new Edge<>(firstVertex, length, secondVertex));
+  default Edge<E, K, V> addEdge(Vertex<K, V> firstVertex, E key, Double length,
+      Vertex<K, V> secondVertex) {
+    return addEdge(new Edge<>(firstVertex, key, length, secondVertex));
   }
 
   /**
@@ -72,22 +74,22 @@ public interface Graph<K, V> {
    * @param edge - added edge
    * @return - added edge
    */
-  Edge<K, V> addEdge(Edge<K, V> edge);
+  Edge<E, K, V> addEdge(Edge<E, K, V> edge);
 
   /**
    * Deletes edge.
    *
    * @param edge - deleted edge
    */
-  void deleteEdge(Edge<K, V> edge);
+  void deleteEdge(Edge<E, K, V> edge);
 
   /**
    * Gets edge by length.
    *
-   * @param length - edge length
+   * @param key - edge key
    * @return - received edge
    */
-  Edge<K, V> getEdge(Double length);
+  Edge<E, K, V> getEdge(E key);
 
   /**
    * Replaces an edge with another one. The vertices of the edge remain the same.
@@ -95,7 +97,7 @@ public interface Graph<K, V> {
    * @param changeableEdge - changeable edge
    * @param newEdge        - new edge
    */
-  void changeEdge(Edge<K, V> changeableEdge, Edge<K, V> newEdge);
+  void changeEdge(Edge<E, K, V> changeableEdge, Edge<E, K, V> newEdge);
 
   /**
    * Gets exiting edges of vertex.
@@ -103,7 +105,7 @@ public interface Graph<K, V> {
    * @param vertex - vertex
    * @return - list of exiting edges
    */
-  List<Edge<K, V>> getExitingEdges(Vertex<K, V> vertex);
+  List<Edge<E, K, V>> getExitingEdges(Vertex<K, V> vertex);
 
   /**
    * Gets number of changes of graph.
