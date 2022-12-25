@@ -55,13 +55,23 @@ class IncidenceMatrixGraphTest {
     Assertions.assertEquals(v3, graph.getVertex("C"));
     Assertions.assertNull(graph.getVertex("D"));
   }
-
+  @Test
+  void edge(){
+    Graph<Integer, String, String> graph = new IncidenceMatrixGraph<>();
+    Vertex<String, String> v1 = graph.addVertex("A", "A");
+    Vertex<String, String> v2 = graph.addVertex("B", "B");
+    Edge<Integer,String,String> e = graph.addEdge(v1,1,2.0,v2);
+    Assertions.assertEquals(2.0,e.getLength());
+    e.setLength(4.0);
+    Assertions.assertEquals(4.0,e.getLength());
+  }
   @Test
   void addVertex() {
     Graph<Integer, String, String> graph = new IncidenceMatrixGraph<>();
     Vertex<String, String> v1 = graph.addVertex("A", "A");
     Vertex<String, String> v2 = graph.addVertex("B", "B");
     Vertex<String, String> v3 = graph.addVertex("C", "C");
+    Assertions.assertThrows(RuntimeException.class,()->graph.addVertex(v1));
     Assertions.assertEquals(v1, graph.getVertex("A"));
     Assertions.assertEquals(v2, graph.getVertex("B"));
     Assertions.assertEquals(v3, graph.getVertex("C"));
@@ -119,6 +129,7 @@ class IncidenceMatrixGraphTest {
     Edge<Integer, String, String> e0 = graph.addEdge(v0, 1, 1.0, v1);
     Edge<Integer, String, String> e1 = graph.addEdge(v1, 2, 2.0, v2);
     Edge<Integer, String, String> e2 = graph.addEdge(v2, 3, 3.0, v1);
+    Assertions.assertThrows(RuntimeException.class,()->graph.addEdge(e0));
     Assertions.assertEquals(e0, graph.getEdge(1));
     Assertions.assertEquals(e1, graph.getEdge(2));
     Assertions.assertEquals(e2, graph.getEdge(3));
@@ -177,7 +188,6 @@ class IncidenceMatrixGraphTest {
     Assertions.assertEquals(v1, graph.getEdge(4).getFirstVertex());
     Assertions.assertEquals(v2, graph.getEdge(4).getSecondVertex());
   }
-
   @Test
   void sortVertexes() {
     Graph<Integer, String, String> graph = new IncidenceMatrixGraph<>();

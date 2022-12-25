@@ -101,9 +101,7 @@ public class AdjacencyMatrixGraph<E, K, V> implements Graph<E, K, V> {
   @Override
   public Edge<E, K, V> addEdge(Edge<E, K, V> edge) {
     if (matrix.get(edge.getFirstVertex().getKey()) != null
-        && matrix.get(edge.getFirstVertex().getKey()).get(edge.getSecondVertex().getKey()) != null
-        && !matrix.get(edge.getFirstVertex().getKey()).get(edge.getSecondVertex().getKey())
-        .equals(edge)) {
+        && matrix.get(edge.getFirstVertex().getKey()).containsValue(edge)) {
       throw new RuntimeException("The edge is already in the graph");
     }
     matrix.get(edge.getFirstVertex().getKey()).put(edge.getSecondVertex().getKey(), edge);
