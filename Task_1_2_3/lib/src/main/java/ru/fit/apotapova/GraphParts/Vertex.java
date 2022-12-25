@@ -33,6 +33,8 @@ public class Vertex<K, V> {
 
   /**
    * Sets value of vertex.
+   *
+   * @param value - value
    */
   public void setValue(V value) {
     this.value = value;

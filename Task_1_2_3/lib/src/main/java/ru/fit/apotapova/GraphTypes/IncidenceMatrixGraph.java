@@ -129,7 +129,7 @@ public class IncidenceMatrixGraph<E, K, V> implements Graph<E, K, V> {
   }
 
   /**
-   * Implements {@link Graph#getEdge(E)} method.
+   * Implements {@link Graph#getEdge(Object)} method.
    *
    * @param key - edge key
    * @return - received edge
