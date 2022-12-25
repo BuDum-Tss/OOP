@@ -19,7 +19,7 @@ class SubstringsFinderTest {
     Assertions.assertNull( finder.findSubstring("This line is not in the text"));
     finder = new SubstringsFinder(new File("src/test/resources/BigText.txt"));
     Assertions.assertEquals(10, finder.findSubstring("The Boy Who Lived"));
-    Assertions.assertEquals(37, finder.findSubstring("Mrs"));
+    Assertions.assertEquals(37, finder.findSubstring("Mrs."));
     Assertions.assertEquals(29, finder.findSubstring("Mr. and Mrs. Dursley"));
     Assertions.assertEquals(11442, finder.findSubstring("How very wrong he was."));
     Assertions.assertEquals(26068, finder.findSubstring("\"To Harry Potter - the boy who lived!\""));
