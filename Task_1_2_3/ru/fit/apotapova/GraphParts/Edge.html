@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -116,14 +116,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <main role="main">
 <div class="header">
 <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">ru.fit.apotapova.GraphParts</a></div>
-<h2 title="Class Edge" class="title">Class Edge&lt;K,&#8203;V&gt;</h2>
+<h2 title="Class Edge" class="title">Class Edge&lt;E,&#8203;K,&#8203;V&gt;</h2>
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>ru.fit.apotapova.GraphParts.Edge&lt;K,&#8203;V&gt;</li>
+<li>ru.fit.apotapova.GraphParts.Edge&lt;E,&#8203;K,&#8203;V&gt;</li>
 </ul>
 </li>
 </ul>
@@ -135,7 +135,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd><code>V</code> - type of vertexes</dd>
 </dl>
 <hr>
-<pre>public class <span class="typeNameLabel">Edge&lt;K,&#8203;V&gt;</span>
+<pre>public class <span class="typeNameLabel">Edge&lt;E,&#8203;K,&#8203;V&gt;</span>
 extends java.lang.Object</pre>
 <div class="block">Edge class containing adjacent vertices and length.</div>
 </li>
@@ -158,7 +158,8 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.fit.apotapova.GraphParts.Vertex,java.lang.Double,ru.fit.apotapova.GraphParts.Vertex)">Edge</a></span>&#8203;(<a href="Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">K</a>,&#8203;<a href="Edge.html" title="type parameter in Edge">V</a>&gt;&nbsp;firstVertex,
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.fit.apotapova.GraphParts.Vertex,E,java.lang.Double,ru.fit.apotapova.GraphParts.Vertex)">Edge</a></span>&#8203;(<a href="Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">K</a>,&#8203;<a href="Edge.html" title="type parameter in Edge">V</a>&gt;&nbsp;firstVertex,
+    <a href="Edge.html" title="type parameter in Edge">E</a>&nbsp;key,
     java.lang.Double&nbsp;length,
     <a href="Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">K</a>,&#8203;<a href="Edge.html" title="type parameter in Edge">V</a>&gt;&nbsp;secondVertex)</code></th>
 <td class="colLast">
@@ -186,32 +187,51 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">K</a>,&#8203;<a href="Edge.html" title="type parameter in Edge">V</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getFirstVertex()">getFirstVertex</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Gets first vertex of edge.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>java.lang.Double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLength()">getLength</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code><a href="Edge.html" title="type parameter in Edge">E</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getKey()">getKey</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Gets edge key.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">K</a>,&#8203;<a href="Edge.html" title="type parameter in Edge">V</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSecondVertex()">getSecondVertex</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code>java.lang.Double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLength()">getLength</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Gets edge length.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setFirstVertex(ru.fit.apotapova.GraphParts.Vertex)">setFirstVertex</a></span>&#8203;(<a href="Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">K</a>,&#8203;<a href="Edge.html" title="type parameter in Edge">V</a>&gt;&nbsp;firstVertex)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code><a href="Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">K</a>,&#8203;<a href="Edge.html" title="type parameter in Edge">V</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSecondVertex()">getSecondVertex</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Gets second vertex of edge.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setLength(java.lang.Double)">setLength</a></span>&#8203;(java.lang.Double&nbsp;length)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setFirstVertex(ru.fit.apotapova.GraphParts.Vertex)">setFirstVertex</a></span>&#8203;(<a href="Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">K</a>,&#8203;<a href="Edge.html" title="type parameter in Edge">V</a>&gt;&nbsp;firstVertex)</code></th>
+<td class="colLast">
+<div class="block">Sets first vertex of edge.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setLength(java.lang.Double)">setLength</a></span>&#8203;(java.lang.Double&nbsp;length)</code></th>
+<td class="colLast">
+<div class="block">Sets edge length.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setSecondVertex(ru.fit.apotapova.GraphParts.Vertex)">setSecondVertex</a></span>&#8203;(<a href="Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">K</a>,&#8203;<a href="Edge.html" title="type parameter in Edge">V</a>&gt;&nbsp;secondVertex)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Sets second vertex of edge.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -237,19 +257,23 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(ru.fit.apotapova.GraphParts.Vertex,java.lang.Double,ru.fit.apotapova.GraphParts.Vertex)">
+<a id="&lt;init&gt;(ru.fit.apotapova.GraphParts.Vertex,java.lang.Object,java.lang.Double,ru.fit.apotapova.GraphParts.Vertex)">
+<!--   -->
+</a><a id="&lt;init&gt;(ru.fit.apotapova.GraphParts.Vertex,E,java.lang.Double,ru.fit.apotapova.GraphParts.Vertex)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Edge</h4>
 <pre>public&nbsp;Edge&#8203;(<a href="Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">K</a>,&#8203;<a href="Edge.html" title="type parameter in Edge">V</a>&gt;&nbsp;firstVertex,
+            <a href="Edge.html" title="type parameter in Edge">E</a>&nbsp;key,
             java.lang.Double&nbsp;length,
             <a href="Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">K</a>,&#8203;<a href="Edge.html" title="type parameter in Edge">V</a>&gt;&nbsp;secondVertex)</pre>
 <div class="block">Constructor of a class that defines adjacent vertices and the length of an edge.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>firstVertex</code> - - vertex from which the edge comes</dd>
+<dd><code>key</code> - - edge key</dd>
 <dd><code>length</code> - - edge length</dd>
 <dd><code>secondVertex</code> - - vertex to which the edge goes</dd>
 </dl>
@@ -272,6 +296,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getLength</h4>
 <pre class="methodSignature">public&nbsp;java.lang.Double&nbsp;getLength()</pre>
+<div class="block">Gets edge length.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>edge length</dd>
+</dl>
 </li>
 </ul>
 <a id="setLength(java.lang.Double)">
@@ -281,6 +310,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setLength</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setLength&#8203;(java.lang.Double&nbsp;length)</pre>
+<div class="block">Sets edge length.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>length</code> - - edge length</dd>
+</dl>
 </li>
 </ul>
 <a id="getFirstVertex()">
@@ -290,6 +324,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getFirstVertex</h4>
 <pre class="methodSignature">public&nbsp;<a href="Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">K</a>,&#8203;<a href="Edge.html" title="type parameter in Edge">V</a>&gt;&nbsp;getFirstVertex()</pre>
+<div class="block">Gets first vertex of edge.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- first vertex</dd>
+</dl>
 </li>
 </ul>
 <a id="setFirstVertex(ru.fit.apotapova.GraphParts.Vertex)">
@@ -299,6 +338,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setFirstVertex</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setFirstVertex&#8203;(<a href="Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">K</a>,&#8203;<a href="Edge.html" title="type parameter in Edge">V</a>&gt;&nbsp;firstVertex)</pre>
+<div class="block">Sets first vertex of edge.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>firstVertex</code> - - first vertex</dd>
+</dl>
 </li>
 </ul>
 <a id="getSecondVertex()">
@@ -308,15 +352,39 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getSecondVertex</h4>
 <pre class="methodSignature">public&nbsp;<a href="Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">K</a>,&#8203;<a href="Edge.html" title="type parameter in Edge">V</a>&gt;&nbsp;getSecondVertex()</pre>
+<div class="block">Gets second vertex of edge.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- first vertex</dd>
+</dl>
 </li>
 </ul>
 <a id="setSecondVertex(ru.fit.apotapova.GraphParts.Vertex)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>setSecondVertex</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setSecondVertex&#8203;(<a href="Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Edge.html" title="type parameter in Edge">K</a>,&#8203;<a href="Edge.html" title="type parameter in Edge">V</a>&gt;&nbsp;secondVertex)</pre>
+<div class="block">Sets second vertex of edge.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>secondVertex</code> - - first vertex</dd>
+</dl>
+</li>
+</ul>
+<a id="getKey()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getKey</h4>
+<pre class="methodSignature">public&nbsp;<a href="Edge.html" title="type parameter in Edge">E</a>&nbsp;getKey()</pre>
+<div class="block">Gets edge key.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- key</dd>
+</dl>
 </li>
 </ul>
 </li>

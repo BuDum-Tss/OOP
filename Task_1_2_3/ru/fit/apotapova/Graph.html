@@ -116,7 +116,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <main role="main">
 <div class="header">
 <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">ru.fit.apotapova</a></div>
-<h2 title="Interface Graph" class="title">Interface Graph&lt;K,&#8203;V&gt;</h2>
+<h2 title="Interface Graph" class="title">Interface Graph&lt;E,&#8203;K,&#8203;V&gt;</h2>
 </div>
 <div class="contentContainer">
 <div class="description">
@@ -132,7 +132,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd><code><a href="GraphTypes/AdjacencyListsGraph.html" title="class in ru.fit.apotapova.GraphTypes">AdjacencyListsGraph</a></code>, <code><a href="GraphTypes/AdjacencyMatrixGraph.html" title="class in ru.fit.apotapova.GraphTypes">AdjacencyMatrixGraph</a></code>, <code><a href="GraphTypes/IncidenceMatrixGraph.html" title="class in ru.fit.apotapova.GraphTypes">IncidenceMatrixGraph</a></code></dd>
 </dl>
 <hr>
-<pre>public interface <span class="typeNameLabel">Graph&lt;K,&#8203;V&gt;</span></pre>
+<pre>public interface <span class="typeNameLabel">Graph&lt;E,&#8203;K,&#8203;V&gt;</span></pre>
 <div class="block">Interface for classes implementing the graph.</div>
 </li>
 </ul>
@@ -155,15 +155,16 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(ru.fit.apotapova.GraphParts.Edge)">addEdge</a></span>&#8203;(<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;edge)</code></th>
+<td class="colFirst"><code><a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">E</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(ru.fit.apotapova.GraphParts.Edge)">addEdge</a></span>&#8203;(<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">E</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;edge)</code></th>
 <td class="colLast">
 <div class="block">Adds edge.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>default <a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(ru.fit.apotapova.GraphParts.Vertex,java.lang.Double,ru.fit.apotapova.GraphParts.Vertex)">addEdge</a></span>&#8203;(<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;firstVertex,
+<td class="colFirst"><code>default <a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">E</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(ru.fit.apotapova.GraphParts.Vertex,E,java.lang.Double,ru.fit.apotapova.GraphParts.Vertex)">addEdge</a></span>&#8203;(<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;firstVertex,
+       <a href="Graph.html" title="type parameter in Graph">E</a>&nbsp;key,
        java.lang.Double&nbsp;length,
        <a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;secondVertex)</code></th>
 <td class="colLast">
@@ -187,8 +188,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#changeEdge(ru.fit.apotapova.GraphParts.Edge,ru.fit.apotapova.GraphParts.Edge)">changeEdge</a></span>&#8203;(<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;changeableEdge,
-          <a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;newEdge)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#changeEdge(ru.fit.apotapova.GraphParts.Edge,ru.fit.apotapova.GraphParts.Edge)">changeEdge</a></span>&#8203;(<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">E</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;changeableEdge,
+          <a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">E</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;newEdge)</code></th>
 <td class="colLast">
 <div class="block">Replaces an edge with another one.</div>
 </td>
@@ -203,7 +204,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteEdge(ru.fit.apotapova.GraphParts.Edge)">deleteEdge</a></span>&#8203;(<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;edge)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteEdge(ru.fit.apotapova.GraphParts.Edge)">deleteEdge</a></span>&#8203;(<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">E</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;edge)</code></th>
 <td class="colLast">
 <div class="block">Deletes edge.</div>
 </td>
@@ -216,14 +217,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </td>
 </tr>
 <tr id="i8" class="altColor">
-<td class="colFirst"><code><a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdge(java.lang.Double)">getEdge</a></span>&#8203;(java.lang.Double&nbsp;length)</code></th>
+<td class="colFirst"><code><a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">E</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdge(E)">getEdge</a></span>&#8203;(<a href="Graph.html" title="type parameter in Graph">E</a>&nbsp;key)</code></th>
 <td class="colLast">
 <div class="block">Gets edge by length.</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
-<td class="colFirst"><code>java.util.List&lt;<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&gt;</code></td>
+<td class="colFirst"><code>java.util.List&lt;<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">E</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getExitingEdges(ru.fit.apotapova.GraphParts.Vertex)">getExitingEdges</a></span>&#8203;(<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;vertex)</code></th>
 <td class="colLast">
 <div class="block">Gets exiting edges of vertex.</div>
@@ -344,19 +345,23 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 </li>
 </ul>
-<a id="addEdge(ru.fit.apotapova.GraphParts.Vertex,java.lang.Double,ru.fit.apotapova.GraphParts.Vertex)">
+<a id="addEdge(ru.fit.apotapova.GraphParts.Vertex,java.lang.Object,java.lang.Double,ru.fit.apotapova.GraphParts.Vertex)">
+<!--   -->
+</a><a id="addEdge(ru.fit.apotapova.GraphParts.Vertex,E,java.lang.Double,ru.fit.apotapova.GraphParts.Vertex)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>addEdge</h4>
-<pre class="methodSignature">default&nbsp;<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;addEdge&#8203;(<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;firstVertex,
-                                java.lang.Double&nbsp;length,
-                                <a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;secondVertex)</pre>
+<pre class="methodSignature">default&nbsp;<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">E</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;addEdge&#8203;(<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;firstVertex,
+                                        <a href="Graph.html" title="type parameter in Graph">E</a>&nbsp;key,
+                                        java.lang.Double&nbsp;length,
+                                        <a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;secondVertex)</pre>
 <div class="block">Adds edge.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>firstVertex</code> - - vertex from which the edge comes</dd>
+<dd><code>key</code> - - edge key</dd>
 <dd><code>length</code> - - edge length</dd>
 <dd><code>secondVertex</code> - - vertex to which the edge goes</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -370,7 +375,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockList">
 <li class="blockList">
 <h4>addEdge</h4>
-<pre class="methodSignature"><a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;addEdge&#8203;(<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;edge)</pre>
+<pre class="methodSignature"><a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">E</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;addEdge&#8203;(<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">E</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;edge)</pre>
 <div class="block">Adds edge.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -386,7 +391,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockList">
 <li class="blockList">
 <h4>deleteEdge</h4>
-<pre class="methodSignature">void&nbsp;deleteEdge&#8203;(<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;edge)</pre>
+<pre class="methodSignature">void&nbsp;deleteEdge&#8203;(<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">E</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;edge)</pre>
 <div class="block">Deletes edge.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -394,17 +399,19 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 </li>
 </ul>
-<a id="getEdge(java.lang.Double)">
+<a id="getEdge(java.lang.Object)">
+<!--   -->
+</a><a id="getEdge(E)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getEdge</h4>
-<pre class="methodSignature"><a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;getEdge&#8203;(java.lang.Double&nbsp;length)</pre>
+<pre class="methodSignature"><a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">E</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;getEdge&#8203;(<a href="Graph.html" title="type parameter in Graph">E</a>&nbsp;key)</pre>
 <div class="block">Gets edge by length.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>length</code> - - edge length</dd>
+<dd><code>key</code> - - edge key</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>- received edge</dd>
 </dl>
@@ -416,8 +423,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockList">
 <li class="blockList">
 <h4>changeEdge</h4>
-<pre class="methodSignature">void&nbsp;changeEdge&#8203;(<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;changeableEdge,
-                <a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;newEdge)</pre>
+<pre class="methodSignature">void&nbsp;changeEdge&#8203;(<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">E</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;changeableEdge,
+                <a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">E</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;newEdge)</pre>
 <div class="block">Replaces an edge with another one. The vertices of the edge remain the same.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -432,7 +439,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockList">
 <li class="blockList">
 <h4>getExitingEdges</h4>
-<pre class="methodSignature">java.util.List&lt;<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&gt;&nbsp;getExitingEdges&#8203;(<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;vertex)</pre>
+<pre class="methodSignature">java.util.List&lt;<a href="GraphParts/Edge.html" title="class in ru.fit.apotapova.GraphParts">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">E</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&gt;&nbsp;getExitingEdges&#8203;(<a href="GraphParts/Vertex.html" title="class in ru.fit.apotapova.GraphParts">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">K</a>,&#8203;<a href="Graph.html" title="type parameter in Graph">V</a>&gt;&nbsp;vertex)</pre>
 <div class="block">Gets exiting edges of vertex.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>

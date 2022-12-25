@@ -116,14 +116,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <main role="main">
 <div class="header">
 <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">ru.fit.apotapova.Alhoritms</a></div>
-<h2 title="Class DeikstraPathFinder" class="title">Class DeikstraPathFinder&lt;K,&#8203;V&gt;</h2>
+<h2 title="Class DeikstraPathFinder" class="title">Class DeikstraPathFinder&lt;E,&#8203;K,&#8203;V&gt;</h2>
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>ru.fit.apotapova.Alhoritms.DeikstraPathFinder&lt;K,&#8203;V&gt;</li>
+<li>ru.fit.apotapova.Alhoritms.DeikstraPathFinder&lt;E,&#8203;K,&#8203;V&gt;</li>
 </ul>
 </li>
 </ul>
@@ -132,17 +132,18 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <dl>
 <dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>E</code> - - type of key of edge</dd>
 <dd><code>K</code> - - type of key of vertex</dd>
 <dd><code>V</code> - - type of value of vertex</dd>
 </dl>
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="../PathFinder.html" title="interface in ru.fit.apotapova">PathFinder</a>&lt;K,&#8203;V&gt;</code></dd>
+<dd><code><a href="../PathFinder.html" title="interface in ru.fit.apotapova">PathFinder</a>&lt;E,&#8203;K,&#8203;V&gt;</code></dd>
 </dl>
 <hr>
-<pre>public class <span class="typeNameLabel">DeikstraPathFinder&lt;K,&#8203;V&gt;</span>
+<pre>public class <span class="typeNameLabel">DeikstraPathFinder&lt;E,&#8203;K,&#8203;V&gt;</span>
 extends java.lang.Object
-implements <a href="../PathFinder.html" title="interface in ru.fit.apotapova">PathFinder</a>&lt;K,&#8203;V&gt;</pre>
+implements <a href="../PathFinder.html" title="interface in ru.fit.apotapova">PathFinder</a>&lt;E,&#8203;K,&#8203;V&gt;</pre>
 <div class="block">A class that implements a <a href="../PathFinder.html" title="interface in ru.fit.apotapova"><code>PathFinder</code></a> using a deikstra algorithm.</div>
 </li>
 </ul>
@@ -164,8 +165,10 @@ implements <a href="../PathFinder.html" title="interface in ru.fit.apotapova">Pa
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.fit.apotapova.Graph)">DeikstraPathFinder</a></span>&#8203;(<a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="DeikstraPathFinder.html" title="type parameter in DeikstraPathFinder">K</a>,&#8203;<a href="DeikstraPathFinder.html" title="type parameter in DeikstraPathFinder">V</a>&gt;&nbsp;graph)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.fit.apotapova.Graph)">DeikstraPathFinder</a></span>&#8203;(<a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="DeikstraPathFinder.html" title="type parameter in DeikstraPathFinder">E</a>,&#8203;<a href="DeikstraPathFinder.html" title="type parameter in DeikstraPathFinder">K</a>,&#8203;<a href="DeikstraPathFinder.html" title="type parameter in DeikstraPathFinder">V</a>&gt;&nbsp;graph)</code></th>
+<td class="colLast">
+<div class="block">A class that implements a <a href="../PathFinder.html" title="interface in ru.fit.apotapova"><code>PathFinder</code></a> using deikstra search.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -222,7 +225,12 @@ implements <a href="../PathFinder.html" title="interface in ru.fit.apotapova">Pa
 <ul class="blockListLast">
 <li class="blockList">
 <h4>DeikstraPathFinder</h4>
-<pre>public&nbsp;DeikstraPathFinder&#8203;(<a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="DeikstraPathFinder.html" title="type parameter in DeikstraPathFinder">K</a>,&#8203;<a href="DeikstraPathFinder.html" title="type parameter in DeikstraPathFinder">V</a>&gt;&nbsp;graph)</pre>
+<pre>public&nbsp;DeikstraPathFinder&#8203;(<a href="../Graph.html" title="interface in ru.fit.apotapova">Graph</a>&lt;<a href="DeikstraPathFinder.html" title="type parameter in DeikstraPathFinder">E</a>,&#8203;<a href="DeikstraPathFinder.html" title="type parameter in DeikstraPathFinder">K</a>,&#8203;<a href="DeikstraPathFinder.html" title="type parameter in DeikstraPathFinder">V</a>&gt;&nbsp;graph)</pre>
+<div class="block">A class that implements a <a href="../PathFinder.html" title="interface in ru.fit.apotapova"><code>PathFinder</code></a> using deikstra search.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>graph</code> - - graph</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -245,7 +253,7 @@ implements <a href="../PathFinder.html" title="interface in ru.fit.apotapova">Pa
 <div class="block">Implements  <a href="../PathFinder.html#sortVertexes(ru.fit.apotapova.GraphParts.Vertex)"><code>PathFinder.sortVertexes(Vertex)</code></a> method.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../PathFinder.html#sortVertexes(ru.fit.apotapova.GraphParts.Vertex)">sortVertexes</a></code>&nbsp;in interface&nbsp;<code><a href="../PathFinder.html" title="interface in ru.fit.apotapova">PathFinder</a>&lt;<a href="DeikstraPathFinder.html" title="type parameter in DeikstraPathFinder">K</a>,&#8203;<a href="DeikstraPathFinder.html" title="type parameter in DeikstraPathFinder">V</a>&gt;</code></dd>
+<dd><code><a href="../PathFinder.html#sortVertexes(ru.fit.apotapova.GraphParts.Vertex)">sortVertexes</a></code>&nbsp;in interface&nbsp;<code><a href="../PathFinder.html" title="interface in ru.fit.apotapova">PathFinder</a>&lt;<a href="DeikstraPathFinder.html" title="type parameter in DeikstraPathFinder">E</a>,&#8203;<a href="DeikstraPathFinder.html" title="type parameter in DeikstraPathFinder">K</a>,&#8203;<a href="DeikstraPathFinder.html" title="type parameter in DeikstraPathFinder">V</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>vertex</code> - - starting vertex</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
