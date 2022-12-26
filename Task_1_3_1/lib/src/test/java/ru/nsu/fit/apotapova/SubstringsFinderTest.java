@@ -5,10 +5,9 @@ package ru.nsu.fit.apotapova;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -17,59 +16,51 @@ class SubstringsFinderTest {
 
   @Test
   void testBigText() {
-    BufferedReader reader;
-    try {
-      reader = new BufferedReader(new FileReader("src/test/resources/BigText.txt"));
-    } catch (FileNotFoundException e) {
+    try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/BigText.txt"))) {
+      SubstringsFinder finder = new SubstringsFinder(reader);
+      Assertions.assertEquals(10, finder.findSubstring("The Boy Who Lived"));
+    } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    SubstringsFinder finder = new SubstringsFinder(reader);
-    Assertions.assertEquals(10, finder.findSubstring("The Boy Who Lived"));
+
   }
   @Test
   void testBigText2() {
-    BufferedReader reader;
-    try {
-      reader = new BufferedReader(new FileReader("src/test/resources/BigText.txt"));
-    } catch (FileNotFoundException e) {
+    try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/BigText.txt"))) {
+      SubstringsFinder finder = new SubstringsFinder(reader);
+      Assertions.assertNull(finder.findSubstring("This line is not in the text"));
+    } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    SubstringsFinder finder = new SubstringsFinder(reader);
-    Assertions.assertNull(finder.findSubstring("This line is not in the text"));
   }
 
   @Test
   void testBufferOverlap() {
-    BufferedReader reader;
-    try {
-      reader = new BufferedReader(new FileReader("src/test/resources/BufferOverlap.txt"));
-    } catch (FileNotFoundException e) {
+    try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/BufferOverlap.txt"))) {
+      SubstringsFinder finder = new SubstringsFinder(reader);
+      Assertions.assertEquals(26, finder.findSubstring("---->.<----"));
+    } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    SubstringsFinder finder = new SubstringsFinder(reader);
-    Assertions.assertEquals(26, finder.findSubstring("---->.<----"));
+
   }
   @Test
   void testUTF8() {
-    BufferedReader reader;
-    try {
-      reader = new BufferedReader(new InputStreamReader(new FileInputStream("src/test/resources/UTF8.txt"),
-          StandardCharsets.UTF_8));
-    } catch (FileNotFoundException e) {
+    try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("src/test/resources/UTF8.txt"),
+        StandardCharsets.UTF_8))) {
+      SubstringsFinder finder = new SubstringsFinder(reader);
+      Assertions.assertEquals(1, finder.findSubstring("©"));
+    } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    SubstringsFinder finder = new SubstringsFinder(reader);
-    Assertions.assertEquals(1, finder.findSubstring("©"));
   }
   @Test
   void testAAAinAAAAAAAA() {
-    BufferedReader reader;
-    try {
-      reader = new BufferedReader(new FileReader("src/test/resources/AAAinAAAAAAAA.txt"));
-    } catch (FileNotFoundException e) {
+    try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/AAAinAAAAAAAA.txt"))) {
+      SubstringsFinder finder = new SubstringsFinder(reader);
+      Assertions.assertEquals(0, finder.findSubstring("AAA"));
+    } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    SubstringsFinder finder = new SubstringsFinder(reader);
-    Assertions.assertEquals(0, finder.findSubstring("AAA"));
   }
 }
