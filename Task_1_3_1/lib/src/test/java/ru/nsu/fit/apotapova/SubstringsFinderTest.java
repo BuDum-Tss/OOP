@@ -4,8 +4,12 @@
 package ru.nsu.fit.apotapova;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -49,12 +53,13 @@ class SubstringsFinderTest {
   void testUTF8() {
     BufferedReader reader;
     try {
-      reader = new BufferedReader(new FileReader("src/test/resources/UTF8.txt"));
+      reader = new BufferedReader(new InputStreamReader(new FileInputStream("src/test/resources/UTF8.txt"),
+          StandardCharsets.UTF_8));
     } catch (FileNotFoundException e) {
       throw new RuntimeException(e);
     }
     SubstringsFinder finder = new SubstringsFinder(reader);
-    Assertions.assertEquals(11683, finder.findSubstring("©"));
+    Assertions.assertEquals(1, finder.findSubstring("©"));
   }
   @Test
   void testAAAinAAAAAAAA() {
