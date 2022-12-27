@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"ru.nsu.fit.apotapova","c":"SubstringsFinder","l":"findSubstring(String)","url":"findSubstring(java.lang.String)"},{"p":"ru.nsu.fit.apotapova","c":"SubstringsFinder","l":"SubstringsFinder(Reader)","url":"%3Cinit%3E(java.io.Reader)"}]
+memberSearchIndex = [{"p":"ru.nsu.fit.apotapova","c":"SubstringsFinder","l":"findSubstring(Reader, String)","url":"findSubstring(java.io.Reader,java.lang.String)"},{"p":"ru.nsu.fit.apotapova","c":"SubstringsFinder","l":"SubstringsFinder(int)","url":"%3Cinit%3E(int)"}]

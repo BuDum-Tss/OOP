@@ -153,7 +153,7 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.io.Reader)">SubstringsFinder</a></span>&#8203;(java.io.Reader&nbsp;reader)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int)">SubstringsFinder</a></span>&#8203;(int&nbsp;bufferSize)</code></th>
 <td class="colLast">
 <div class="block">Constructor of a class that defines file and stringBuffer.</div>
 </td>
@@ -178,7 +178,8 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>java.lang.Integer</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findSubstring(java.lang.String)">findSubstring</a></span>&#8203;(java.lang.String&nbsp;substring)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findSubstring(java.io.Reader,java.lang.String)">findSubstring</a></span>&#8203;(java.io.Reader&nbsp;reader,
+             java.lang.String&nbsp;substring)</code></th>
 <td class="colLast">
 <div class="block">A method that implements a substring search in a string.</div>
 </td>
@@ -207,17 +208,17 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(java.io.Reader)">
+<a id="&lt;init&gt;(int)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>SubstringsFinder</h4>
-<pre>public&nbsp;SubstringsFinder&#8203;(java.io.Reader&nbsp;reader)</pre>
+<pre>public&nbsp;SubstringsFinder&#8203;(int&nbsp;bufferSize)</pre>
 <div class="block">Constructor of a class that defines file and stringBuffer.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>reader</code> - - reader</dd>
+<dd><code>bufferSize</code> - - size of buffer</dd>
 </dl>
 </li>
 </ul>
@@ -231,13 +232,14 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="findSubstring(java.lang.String)">
+<a id="findSubstring(java.io.Reader,java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>findSubstring</h4>
-<pre class="methodSignature">public&nbsp;java.lang.Integer&nbsp;findSubstring&#8203;(java.lang.String&nbsp;substring)</pre>
+<pre class="methodSignature">public&nbsp;java.lang.Integer&nbsp;findSubstring&#8203;(java.io.Reader&nbsp;reader,
+                                       java.lang.String&nbsp;substring)</pre>
 <div class="block">A method that implements a substring search in a string.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
