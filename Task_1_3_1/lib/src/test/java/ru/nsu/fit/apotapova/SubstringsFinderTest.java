@@ -16,19 +16,22 @@ class SubstringsFinderTest {
 
   @Test
   void testBigText() {
-    try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/BigText.txt"))) {
-      SubstringsFinder finder = new SubstringsFinder(reader);
-      Assertions.assertEquals(10, finder.findSubstring("The Boy Who Lived"));
+    try (BufferedReader reader = new BufferedReader(
+        new FileReader("src/test/resources/BigText.txt"))) {
+      SubstringsFinder finder = new SubstringsFinder(32);
+      Assertions.assertEquals(10, finder.findSubstring(reader, "The Boy Who Lived"));
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
 
   }
+
   @Test
   void testBigText2() {
-    try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/BigText.txt"))) {
-      SubstringsFinder finder = new SubstringsFinder(reader);
-      Assertions.assertNull(finder.findSubstring("This line is not in the text"));
+    try (BufferedReader reader = new BufferedReader(
+        new FileReader("src/test/resources/BigText.txt"))) {
+      SubstringsFinder finder = new SubstringsFinder(32);
+      Assertions.assertNull(finder.findSubstring(reader, "This line is not in the text"));
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
@@ -36,29 +39,34 @@ class SubstringsFinderTest {
 
   @Test
   void testBufferOverlap() {
-    try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/BufferOverlap.txt"))) {
-      SubstringsFinder finder = new SubstringsFinder(reader);
-      Assertions.assertEquals(26, finder.findSubstring("---->.<----"));
+    try (BufferedReader reader = new BufferedReader(
+        new FileReader("src/test/resources/BufferOverlap.txt"))) {
+      SubstringsFinder finder = new SubstringsFinder(32);
+      Assertions.assertEquals(26, finder.findSubstring(reader, "---->.<----"));
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
 
   }
+
   @Test
   void testUTF8() {
-    try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("src/test/resources/UTF8.txt"),
-        StandardCharsets.UTF_8))) {
-      SubstringsFinder finder = new SubstringsFinder(reader);
-      Assertions.assertEquals(1, finder.findSubstring("©"));
+    try (BufferedReader reader = new BufferedReader(
+        new InputStreamReader(new FileInputStream("src/test/resources/UTF8.txt"),
+            StandardCharsets.UTF_8))) {
+      SubstringsFinder finder = new SubstringsFinder(32);
+      Assertions.assertEquals(1, finder.findSubstring(reader, "©"));
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
   }
+
   @Test
-  void testAAAinAAAAAAAA() {
-    try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/AAAinAAAAAAAA.txt"))) {
-      SubstringsFinder finder = new SubstringsFinder(reader);
-      Assertions.assertEquals(0, finder.findSubstring("AAA"));
+  void testSameChars() {
+    try (BufferedReader reader = new BufferedReader(
+        new FileReader("src/test/resources/SameChars.txt"))) {
+      SubstringsFinder finder = new SubstringsFinder(32);
+      Assertions.assertEquals(0, finder.findSubstring(reader, "AAA"));
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

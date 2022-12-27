@@ -1,4 +1,3 @@
-
 package ru.nsu.fit.apotapova;
 
 import java.io.IOException;
@@ -9,19 +8,15 @@ import java.io.Reader;
  */
 public class SubstringsFinder {
 
-  private static final int BUFFER_SIZE = 32;
-  private final char[] stringBuffer;
-  private final Reader reader;
+  private final int bufferSize;
 
   /**
    * Constructor of a class that defines file and stringBuffer.
    *
-   * @param reader - reader
+   * @param bufferSize - size of buffer
    */
-  public SubstringsFinder(Reader reader) {
-    this.reader = reader;
-    stringBuffer = new char[BUFFER_SIZE
-        ];
+  public SubstringsFinder(int bufferSize) {
+    this.bufferSize = bufferSize;
   }
 
   /**
@@ -30,19 +25,19 @@ public class SubstringsFinder {
    * @param substring - substring
    * @return - the beginning of the substring
    */
-  public Integer findSubstring(String substring) {
+  public Integer findSubstring(Reader reader, String substring) {
+    char[] stringBuffer = new char[bufferSize];
     char[] substringBuffer = substring.toCharArray();
     int substringLength = substring.length();
     int stringPoint = 0;
     int substringPoint = 0;
     int substringBeginning = 0;
-    int numberCharsInBuffer = BUFFER_SIZE;
-    while (substringPoint < substringLength && stringPoint % BUFFER_SIZE <= numberCharsInBuffer) {
-      if (stringPoint % BUFFER_SIZE == 0) {
-        numberCharsInBuffer = updateBuffer();
+    int numberCharsInBuffer = bufferSize;
+    while (substringPoint < substringLength && stringPoint % bufferSize <= numberCharsInBuffer) {
+      if (stringPoint % bufferSize == 0) {
+        numberCharsInBuffer = updateBuffer(stringBuffer, reader);
       }
-      if (substringBuffer[substringPoint] == stringBuffer[stringPoint % BUFFER_SIZE
-          ]) {
+      if (substringBuffer[substringPoint] == stringBuffer[stringPoint % bufferSize]) {
         substringPoint++;
       } else {
         substringBeginning = stringPoint + 1;
@@ -50,18 +45,16 @@ public class SubstringsFinder {
       }
       stringPoint++;
     }
-    if (stringPoint % BUFFER_SIZE
-        > numberCharsInBuffer) {
+    if (stringPoint % bufferSize > numberCharsInBuffer) {
       return null;
     }
     return substringBeginning;
   }
 
-  private Integer updateBuffer() {
+  private Integer updateBuffer(char[] stringBuffer, Reader reader) {
     int n;
     try {
-      n = reader.read(stringBuffer, 0, BUFFER_SIZE
-      );
+      n = reader.read(stringBuffer, 0, bufferSize);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
