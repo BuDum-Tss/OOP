@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.fit.apotapova","l":"App"},{"p":"ru.nsu.fit.apotapova","l":"ArgsHandler"},{"p":"ru.nsu.fit.apotapova","l":"Note"},{"p":"ru.nsu.fit.apotapova","l":"NotesManager"}]
