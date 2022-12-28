@@ -17,12 +17,12 @@ public class Note {
    * @param note - note
    */
   public Note(Date date, String note) {
-    this.date=date;
-    this.note=note;
+    this.date = date;
+    this.note = note;
   }
 
   /**
-   * Gets data
+   * Gets data.
    *
    * @return - data
    */
@@ -31,7 +31,7 @@ public class Note {
   }
 
   /**
-   * Gets note
+   * Gets note.
    *
    * @return note
    */
