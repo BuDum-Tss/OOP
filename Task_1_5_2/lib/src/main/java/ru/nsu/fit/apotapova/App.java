@@ -1,5 +1,8 @@
 package ru.nsu.fit.apotapova;
 
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.Options;
+
 /**
  * The main class of notebook.
  */
@@ -17,8 +20,11 @@ public class App {
 
     NotesManager manager = new NotesManager(filename);
     manager.load();
-    ArgsHandler argsHandler = new ArgsHandler(args);
-    argsHandler.doOption(manager);
+
+    Options options = ArgsHandler.getOptions(args.length);
+    CommandLine commandLine = ArgsHandler.parseArgs(args, options);
+    ArgsHandler.doOption(manager, args[0], args.length, commandLine, options);
+
     manager.upload();
   }
 

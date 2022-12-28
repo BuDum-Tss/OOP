@@ -14,29 +14,25 @@ import org.apache.commons.cli.ParseException;
 /**
  * A class that processes command line arguments.
  */
-public class ArgsHandler {
-
-  private final Options options;
-  private final String[] args;
-  private CommandLine commandLine;
+public final class ArgsHandler {
 
   /**
-   * Constructor of the class.
+   * Parses command line arguments.
    *
-   * @param args - command line arguments
+   * @param args    - command line arguments
+   * @param options - options
+   * @return - command line
    */
-  public ArgsHandler(String[] args) {
-    this.args = args;
-    options = setOptions(args.length);
+  public static CommandLine parseArgs(String[] args, Options options) {
     CommandLineParser parser = new DefaultParser();
-    commandLine = null;
+    CommandLine commandLine = null;
     try {
       commandLine = parser.parse(options, args);
     } catch (ParseException e) {
       System.out.println(e.getMessage());
-      printHelp();
+      printHelp(options);
     }
-
+    return commandLine;
   }
 
   private static Date toDate(String string) {
@@ -51,13 +47,19 @@ public class ArgsHandler {
     return date;
   }
 
-  private static Options setOptions(int number) {
+  /**
+   * Gets options.
+   *
+   * @param argsNumber - number of command line arguments
+   * @return - options
+   */
+  public static Options getOptions(int argsNumber) {
     Option add = new Option("add", "add", true, "add new note to notebook");
-    add.setArgs(number - 1);
+    add.setArgs(argsNumber);
     Option rm = new Option("rm", "remove", true, "remove note from notebook");
-    rm.setArgs(number - 1);
+    rm.setArgs(argsNumber);
     Option show = new Option("show", "show", true, "shows notes from first to second date");
-    if (number - 1 == 0) {
+    if (argsNumber == 0) {
       show.setArgs(0);
     } else {
       show.setArgs(2);
@@ -77,8 +79,9 @@ public class ArgsHandler {
    *
    * @param manager - notes manager
    */
-  public void doOption(NotesManager manager) {
-    switch (args[0]) {
+  public static void doOption(NotesManager manager, String command, int argsNumber,
+      CommandLine commandLine, Options options) {
+    switch (command) {
       case "-add": {
         String[] arguments = commandLine.getOptionValues("add");
         Date date = new Date();
@@ -92,7 +95,7 @@ public class ArgsHandler {
       }
       case "-show": {
         String[] arguments = commandLine.getOptionValues("show");
-        if (args.length - 1 == 0) {
+        if (argsNumber == 0) {
           manager.show();
         } else {
           manager.show(toDate(arguments[0]), toDate(arguments[1]));
@@ -101,12 +104,12 @@ public class ArgsHandler {
       }
       default: {
         System.out.println("Option not found");
-        printHelp();
+        printHelp(options);
       }
     }
   }
 
-  private void printHelp() {
+  private static void printHelp(Options options) {
     HelpFormatter formatter = new HelpFormatter();
     formatter.printHelp("notebook", options);
     System.exit(1);
