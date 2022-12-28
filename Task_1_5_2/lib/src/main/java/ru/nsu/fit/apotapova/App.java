@@ -15,17 +15,25 @@ import org.apache.commons.cli.ParseException;
  * The main class of notebook.
  */
 public class App {
+  private static final String filename = "F:\\GitHubProjects\\OOP\\Task_1_5_2\\lib\\src\\main\\resources\\data.json";
 
   /**
-   * Main method. It sets options, loads data from data file to NotesManager,
-   * adds/removes/shows note(s) and uploads JSON to data file
+   * Gets file name
+   *
+   * @return file name
+   */
+  public String getFilename() {
+    return filename;
+  }
+  /**
+   * Main method. It sets options, loads data from data file to NotesManager, adds/removes/shows
+   * note(s) and uploads JSON to data file
    *
    * @param args - arguments of command line
    */
   public static void main(String[] args) {
     Options options = setOptions(args.length);
-    NotesManager manager = new NotesManager(
-        "F:\\GitHubProjects\\OOP\\Task_1_5_2\\lib\\src\\main\\resources\\data.json");
+    NotesManager manager = new NotesManager(filename);
     manager.load();
     CommandLineParser parser = new DefaultParser();
     CommandLine commandLine = null;

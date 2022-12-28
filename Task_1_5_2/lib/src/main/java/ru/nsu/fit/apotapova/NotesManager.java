@@ -29,7 +29,7 @@ public class NotesManager {
   }
 
   /**
-   * Uploads data from file.
+   * Uploads data to file.
    */
   public void upload() {
     String serialized;
@@ -45,7 +45,7 @@ public class NotesManager {
   }
 
   /**
-   * Loads data to file.
+   * Loads data from file.
    */
   public void load() {
     BufferedReader reader;
@@ -98,9 +98,9 @@ public class NotesManager {
    */
   public void show(Date from, Date to) {
     for (Note n : notes.values()) {
-      //if (n.date().after(from) && n.date().before(to)){
-      if (n.date().getTime() > from.getTime() && n.date().getTime() < to.getTime()) {
-        System.out.print(" " + n.note());
+      if (n.getDate().after(from) && n.getDate().before(to)){
+      //if (n.date().getTime() > from.getTime() && n.date().getTime() < to.getTime()) {
+        System.out.print(" \"" + n.getNote()+"\"");
       }
     }
   }
@@ -110,7 +110,7 @@ public class NotesManager {
    */
   public void show() {
     for (Note s : notes.values()) {
-      System.out.print(" " + s.note());
+      System.out.print(" \"" + s.getNote()+"\"");
     }
   }
 }
