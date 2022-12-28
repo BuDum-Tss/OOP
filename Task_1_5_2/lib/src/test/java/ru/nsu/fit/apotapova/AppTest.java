@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 
 class AppTest {
-/*
+
   private Map<String, Note> loadData(String filename) {
     Map<String, Note> notes;
     BufferedReader reader;
@@ -28,7 +28,7 @@ class AppTest {
     }
     return notes;
   }
-
+/*
   @Test
   void appAdd() {
     App app = new App();

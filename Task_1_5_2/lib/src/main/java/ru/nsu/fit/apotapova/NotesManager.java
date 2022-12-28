@@ -99,7 +99,6 @@ public class NotesManager {
   public void show(Date from, Date to) {
     for (Note n : notes.values()) {
       if (n.getDate().after(from) && n.getDate().before(to)) {
-        //if (n.date().getTime() > from.getTime() && n.date().getTime() < to.getTime()) {
         System.out.print(" \"" + n.getNote() + "\"");
       }
     }
