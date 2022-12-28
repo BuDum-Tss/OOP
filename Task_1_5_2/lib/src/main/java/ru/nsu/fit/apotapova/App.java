@@ -1,5 +1,11 @@
 package ru.nsu.fit.apotapova;
 
+import static com.google.common.io.Resources.getResource;
+
+import java.io.File;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.apache.commons.cli.CommandLine;
@@ -16,8 +22,7 @@ import org.apache.commons.cli.ParseException;
  */
 public class App {
 
-  private static final String filename =
-      "F:\\GitHubProjects\\OOP\\Task_1_5_2\\lib\\src\\main\\resources\\data.json";
+  private static String filename ="lib/src/main/resources/data.json";
 
   /**
    * Main method. It sets options, loads data from data file to NotesManager, adds/removes/shows
