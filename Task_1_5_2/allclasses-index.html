@@ -27,8 +27,8 @@
     catch(err) {
     }
 //-->
-var data = {"i0":2,"i1":2,"i2":2,"i3":2,"i4":2,"i5":2,"i6":2,"i7":2,"i8":1,"i9":4};
-var tabs = {65535:["t0","All Classes"],1:["t1","Interface Summary"],2:["t2","Class Summary"],4:["t3","Enum Summary"]};
+var data = {"i0":2,"i1":2,"i2":2,"i3":2,"i4":2,"i5":1,"i6":2,"i7":2};
+var tabs = {65535:["t0","All Classes"],1:["t1","Interface Summary"],2:["t2","Class Summary"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -105,58 +105,59 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockList">
 <li class="blockList">
 <table class="typeSummary">
-<caption><span id="t0" class="activeTableTab"><span>All Classes</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Interface Summary</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Class Summary</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Enum Summary</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Classes</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Interface Summary</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Class Summary</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Class</th>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><a href="ru/nsu/fit/apotapova/OptionScripts/Add.html" title="class in ru.nsu.fit.apotapova.OptionScripts">Add</a></td>
+<th class="colLast" scope="row">
+<div class="block">Implements <a href="ru/nsu/fit/apotapova/OptionScript.html" title="interface in ru.nsu.fit.apotapova"><code>OptionScript</code></a>.</div>
+</th>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><a href="ru/nsu/fit/apotapova/App.html" title="class in ru.nsu.fit.apotapova">App</a></td>
 <th class="colLast" scope="row">
 <div class="block">The main class of notebook.</div>
 </th>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><a href="ru/nsu/fit/apotapova/ArgsHandler.html" title="class in ru.nsu.fit.apotapova">ArgsHandler</a></td>
 <th class="colLast" scope="row">
 <div class="block">A class that processes command line arguments.</div>
 </th>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><a href="ru/nsu/fit/apotapova/Note.html" title="class in ru.nsu.fit.apotapova">Note</a></td>
 <th class="colLast" scope="row">
 <div class="block">A record, that contains date of creation note and note.</div>
 </th>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><a href="ru/nsu/fit/apotapova/NotesManager.html" title="class in ru.nsu.fit.apotapova">NotesManager</a></td>
 <th class="colLast" scope="row">
 <div class="block">A class that manages notes.</div>
 </th>
 </tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><a href="ru/nsu/fit/apotapova/OptionScripts/OptionFactory.html" title="class in ru.nsu.fit.apotapova.OptionScripts">OptionFactory</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
-</tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><a href="ru/nsu/fit/apotapova/OptionScripts/OptionFactory.Add.html" title="class in ru.nsu.fit.apotapova.OptionScripts">OptionFactory.Add</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<td class="colFirst"><a href="ru/nsu/fit/apotapova/OptionScript.html" title="interface in ru.nsu.fit.apotapova">OptionScript</a></td>
+<th class="colLast" scope="row">
+<div class="block">Interface for creating classes that implement methods for executing a command, its description,
+ and properties.</div>
+</th>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><a href="ru/nsu/fit/apotapova/OptionScripts/OptionFactory.Rm.html" title="class in ru.nsu.fit.apotapova.OptionScripts">OptionFactory.Rm</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<td class="colFirst"><a href="ru/nsu/fit/apotapova/OptionScripts/Rm.html" title="class in ru.nsu.fit.apotapova.OptionScripts">Rm</a></td>
+<th class="colLast" scope="row">
+<div class="block">Implements <a href="ru/nsu/fit/apotapova/OptionScript.html" title="interface in ru.nsu.fit.apotapova"><code>OptionScript</code></a>.</div>
+</th>
 </tr>
 <tr id="i7" class="rowColor">
-<td class="colFirst"><a href="ru/nsu/fit/apotapova/OptionScripts/OptionFactory.Show.html" title="class in ru.nsu.fit.apotapova.OptionScripts">OptionFactory.Show</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
-</tr>
-<tr id="i8" class="altColor">
-<td class="colFirst"><a href="ru/nsu/fit/apotapova/OptionScripts/OptionScript.html" title="interface in ru.nsu.fit.apotapova.OptionScripts">OptionScript</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
-</tr>
-<tr id="i9" class="rowColor">
-<td class="colFirst"><a href="ru/nsu/fit/apotapova/OptionScripts/OptionType.html" title="enum in ru.nsu.fit.apotapova.OptionScripts">OptionType</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<td class="colFirst"><a href="ru/nsu/fit/apotapova/OptionScripts/Show.html" title="class in ru.nsu.fit.apotapova.OptionScripts">Show</a></td>
+<th class="colLast" scope="row">
+<div class="block">Implements <a href="ru/nsu/fit/apotapova/OptionScript.html" title="interface in ru.nsu.fit.apotapova"><code>OptionScript</code></a>.</div>
+</th>
 </tr>
 </table>
 </li>
