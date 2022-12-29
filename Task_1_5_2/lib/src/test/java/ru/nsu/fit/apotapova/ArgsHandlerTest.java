@@ -4,7 +4,6 @@ import static ru.nsu.fit.apotapova.ArgsHandler.getOptions;
 import static ru.nsu.fit.apotapova.ArgsHandler.parseArgs;
 import static ru.nsu.fit.apotapova.ArgsHandler.toDate;
 
-import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
@@ -36,6 +35,9 @@ class ArgsHandlerTest {
     String strDate = "1.01.1970 00:00";
     Date date = toDate(strDate);
     Assertions.assertEquals(-TimeZone.getDefault().getRawOffset(),date.getTime());
+    strDate = "qweqwe";
+    date = toDate(strDate);
+    Assertions.assertNull(date);
   }
 
   @Test

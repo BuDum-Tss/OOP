@@ -48,9 +48,8 @@ public class ArgsHandler {
     try {
       date = sdf.parse(string);
     } catch (java.text.ParseException e) {
-      throw new RuntimeException(e);
+      return null;
     }
-    System.out.println(date);
     return date;
   }
 
