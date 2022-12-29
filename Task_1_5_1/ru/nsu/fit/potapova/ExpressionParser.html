@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10};
+var data = {"i0":10,"i1":10,"i2":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -157,6 +157,10 @@ extends java.lang.Object</pre>
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">ExpressionParser</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr class="rowColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.util.Map)">ExpressionParser</a></span>&#8203;(java.util.Map&lt;java.lang.String,&#8203;<a href="Operation.html" title="interface in ru.nsu.fit.potapova">Operation</a>&gt;&nbsp;operations)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
 </table>
 </li>
 </ul>
@@ -176,14 +180,23 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getExpression()">getExpression</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code>java.lang.Double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#calculate(java.lang.String)">calculate</a></span>&#8203;(java.lang.String&nbsp;stringExpression)</code></th>
+<td class="colLast">
+<div class="block">Calculates the value of the expression.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>java.lang.Double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#parse(java.lang.String)">parse</a></span>&#8203;(java.lang.String&nbsp;stringExpression)</code></th>
+<td class="colFirst"><code><a href="Operation.html" title="interface in ru.nsu.fit.potapova">Operation</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOperation(java.lang.String)">getOperation</a></span>&#8203;(java.lang.String&nbsp;strExpression)</code></th>
 <td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOperationName()">getOperationName</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Gets name of operation.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -209,6 +222,15 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
+<a id="&lt;init&gt;(java.util.Map)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ExpressionParser</h4>
+<pre>public&nbsp;ExpressionParser&#8203;(java.util.Map&lt;java.lang.String,&#8203;<a href="Operation.html" title="interface in ru.nsu.fit.potapova">Operation</a>&gt;&nbsp;operations)</pre>
+</li>
+</ul>
 <a id="&lt;init&gt;()">
 <!--   -->
 </a>
@@ -228,22 +250,43 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="parse(java.lang.String)">
+<a id="calculate(java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>parse</h4>
-<pre class="methodSignature">public&nbsp;java.lang.Double&nbsp;parse&#8203;(java.lang.String&nbsp;stringExpression)</pre>
+<h4>calculate</h4>
+<pre class="methodSignature">public&nbsp;java.lang.Double&nbsp;calculate&#8203;(java.lang.String&nbsp;stringExpression)</pre>
+<div class="block">Calculates the value of the expression.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>stringExpression</code> - - string expression</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- value of the expression</dd>
+</dl>
 </li>
 </ul>
-<a id="getExpression()">
+<a id="getOperationName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getOperationName</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getOperationName()</pre>
+<div class="block">Gets name of operation.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>- name of operation</dd>
+</dl>
+</li>
+</ul>
+<a id="getOperation(java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>getExpression</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getExpression()</pre>
+<h4>getOperation</h4>
+<pre class="methodSignature">public&nbsp;<a href="Operation.html" title="interface in ru.nsu.fit.potapova">Operation</a>&nbsp;getOperation&#8203;(java.lang.String&nbsp;strExpression)</pre>
 </li>
 </ul>
 </li>
