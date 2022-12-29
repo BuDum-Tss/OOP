@@ -11,6 +11,6 @@ public class Power implements Operation {
 
   @Override
   public Double calculate(Double[] arguments) {
-    return Math.pow(arguments[0],arguments[1]);
+    return Math.pow(arguments[0], arguments[1]);
   }
 }

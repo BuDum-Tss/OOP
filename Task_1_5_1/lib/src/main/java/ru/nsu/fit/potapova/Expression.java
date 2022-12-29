@@ -5,10 +5,10 @@ import static java.lang.Double.parseDouble;
 public class Expression {
 
   private final Operation operation;
-  private Expression[] arguments;
-  private Double[] calculatedArguments;
   private final Double value;
   private final ExpressionParser parser;
+  private Expression[] arguments;
+  private Double[] calculatedArguments;
 
   public Expression(ExpressionParser parser) {
     this.parser = parser;

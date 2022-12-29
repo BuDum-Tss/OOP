@@ -11,6 +11,6 @@ public class Logarithm implements Operation {
 
   @Override
   public Double calculate(Double[] arguments) {
-    return Math.log(arguments[1])/Math.log(arguments[0]);
+    return Math.log(arguments[1]) / Math.log(arguments[0]);
   }
 }

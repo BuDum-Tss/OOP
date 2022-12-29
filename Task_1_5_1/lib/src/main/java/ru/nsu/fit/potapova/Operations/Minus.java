@@ -3,6 +3,7 @@ package ru.nsu.fit.potapova.Operations;
 import ru.nsu.fit.potapova.Operation;
 
 public class Minus implements Operation {
+
   @Override
   public int numberOfArguments() {
     return 2;
@@ -10,7 +11,7 @@ public class Minus implements Operation {
 
   @Override
   public Double calculate(Double[] arguments) {
-    return arguments[0]-arguments[1];
+    return arguments[0] - arguments[1];
   }
 }
 
