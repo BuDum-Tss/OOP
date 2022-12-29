@@ -10,7 +10,14 @@ class AppTest {
   @Test
   void test() {
     ExpressionParser parser = new ExpressionParser();
-    Assertions.assertEquals(1.0,parser.parse("- + 2.0 2.0 3.0"));
-    Assertions.assertThrows(RuntimeException.class , ()-> parser.parse("/ 1 0"));
+    Assertions.assertEquals(1.0,parser.calculate("- + 2.0 2.0 3.0"));
+    Assertions.assertThrows(RuntimeException.class , ()-> parser.calculate("/ 1.0 0.0"));
+    Assertions.assertEquals(1.0,parser.calculate("cos 0.0"));
+    Assertions.assertEquals(0.0,parser.calculate("sin 0.0"));
+    Assertions.assertEquals(5.0,parser.calculate("log 2.0 32.0"));
+    Assertions.assertThrows(RuntimeException.class , ()->parser.calculate("log 1.0 32.0"));
+    Assertions.assertEquals(64.0,parser.calculate("* 2.0 32.0"));
+    Assertions.assertEquals(16.0,parser.calculate("/ 32.0 2.0"));
+    Assertions.assertEquals(1024.0,parser.calculate("pow 2.0 10.0"));
   }
 }

@@ -2,6 +2,9 @@ package ru.nsu.fit.potapova.Operations;
 
 import ru.nsu.fit.potapova.Operation;
 
+/**
+ * Implements {@link Operation}. Divides one number by another.
+ */
 public class Divide implements Operation {
 
   @Override

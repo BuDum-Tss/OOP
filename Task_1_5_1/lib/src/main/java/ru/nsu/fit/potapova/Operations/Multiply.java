@@ -2,6 +2,9 @@ package ru.nsu.fit.potapova.Operations;
 
 import ru.nsu.fit.potapova.Operation;
 
+/**
+ * Implements {@link Operation}. Multiplies numbers.
+ */
 public class Multiply implements Operation {
 
   @Override

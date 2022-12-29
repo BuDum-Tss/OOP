@@ -2,6 +2,9 @@ package ru.nsu.fit.potapova;
 
 import static java.lang.Double.parseDouble;
 
+/**
+ * The most important class of calculators. Defines an expression that is subsequently calculated.
+ */
 public class Expression {
 
   private final Operation operation;
@@ -10,10 +13,16 @@ public class Expression {
   private Expression[] arguments;
   private Double[] calculatedArguments;
 
+  /**
+   * Constructor of the class. First defines the operation, then initializes the subexpressions,
+   * counts the value of the subexpressions.
+   *
+   * @param parser - parser of expression string.
+   */
   public Expression(ExpressionParser parser) {
     this.parser = parser;
-    String expression = parser.getExpression();
-    operation = OperationsController.define(expression);
+    String expression = parser.getOperationName();
+    operation = parser.getOperation(expression);
     if (operation == null) {
       value = parseDouble(expression);
       return;

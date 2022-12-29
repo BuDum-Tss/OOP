@@ -2,6 +2,9 @@ package ru.nsu.fit.potapova.Operations;
 
 import ru.nsu.fit.potapova.Operation;
 
+/**
+ * Implements {@link Operation}. Calculates difference of numbers.
+ */
 public class Minus implements Operation {
 
   @Override

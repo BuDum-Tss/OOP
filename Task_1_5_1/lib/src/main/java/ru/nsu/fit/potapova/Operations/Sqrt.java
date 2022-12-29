@@ -2,6 +2,9 @@ package ru.nsu.fit.potapova.Operations;
 
 import ru.nsu.fit.potapova.Operation;
 
+/**
+ * Implements {@link Operation}. Finds the square root of a number.
+ */
 public class Sqrt implements Operation {
 
   @Override
