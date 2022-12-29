@@ -17,7 +17,6 @@ import ru.nsu.fit.potapova.Operations.Sqrt;
  */
 public class ExpressionParser {
 
-  private String stringExpression;
   Map<String, Operation> ops = Map.of(
       "+", new Plus(),
       "-", new Minus(),
@@ -29,7 +28,9 @@ public class ExpressionParser {
       "pow", new Power(),
       "sqrt", new Sqrt()
   );
+  private String stringExpression;
   private HashMap<String, Operation> operations = new HashMap<>(ops);
+
   public ExpressionParser(HashMap<String, Operation> operations) {
     this.operations = operations;
   }
@@ -69,8 +70,5 @@ public class ExpressionParser {
 
   public void addOperation(String name, Operation operation) {
     operations.put(name, operation);
-    int k=0;
-    int b=1;
-    int a=k+b;
   }
 }

@@ -35,7 +35,7 @@ public class App {
         "pow", new Power(),
         "sqrt", new Sqrt()
     );
-    HashMap<String,Operation> ops = new HashMap<>(operations);
+    HashMap<String, Operation> ops = new HashMap<>(operations);
     String expression = System.console().readLine();
     ExpressionParser parser = new ExpressionParser(ops);
     Double value = parser.calculate(expression);
