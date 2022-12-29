@@ -1,5 +1,6 @@
 package ru.nsu.fit.potapova;
 
+import java.util.HashMap;
 import java.util.Map;
 import ru.nsu.fit.potapova.Operations.Cos;
 import ru.nsu.fit.potapova.Operations.Divide;
@@ -17,7 +18,7 @@ import ru.nsu.fit.potapova.Operations.Sqrt;
 public class ExpressionParser {
 
   private String stringExpression;
-  private Map<String, Operation> operations = Map.of(
+  Map<String, Operation> ops = Map.of(
       "+", new Plus(),
       "-", new Minus(),
       "*", new Multiply(),
@@ -28,8 +29,8 @@ public class ExpressionParser {
       "pow", new Power(),
       "sqrt", new Sqrt()
   );
-
-  public ExpressionParser(Map<String, Operation> operations) {
+  private HashMap<String, Operation> operations = new HashMap<>(ops);
+  public ExpressionParser(HashMap<String, Operation> operations) {
     this.operations = operations;
   }
 
@@ -64,5 +65,12 @@ public class ExpressionParser {
 
   public Operation getOperation(String strExpression) {
     return operations.get(strExpression);
+  }
+
+  public void addOperation(String name, Operation operation) {
+    operations.put(name, operation);
+    int k=0;
+    int b=1;
+    int a=k+b;
   }
 }

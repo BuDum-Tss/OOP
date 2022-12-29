@@ -1,5 +1,7 @@
 package ru.nsu.fit.potapova;
 
+
+import java.util.HashMap;
 import java.util.Map;
 import ru.nsu.fit.potapova.Operations.Cos;
 import ru.nsu.fit.potapova.Operations.Divide;
@@ -33,8 +35,9 @@ public class App {
         "pow", new Power(),
         "sqrt", new Sqrt()
     );
+    HashMap<String,Operation> ops = new HashMap<>(operations);
     String expression = System.console().readLine();
-    ExpressionParser parser = new ExpressionParser(operations);
+    ExpressionParser parser = new ExpressionParser(ops);
     Double value = parser.calculate(expression);
     System.out.println(value);
   }

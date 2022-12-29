@@ -14,6 +14,7 @@ public class Sqrt implements Operation {
 
   @Override
   public Double calculate(Double[] arguments) {
-    return Math.sqrt(arguments[0]);
+    if (arguments[0]>=0) return Math.sqrt(arguments[0]);
+    throw new RuntimeException("Trying to take the root of a negative number");
   }
 }
