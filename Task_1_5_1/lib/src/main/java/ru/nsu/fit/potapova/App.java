@@ -3,15 +3,15 @@ package ru.nsu.fit.potapova;
 
 import java.util.HashMap;
 import java.util.Map;
-import ru.nsu.fit.potapova.Operations.Cos;
-import ru.nsu.fit.potapova.Operations.Divide;
-import ru.nsu.fit.potapova.Operations.Logarithm;
-import ru.nsu.fit.potapova.Operations.Minus;
-import ru.nsu.fit.potapova.Operations.Multiply;
-import ru.nsu.fit.potapova.Operations.Plus;
-import ru.nsu.fit.potapova.Operations.Power;
-import ru.nsu.fit.potapova.Operations.Sin;
-import ru.nsu.fit.potapova.Operations.Sqrt;
+import ru.nsu.fit.potapova.operations.Cos;
+import ru.nsu.fit.potapova.operations.Divide;
+import ru.nsu.fit.potapova.operations.Logarithm;
+import ru.nsu.fit.potapova.operations.Minus;
+import ru.nsu.fit.potapova.operations.Multiply;
+import ru.nsu.fit.potapova.operations.Plus;
+import ru.nsu.fit.potapova.operations.Power;
+import ru.nsu.fit.potapova.operations.Sin;
+import ru.nsu.fit.potapova.operations.Sqrt;
 
 /**
  * The main class of the calculator.

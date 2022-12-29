@@ -1,11 +1,11 @@
-package ru.nsu.fit.potapova.Operations;
+package ru.nsu.fit.potapova.operations;
 
 import ru.nsu.fit.potapova.Operation;
 
 /**
- * Implements {@link Operation}. Calculates cosine of number.
+ * Implements {@link Operation}. Finds the sine of a number.
  */
-public class Cos implements Operation {
+public class Sin implements Operation {
 
   @Override
   public int numberOfArguments() {
@@ -14,6 +14,6 @@ public class Cos implements Operation {
 
   @Override
   public Double calculate(Double[] arguments) {
-    return Math.cos(arguments[0]);
+    return Math.sin(arguments[0]);
   }
 }

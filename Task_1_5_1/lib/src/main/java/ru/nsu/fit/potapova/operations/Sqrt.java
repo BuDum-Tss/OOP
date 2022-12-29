@@ -1,4 +1,4 @@
-package ru.nsu.fit.potapova.Operations;
+package ru.nsu.fit.potapova.operations;
 
 import ru.nsu.fit.potapova.Operation;
 

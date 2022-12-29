@@ -1,11 +1,11 @@
-package ru.nsu.fit.potapova.Operations;
+package ru.nsu.fit.potapova.operations;
 
 import ru.nsu.fit.potapova.Operation;
 
 /**
- * Implements {@link Operation}. Adds up the numbers.
+ * Implements {@link Operation}. Multiplies numbers.
  */
-public class Plus implements Operation {
+public class Multiply implements Operation {
 
   @Override
   public int numberOfArguments() {
@@ -14,6 +14,6 @@ public class Plus implements Operation {
 
   @Override
   public Double calculate(Double[] arguments) {
-    return arguments[0] + arguments[1];
+    return arguments[0] * arguments[1];
   }
 }

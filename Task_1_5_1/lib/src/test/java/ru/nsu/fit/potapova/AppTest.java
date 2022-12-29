@@ -4,18 +4,11 @@
 package ru.nsu.fit.potapova;
 
 import java.util.HashMap;
-import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.nsu.fit.potapova.Operations.Cos;
-import ru.nsu.fit.potapova.Operations.Divide;
-import ru.nsu.fit.potapova.Operations.Logarithm;
-import ru.nsu.fit.potapova.Operations.Minus;
-import ru.nsu.fit.potapova.Operations.Multiply;
-import ru.nsu.fit.potapova.Operations.Plus;
-import ru.nsu.fit.potapova.Operations.Power;
-import ru.nsu.fit.potapova.Operations.Sin;
-import ru.nsu.fit.potapova.Operations.Sqrt;
+import ru.nsu.fit.potapova.operations.Minus;
+import ru.nsu.fit.potapova.operations.Multiply;
+import ru.nsu.fit.potapova.operations.Plus;
 
 class AppTest {
 
