@@ -65,8 +65,24 @@ class OptionScriptTest {
   @Test
   void runTest() {
     OptionScript option3 = new Show();
-    String[] args = new String[]{"123","321","321"};
-    NotesManager manager = new NotesManager("");
-    Assertions.assertThrows(Exception.class,()->option3.run(manager,args));
+    String[] args1 = new String[]{"123","321","321"};
+    NotesManager manager1 = new NotesManager("");
+    Assertions.assertThrows(Exception.class,()->option3.run(manager1,args1));
+    String[] args2 = new String[]{};
+    NotesManager manager2 = new NotesManager("");
+    Assertions.assertDoesNotThrow(()->option3.run(manager2,args2));
+    String[] args3 = new String[]{"10.10.1010 10:10", "11.11.1111 11:11"};
+    NotesManager manager3 = new NotesManager("");
+    Assertions.assertDoesNotThrow(()->option3.run(manager3,args3));
+
+    OptionScript option4 = new Rm();
+    String[] args4 = new String[]{"123","321","321"};
+    NotesManager manager4 = new NotesManager("");
+    Assertions.assertDoesNotThrow(()->option4.run(manager4,args4));
+
+    OptionScript option5 = new Add();
+    String[] args5 = new String[]{"123","321","321"};
+    NotesManager manager5 = new NotesManager("");
+    Assertions.assertDoesNotThrow(()->option5.run(manager5,args5));
   }
 }

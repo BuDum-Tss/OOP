@@ -43,7 +43,8 @@ public final class Show implements OptionScript {
       manager.show();
     } else if (arguments.length == 2) {
       manager.show(ArgsHandler.toDate(arguments[0]), ArgsHandler.toDate(arguments[1]));
+    } else {
+      throw new Exception("Number of arguments is not 0 or 2");
     }
-    throw new Exception("Number of arguments is not 0 or 2");
   }
 }
