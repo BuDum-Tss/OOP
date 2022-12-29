@@ -4,8 +4,10 @@ import static ru.nsu.fit.apotapova.ArgsHandler.getOptions;
 import static ru.nsu.fit.apotapova.ArgsHandler.parseArgs;
 import static ru.nsu.fit.apotapova.ArgsHandler.toDate;
 
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Options;
 import org.junit.jupiter.api.Assertions;
@@ -31,9 +33,9 @@ class ArgsHandlerTest {
 
   @Test
   void toDateTest() {
-    String strDate = "1.01.1970 07:00";
+    String strDate = "1.01.1970 00:00";
     Date date = toDate(strDate);
-    Assertions.assertEquals(0,date.getTime());
+    Assertions.assertEquals(-TimeZone.getDefault().getRawOffset(),date.getTime());
   }
 
   @Test
