@@ -3,7 +3,6 @@ package ru.nsu.fit.apotapova;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import javax.swing.PopupFactory;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -12,7 +11,6 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionGroup;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
-import ru.nsu.fit.apotapova.OptionScripts.OptionScript;
 
 /**
  * A class that processes command line arguments.
@@ -38,6 +36,12 @@ public class ArgsHandler {
     return commandLine;
   }
 
+  /**
+   * Converts a string to date.
+   *
+   * @param string - string with date
+   * @return - date
+   */
   public static Date toDate(String string) {
     SimpleDateFormat sdf = new SimpleDateFormat("dd.M.yyyy hh:mm");
     Date date;
@@ -74,10 +78,16 @@ public class ArgsHandler {
    *
    * @param manager - notes manager
    */
-  public static void doOption(NotesManager manager, CommandLine commandLine, List<OptionScript> optionList) {
+  public static void doOption(NotesManager manager, CommandLine commandLine,
+      List<OptionScript> optionList, Options options) {
     optionList.forEach(optionScript -> {
       if (commandLine.hasOption(optionScript.option())) {
-        optionScript.run(manager, commandLine.getOptionValues(optionScript.option()));
+        try {
+          optionScript.run(manager, commandLine.getOptionValues(optionScript.option()));
+        } catch (Exception e) {
+          System.out.println(e.getMessage());
+          printHelp(options);
+        }
       }
     });
   }

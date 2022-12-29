@@ -15,9 +15,14 @@ import java.util.Map;
 /**
  * A class that manages notes.
  */
-public class NotesManager {
+public class NotesManager{
 
   private final String filename;
+
+  public Map<String, Note> getNotes() {
+    return notes;
+  }
+
   private Map<String, Note> notes;
 
   /**
@@ -52,8 +57,7 @@ public class NotesManager {
     try {
       reader = new BufferedReader(new FileReader(filename));
       ObjectMapper mapper = new ObjectMapper();
-      notes = mapper.readValue(reader, new TypeReference<>() {
-      });
+      notes = mapper.readValue(reader, HashMap.class);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
@@ -72,6 +76,7 @@ public class NotesManager {
   }
 
   private void add(Date date, String note) {
+
     notes.put(note, new Note(date, note));
   }
 
