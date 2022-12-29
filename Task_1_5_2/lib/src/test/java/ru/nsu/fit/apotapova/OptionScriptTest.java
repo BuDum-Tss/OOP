@@ -47,7 +47,9 @@ class OptionScriptTest {
     OptionScript option2 = new Rm();
     Assertions.assertEquals(3,option2.numberArgs(3));
     OptionScript option3 = new Show();
+    Assertions.assertEquals(0,option3.numberArgs(0));
     Assertions.assertEquals(2,option3.numberArgs(2));
+    Assertions.assertEquals(2,option3.numberArgs(1));
   }
 
   @Test
@@ -62,5 +64,9 @@ class OptionScriptTest {
 
   @Test
   void runTest() {
+    OptionScript option3 = new Show();
+    String[] args = new String[]{"123","321","321"};
+    NotesManager manager = new NotesManager("");
+    Assertions.assertThrows(Exception.class,()->option3.run(manager,args));
   }
 }
