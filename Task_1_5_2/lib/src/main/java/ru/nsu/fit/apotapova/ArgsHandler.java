@@ -94,6 +94,6 @@ public class ArgsHandler {
   private static void printHelp(Options options) {
     HelpFormatter formatter = new HelpFormatter();
     formatter.printHelp("notebook", options);
-    System.exit(1);
+    System.exit(0);
   }
 }
