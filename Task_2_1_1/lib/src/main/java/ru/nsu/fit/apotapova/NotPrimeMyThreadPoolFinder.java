@@ -68,7 +68,7 @@ public class NotPrimeMyThreadPoolFinder extends NotPrimeFinder {
       output.clear();
       queue.addAll(tasks);
       threads.forEach(Thread::interrupt);
-      return output.stream().toList();
+      return new ArrayList<>(output);
     }
   }
 
