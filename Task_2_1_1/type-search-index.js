@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.fit.apotapova","l":"NotPrimeFinder"},{"p":"ru.nsu.fit.apotapova","l":"NotPrimeMyThreadPoolFinder"},{"p":"ru.nsu.fit.apotapova","l":"NotPrimeStandardThreadPoolFinder"},{"p":"ru.nsu.fit.apotapova","l":"NotPrimeStreamFinder"}]
