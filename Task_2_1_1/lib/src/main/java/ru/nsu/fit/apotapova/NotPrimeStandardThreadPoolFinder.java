@@ -1,5 +1,6 @@
 package ru.nsu.fit.apotapova;
 
+
 import java.util.*;
 import java.util.concurrent.*;
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -9,11 +10,10 @@ import org.checkerframework.checker.nullness.qual.NonNull;
  */
 public class NotPrimeStandardThreadPoolFinder extends NotPrimeFinder {
 
-  private final ExecutorService pool;
   private Deque<Integer> deque;
-
+  private final int numberThreads;
   public NotPrimeStandardThreadPoolFinder(int numberThreads) {
-    this.pool = Executors.newFixedThreadPool(numberThreads);
+    this.numberThreads=numberThreads;
   }
 
   private synchronized Integer getNumber() {
@@ -26,7 +26,7 @@ public class NotPrimeStandardThreadPoolFinder extends NotPrimeFinder {
   @Override
   public boolean hasNotPrime(@NonNull Integer[] array)
       throws InterruptedException, ExecutionException {
-    deque = new ArrayDeque<>(Arrays.stream(array).toList());
+    deque = new ArrayDeque<>(List.of(array));
 
     Callable<Boolean> task = () -> {
       Integer number;
@@ -41,6 +41,7 @@ public class NotPrimeStandardThreadPoolFinder extends NotPrimeFinder {
     for (int i = 0; i < array.length; ++i) {
       tasks.add(task);
     }
+    ExecutorService pool = Executors.newFixedThreadPool(numberThreads);
     List<Future<Boolean>> futureList = pool.invokeAll(tasks);
     for (Future<Boolean> future : futureList) {
       if (future.get()) {
