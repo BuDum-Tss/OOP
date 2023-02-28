@@ -10,10 +10,11 @@ import org.checkerframework.checker.nullness.qual.NonNull;
  */
 public class NotPrimeStandardThreadPoolFinder extends NotPrimeFinder {
 
-  private Deque<Integer> deque;
   private final int numberThreads;
+  private Deque<Integer> deque;
+
   public NotPrimeStandardThreadPoolFinder(int numberThreads) {
-    this.numberThreads=numberThreads;
+    this.numberThreads = numberThreads;
   }
 
   private synchronized Integer getNumber() {
@@ -24,9 +25,9 @@ public class NotPrimeStandardThreadPoolFinder extends NotPrimeFinder {
   }
 
   @Override
-  public boolean hasNotPrime(@NonNull Integer[] array)
+  public boolean hasNotPrime(@NonNull List<Integer> array)
       throws InterruptedException, ExecutionException {
-    deque = new ArrayDeque<>(List.of(array));
+    deque = new ArrayDeque<>(array);
 
     Callable<Boolean> task = () -> {
       Integer number;
@@ -38,7 +39,7 @@ public class NotPrimeStandardThreadPoolFinder extends NotPrimeFinder {
       return false;
     };
     List<Callable<Boolean>> tasks = new ArrayList<>();
-    for (int i = 0; i < array.length; ++i) {
+    for (int i = 0; i < array.size(); ++i) {
       tasks.add(task);
     }
     ExecutorService pool = Executors.newFixedThreadPool(numberThreads);

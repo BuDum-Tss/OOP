@@ -1,5 +1,6 @@
 package ru.nsu.fit.apotapova;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
@@ -8,7 +9,7 @@ import org.checkerframework.checker.nullness.qual.NonNull;
  */
 public class NotPrimeFinder {
 
-  protected static boolean isPrime(@NonNull Integer number) {
+  protected static boolean isPrime(Integer number) {
     if (number <= 1) {
       return false;
     }
@@ -26,11 +27,11 @@ public class NotPrimeFinder {
    * @param array массив
    * @return true если есть, иначе false
    * @throws InterruptedException сигнал потоку остановиться
-   * @throws ExecutionException исключение, вызванное в потоке
+   * @throws ExecutionException   исключение, вызванное в потоке
    */
-  public boolean hasNotPrime(@NonNull Integer[] array)
+  public boolean hasNotPrime(@NonNull List<Integer> array)
       throws InterruptedException, ExecutionException {
-    for (int number : array) {
+    for (Integer number : array) {
       if (!isPrime(number)) {
         return true;
       }

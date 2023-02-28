@@ -1,5 +1,6 @@
 package ru.nsu.fit.apotapova;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,10 +11,10 @@ class PrimeNumbersFinderTest {
   void notPrimeFinder() {
     NotPrimeFinder npf = new NotPrimeFinder();
     try {
-      Assertions.assertTrue(npf.hasNotPrime(new Integer[]{6, 8, 7, 13, 9, 4}));
+      Assertions.assertTrue(npf.hasNotPrime(List.of(6, 8, 7, 13, 9, 4)));
       Assertions.assertFalse(npf.hasNotPrime(
-          new Integer[]{6997901, 6997927, 6997937, 6997967, 6998009, 6998029, 6998039, 6998051,
-              6998053}));
+          List.of(6997901, 6997927, 6997937, 6997967, 6998009, 6998029, 6998039, 6998051,
+              6998053)));
     } catch (InterruptedException | ExecutionException e) {
       throw new RuntimeException(e);
     }
@@ -21,12 +22,12 @@ class PrimeNumbersFinderTest {
 
   @Test
   void notPrimeStreamFinder() {
-    NotPrimeFinder npf = new NotPrimeStreamFinder();
+    NotPrimeFinder npsf = new NotPrimeStreamFinder();
     try {
-      Assertions.assertTrue(npf.hasNotPrime(new Integer[]{6, 8, 7, 13, 9, 4}));
-      Assertions.assertFalse(npf.hasNotPrime(
-          new Integer[]{6997901, 6997927, 6997937, 6997967, 6998009, 6998029, 6998039, 6998051,
-              6998053}));
+      Assertions.assertTrue(npsf.hasNotPrime(List.of(6, 8, 7, 13, 9, 4)));
+      Assertions.assertFalse(npsf.hasNotPrime(
+          List.of(6997901, 6997927, 6997937, 6997967, 6998009, 6998029, 6998039, 6998051,
+              6998053)));
     } catch (InterruptedException | ExecutionException e) {
       throw new RuntimeException(e);
     }
@@ -35,12 +36,12 @@ class PrimeNumbersFinderTest {
 
   @Test
   void notPrimeStandardThreadPoolFinder() {
-    NotPrimeFinder npf = new NotPrimeStandardThreadPoolFinder(3);
+    NotPrimeFinder npstpf = new NotPrimeStandardThreadPoolFinder(3);
     try {
-      Assertions.assertTrue(npf.hasNotPrime(new Integer[]{6, 8, 7, 13, 9, 4}));
-      Assertions.assertFalse(npf.hasNotPrime(
-          new Integer[]{6997901, 6997927, 6997937, 6997967, 6998009, 6998029, 6998039, 6998051,
-              6998053}));
+      Assertions.assertTrue(npstpf.hasNotPrime(List.of(6, 8, 7, 13, 9, 4)));
+      Assertions.assertFalse(npstpf.hasNotPrime(
+          List.of(6997901, 6997927, 6997937, 6997967, 6998009, 6998029, 6998039, 6998051,
+              6998053)));
     } catch (InterruptedException | ExecutionException e) {
       throw new RuntimeException(e);
     }
@@ -48,12 +49,12 @@ class PrimeNumbersFinderTest {
 
   @Test
   void notPrimeMyThreadPoolFinder() {
-    NotPrimeFinder npf = new NotPrimeMyThreadPoolFinder(3);
+    NotPrimeFinder npmtpf = new NotPrimeMyThreadPoolFinder(3);
     try {
-      Assertions.assertTrue(npf.hasNotPrime(new Integer[]{6, 8, 7, 13, 9, 4}));
-      Assertions.assertFalse(npf.hasNotPrime(
-          new Integer[]{6997901, 6997927, 6997937, 6997967, 6998009, 6998029, 6998039, 6998051,
-              6998053}));
+      Assertions.assertTrue(npmtpf.hasNotPrime(List.of(6, 8, 7, 13, 9, 4)));
+      Assertions.assertFalse(npmtpf.hasNotPrime(
+          List.of(6997901, 6997927, 6997937, 6997967, 6998009, 6998029, 6998039, 6998051,
+              6998053)));
     } catch (InterruptedException | ExecutionException e) {
       throw new RuntimeException(e);
     }

@@ -20,7 +20,7 @@ public class NotPrimeMyThreadPoolFinder extends NotPrimeFinder {
   }
 
   @Override
-  public boolean hasNotPrime(@NonNull Integer[] array) {
+  public boolean hasNotPrime(@NonNull List<Integer> array) {
     List<Callable<Boolean>> tasks = new ArrayList<>();
     for (Integer integer : array) {
       tasks.add(new Task(integer));
@@ -84,7 +84,7 @@ public class NotPrimeMyThreadPoolFinder extends NotPrimeFinder {
 
     @Override
     public void run() {
-        {
+      {
         try {
           while (true) {
             if (queue.isEmpty() && Thread.currentThread().isInterrupted()) {
@@ -101,7 +101,7 @@ public class NotPrimeMyThreadPoolFinder extends NotPrimeFinder {
         } catch (Exception e) {
           Thread.currentThread().interrupt();
         }
-        }
+      }
     }
   }
 }
