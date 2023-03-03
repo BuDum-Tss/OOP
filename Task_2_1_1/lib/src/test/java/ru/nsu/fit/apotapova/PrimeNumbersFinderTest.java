@@ -49,7 +49,7 @@ class PrimeNumbersFinderTest {
 
   @Test
   void notPrimeMyThreadPoolFinder() {
-    NotPrimeFinder npmtpf = new NotPrimeMyThreadPoolFinder(3);
+    NotPrimeFinder npmtpf = new NotPrimeMyThreadPoolFinder(3,3);
     try {
       Assertions.assertTrue(npmtpf.hasNotPrime(List.of(6, 8, 7, 13, 9, 4)));
       Assertions.assertFalse(npmtpf.hasNotPrime(
