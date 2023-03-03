@@ -40,7 +40,7 @@ public class TaskManager implements Runnable {
         }
       }
     } catch (InterruptedException e) {
-      threads.stream().toList().forEach(Thread::interrupt);
+      threads.forEach(Thread::interrupt);
       threads.forEach(thread -> {
         try {
           thread.join();
