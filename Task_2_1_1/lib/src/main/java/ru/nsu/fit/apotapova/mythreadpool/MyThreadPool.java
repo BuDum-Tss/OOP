@@ -36,7 +36,7 @@ public class MyThreadPool {
       initWorkerThreads(capacity);
     }
     TaskManager taskManager = new TaskManager(managerQueue, threadsQueues, threads);
-    managerThread = new Thread(taskManager,"Manager");
+    managerThread = new Thread(taskManager, "Manager");
     startThreads();
   }
 
@@ -55,7 +55,7 @@ public class MyThreadPool {
    */
   public List<Future<Boolean>> invokeAll(Collection<Callable<Boolean>> tasks) {
     List<Future<Boolean>> outputList = new ArrayList<>();
-    tasks.forEach(task -> addTask(task,outputList));
+    tasks.forEach(task -> addTask(task, outputList));
     managerThread.interrupt();
     return outputList;
   }
@@ -70,7 +70,7 @@ public class MyThreadPool {
     }
   }
 
-  private void startThreads(){
+  private void startThreads() {
     threads.forEach(Thread::start);
     managerThread.start();
   }

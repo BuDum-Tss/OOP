@@ -33,11 +33,12 @@ public class TaskManager implements Runnable {
     FutureTask<Boolean> currentTask = null;
     int l = workersQueues.size();
     for (int i = 0; (!(Thread.currentThread().isInterrupted() && managerQueue.isEmpty()));
-        i = (i + 1) % l) {//!(Thread.currentThread().isInterrupted() &&
+        i = (i + 1) % l) {
       if (currentTask == null || workersQueues.get(i).offer(currentTask)) {
         try {
           currentTask = managerQueue.take();
         } catch (InterruptedException ignored) {
+          return;
         }
       }
     }

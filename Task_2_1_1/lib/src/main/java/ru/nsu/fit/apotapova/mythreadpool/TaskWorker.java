@@ -22,15 +22,16 @@ public class TaskWorker implements Runnable {
   @Override
   public void run() {
 
-      while (!(queue.isEmpty() && Thread.currentThread().isInterrupted())) {
-        if (!queue.isEmpty()) {
-          try {
+    while (!(queue.isEmpty() && Thread.currentThread().isInterrupted())) {
+      if (!queue.isEmpty()) {
+        try {
           FutureTask<Boolean> task = queue.take();
-            task.run();
-          } catch (InterruptedException ignored) {
-          }
+          task.run();
+        } catch (InterruptedException ignored) {
+          return;
         }
       }
+    }
     Thread.currentThread().interrupt();
   }
 }

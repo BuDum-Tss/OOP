@@ -12,11 +12,13 @@ import ru.nsu.fit.apotapova.mythreadpool.MyThreadPool;
  * Реализация поиска не простых чисел в массиве через собственный ThreadPool.
  */
 public class NotPrimeMyThreadPoolFinder extends NotPrimeFinder {
+
   private final MyThreadPool myThreadPool;
 
   public NotPrimeMyThreadPoolFinder(int numberThreads, int capacity) {
     this.myThreadPool = new MyThreadPool(numberThreads, capacity);
   }
+
   @Override
   public boolean hasNotPrime(@NonNull List<Integer> array)
       throws InterruptedException, ExecutionException {
@@ -33,6 +35,7 @@ public class NotPrimeMyThreadPoolFinder extends NotPrimeFinder {
     }
     return false;
   }
+
   static class Task implements Callable<Boolean> {
 
     private final Integer value;
