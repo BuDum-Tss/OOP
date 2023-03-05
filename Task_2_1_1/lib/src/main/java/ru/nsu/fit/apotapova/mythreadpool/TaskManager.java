@@ -38,7 +38,6 @@ public class TaskManager implements Runnable {
         try {
           currentTask = managerQueue.take();
         } catch (InterruptedException ignored) {
-          return;
         }
       }
     }

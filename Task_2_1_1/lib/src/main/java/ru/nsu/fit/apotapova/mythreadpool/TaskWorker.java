@@ -28,7 +28,6 @@ public class TaskWorker implements Runnable {
           FutureTask<Boolean> task = queue.take();
           task.run();
         } catch (InterruptedException ignored) {
-          return;
         }
       }
     }

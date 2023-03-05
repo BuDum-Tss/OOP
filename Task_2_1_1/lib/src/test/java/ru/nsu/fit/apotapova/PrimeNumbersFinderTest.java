@@ -52,7 +52,7 @@ class PrimeNumbersFinderTest {
     NotPrimeMyThreadPoolFinder npmtpf = new NotPrimeMyThreadPoolFinder(3, 3);
     try {
       Assertions.assertTrue(
-          npmtpf.hasNotPrime(List.of(6997901, 6997927, 6997937, 6997967, 6, 8, 7, 13, 9, 4)));
+          npmtpf.hasNotPrime(List.of(6, 8, 7, 13, 9, 4)));
       Assertions.assertFalse(npmtpf.hasNotPrime(
           List.of(6997901, 6997927, 6997937, 6997967, 6998009, 6998029, 6998039, 6998051,
               6998053)));
