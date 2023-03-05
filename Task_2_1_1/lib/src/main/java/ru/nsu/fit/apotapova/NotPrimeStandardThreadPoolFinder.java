@@ -46,11 +46,9 @@ public class NotPrimeStandardThreadPoolFinder extends NotPrimeFinder {
     List<Future<Boolean>> futureList = pool.invokeAll(tasks);
     for (Future<Boolean> future : futureList) {
       if (future.get()) {
-        pool.shutdownNow();
         return true;
       }
     }
-    pool.shutdownNow();
     return false;
   }
 }

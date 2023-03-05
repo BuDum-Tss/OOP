@@ -2,26 +2,26 @@ package ru.nsu.fit.apotapova.mythreadpool;
 
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Callable;
+import java.util.concurrent.FutureTask;
 
 /**
  * Класс, распределяющий задачи между потоками.
  */
 public class TaskManager implements Runnable {
 
-  BlockingQueue<Callable<Boolean>> managerQueue;
-  List<BlockingQueue<Callable<Boolean>>> workersQueues;
-  List<Thread> threads;
+  private final BlockingQueue<FutureTask<Boolean>> managerQueue;
+  private final List<BlockingQueue<FutureTask<Boolean>>> workersQueues;
+  private final List<Thread> threads;
 
   /**
    * Конструктор.
    *
-   * @param managerQueue очередь нераспределенных задач
+   * @param managerQueue  очередь нераспределенных задач
    * @param workersQueues список очередей распреденных задач
-   * @param threads список потоков, в которых выполняются задачи
+   * @param threads       список потоков, в которых выполняются задачи
    */
-  public TaskManager(BlockingQueue<Callable<Boolean>> managerQueue,
-      List<BlockingQueue<Callable<Boolean>>> workersQueues,
+  public TaskManager(BlockingQueue<FutureTask<Boolean>> managerQueue,
+      List<BlockingQueue<FutureTask<Boolean>>> workersQueues,
       List<Thread> threads) {
     this.managerQueue = managerQueue;
     this.workersQueues = workersQueues;
@@ -30,24 +30,18 @@ public class TaskManager implements Runnable {
 
   @Override
   public void run() {
-    try {
-      Callable<Boolean> currentTask = null;
-      int l = workersQueues.size();
-      for (int i = 0; !(Thread.currentThread().isInterrupted() && managerQueue.isEmpty());
-          i = (i + 1) % l) {
-        if (currentTask == null || workersQueues.get(i).offer(currentTask)) {
+    FutureTask<Boolean> currentTask = null;
+    int l = workersQueues.size();
+    for (int i = 0; (!(Thread.currentThread().isInterrupted() && managerQueue.isEmpty()));
+        i = (i + 1) % l) {//!(Thread.currentThread().isInterrupted() &&
+      if (currentTask == null || workersQueues.get(i).offer(currentTask)) {
+        try {
           currentTask = managerQueue.take();
+        } catch (InterruptedException ignored) {
         }
       }
-    } catch (InterruptedException e) {
-      threads.forEach(Thread::interrupt);
-      threads.forEach(thread -> {
-        try {
-          thread.join();
-        } catch (InterruptedException f) {
-          throw new RuntimeException(f);
-        }
-      });
     }
+    Thread.currentThread().interrupt();
+    threads.forEach(Thread::interrupt);
   }
 }

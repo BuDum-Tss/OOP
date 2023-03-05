@@ -1,10 +1,13 @@
 package ru.nsu.fit.apotapova.mythreadpool;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
@@ -13,10 +16,9 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class MyThreadPool {
 
   final Thread managerThread;
+  private final BlockingQueue<FutureTask<Boolean>> managerQueue;
+  private final List<BlockingQueue<FutureTask<Boolean>>> threadsQueues;
   private final List<Thread> threads;
-  private final List<BlockingQueue<Callable<Boolean>>> threadsQueues;
-  private final BlockingQueue<Callable<Boolean>> managerQueue;
-  private final BlockingQueue<Boolean> output;
   int numberThreads;
 
   /**
@@ -30,22 +32,20 @@ public class MyThreadPool {
     managerQueue = new LinkedBlockingQueue<>();
     threads = new ArrayList<>();
     threadsQueues = new ArrayList<>();
-    output = new LinkedBlockingQueue<>();
     for (int threadNumber = 0; threadNumber < numberThreads; threadNumber++) {
-      startWorkerThreads(capacity);
+      initWorkerThreads(capacity);
     }
     TaskManager taskManager = new TaskManager(managerQueue, threadsQueues, threads);
-    managerThread = new Thread(taskManager);
-    managerThread.start();
+    managerThread = new Thread(taskManager,"Manager");
+    startThreads();
   }
 
-  private void startWorkerThreads(int capacity) {
-    BlockingQueue<Callable<Boolean>> input = new LinkedBlockingQueue<>(capacity);
+  private void initWorkerThreads(int capacity) {
+    BlockingQueue<FutureTask<Boolean>> input = new LinkedBlockingQueue<>(capacity);
     threadsQueues.add(input);
-    TaskWorker taskWorker = new TaskWorker(input, output);
+    TaskWorker taskWorker = new TaskWorker(input);
     Thread thread = new Thread(taskWorker);
     threads.add(thread);
-    thread.start();
   }
 
   /**
@@ -53,30 +53,25 @@ public class MyThreadPool {
    *
    * @param tasks задачи
    */
-  public void addTasks(Collection<Callable<Boolean>> tasks) {
-    managerQueue.addAll(tasks);
+  public List<Future<Boolean>> invokeAll(Collection<Callable<Boolean>> tasks) {
+    List<Future<Boolean>> outputList = new ArrayList<>();
+    tasks.forEach(task -> addTask(task,outputList));
+    managerThread.interrupt();
+    return outputList;
   }
 
-  /**
-   * Получить результат.
-   *
-   * @return результат
-   */
-  public List<Boolean> getResult() {
-    managerThread.interrupt();
+  private void addTask(Callable<Boolean> task, List<Future<Boolean>> outputList) {
     try {
-      managerThread.join();
+      FutureTask<Boolean> futureTask = new FutureTask<>(task);
+      outputList.add(futureTask);
+      managerQueue.put(futureTask);
     } catch (InterruptedException e) {
       throw new RuntimeException(e);
     }
-    List<Boolean> answer = new ArrayList<>(output);
-    clear();
-    return answer;
   }
 
-  private void clear() {
-    managerQueue.clear();
-    output.clear();
-    threadsQueues.forEach(Collection::clear);
+  private void startThreads(){
+    threads.forEach(Thread::start);
+    managerThread.start();
   }
 }
