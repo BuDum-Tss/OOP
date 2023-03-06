@@ -14,11 +14,10 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class MyThreadPool {
 
-  final Thread managerThread;
+  private final Thread managerThread;
   private final BlockingQueue<FutureTask<Boolean>> managerQueue;
   private final List<BlockingQueue<FutureTask<Boolean>>> threadsQueues;
   private final List<Thread> threads;
-  int numberThreads;
 
   /**
    * Конструктор.
@@ -27,7 +26,6 @@ public class MyThreadPool {
    * @param capacity      вместимость очереди задач потока
    */
   public MyThreadPool(int numberThreads, int capacity) {
-    this.numberThreads = numberThreads;
     managerQueue = new LinkedBlockingQueue<>();
     threads = new ArrayList<>();
     threadsQueues = new ArrayList<>();
