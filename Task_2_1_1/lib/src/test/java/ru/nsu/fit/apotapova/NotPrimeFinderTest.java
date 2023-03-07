@@ -5,8 +5,7 @@ import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class PrimeNumbersFinderTest {
-
+public class NotPrimeFinderTest {
   @Test
   void notPrimeFinder() {
     NotPrimeFinder npf = new NotPrimeFinder();

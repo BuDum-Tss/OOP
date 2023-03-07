@@ -10,13 +10,13 @@ plugins {
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
     id 'jacoco'
+    id "me.champeau.jmh" version "0.7.0"
 }
 
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
 }
-
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
@@ -26,6 +26,10 @@ dependencies {
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:31.0.1-jre'
+    jmh 'commons-io:commons-io:2.4'
+    jmh 'org.openjdk.jmh:jmh-core:0.9'
+    jmh 'org.openjdk.jmh:jmh-generator-annprocess:0.9'
+    jmhAnnotationProcessor 'org.openjdk.jmh:jmh-generator-annprocess:1.36'
 }
 
 tasks.named('test') {
@@ -36,4 +40,7 @@ jacocoTestReport {
     reports {
         xml.required = true
     }
+}
+jmhJar.doFirst {
+    new File("build/resources/test").mkdirs()
 }
