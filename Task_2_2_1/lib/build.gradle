@@ -31,6 +31,11 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.7'
 }
 
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
