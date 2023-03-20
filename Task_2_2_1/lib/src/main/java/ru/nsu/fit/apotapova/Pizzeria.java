@@ -93,8 +93,6 @@ public class Pizzeria implements Runnable {
     courierHashmap.forEach((id, courier) -> courier.interrupt());
     terminate(bakersThreadPool,"Baker",10);
     terminate(couriersThreadPool,"Courier",10);
-    bakersThreadPool.shutdownNow();
-    couriersThreadPool.shutdownNow();
     System.out.println("The pizzeria is closed!");
   }
 }

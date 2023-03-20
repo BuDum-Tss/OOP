@@ -25,7 +25,6 @@ public class JSONReader {
   public void open() {
     try {
       if (!file.exists()) {
-        //file.createNewFile();
         throw new RuntimeException();
       }
       reader = new BufferedReader(new FileReader(file));
