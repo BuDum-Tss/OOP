@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"ru.nsu.fit.apotapova"},{"l":"ru.nsu.fit.apotapova.employees"},{"l":"ru.nsu.fit.apotapova.employees.roles"},{"l":"ru.nsu.fit.apotapova.json"},{"l":"ru.nsu.fit.apotapova.order"}]
