@@ -11,15 +11,8 @@ import java.io.IOException;
  */
 public class JSONReader {
 
-  private static final String FILE_PATH =
-      "lib/src/main/resources/ru/nsu/fit/apotapova/employees.txt";
-
   public EmployeesDataBase read(File file) {
     return parse(file);
-  }
-
-  public EmployeesDataBase read() {
-    return parse(new File(FILE_PATH));
   }
 
   private EmployeesDataBase parse(File file) {
