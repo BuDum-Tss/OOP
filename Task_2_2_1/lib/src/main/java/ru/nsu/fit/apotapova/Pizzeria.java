@@ -21,6 +21,7 @@ import ru.nsu.fit.apotapova.order.Order.OrderStatusMod;
  */
 public class Pizzeria implements Runnable {
 
+  private static final Integer OVERTIME = 10;
   private Integer orderNumber;
   private NotificationSystem notificationSystem;
   private BlockingQueue<Order> pendingOrders;
@@ -31,7 +32,6 @@ public class Pizzeria implements Runnable {
   private ExecutorService couriersThreadPool;
   private AtomicBoolean isInterrupted;
   private Thread currentThread;
-  private final Integer OVERTIME=10;
 
   /**
    * Constructor.
@@ -119,11 +119,11 @@ public class Pizzeria implements Runnable {
   public void interrupt() {
     bakersThreadPool.shutdown();
     bakerHashmap.forEach((id, baker) -> baker.interrupt());
-    terminate(bakersThreadPool, "Baker", OVERTIME);
+    terminate(bakersThreadPool, "Baker");
     couriersThreadPool.shutdown();
 
     courierHashmap.forEach((id, courier) -> courier.interrupt());
-    terminate(couriersThreadPool, "Courier", OVERTIME);
+    terminate(couriersThreadPool, "Courier");
     System.out.println("The pizzeria is closed!");
 
     interruptThread();
@@ -134,11 +134,10 @@ public class Pizzeria implements Runnable {
     currentThread.interrupt();
   }
 
-  private void terminate(ExecutorService employeeThreadPool, String employeesPosition,
-      long overtime) {
+  private void terminate(ExecutorService employeeThreadPool, String employeesPosition) {
     boolean timeOut;
     try {
-      timeOut = !employeeThreadPool.awaitTermination(overtime, TimeUnit.SECONDS);
+      timeOut = !employeeThreadPool.awaitTermination(OVERTIME, TimeUnit.SECONDS);
     } catch (InterruptedException e) {
       throw new RuntimeException(
           "Illegal interruption Thread" + Thread.currentThread().getName()
