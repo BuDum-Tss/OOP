@@ -10,12 +10,12 @@ import ru.nsu.fit.apotapova.json.JSONReader;
 public class PizzeriaApp {
 
   private final long workingTime;
-  OrderGenerator orderGenerator;
-  Pizzeria pizzeria;
-  NotificationSystem notificationSystem;
-  Thread pizzeriaThread;
-  Thread orderGeneratorThread;
-  Thread notificationSystemThread;
+  private final OrderGenerator orderGenerator;
+  private final Pizzeria pizzeria;
+  private final NotificationSystem notificationSystem;
+  private Thread pizzeriaThread;
+  private Thread orderGeneratorThread;
+  private Thread notificationSystemThread;
 
   /**
    * Class for launch and construct pizzeria.

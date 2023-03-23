@@ -11,7 +11,7 @@ import ru.nsu.fit.apotapova.order.Order.OrderStatusMod;
  */
 public class NotificationSystem implements Runnable {
 
-  final HashMap<Integer, Order> trackedOrders;
+  protected final HashMap<Integer, Order> trackedOrders;
 
   public NotificationSystem() {
     trackedOrders = new HashMap<>();
