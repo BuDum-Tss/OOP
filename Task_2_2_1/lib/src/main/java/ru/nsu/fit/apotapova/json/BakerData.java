@@ -10,10 +10,6 @@ public class BakerData {
 
   private long bakingTime;
 
-  public static Class<? extends OrderExecutor> getAppropriateClass() {
-    return Baker.class;
-  }
-
   public long getBakingTime() {
     return bakingTime;
   }
