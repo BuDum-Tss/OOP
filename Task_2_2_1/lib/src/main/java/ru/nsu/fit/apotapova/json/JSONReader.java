@@ -6,46 +6,29 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * JSON reader reads JSON and returns EmployeeDataBase.
+ */
 public class JSONReader {
 
-  private static final String FILE_PATH = "lib/src/main/resources/ru/nsu/fit/apotapova/employees.txt";
-  private final File file;
-  private BufferedReader reader;
+  private static final String FILE_PATH =
+      "lib/src/main/resources/ru/nsu/fit/apotapova/employees.txt";
 
-  public JSONReader() {
-    file = new File(FILE_PATH);
-    open();
-  }
-
-  public JSONReader(File file) {
-    this.file = file;
-    open();
-  }
-
-  public void open() {
-    try {
-      if (!file.exists()) {
-        throw new RuntimeException();
-      }
-      reader = new BufferedReader(new FileReader(file));
-    } catch (IOException exception) {
-      exception.printStackTrace();
-    }
+  public EmployeesDataBase read(File file) {
+    return parse(file);
   }
 
   public EmployeesDataBase read() {
-    EmployeesDataBase dataBase = new Gson().fromJson(reader, EmployeesDataBase.class);
-    if (dataBase == null) {
-      throw new IllegalArgumentException("File not found");
-    }
-    return dataBase;
+    return parse(new File(FILE_PATH));
   }
 
-  public void close() {
-    try {
-      reader.close();
-    } catch (IOException exception) {
-      exception.printStackTrace();
+  private EmployeesDataBase parse(File file) {
+    EmployeesDataBase dataBase;
+    try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+      dataBase = new Gson().fromJson(reader, EmployeesDataBase.class);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
     }
+    return dataBase;
   }
 }

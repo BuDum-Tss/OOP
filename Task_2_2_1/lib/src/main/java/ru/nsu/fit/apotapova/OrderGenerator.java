@@ -3,29 +3,43 @@ package ru.nsu.fit.apotapova;
 import java.util.Random;
 import ru.nsu.fit.apotapova.order.Order;
 
+/**
+ * Class for simulating the receipt of orders in a pizzeria.
+ */
 public class OrderGenerator implements Runnable {
 
-  private static int MAX_DISTANCE = 10;
-  private static int FREQUENCY_OF_REQUESTS = 60;
-  Pizzeria pizzeria;
-  int orderNumber;
-  Random random;
+  private final Pizzeria pizzeria;
+  private final Random random;
+  private int maxDistance = 100;
+  private int frequencyOfRequests = 10000;
 
+  /**
+   * Constructor.
+   *
+   * @param pizzeria tested pizzeria
+   */
   public OrderGenerator(Pizzeria pizzeria) {
     this.pizzeria = pizzeria;
-    orderNumber = 0;
     random = new Random();
   }
 
+  /**
+   * Sets order settings.
+   *
+   * @param maxDistance         maximum distance of delivering(m)
+   * @param frequencyOfRequests frequency of requests(milliseconds)
+   */
+  public void setNewSettings(int maxDistance, int frequencyOfRequests) {
+    this.maxDistance = maxDistance;
+    this.frequencyOfRequests = frequencyOfRequests;
+  }
 
   @Override
   public void run() {
     try {
       while (!Thread.currentThread().isInterrupted()) {
-
-        Thread.sleep(random.nextInt(FREQUENCY_OF_REQUESTS) * 100L);
-
-        pizzeria.addOrder(new Order(orderNumber++, random.nextInt(MAX_DISTANCE)));
+        Thread.sleep(random.nextInt(frequencyOfRequests));
+        pizzeria.addOrder(new Order(random.nextInt(maxDistance)));
       }
     } catch (InterruptedException ignored) {
     }

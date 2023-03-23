@@ -6,24 +6,35 @@ import java.util.concurrent.BlockingQueue;
 import ru.nsu.fit.apotapova.employees.roles.Consumer;
 import ru.nsu.fit.apotapova.json.CourierData;
 import ru.nsu.fit.apotapova.order.Order;
+import ru.nsu.fit.apotapova.order.Order.OrderStatusMod;
 
+/**
+ * The courier class receives the order from the warehouse and delivers the order.
+ */
 public class Courier extends OrderExecutor implements Consumer {
 
-  final List<Order> trunk;
+  private final List<Order> trunk;
   private final int trunkCapacity;
   private final long speed;
   private final BlockingQueue<Order> pendingOrders;
 
+  /**
+   * Constructor.
+   *
+   * @param courierData   data with trunk capacity ,courier speed
+   * @param pendingOrders the queue with pending orders at storage
+   */
   public Courier(CourierData courierData, BlockingQueue<Order> pendingOrders) {
     this.trunkCapacity = courierData.getTrunkCapacity();
-    trunk = new ArrayList<>(trunkCapacity);
+    this.trunk = new ArrayList<>(trunkCapacity);
     this.speed = courierData.getSpeed();
     this.pendingOrders = pendingOrders;
   }
 
   @Override
-  protected void work() throws InterruptedException {
-    while (!((pendingOrders.isEmpty() && trunk.size() != 0) || trunk.size() == trunkCapacity)) {
+  protected void work() {
+    while (!isInterrupted.get() && !((pendingOrders.isEmpty() && trunk.size() != 0)
+        || trunk.size() == trunkCapacity)) {
       trunk.add(takeOrder());
     }
     while (!trunk.isEmpty()) {
@@ -32,27 +43,42 @@ public class Courier extends OrderExecutor implements Consumer {
         break;
       }
       deliver(order);
-      order.changeStatus();
+      order.manageStatus(OrderStatusMod.CHANGE);
       trunk.remove(order);
     }
   }
 
-  private void deliver(Order currentOrder) throws InterruptedException {
+  private void deliver(Order currentOrder) {
     synchronized (this) {
-      Thread.sleep(currentOrder.getDistance() / speed);
+      try {
+        Thread.sleep(currentOrder.getDistance() / speed);
+      } catch (InterruptedException e) {
+        throw new RuntimeException(
+            "Unexpected interruption while sleeping at: " + this.getClass().toString());
+      }
     }
   }
 
   @Override
-  public Order takeOrder() throws InterruptedException {
-    Order takenOrder;
-    if (trunk.isEmpty()) {
-      takenOrder = pendingOrders.take();
-    } else {
-      takenOrder = pendingOrders.poll();
-    }
-    if (takenOrder != null) {
-      takenOrder.changeStatus();
+  public Order takeOrder() {
+    Order takenOrder = null;
+    try {
+      if (trunk.isEmpty()) {
+        synchronized (this) {
+          isWaitingOrder.set(true);
+          takenOrder = pendingOrders.take();
+          isWaitingOrder.set(false);
+        }
+      } else {
+        takenOrder = pendingOrders.poll();
+      }
+      if (takenOrder != null) {
+        takenOrder.manageStatus(OrderStatusMod.CHANGE);
+      }
+    } catch (InterruptedException e) {
+      if (!isInterrupted.get()) {
+        throw new RuntimeException("Unexpected interruption while taking the order");
+      }
     }
     return takenOrder;
   }

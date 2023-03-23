@@ -1,7 +1,8 @@
 package ru.nsu.fit.apotapova.order;
 
-import org.jetbrains.annotations.Nullable;
-
+/**
+ * Status of order. Contains status number and message.
+ */
 public enum OrderStatus {
   GENERATED(0, "Order is generated"),
   ADOPTED(1, "Order is adopted"),

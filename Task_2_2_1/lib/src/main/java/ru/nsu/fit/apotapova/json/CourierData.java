@@ -1,7 +1,9 @@
 package ru.nsu.fit.apotapova.json;
 
-
-public class CourierData extends EmployeeData {
+/**
+ * Class for courier's data for JSON.
+ */
+public class CourierData {
 
   private int trunkCapacity;
   private long speed;
