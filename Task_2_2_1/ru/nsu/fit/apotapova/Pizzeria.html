@@ -138,6 +138,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">Pizzeria</span>
 extends java.lang.Object
 implements java.lang.Runnable</pre>
+<div class="block">Main Pizzeria class.</div>
 </li>
 </ul>
 </div>
@@ -158,13 +159,19 @@ implements java.lang.Runnable</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int)">Pizzeria</a></span>&#8203;(int&nbsp;storageSize)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.nsu.fit.apotapova.json.EmployeesDataBase,int)">Pizzeria</a></span>&#8203;(<a href="json/EmployeesDataBase.html" title="class in ru.nsu.fit.apotapova.json">EmployeesDataBase</a>&nbsp;data,
+        int&nbsp;storageSize)</code></th>
+<td class="colLast">
+<div class="block">Constructor.</div>
+</td>
 </tr>
 <tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.io.File,int)">Pizzeria</a></span>&#8203;(java.io.File&nbsp;employeeData,
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.nsu.fit.apotapova.json.EmployeesDataBase,ru.nsu.fit.apotapova.NotificationSystem,int)">Pizzeria</a></span>&#8203;(<a href="json/EmployeesDataBase.html" title="class in ru.nsu.fit.apotapova.json">EmployeesDataBase</a>&nbsp;data,
+        <a href="NotificationSystem.html" title="class in ru.nsu.fit.apotapova">NotificationSystem</a>&nbsp;notificationSystem,
         int&nbsp;storageSize)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructor.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -193,16 +200,20 @@ implements java.lang.Runnable</pre>
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addOrder(ru.nsu.fit.apotapova.order.Order,boolean)">addOrder</a></span>&#8203;(<a href="order/Order.html" title="class in ru.nsu.fit.apotapova.order">Order</a>&nbsp;newOrder,
         boolean&nbsp;observe)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Adds order to queue of pending orders.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#run()">run</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#interrupt()">interrupt</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Interrupts pizzeria work.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#stop()">stop</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#run()">run</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -229,23 +240,38 @@ implements java.lang.Runnable</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(java.io.File,int)">
+<a id="&lt;init&gt;(ru.nsu.fit.apotapova.json.EmployeesDataBase,ru.nsu.fit.apotapova.NotificationSystem,int)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>Pizzeria</h4>
-<pre>public&nbsp;Pizzeria&#8203;(java.io.File&nbsp;employeeData,
+<pre>public&nbsp;Pizzeria&#8203;(<a href="json/EmployeesDataBase.html" title="class in ru.nsu.fit.apotapova.json">EmployeesDataBase</a>&nbsp;data,
+                <a href="NotificationSystem.html" title="class in ru.nsu.fit.apotapova">NotificationSystem</a>&nbsp;notificationSystem,
                 int&nbsp;storageSize)</pre>
+<div class="block">Constructor.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>data</code> - employees data</dd>
+<dd><code>notificationSystem</code> - notification system</dd>
+<dd><code>storageSize</code> - storage size</dd>
+</dl>
 </li>
 </ul>
-<a id="&lt;init&gt;(int)">
+<a id="&lt;init&gt;(ru.nsu.fit.apotapova.json.EmployeesDataBase,int)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Pizzeria</h4>
-<pre>public&nbsp;Pizzeria&#8203;(int&nbsp;storageSize)</pre>
+<pre>public&nbsp;Pizzeria&#8203;(<a href="json/EmployeesDataBase.html" title="class in ru.nsu.fit.apotapova.json">EmployeesDataBase</a>&nbsp;data,
+                int&nbsp;storageSize)</pre>
+<div class="block">Constructor.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>data</code> - employees data</dd>
+<dd><code>storageSize</code> - storage size</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -266,6 +292,12 @@ implements java.lang.Runnable</pre>
 <h4>addOrder</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addOrder&#8203;(<a href="order/Order.html" title="class in ru.nsu.fit.apotapova.order">Order</a>&nbsp;newOrder,
                      boolean&nbsp;observe)</pre>
+<div class="block">Adds order to queue of pending orders.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>newOrder</code> - pending order</dd>
+<dd><code>observe</code> - should be monitored</dd>
+</dl>
 </li>
 </ul>
 <a id="addOrder(ru.nsu.fit.apotapova.order.Order)">
@@ -290,13 +322,14 @@ implements java.lang.Runnable</pre>
 </dl>
 </li>
 </ul>
-<a id="stop()">
+<a id="interrupt()">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>stop</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;stop()</pre>
+<h4>interrupt</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;interrupt()</pre>
+<div class="block">Interrupts pizzeria work.</div>
 </li>
 </ul>
 </li>

@@ -128,6 +128,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 <hr>
 <pre>public interface <span class="typeNameLabel">Producer</span></pre>
+<div class="block">An interface for order executors that provides an object with access to add a processed order to
+ the order queue.</div>
 </li>
 </ul>
 </div>
@@ -151,7 +153,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#transferOrder(ru.nsu.fit.apotapova.order.Order)">transferOrder</a></span>&#8203;(<a href="../../order/Order.html" title="class in ru.nsu.fit.apotapova.order">Order</a>&nbsp;completedOrder)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Transfer the order to the order queue.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -176,11 +180,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockListLast">
 <li class="blockList">
 <h4>transferOrder</h4>
-<pre class="methodSignature">void&nbsp;transferOrder&#8203;(<a href="../../order/Order.html" title="class in ru.nsu.fit.apotapova.order">Order</a>&nbsp;completedOrder)
-            throws java.lang.InterruptedException</pre>
+<pre class="methodSignature">void&nbsp;transferOrder&#8203;(<a href="../../order/Order.html" title="class in ru.nsu.fit.apotapova.order">Order</a>&nbsp;completedOrder)</pre>
+<div class="block">Transfer the order to the order queue.</div>
 <dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.InterruptedException</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>completedOrder</code> - transferred order</dd>
 </dl>
 </li>
 </ul>

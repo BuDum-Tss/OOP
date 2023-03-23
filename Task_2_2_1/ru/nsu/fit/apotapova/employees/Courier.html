@@ -89,7 +89,7 @@ loadScripts(document, 'script');</script>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
@@ -143,12 +143,30 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">Courier</span>
 extends <a href="OrderExecutor.html" title="class in ru.nsu.fit.apotapova.employees">OrderExecutor</a>
 implements <a href="roles/Consumer.html" title="interface in ru.nsu.fit.apotapova.employees.roles">Consumer</a></pre>
+<div class="block">The courier class receives the order from the warehouse and delivers the order.</div>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<section>
+<ul class="blockList">
+<li class="blockList"><a id="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<ul class="blockList">
+<li class="blockList"><a id="fields.inherited.from.class.ru.nsu.fit.apotapova.employees.OrderExecutor">
+<!--   -->
+</a>
+<h3>Fields inherited from class&nbsp;ru.nsu.fit.apotapova.employees.<a href="OrderExecutor.html" title="class in ru.nsu.fit.apotapova.employees">OrderExecutor</a></h3>
+<code><a href="OrderExecutor.html#isInterrupted">isInterrupted</a>, <a href="OrderExecutor.html#isWaitingOrder">isWaitingOrder</a></code></li>
+</ul>
+</li>
+</ul>
+</section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <section>
 <ul class="blockList">
@@ -165,7 +183,9 @@ implements <a href="roles/Consumer.html" title="interface in ru.nsu.fit.apotapov
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.nsu.fit.apotapova.json.CourierData,java.util.concurrent.BlockingQueue)">Courier</a></span>&#8203;(<a href="../json/CourierData.html" title="class in ru.nsu.fit.apotapova.json">CourierData</a>&nbsp;courierData,
        java.util.concurrent.BlockingQueue&lt;<a href="../order/Order.html" title="class in ru.nsu.fit.apotapova.order">Order</a>&gt;&nbsp;pendingOrders)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Constructor.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -188,7 +208,9 @@ implements <a href="roles/Consumer.html" title="interface in ru.nsu.fit.apotapov
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="../order/Order.html" title="class in ru.nsu.fit.apotapova.order">Order</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#takeOrder()">takeOrder</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Take an order from the order queue.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
@@ -234,6 +256,12 @@ implements <a href="roles/Consumer.html" title="interface in ru.nsu.fit.apotapov
 <h4>Courier</h4>
 <pre>public&nbsp;Courier&#8203;(<a href="../json/CourierData.html" title="class in ru.nsu.fit.apotapova.json">CourierData</a>&nbsp;courierData,
                java.util.concurrent.BlockingQueue&lt;<a href="../order/Order.html" title="class in ru.nsu.fit.apotapova.order">Order</a>&gt;&nbsp;pendingOrders)</pre>
+<div class="block">Constructor.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>courierData</code> - data with trunk capacity ,courier speed</dd>
+<dd><code>pendingOrders</code> - the queue with pending orders at storage</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -252,13 +280,10 @@ implements <a href="roles/Consumer.html" title="interface in ru.nsu.fit.apotapov
 <ul class="blockList">
 <li class="blockList">
 <h4>work</h4>
-<pre class="methodSignature">protected&nbsp;void&nbsp;work()
-             throws java.lang.InterruptedException</pre>
+<pre class="methodSignature">protected&nbsp;void&nbsp;work()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="OrderExecutor.html#work()">work</a></code>&nbsp;in class&nbsp;<code><a href="OrderExecutor.html" title="class in ru.nsu.fit.apotapova.employees">OrderExecutor</a></code></dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.InterruptedException</code></dd>
 </dl>
 </li>
 </ul>
@@ -268,13 +293,14 @@ implements <a href="roles/Consumer.html" title="interface in ru.nsu.fit.apotapov
 <ul class="blockListLast">
 <li class="blockList">
 <h4>takeOrder</h4>
-<pre class="methodSignature">public&nbsp;<a href="../order/Order.html" title="class in ru.nsu.fit.apotapova.order">Order</a>&nbsp;takeOrder()
-                throws java.lang.InterruptedException</pre>
+<pre class="methodSignature">public&nbsp;<a href="../order/Order.html" title="class in ru.nsu.fit.apotapova.order">Order</a>&nbsp;takeOrder()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="roles/Consumer.html#takeOrder()">Consumer</a></code></span></div>
+<div class="block">Take an order from the order queue.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="roles/Consumer.html#takeOrder()">takeOrder</a></code>&nbsp;in interface&nbsp;<code><a href="roles/Consumer.html" title="interface in ru.nsu.fit.apotapova.employees.roles">Consumer</a></code></dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.InterruptedException</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>accepted order</dd>
 </dl>
 </li>
 </ul>
@@ -330,7 +356,7 @@ implements <a href="roles/Consumer.html" title="interface in ru.nsu.fit.apotapov
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>

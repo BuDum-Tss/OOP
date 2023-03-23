@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":2,"i1":2,"i2":2,"i3":1,"i4":2,"i5":2,"i6":2,"i7":2,"i8":2,"i9":2,"i10":2,"i11":2,"i12":4,"i13":2,"i14":2,"i15":1};
+var data = {"i0":2,"i1":2,"i2":2,"i3":1,"i4":2,"i5":2,"i6":2,"i7":2,"i8":2,"i9":2,"i10":4,"i11":2,"i12":2,"i13":4,"i14":2,"i15":2,"i16":1};
 var tabs = {65535:["t0","All Classes"],1:["t1","Interface Summary"],2:["t2","Class Summary"],4:["t3","Enum Summary"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -112,67 +112,108 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><a href="ru/nsu/fit/apotapova/App.html" title="class in ru.nsu.fit.apotapova">App</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<th class="colLast" scope="row">
+<div class="block">Application entry point.</div>
+</th>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><a href="ru/nsu/fit/apotapova/employees/Baker.html" title="class in ru.nsu.fit.apotapova.employees">Baker</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<th class="colLast" scope="row">
+<div class="block">The baker class receives an order from a queue of pending orders, bakes, and passes it to the
+ warehouse.</div>
+</th>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><a href="ru/nsu/fit/apotapova/json/BakerData.html" title="class in ru.nsu.fit.apotapova.json">BakerData</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<th class="colLast" scope="row">
+<div class="block">Class for baker's data for JSON.</div>
+</th>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><a href="ru/nsu/fit/apotapova/employees/roles/Consumer.html" title="interface in ru.nsu.fit.apotapova.employees.roles">Consumer</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<th class="colLast" scope="row">
+<div class="block">An interface for order executors that provides an object with access to receive an order from an
+ order queue.</div>
+</th>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><a href="ru/nsu/fit/apotapova/employees/Courier.html" title="class in ru.nsu.fit.apotapova.employees">Courier</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<th class="colLast" scope="row">
+<div class="block">The courier class receives the order from the warehouse and delivers the order.</div>
+</th>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><a href="ru/nsu/fit/apotapova/json/CourierData.html" title="class in ru.nsu.fit.apotapova.json">CourierData</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<th class="colLast" scope="row">
+<div class="block">Class for courier's data for JSON.</div>
+</th>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><a href="ru/nsu/fit/apotapova/json/EmployeeData.html" title="class in ru.nsu.fit.apotapova.json">EmployeeData</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<td class="colFirst"><a href="ru/nsu/fit/apotapova/json/EmployeesDataBase.html" title="class in ru.nsu.fit.apotapova.json">EmployeesDataBase</a></td>
+<th class="colLast" scope="row">
+<div class="block">Class containing HashMaps with employees data for JSON.</div>
+</th>
 </tr>
 <tr id="i7" class="rowColor">
-<td class="colFirst"><a href="ru/nsu/fit/apotapova/json/EmployeesDataBase.html" title="class in ru.nsu.fit.apotapova.json">EmployeesDataBase</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<td class="colFirst"><a href="ru/nsu/fit/apotapova/json/JSONReader.html" title="class in ru.nsu.fit.apotapova.json">JSONReader</a></td>
+<th class="colLast" scope="row">
+<div class="block">JSON reader reads JSON and returns EmployeeDataBase.</div>
+</th>
 </tr>
 <tr id="i8" class="altColor">
-<td class="colFirst"><a href="ru/nsu/fit/apotapova/json/JSONReader.html" title="class in ru.nsu.fit.apotapova.json">JSONReader</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<td class="colFirst"><a href="ru/nsu/fit/apotapova/NotificationSystem.html" title="class in ru.nsu.fit.apotapova">NotificationSystem</a></td>
+<th class="colLast" scope="row">
+<div class="block">Class for notification of the status of orders.</div>
+</th>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><a href="ru/nsu/fit/apotapova/order/Order.html" title="class in ru.nsu.fit.apotapova.order">Order</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<th class="colLast" scope="row">
+<div class="block">Class that contains number, distance of the order and status.</div>
+</th>
 </tr>
 <tr id="i10" class="altColor">
-<td class="colFirst"><a href="ru/nsu/fit/apotapova/employees/OrderExecutor.html" title="class in ru.nsu.fit.apotapova.employees">OrderExecutor</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<td class="colFirst"><a href="ru/nsu/fit/apotapova/order/Order.OrderStatusMod.html" title="enum in ru.nsu.fit.apotapova.order">Order.OrderStatusMod</a></td>
+<th class="colLast" scope="row">
+<div class="block">Mod of managing order status.</div>
+</th>
 </tr>
 <tr id="i11" class="rowColor">
-<td class="colFirst"><a href="ru/nsu/fit/apotapova/OrderGenerator.html" title="class in ru.nsu.fit.apotapova">OrderGenerator</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<td class="colFirst"><a href="ru/nsu/fit/apotapova/employees/OrderExecutor.html" title="class in ru.nsu.fit.apotapova.employees">OrderExecutor</a></td>
+<th class="colLast" scope="row">
+<div class="block">The executor of the order is available for execution in the stream.</div>
+</th>
 </tr>
 <tr id="i12" class="altColor">
-<td class="colFirst"><a href="ru/nsu/fit/apotapova/order/OrderStatus.html" title="enum in ru.nsu.fit.apotapova.order">OrderStatus</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<td class="colFirst"><a href="ru/nsu/fit/apotapova/OrderGenerator.html" title="class in ru.nsu.fit.apotapova">OrderGenerator</a></td>
+<th class="colLast" scope="row">
+<div class="block">Class for simulating the receipt of orders in a pizzeria.</div>
+</th>
 </tr>
 <tr id="i13" class="rowColor">
-<td class="colFirst"><a href="ru/nsu/fit/apotapova/Pizzeria.html" title="class in ru.nsu.fit.apotapova">Pizzeria</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<td class="colFirst"><a href="ru/nsu/fit/apotapova/order/OrderStatus.html" title="enum in ru.nsu.fit.apotapova.order">OrderStatus</a></td>
+<th class="colLast" scope="row">
+<div class="block">Status of order.</div>
+</th>
 </tr>
 <tr id="i14" class="altColor">
-<td class="colFirst"><a href="ru/nsu/fit/apotapova/PizzeriaApp.html" title="class in ru.nsu.fit.apotapova">PizzeriaApp</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<td class="colFirst"><a href="ru/nsu/fit/apotapova/Pizzeria.html" title="class in ru.nsu.fit.apotapova">Pizzeria</a></td>
+<th class="colLast" scope="row">
+<div class="block">Main Pizzeria class.</div>
+</th>
 </tr>
 <tr id="i15" class="rowColor">
+<td class="colFirst"><a href="ru/nsu/fit/apotapova/PizzeriaApp.html" title="class in ru.nsu.fit.apotapova">PizzeriaApp</a></td>
+<th class="colLast" scope="row">
+<div class="block">Class for launch and construct pizzeria.</div>
+</th>
+</tr>
+<tr id="i16" class="altColor">
 <td class="colFirst"><a href="ru/nsu/fit/apotapova/employees/roles/Producer.html" title="interface in ru.nsu.fit.apotapova.employees.roles">Producer</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
+<th class="colLast" scope="row">
+<div class="block">An interface for order executors that provides an object with access to add a processed order to
+ the order queue.</div>
+</th>
 </tr>
 </table>
 </li>

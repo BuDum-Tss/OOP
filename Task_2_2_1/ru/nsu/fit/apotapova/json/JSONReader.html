@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10};
+var data = {"i0":10,"i1":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -133,6 +133,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">JSONReader</span>
 extends java.lang.Object</pre>
+<div class="block">JSON reader reads JSON and returns EmployeeDataBase.</div>
 </li>
 </ul>
 </div>
@@ -156,10 +157,6 @@ extends java.lang.Object</pre>
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">JSONReader</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.io.File)">JSONReader</a></span>&#8203;(java.io.File&nbsp;file)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
 </table>
 </li>
 </ul>
@@ -179,18 +176,13 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#close()">close</a></span>()</code></th>
+<td class="colFirst"><code><a href="EmployeesDataBase.html" title="class in ru.nsu.fit.apotapova.json">EmployeesDataBase</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#read()">read</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#open()">open</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="EmployeesDataBase.html" title="class in ru.nsu.fit.apotapova.json">EmployeesDataBase</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#read()">read</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#read(java.io.File)">read</a></span>&#8203;(java.io.File&nbsp;file)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -220,19 +212,10 @@ extends java.lang.Object</pre>
 <a id="&lt;init&gt;()">
 <!--   -->
 </a>
-<ul class="blockList">
-<li class="blockList">
-<h4>JSONReader</h4>
-<pre>public&nbsp;JSONReader()</pre>
-</li>
-</ul>
-<a id="&lt;init&gt;(java.io.File)">
-<!--   -->
-</a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>JSONReader</h4>
-<pre>public&nbsp;JSONReader&#8203;(java.io.File&nbsp;file)</pre>
+<pre>public&nbsp;JSONReader()</pre>
 </li>
 </ul>
 </li>
@@ -245,31 +228,22 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="open()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>open</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;open()</pre>
-</li>
-</ul>
-<a id="read()">
+<a id="read(java.io.File)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>read</h4>
-<pre class="methodSignature">public&nbsp;<a href="EmployeesDataBase.html" title="class in ru.nsu.fit.apotapova.json">EmployeesDataBase</a>&nbsp;read()</pre>
+<pre class="methodSignature">public&nbsp;<a href="EmployeesDataBase.html" title="class in ru.nsu.fit.apotapova.json">EmployeesDataBase</a>&nbsp;read&#8203;(java.io.File&nbsp;file)</pre>
 </li>
 </ul>
-<a id="close()">
+<a id="read()">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>close</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;close()</pre>
+<h4>read</h4>
+<pre class="methodSignature">public&nbsp;<a href="EmployeesDataBase.html" title="class in ru.nsu.fit.apotapova.json">EmployeesDataBase</a>&nbsp;read()</pre>
 </li>
 </ul>
 </li>

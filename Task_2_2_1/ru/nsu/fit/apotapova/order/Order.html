@@ -88,7 +88,7 @@ loadScripts(document, 'script');</script>
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
@@ -133,12 +133,38 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Order</span>
 extends java.lang.Object</pre>
+<div class="block">Class that contains number, distance of the order and status.</div>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<section>
+<ul class="blockList">
+<li class="blockList"><a id="nested.class.summary">
+<!--   -->
+</a>
+<h3>Nested Class Summary</h3>
+<table class="memberSummary">
+<caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colSecond" scope="col">Class</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Order.OrderStatusMod.html" title="enum in ru.nsu.fit.apotapova.order">Order.OrderStatusMod</a></span></code></th>
+<td class="colLast">
+<div class="block">Mod of managing order status.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+</section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <section>
 <ul class="blockList">
@@ -153,9 +179,10 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int,long)">Order</a></span>&#8203;(int&nbsp;number,
-     long&nbsp;distance)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(long)">Order</a></span>&#8203;(long&nbsp;distance)</code></th>
+<td class="colLast">
+<div class="block">Constructor.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -176,29 +203,33 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#changeStatus()">changeStatus</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i1" class="rowColor">
 <td class="colFirst"><code>long</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDistance()">getDistance</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNumber()">getNumber</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>@NotNull <a href="OrderStatus.html" title="enum in ru.nsu.fit.apotapova.order">OrderStatus</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getStatus()">getStatus</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#manageStatus(ru.nsu.fit.apotapova.order.Order.OrderStatusMod)">manageStatus</a></span>&#8203;(<a href="Order.OrderStatusMod.html" title="enum in ru.nsu.fit.apotapova.order">Order.OrderStatusMod</a>&nbsp;workingMod)</code></th>
+<td class="colLast">
+<div class="block">Manages order status.</div>
+</td>
+</tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setStatus(ru.nsu.fit.apotapova.order.OrderStatus)">setStatus</a></span>&#8203;(@NotNull <a href="OrderStatus.html" title="enum in ru.nsu.fit.apotapova.order">OrderStatus</a>&nbsp;status)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setNumber(java.lang.Integer)">setNumber</a></span>&#8203;(java.lang.Integer&nbsp;number)</code></th>
+<td class="colLast">
+<div class="block">Sets number of Order.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -224,14 +255,18 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(int,long)">
+<a id="&lt;init&gt;(long)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Order</h4>
-<pre>public&nbsp;Order&#8203;(int&nbsp;number,
-             long&nbsp;distance)</pre>
+<pre>public&nbsp;Order&#8203;(long&nbsp;distance)</pre>
+<div class="block">Constructor.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>distance</code> - distance</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -244,24 +279,20 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="getStatus()">
+<a id="manageStatus(ru.nsu.fit.apotapova.order.Order.OrderStatusMod)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getStatus</h4>
-<pre class="methodSignature">@NotNull
-public&nbsp;@NotNull <a href="OrderStatus.html" title="enum in ru.nsu.fit.apotapova.order">OrderStatus</a>&nbsp;getStatus()</pre>
-</li>
-</ul>
-<a id="setStatus(ru.nsu.fit.apotapova.order.OrderStatus)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setStatus</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setStatus&#8203;(@NotNull
-                      @NotNull <a href="OrderStatus.html" title="enum in ru.nsu.fit.apotapova.order">OrderStatus</a>&nbsp;status)</pre>
+<h4>manageStatus</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;manageStatus&#8203;(<a href="Order.OrderStatusMod.html" title="enum in ru.nsu.fit.apotapova.order">Order.OrderStatusMod</a>&nbsp;workingMod)</pre>
+<div class="block">Manages order status.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>workingMod</code> - CHANGE or GET</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>message if mod is GET and status was updated else null</dd>
+</dl>
 </li>
 </ul>
 <a id="getDistance()">
@@ -273,22 +304,37 @@ public&nbsp;@NotNull <a href="OrderStatus.html" title="enum in ru.nsu.fit.apotap
 <pre class="methodSignature">public&nbsp;long&nbsp;getDistance()</pre>
 </li>
 </ul>
-<a id="changeStatus()">
+<a id="getNumber()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>changeStatus</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;changeStatus()</pre>
+<h4>getNumber</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;getNumber()</pre>
 </li>
 </ul>
-<a id="getNumber()">
+<a id="setNumber(java.lang.Integer)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setNumber</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setNumber&#8203;(java.lang.Integer&nbsp;number)</pre>
+<div class="block">Sets number of Order.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>number</code> - number of order</dd>
+</dl>
+</li>
+</ul>
+<a id="getStatus()">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>getNumber</h4>
-<pre class="methodSignature">public&nbsp;int&nbsp;getNumber()</pre>
+<h4>getStatus</h4>
+<pre class="methodSignature">@NotNull
+public&nbsp;@NotNull <a href="OrderStatus.html" title="enum in ru.nsu.fit.apotapova.order">OrderStatus</a>&nbsp;getStatus()</pre>
 </li>
 </ul>
 </li>
@@ -342,7 +388,7 @@ public&nbsp;@NotNull <a href="OrderStatus.html" title="enum in ru.nsu.fit.apotap
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
