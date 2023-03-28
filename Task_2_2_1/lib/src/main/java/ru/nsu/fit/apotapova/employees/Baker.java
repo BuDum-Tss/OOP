@@ -5,7 +5,7 @@ import ru.nsu.fit.apotapova.employees.roles.Consumer;
 import ru.nsu.fit.apotapova.employees.roles.Producer;
 import ru.nsu.fit.apotapova.json.BakerData;
 import ru.nsu.fit.apotapova.order.Order;
-import ru.nsu.fit.apotapova.order.Order.OrderStatusMod;
+import ru.nsu.fit.apotapova.order.OrderStatus;
 
 /**
  * The baker class receives an order from a queue of pending orders, bakes, and passes it to the
@@ -33,19 +33,12 @@ public class Baker extends OrderExecutor implements Consumer, Producer {
 
   @Override
   public Order takeOrder() {
-    Order takenOrder = null;
+    Order takenOrder;
     try {
-      synchronized (this) {
-        isWaitingOrder.set(true);
-        takenOrder = pendingOrders.take();
-        isWaitingOrder.set(false);
-      }
-      takenOrder.manageStatus(OrderStatusMod.CHANGE);
+      takenOrder = pendingOrders.take();
     } catch (InterruptedException e) {
-      if (!isInterrupted.get()) {
-        throw new RuntimeException(
-            "Unexpected interruption while taking the order at:" + this.getClass().toString());
-      }
+      throw new RuntimeException(
+          "Unexpected interruption while taking the order at:" + this.getClass().toString());
     }
     return takenOrder;
   }
@@ -53,11 +46,14 @@ public class Baker extends OrderExecutor implements Consumer, Producer {
   @Override
   protected void work() {
     Order currentOrder = takeOrder();
-    if (currentOrder == null) {
+    if (currentOrder.getStatus() == OrderStatus.SPECIAL) {
+      Thread.currentThread().interrupt();
       return;
     }
+    currentOrder.changeStatus();
     bake();
     transferOrder(currentOrder);
+    currentOrder.changeStatus();
   }
 
   private void bake() {
@@ -76,12 +72,8 @@ public class Baker extends OrderExecutor implements Consumer, Producer {
     try {
       storage.put(completedOrder);
     } catch (InterruptedException e) {
-      if (!isInterrupted.get()) {
-        throw new RuntimeException(
-            "Unexpected interruption while transferring the order at: " + this.getClass()
-                .toString());
-      }
+      throw new RuntimeException(
+          "Unexpected interruption while transferring the order at: " + this.getClass().toString());
     }
-    completedOrder.manageStatus(OrderStatusMod.CHANGE);
   }
 }

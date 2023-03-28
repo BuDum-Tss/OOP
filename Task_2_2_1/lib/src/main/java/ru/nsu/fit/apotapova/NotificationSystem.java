@@ -1,47 +1,37 @@
 package ru.nsu.fit.apotapova;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import ru.nsu.fit.apotapova.order.Order;
-import ru.nsu.fit.apotapova.order.Order.OrderStatusMod;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * Class for notification of the status of orders.
  */
 public class NotificationSystem implements Runnable {
 
-  protected final HashMap<Integer, Order> trackedOrders;
-
-  public NotificationSystem() {
-    trackedOrders = new HashMap<>();
-  }
+  protected final static BlockingQueue<String> messageQueue = new LinkedBlockingQueue<>();
 
   /**
-   * Add order to HasMap for tracking.
+   * Puts message in queue to right sequence of printing.
    *
-   * @param newOrder added Order
+   * @param message putted message
    */
-  public void track(Order newOrder) {
-    synchronized (trackedOrders) {
-      trackedOrders.put(newOrder.getNumber(), newOrder);
+  public static void newMessage(String message) {
+    try {
+      messageQueue.put(message);
+    } catch (InterruptedException e) {
+      throw new RuntimeException("Unexpected interruption waiting the queue");
     }
   }
 
   @Override
   public void run() {
-    while (!Thread.currentThread().isInterrupted()) {
-      List<Integer> keyList;
-      synchronized (trackedOrders) {
-        keyList = new ArrayList<>(trackedOrders.keySet());
+    try {
+      while (!(Thread.currentThread().isInterrupted() && messageQueue.isEmpty())) {
+        String message;
+        message = messageQueue.take();
+        System.out.println(message);
       }
-      keyList.forEach(key -> {
-        Order order = trackedOrders.get(key);
-        String status = order.manageStatus(OrderStatusMod.GET);
-        if (status != null) {
-          System.out.println("[" + order.getNumber() + "]: " + order.getStatus().getMessage());
-        }
-      });
+    } catch (InterruptedException ignored) {
     }
   }
 }

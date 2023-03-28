@@ -11,7 +11,7 @@ public interface Consumer {
   /**
    * Take an order from the order queue.
    *
-   * @return  accepted order
+   * @return accepted order
    */
   Order takeOrder();
 }

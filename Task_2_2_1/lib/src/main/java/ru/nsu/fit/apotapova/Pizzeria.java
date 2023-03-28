@@ -14,16 +14,15 @@ import ru.nsu.fit.apotapova.employees.Baker;
 import ru.nsu.fit.apotapova.employees.Courier;
 import ru.nsu.fit.apotapova.json.EmployeesDataBase;
 import ru.nsu.fit.apotapova.order.Order;
-import ru.nsu.fit.apotapova.order.Order.OrderStatusMod;
+import ru.nsu.fit.apotapova.order.OrderStatus;
 
 /**
  * Main Pizzeria class.
  */
 public class Pizzeria implements Runnable {
 
-  private static final Integer OVERTIME = 10;
+  private static final Integer OVERTIME = 60;
   private Integer orderNumber;
-  private NotificationSystem notificationSystem;
   private BlockingQueue<Order> pendingOrders;
   private BlockingQueue<Order> storage;
   private Map<Integer, Baker> bakerHashmap;
@@ -32,19 +31,6 @@ public class Pizzeria implements Runnable {
   private ExecutorService couriersThreadPool;
   private AtomicBoolean isInterrupted;
   private Thread currentThread;
-
-  /**
-   * Constructor.
-   *
-   * @param data               employees data
-   * @param notificationSystem notification system
-   * @param storageSize        storage size
-   */
-  public Pizzeria(EmployeesDataBase data, NotificationSystem notificationSystem, int storageSize) {
-    this.notificationSystem = notificationSystem;
-    init(storageSize);
-    unpack(data);
-  }
 
   /**
    * Constructor.
@@ -77,23 +63,17 @@ public class Pizzeria implements Runnable {
    * Adds order to queue of pending orders.
    *
    * @param newOrder pending order
-   * @param observe  should be monitored
    */
-  public void addOrder(Order newOrder, boolean observe) {
+  public void addOrder(Order newOrder) {
+    if (isInterrupted.get()) {
+      return;
+    }
     try {
       newOrder.setNumber(orderNumber++);
-      if (notificationSystem != null && observe) {
-        notificationSystem.track(newOrder);
-      }
       pendingOrders.put(newOrder);
-      newOrder.manageStatus(OrderStatusMod.CHANGE);
     } catch (InterruptedException e) {
-      throw new RuntimeException(e);
+      throw new RuntimeException("Unexpected Interruption while putting order to queue");
     }
-  }
-
-  public void addOrder(Order newOrder) {
-    addOrder(newOrder, true);
   }
 
   @Override
@@ -113,24 +93,28 @@ public class Pizzeria implements Runnable {
     }
   }
 
+  private void addSpecialTasks(int number, BlockingQueue<Order> queue) {
+    for (int i = 0; i < number; i++) {
+      try {
+        queue.put(new Order(OrderStatus.SPECIAL));
+      } catch (InterruptedException e) {
+        throw new RuntimeException("Unexpected Interruption while putting order to queue");
+      }
+    }
+  }
+
   /**
    * Interrupts pizzeria work.
    */
   public void interrupt() {
+    isInterrupted.set(true);
+    addSpecialTasks(bakerHashmap.size(), pendingOrders);
     bakersThreadPool.shutdown();
-    bakerHashmap.forEach((id, baker) -> baker.interrupt());
     terminate(bakersThreadPool, "Baker");
+    addSpecialTasks(courierHashmap.size(), storage);
     couriersThreadPool.shutdown();
-
-    courierHashmap.forEach((id, courier) -> courier.interrupt());
     terminate(couriersThreadPool, "Courier");
     System.out.println("The pizzeria is closed!");
-
-    interruptThread();
-  }
-
-  private void interruptThread() {
-    isInterrupted.set(true);
     currentThread.interrupt();
   }
 

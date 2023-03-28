@@ -2,6 +2,7 @@ package ru.nsu.fit.apotapova.order;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.jetbrains.annotations.NotNull;
+import ru.nsu.fit.apotapova.NotificationSystem;
 
 /**
  * Class that contains number, distance of the order and status.
@@ -9,8 +10,8 @@ import org.jetbrains.annotations.NotNull;
 public class Order {
 
   private final long distance;
-  private Integer number = null;
   private final AtomicBoolean isUpdated;
+  private Integer number = null;
   private volatile @NotNull OrderStatus status;
 
   /**
@@ -24,43 +25,31 @@ public class Order {
     isUpdated = new AtomicBoolean(true);
   }
 
-  private synchronized void synchronizedChangeStatus() {
+  /**
+   * Constructor.
+   *
+   * @param status order status
+   */
+  public Order(@NotNull OrderStatus status) {
+    this.status = status;
+    this.distance = 0;
+    isUpdated = new AtomicBoolean(true);
+  }
+
+  /**
+   * Changes order status and sends message to NotificationSystem.
+   */
+  public synchronized void changeStatus() {
     OrderStatus newStatus = status.nextStatus();
     if (newStatus != null) {
       status = status.nextStatus();
       isUpdated.set(true);
     }
-  }
-
-  /**
-   * Manages order status.
-   *
-   * @param workingMod CHANGE or GET
-   * @return message if mod is GET and status was updated else null
-   */
-  public synchronized String manageStatus(OrderStatusMod workingMod) {
-    if (workingMod == OrderStatusMod.CHANGE) {
-      synchronizedChangeStatus();
-      return null;
-    } else {
-      return synchronizedGetStatus();
-    }
-  }
-
-  private synchronized String synchronizedGetStatus() {
-    if (isUpdated.getAndSet(false)) {
-      return status.getMessage();
-    } else {
-      return null;
-    }
+    NotificationSystem.newMessage("[" + number + "]" + status.getMessage());
   }
 
   public long getDistance() {
     return distance;
-  }
-
-  public int getNumber() {
-    return number;
   }
 
   /**
@@ -79,13 +68,4 @@ public class Order {
   public @NotNull OrderStatus getStatus() {
     return status;
   }
-
-  /**
-   * Mod of managing order status.
-   */
-  public enum OrderStatusMod {
-    CHANGE,
-    GET
-  }
-
 }

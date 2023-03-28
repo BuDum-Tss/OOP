@@ -20,27 +20,26 @@ public class PizzeriaApp {
   /**
    * Class for launch and construct pizzeria.
    *
-   * @param jsonPath    path of json
-   * @param workingTime pizzeria working time(milliseconds)
-   * @param storageSize storage size
-   * @param maxDistance maximum distance of delivering(m)
+   * @param jsonPath            path of json
+   * @param workingTime         pizzeria working time(milliseconds)
+   * @param storageSize         storage size
+   * @param maxDistance         maximum distance of delivering(m)
    * @param frequencyOfRequests frequencyOfRequests frequency of requests(milliseconds)
    */
   public PizzeriaApp(String jsonPath, long workingTime, Integer storageSize, int maxDistance,
       int frequencyOfRequests) {
     this.workingTime = workingTime;
     this.notificationSystem = new NotificationSystem();
-    this.pizzeria = new Pizzeria(new JSONReader().read(new File(jsonPath)), notificationSystem,
-        storageSize);
+    this.pizzeria = new Pizzeria(new JSONReader().read(new File(jsonPath)), storageSize);
     this.orderGenerator = new OrderGenerator(pizzeria);
     orderGenerator.setNewSettings(maxDistance, frequencyOfRequests);
     initThreads();
   }
 
   private void initThreads() {
-    pizzeriaThread = new Thread(pizzeria);
-    orderGeneratorThread = new Thread(orderGenerator);
-    notificationSystemThread = new Thread(notificationSystem);
+    pizzeriaThread = new Thread(pizzeria, "Pizzeria");
+    orderGeneratorThread = new Thread(orderGenerator, "OrderGenerator");
+    notificationSystemThread = new Thread(notificationSystem, "Notification System");
   }
 
   /**

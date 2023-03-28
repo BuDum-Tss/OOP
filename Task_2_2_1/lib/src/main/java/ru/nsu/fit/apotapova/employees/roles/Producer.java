@@ -11,7 +11,7 @@ public interface Producer {
   /**
    * Transfer the order to the order queue.
    *
-   * @param completedOrder transferred order
+   * @param completedPizzaOrder transferred order
    */
-  void transferOrder(Order completedOrder);
+  void transferOrder(Order completedPizzaOrder);
 }
