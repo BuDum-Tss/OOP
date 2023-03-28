@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10};
+var data = {"i0":10,"i1":10,"i2":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -165,14 +165,6 @@ implements java.lang.Runnable</pre>
 <div class="block">Constructor.</div>
 </td>
 </tr>
-<tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.nsu.fit.apotapova.json.EmployeesDataBase,ru.nsu.fit.apotapova.NotificationSystem,int)">Pizzeria</a></span>&#8203;(<a href="json/EmployeesDataBase.html" title="class in ru.nsu.fit.apotapova.json">EmployeesDataBase</a>&nbsp;data,
-        <a href="NotificationSystem.html" title="class in ru.nsu.fit.apotapova">NotificationSystem</a>&nbsp;notificationSystem,
-        int&nbsp;storageSize)</code></th>
-<td class="colLast">
-<div class="block">Constructor.</div>
-</td>
-</tr>
 </table>
 </li>
 </ul>
@@ -194,24 +186,18 @@ implements java.lang.Runnable</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addOrder(ru.nsu.fit.apotapova.order.Order)">addOrder</a></span>&#8203;(<a href="order/Order.html" title="class in ru.nsu.fit.apotapova.order">Order</a>&nbsp;newOrder)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addOrder(ru.nsu.fit.apotapova.order.Order,boolean)">addOrder</a></span>&#8203;(<a href="order/Order.html" title="class in ru.nsu.fit.apotapova.order">Order</a>&nbsp;newOrder,
-        boolean&nbsp;observe)</code></th>
 <td class="colLast">
 <div class="block">Adds order to queue of pending orders.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#interrupt()">interrupt</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Interrupts pizzeria work.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#run()">run</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
@@ -240,24 +226,6 @@ implements java.lang.Runnable</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(ru.nsu.fit.apotapova.json.EmployeesDataBase,ru.nsu.fit.apotapova.NotificationSystem,int)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>Pizzeria</h4>
-<pre>public&nbsp;Pizzeria&#8203;(<a href="json/EmployeesDataBase.html" title="class in ru.nsu.fit.apotapova.json">EmployeesDataBase</a>&nbsp;data,
-                <a href="NotificationSystem.html" title="class in ru.nsu.fit.apotapova">NotificationSystem</a>&nbsp;notificationSystem,
-                int&nbsp;storageSize)</pre>
-<div class="block">Constructor.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>data</code> - employees data</dd>
-<dd><code>notificationSystem</code> - notification system</dd>
-<dd><code>storageSize</code> - storage size</dd>
-</dl>
-</li>
-</ul>
 <a id="&lt;init&gt;(ru.nsu.fit.apotapova.json.EmployeesDataBase,int)">
 <!--   -->
 </a>
@@ -284,22 +252,6 @@ implements java.lang.Runnable</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="addOrder(ru.nsu.fit.apotapova.order.Order,boolean)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>addOrder</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;addOrder&#8203;(<a href="order/Order.html" title="class in ru.nsu.fit.apotapova.order">Order</a>&nbsp;newOrder,
-                     boolean&nbsp;observe)</pre>
-<div class="block">Adds order to queue of pending orders.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>newOrder</code> - pending order</dd>
-<dd><code>observe</code> - should be monitored</dd>
-</dl>
-</li>
-</ul>
 <a id="addOrder(ru.nsu.fit.apotapova.order.Order)">
 <!--   -->
 </a>
@@ -307,6 +259,11 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>addOrder</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addOrder&#8203;(<a href="order/Order.html" title="class in ru.nsu.fit.apotapova.order">Order</a>&nbsp;newOrder)</pre>
+<div class="block">Adds order to queue of pending orders.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>newOrder</code> - pending order</dd>
+</dl>
 </li>
 </ul>
 <a id="run()">
