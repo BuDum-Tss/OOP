@@ -13,6 +13,7 @@ public class Order {
   private final AtomicBoolean isUpdated;
   private Integer number = null;
   private volatile @NotNull OrderStatus status;
+  private NotificationSystem notificationSystem;
 
   /**
    * Constructor.
@@ -36,6 +37,10 @@ public class Order {
     isUpdated = new AtomicBoolean(true);
   }
 
+  public void setNotificationSystem(NotificationSystem notificationSystem) {
+    this.notificationSystem = notificationSystem;
+  }
+
   /**
    * Changes order status and sends message to NotificationSystem.
    */
@@ -45,7 +50,9 @@ public class Order {
       status = status.nextStatus();
       isUpdated.set(true);
     }
-    NotificationSystem.newMessage("[" + number + "]" + status.getMessage());
+    if (notificationSystem != null) {
+      notificationSystem.newMessage("[" + number + "]" + status.getMessage());
+    }
   }
 
   public long getDistance() {

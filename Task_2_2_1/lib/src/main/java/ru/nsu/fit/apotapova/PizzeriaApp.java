@@ -31,7 +31,7 @@ public class PizzeriaApp {
     this.workingTime = workingTime;
     this.notificationSystem = new NotificationSystem();
     this.pizzeria = new Pizzeria(new JSONReader().read(new File(jsonPath)), storageSize);
-    this.orderGenerator = new OrderGenerator(pizzeria);
+    this.orderGenerator = new OrderGenerator(pizzeria, notificationSystem);
     orderGenerator.setNewSettings(maxDistance, frequencyOfRequests);
     initThreads();
   }

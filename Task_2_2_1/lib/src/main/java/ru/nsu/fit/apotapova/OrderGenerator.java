@@ -12,14 +12,16 @@ public class OrderGenerator implements Runnable {
   private final Random random;
   private int maxDistance = 100;
   private int frequencyOfRequests = 10000;
+  private final NotificationSystem notificationSystem;
 
   /**
    * Constructor.
    *
    * @param pizzeria tested pizzeria
    */
-  public OrderGenerator(Pizzeria pizzeria) {
+  public OrderGenerator(Pizzeria pizzeria, NotificationSystem notificationSystem) {
     this.pizzeria = pizzeria;
+    this.notificationSystem = notificationSystem;
     random = new Random();
   }
 
@@ -39,7 +41,9 @@ public class OrderGenerator implements Runnable {
     try {
       while (!Thread.currentThread().isInterrupted()) {
         Thread.sleep(random.nextInt(frequencyOfRequests));
-        pizzeria.addOrder(new Order(random.nextInt(maxDistance)));
+        Order newOrder = new Order(random.nextInt(maxDistance));
+        newOrder.setNotificationSystem(notificationSystem);
+        pizzeria.addOrder(newOrder);
       }
     } catch (InterruptedException ignored) {
     }

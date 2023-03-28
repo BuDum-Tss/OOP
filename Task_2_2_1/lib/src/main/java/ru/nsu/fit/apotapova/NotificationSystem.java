@@ -8,14 +8,14 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class NotificationSystem implements Runnable {
 
-  protected final static BlockingQueue<String> messageQueue = new LinkedBlockingQueue<>();
+  protected final BlockingQueue<String> messageQueue = new LinkedBlockingQueue<>();
 
   /**
    * Puts message in queue to right sequence of printing.
    *
    * @param message putted message
    */
-  public static void newMessage(String message) {
+  public void newMessage(String message) {
     try {
       messageQueue.put(message);
     } catch (InterruptedException e) {
