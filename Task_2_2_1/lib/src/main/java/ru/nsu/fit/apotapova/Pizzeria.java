@@ -30,7 +30,7 @@ public class Pizzeria implements Runnable {
   private ExecutorService bakersThreadPool;
   private ExecutorService couriersThreadPool;
   private AtomicBoolean isInterrupted;
-  private Thread currentThread;
+  private final NotificationSystem notificationSystem;
 
   /**
    * Constructor.
@@ -38,7 +38,8 @@ public class Pizzeria implements Runnable {
    * @param data        employees data
    * @param storageSize storage size
    */
-  public Pizzeria(EmployeesDataBase data, int storageSize) {
+  public Pizzeria(EmployeesDataBase data, int storageSize, NotificationSystem notificationSystem) {
+    this.notificationSystem = notificationSystem;
     init(storageSize);
     unpack(data);
   }
@@ -78,12 +79,11 @@ public class Pizzeria implements Runnable {
 
   @Override
   public void run() {
-    currentThread = Thread.currentThread();
     bakersThreadPool = Executors.newFixedThreadPool(bakerHashmap.size());
     bakerHashmap.values().forEach(bakersThreadPool::execute);
     couriersThreadPool = Executors.newFixedThreadPool(courierHashmap.size());
     courierHashmap.values().forEach(couriersThreadPool::execute);
-    System.out.println("The pizzeria is open!");
+    notificationSystem.newMessage("The pizzeria is open!");
     try {
       sleep(Integer.MAX_VALUE);
     } catch (InterruptedException e) {
@@ -115,7 +115,6 @@ public class Pizzeria implements Runnable {
     couriersThreadPool.shutdown();
     terminate(couriersThreadPool, "Courier");
     System.out.println("The pizzeria is closed!");
-    currentThread.interrupt();
   }
 
   private void terminate(ExecutorService employeeThreadPool, String employeesPosition) {

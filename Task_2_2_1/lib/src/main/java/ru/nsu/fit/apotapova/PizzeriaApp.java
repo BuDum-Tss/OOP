@@ -30,7 +30,7 @@ public class PizzeriaApp {
       int frequencyOfRequests) {
     this.workingTime = workingTime;
     this.notificationSystem = new NotificationSystem();
-    this.pizzeria = new Pizzeria(new JSONReader().read(new File(jsonPath)), storageSize);
+    this.pizzeria = new Pizzeria(new JSONReader().read(new File(jsonPath)), storageSize,notificationSystem);
     this.orderGenerator = new OrderGenerator(pizzeria, notificationSystem);
     orderGenerator.setNewSettings(maxDistance, frequencyOfRequests);
     initThreads();
@@ -56,6 +56,7 @@ public class PizzeriaApp {
     }
     orderGeneratorThread.interrupt();
     pizzeria.interrupt();
+    pizzeriaThread.interrupt();
     notificationSystemThread.interrupt();
   }
 }
