@@ -4,10 +4,9 @@ plugins {
   id 'org.javamodularity.moduleplugin' version '1.8.12'
   id 'org.openjfx.javafxplugin' version '0.0.13'
   id 'org.beryx.jlink' version '2.25.0'
-  id 'jacoco'
 }
 
-group 'ru.nsu.fit.apotapova'
+group 'ru.nsu.fit.apotapova.snake'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -27,7 +26,7 @@ tasks.withType(JavaCompile) {
 
 application {
   mainModule = 'ru.nsu.fit.apotapova.snake'
-  mainClass = 'ru.nsu.fit.apotapova.snake.HelloApplication'
+  mainClass = 'ru.nsu.fit.apotapova.snake.Launcher'
 }
 
 javafx {
@@ -54,9 +53,4 @@ jlink {
 
 jlinkZip {
   group = 'distribution'
-}
-jacocoTestReport {
-  reports {
-    xml.required = true
-  }
 }

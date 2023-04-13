@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="scene" prefHeight="400.0" prefWidth="114.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.fit.apotapova.snake.controller.SettingsController">
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="461.0">
+         <top>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" textAlignment="CENTER" wrappingWidth="599.1366939544678" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </top>
+         <center>
+            <HBox prefHeight="326.0" prefWidth="405.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="326.0" prefWidth="596.0" spacing="10.0">
+                     <children>
+                        <ChoiceBox fx:id="windowmode_choicebox" prefHeight="26.0" prefWidth="150.0" />
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+         </center>
+         <bottom>
+            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="599.0" spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#saveBtn" text="Save" />
+                  <Button mnemonicParsing="false" onAction="#closeBtn" text="Close" />
+                  <Button mnemonicParsing="false" onAction="#defaultBtn" text="Default" />
+               </children>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </HBox>
+         </bottom></BorderPane>
+   </children>
+</AnchorPane>

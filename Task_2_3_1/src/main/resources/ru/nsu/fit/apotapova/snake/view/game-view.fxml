@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="scene" prefHeight="544.0" prefWidth="477.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.fit.apotapova.snake.controller.GameController">
+   <children>
+      <VBox fx:id="gameArea" layoutX="14.0" layoutY="14.0" prefHeight="447.0" prefWidth="447.0" />
+   </children>
+</AnchorPane>
