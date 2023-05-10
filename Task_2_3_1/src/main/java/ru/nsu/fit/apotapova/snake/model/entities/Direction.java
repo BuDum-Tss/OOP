@@ -6,7 +6,7 @@ public enum Direction {
   UP(new Point2D(0, -1)),
   DOWN(new Point2D(0, 1)),
   LEFT(new Point2D(-1, 0)),
-  RiGHT(new Point2D(1, 0));
+  RIGHT(new Point2D(1, 0));
 
   public Point2D getDirection() {
     return direction;

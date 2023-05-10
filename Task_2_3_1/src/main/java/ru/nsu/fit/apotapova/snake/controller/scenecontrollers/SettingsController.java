@@ -1,11 +1,10 @@
-package ru.nsu.fit.apotapova.snake.controller;
+package ru.nsu.fit.apotapova.snake.controller.scenecontrollers;
 
 import javafx.event.ActionEvent;
-import javafx.scene.layout.AnchorPane;
+import ru.nsu.fit.apotapova.snake.controller.SceneController;
 
 public class SettingsController extends SceneController {
 
-  public AnchorPane scene;
   public void saveBtn(ActionEvent actionEvent) {
   }
 

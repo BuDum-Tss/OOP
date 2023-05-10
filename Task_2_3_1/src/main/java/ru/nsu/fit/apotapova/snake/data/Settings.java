@@ -10,6 +10,9 @@ import java.util.Properties;
 import java.util.concurrent.Flow.Subscriber;
 
 public class Settings {
+  public static int WINDOW_WIDTH = 800;
+  public static int WINDOW_HEIGHT = 800;
+  public static int SPEED=600;
   private static final Map<Class<?>,List<Subscriber<?>>> subscribersMap = new HashMap<>();
   public void loadSettings(String configPath) {
     try {

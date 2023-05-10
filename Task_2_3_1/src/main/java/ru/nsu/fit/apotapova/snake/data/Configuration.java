@@ -16,6 +16,10 @@ public class Configuration {
 
   public static Image SPRITE_SHEET;
   public static URL GAME_VIEW;
+  public static int TILE_SIZE = 16*4;
+  public static int AREA_WIDTH = 8;
+  public static int AREA_LENGTH = 8;
+  public static String LEVELS_PATH = "src/main/resources/ru/nsu/fit/apotapova/snake/levels/";
   public void loadConfiguration(String configPath) {
     try {
       Properties properties = new Properties();
@@ -28,6 +32,7 @@ public class Configuration {
 
   private static void loadProperties(Properties properties) {
     String spriteSheetPath = properties.getProperty("SPRITE_SHEET");
+
     SPRITE_SHEET = new Image(spriteSheetPath);
     try {
       GAME_VIEW = new File(properties.getProperty("GAME_VIEW")).toURL();

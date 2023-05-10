@@ -10,6 +10,7 @@ group 'ru.nsu.fit.apotapova.snake'
 version '1.0-SNAPSHOT'
 
 repositories {
+  google()
   mavenCentral()
 }
 
@@ -35,7 +36,7 @@ javafx {
 }
 
 dependencies {
-
+  implementation 'com.google.code.gson:gson:2.10.1'
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }

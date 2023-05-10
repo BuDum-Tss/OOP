@@ -6,12 +6,12 @@ public abstract class SceneController {
   public AnchorPane scene;
   protected MainController mainController;
 
-  void setVisible(boolean value) {
+  public void setVisible(boolean value) {
     scene.setVisible(value);
     scene.setDisable(!value);
   }
 
-  void setMainController(MainController mainController) {
+  public void setMainController(MainController mainController) {
     this.mainController=mainController;
   }
 }

@@ -1,10 +1,10 @@
-package ru.nsu.fit.apotapova.snake.controller;
+package ru.nsu.fit.apotapova.snake.controller.scenecontrollers;
 
 import javafx.event.ActionEvent;
 import javafx.scene.layout.AnchorPane;
+import ru.nsu.fit.apotapova.snake.controller.SceneController;
 
 public class MenuController extends SceneController {
-  public AnchorPane scene;
   public void startBtn(ActionEvent actionEvent) {
     setVisible(false);
     mainController.selectGameScene();

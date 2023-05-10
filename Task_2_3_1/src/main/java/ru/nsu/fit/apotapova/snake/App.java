@@ -18,9 +18,12 @@ public class App extends Application {
   }
   @Override
   public void start(Stage stage) throws Exception  {
+
      FXMLLoader fxmlLoader = new FXMLLoader(new URL("file:///F:/GitHubProjects/OOP/Task_2_3_1/src/main/resources/ru/nsu/fit/apotapova/snake/view/main-view.fxml"));
     //TODO:Изменить путь на относительный
-    Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+    System.out.println((new URL("file:///F:/GitHubProjects/OOP/Task_2_3_1/src/main/"+
+        "resources/ru/nsu/fit/apotapova/snake/view/main-view.fxml").toString()));
+    Scene scene = new Scene(fxmlLoader.load(), Settings.WINDOW_WIDTH,Settings.WINDOW_WIDTH );
     stage.setTitle("Snake");
     stage.setScene(scene);
     stage.show();
