@@ -5,25 +5,25 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ru.nsu.fit.apotapova.snake.controller.MainController;
-import ru.nsu.fit.apotapova.snake.data.Configuration;
-import ru.nsu.fit.apotapova.snake.data.Settings;
+import ru.nsu.fit.apotapova.snake.controller.SnakeMainController;
+import ru.nsu.fit.apotapova.snake.utils.Configuration;
+import ru.nsu.fit.apotapova.snake.utils.Settings;
 
 public class App extends Application {
 
-  private static MainController mainController;
+  private static SnakeMainController snakeMainController;
 
-  public static void setMainController(MainController mainController) {
-    App.mainController = mainController;
+  public static void setMainController(SnakeMainController snakeMainController) {
+    App.snakeMainController = snakeMainController;
   }
-  @Override
-  public void start(Stage stage) throws Exception  {
 
-     FXMLLoader fxmlLoader = new FXMLLoader(new URL("file:///F:/GitHubProjects/OOP/Task_2_3_1/src/main/resources/ru/nsu/fit/apotapova/snake/view/main-view.fxml"));
+  @Override
+  public void start(Stage stage) throws Exception {
+    FXMLLoader fxmlLoader = new FXMLLoader(new URL(
+        "file:///F:/GitHubProjects/OOP/Task_2_3_1/src/main/resources/ru/nsu/fit/apotapova/snake/view/main-view.fxml"));
     //TODO:Изменить путь на относительный
-    System.out.println((new URL("file:///F:/GitHubProjects/OOP/Task_2_3_1/src/main/"+
-        "resources/ru/nsu/fit/apotapova/snake/view/main-view.fxml").toString()));
-    Scene scene = new Scene(fxmlLoader.load(), Settings.WINDOW_WIDTH,Settings.WINDOW_WIDTH );
+    Scene scene = new Scene(fxmlLoader.load(), Configuration.WINDOW_WIDTH,
+        Configuration.WINDOW_HEIGHT);
     stage.setTitle("Snake");
     stage.setScene(scene);
     stage.show();

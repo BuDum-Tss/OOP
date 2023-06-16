@@ -1,44 +1,52 @@
 package ru.nsu.fit.apotapova.snake.view.tile;
 
-import java.util.ArrayList;
-import java.util.List;
-import javafx.scene.image.ImageView;
-import ru.nsu.fit.apotapova.snake.data.Configuration;
+import javafx.scene.Node;
+import javafx.scene.shape.Rectangle;
+import ru.nsu.fit.apotapova.snake.model.data.GameData;
+import ru.nsu.fit.apotapova.snake.model.entity.EntityType;
+import ru.nsu.fit.apotapova.snake.model.entity.dynamicentities.Snake;
+import ru.nsu.fit.apotapova.snake.utils.Configuration;
 
 /**
  * Класс,
  */
 public class Tile {
-  private List<Tile> neighbors;
-  private ImageView view;
-  private TileType tileType;
-  private TileState state;
-  public Tile(TileType tileType,TileState state){
-    view = new ImageView(Configuration.SPRITE_SHEET);
-    this.tileType=tileType;
-    state = state;
-    tileType.getPlacementSpecs(state).applyTo(view);
-    neighbors=new ArrayList<>();
-  }
-  public boolean connectedWith(Tile tile){
-    return neighbors.contains(tile);
-  }
-  private void updateNeighbors() {
-    List<Boolean> isConnected = neighbors.stream().map(tile -> (tile.getTileType()==tileType && tile.connectedWith(this))).toList();
-    TileState currState = new TileState(isConnected);
-    if (currState.equals(state)) return;
-    state=currState;
-    tileType.getPlacementSpecs(state).applyTo(view);
-    neighbors.forEach(Tile::updateNeighbors);
-  }
-  public List<Tile> getNeighbours() {
-    return neighbors;
-  }
-  public TileType getTileType() {
-    return tileType;
+
+  int entityId;
+  Rectangle view;
+
+  public Tile(int entityId) {
+    this.entityId = entityId;
+    view = new Rectangle(Configuration.TILE_WIDTH, Configuration.TILE_HEIGHT);
   }
 
-  public ImageView getView() {
+  public EntityType getEntityType() {
+    return TileType.getById(entityId).getEntityType();
+  }
+
+  public Node getView() {
     return view;
+  }
+
+  public Integer getId() {
+    return entityId;
+  }
+
+  public void updateViewById() {
+    String color = pickColor();
+    view.setStyle("-fx-fill:  #" + color);
+
+  }
+
+  private String pickColor() {
+    return switch (TileType.getById(entityId)) {
+      case EMPTY -> "000019";
+      case FOOD -> "FF0000";
+      case SNAKE -> ((Snake) GameData.getGameData().getEntityById(Math.abs(entityId))).getColor();
+    };
+  }
+
+  public void setId(Integer entityId) {
+    this.entityId = entityId;
   }
 }

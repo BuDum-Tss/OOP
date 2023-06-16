@@ -2,7 +2,7 @@
 
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="scene" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.fit.apotapova.snake.controller.scenecontrollers.GameController">
+<AnchorPane fx:id="scene" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.fit.apotapova.snake.controller.scenecontrollers.SnakeGameController">
   <children>
     <GridPane fx:id="gameArea" alignment="CENTER" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
       <columnConstraints>
