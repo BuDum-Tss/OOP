@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -48,7 +49,8 @@ public abstract class SnakeGameView extends SceneView implements PropertyChangeL
     for (int x = 0; x < GameData.getGameData().getMapWidth(); x++) {
       for (int y = 0; y < GameData.getGameData().getMapLength(); y++) {
         map.get(x).get(y).updateViewById();
-        gameArea.add(map.get(x).get(y).getView(), x, y);
+        Rectangle tile = map.get(x).get(y).getView();
+        gameArea.add(tile, x, y);
       }
     }
   }
@@ -85,22 +87,15 @@ public abstract class SnakeGameView extends SceneView implements PropertyChangeL
         Pair<Point2D, Integer> pointAndId = (Pair<Point2D, Integer>) evt.getNewValue();
         GameData.getGameData().getTileFromPosition(pointAndId.getKey())
             .setId(pointAndId.getValue());
-        Platform.runLater(() -> {
-              GameData.getGameData().getTileFromPosition(pointAndId.getKey()).updateViewById();
-            }
-        );
+        Platform.runLater(() -> GameData.getGameData().getTileFromPosition(pointAndId.getKey()).updateViewById());
       }
       case "victory" -> {
-        Platform.runLater(() -> {
-          label.setText("Victory");
-        });
+        Platform.runLater(() -> label.setText("Victory"));
         stopGame();
         endMenu.setVisible(true);
       }
       case "loss" -> {
-        Platform.runLater(() -> {
-          label.setText("Loss");
-        });
+        Platform.runLater(() -> label.setText("Loss"));
         stopGame();
         endMenu.setVisible(true);
       }

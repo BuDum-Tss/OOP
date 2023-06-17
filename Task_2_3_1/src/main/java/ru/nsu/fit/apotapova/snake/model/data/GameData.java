@@ -14,7 +14,7 @@ import ru.nsu.fit.apotapova.snake.view.tile.Tile;
 public class GameData {
 
   private static GameData GAME_DATA;
-  private Map<GameRule, Supplier> gameRules;
+  private final Map<GameRule, Supplier<Boolean>> gameRules;
   private List<List<Tile>> map;
   private final HashMap<Integer, Entity> entities;
   private GameState gameState;
@@ -39,7 +39,7 @@ public class GameData {
     this.map = map;
   }
 
-  public void addRule(GameRule type, Supplier rule) {
+  public void addRule(GameRule type, Supplier<Boolean> rule) {
     gameRules.put(type, rule);
   }
 
@@ -75,10 +75,6 @@ public class GameData {
     return entities.get(id);
   }
 
-  public List<Integer> getEntitiesId() {
-    return entities.keySet().stream().toList();
-  }
-
   public synchronized void setGameState(GameState gameState) {
     this.gameState = gameState;
   }
@@ -93,11 +89,10 @@ public class GameData {
   }
 
   public GameResult getGameResult() {
-    System.out.println(gameRules.get(GameRule.VICTORY).get());
-    if ((boolean) gameRules.get(GameRule.VICTORY).get()) {
+    if (gameRules.get(GameRule.VICTORY).get()) {
       return GameResult.VICTORY;
     }
-    if ((boolean) gameRules.get(GameRule.LOSS).get()) {
+    if (gameRules.get(GameRule.LOSS).get()) {
       return GameResult.LOSS;
     }
     return GameResult.IN_PROGRESS;

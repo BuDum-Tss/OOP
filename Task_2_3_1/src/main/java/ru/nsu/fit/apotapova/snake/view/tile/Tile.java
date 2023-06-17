@@ -1,6 +1,5 @@
 package ru.nsu.fit.apotapova.snake.view.tile;
 
-import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
 import ru.nsu.fit.apotapova.snake.model.data.GameData;
 import ru.nsu.fit.apotapova.snake.model.entity.EntityType;
@@ -23,7 +22,7 @@ public class Tile {
     return TileType.getById(entityId).getEntityType();
   }
 
-  public Node getView() {
+  public Rectangle getView() {
     return view;
   }
 

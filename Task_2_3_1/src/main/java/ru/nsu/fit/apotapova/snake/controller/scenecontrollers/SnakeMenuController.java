@@ -6,6 +6,9 @@ import ru.nsu.fit.apotapova.snake.view.scene.sceneview.SnakeGameView;
 import ru.nsu.fit.apotapova.snake.view.scene.sceneview.SnakeMenuView;
 import ru.nsu.fit.apotapova.snake.view.scene.sceneview.SnakeSettingsView;
 
+/**
+ * Menu controller.
+ */
 public class SnakeMenuController extends SnakeMenuView {
 
   @FXML

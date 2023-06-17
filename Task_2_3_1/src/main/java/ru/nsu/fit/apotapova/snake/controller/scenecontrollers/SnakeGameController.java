@@ -7,6 +7,7 @@ import java.util.Map;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
+import javafx.scene.shape.Rectangle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.nsu.fit.apotapova.snake.model.Game;
@@ -24,7 +25,7 @@ import ru.nsu.fit.apotapova.snake.view.scene.sceneview.SnakeMenuView;
 import ru.nsu.fit.apotapova.snake.view.tile.TileType;
 
 /**
- * Game Controller.
+ * Game controller.
  */
 public class SnakeGameController extends SnakeGameView {
 
@@ -100,9 +101,13 @@ public class SnakeGameController extends SnakeGameView {
     } catch (InterruptedException e) {
       throw new RuntimeException("Unexpected interruption while waiting thread Game");
     }
+    gameArea.getChildren().removeIf(node -> node instanceof Rectangle);
     GameData.getGameData().clearGameData();
   }
 
+  /**
+   * Removes the game from pause.
+   */
   public void continueGame() {
     GameData.getGameData().setGameState(GameState.IN_PROGRESS);
     game.interrupt();
@@ -110,6 +115,11 @@ public class SnakeGameController extends SnakeGameView {
     gameControllerLogger.info("Game continued");
   }
 
+  /**
+   * Goes to the main menu.
+   *
+   * @param actionEvent action event.
+   */
   public void quitGame(ActionEvent actionEvent) {
     closeGame();
     mainController.selectScene(SnakeMenuView.class);
@@ -140,6 +150,11 @@ public class SnakeGameController extends SnakeGameView {
         () -> GameData.getGameData().getEntityById(Configuration.SNAKE_ID) == null);
   }
 
+  /**
+   * Restarts game.
+   *
+   * @param actionEvent action event.
+   */
   public void retry(ActionEvent actionEvent) {
     closeGame();
     newGame();

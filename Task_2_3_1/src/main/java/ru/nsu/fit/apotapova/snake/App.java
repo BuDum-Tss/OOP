@@ -1,22 +1,13 @@
 package ru.nsu.fit.apotapova.snake;
 
-import java.net.URL;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ru.nsu.fit.apotapova.snake.controller.SnakeMainController;
 import ru.nsu.fit.apotapova.snake.utils.Configuration;
 import ru.nsu.fit.apotapova.snake.utils.Settings;
 
 public class App extends Application {
-
-  private static SnakeMainController snakeMainController;
-
-  public static void setMainController(SnakeMainController snakeMainController) {
-    App.snakeMainController = snakeMainController;
-  }
-
   @Override
   public void start(Stage stage) throws Exception {
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("view/main-view.fxml"));
