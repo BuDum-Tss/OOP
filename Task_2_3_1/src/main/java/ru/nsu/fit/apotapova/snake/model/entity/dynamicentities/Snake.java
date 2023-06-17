@@ -1,14 +1,19 @@
 package ru.nsu.fit.apotapova.snake.model.entity.dynamicentities;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import javafx.geometry.Point2D;
 import javafx.util.Pair;
 import ru.nsu.fit.apotapova.snake.model.data.GameData;
 import ru.nsu.fit.apotapova.snake.model.entity.Entity;
 import ru.nsu.fit.apotapova.snake.model.entity.EntityType;
 
+/**
+ * Entity Snake.
+ */
 public class Snake extends Entity implements Dynamic {
 
   private Direction direction;
@@ -16,16 +21,26 @@ public class Snake extends Entity implements Dynamic {
   private int growNumber = 0;
   private final String color;
   private final List<Pair<Point2D, Integer>> changes;
+  Queue<Direction> directionQueue;
 
-  public Snake(int id, LinkedList<Point2D> snake, String color) {
+  /**
+   * Constructor.
+   *
+   * @param id       id
+   * @param segments coordinates of snake segments
+   * @param color    snake color
+   */
+  public Snake(int id, LinkedList<Point2D> segments, String color) {
     super(id, EntityType.SNAKE);
-    segments = snake;
-    direction = Direction.getByVector(segments.getFirst().add(segments.get(1).multiply(-1)));
+    this.segments = segments;
+    direction = Direction.getByVector(
+        this.segments.getFirst().add(this.segments.get(1).multiply(-1)));
     if (color.length() != 6) {
       throw new IllegalArgumentException("Illegal color");
     }
     this.color = color;
     changes = new ArrayList<>();
+    directionQueue = new ArrayDeque<>();
   }
 
   public void setDirection(Direction direction) {
@@ -36,7 +51,7 @@ public class Snake extends Entity implements Dynamic {
   @Override
   public void interactWith(EntityType type) {
     switch (type) {
-      case SNAKE -> {
+      case SNAKE, WALL -> {
         GameData.getGameData().removeFromGame(this);
         changes.clear();
         entityLogger.info("Snake removed from game");
@@ -45,6 +60,7 @@ public class Snake extends Entity implements Dynamic {
         grow(1);
         entityLogger.info("Snake grows");
       }
+      default -> throw new IllegalArgumentException("Unexpected EntityType: " + type);
     }
   }
 
@@ -73,13 +89,16 @@ public class Snake extends Entity implements Dynamic {
     Point2D notCheckedPosition = segments.getFirst().add(direction.getDirection());
     int x = (int) (Math.abs(notCheckedPosition.getX() + GameData.getGameData().getMapWidth())
         % GameData.getGameData().getMapWidth());
-    int y = (int) (Math.abs(notCheckedPosition.getY()  + GameData.getGameData().getMapLength())
+    int y = (int) (Math.abs(notCheckedPosition.getY() + GameData.getGameData().getMapLength())
         % GameData.getGameData().getMapLength());
     return new Point2D(x, y);
   }
 
   @Override
   public void update() {
+    if (directionQueue.peek() != null) {
+      direction = directionQueue.poll();
+    }
     changes.clear();
     Point2D next = nextPosition();
     move();
@@ -108,5 +127,9 @@ public class Snake extends Entity implements Dynamic {
 
   public int getLength() {
     return segments.size();
+  }
+
+  public void addDirection(Direction direction) {
+    directionQueue.add(direction);
   }
 }

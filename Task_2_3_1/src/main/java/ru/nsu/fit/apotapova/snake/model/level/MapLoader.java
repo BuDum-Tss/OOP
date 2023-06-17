@@ -9,8 +9,17 @@ import java.util.List;
 import ru.nsu.fit.apotapova.snake.utils.Configuration;
 import ru.nsu.fit.apotapova.snake.view.tile.Tile;
 
+/**
+ * Map loader.
+ */
 public class MapLoader {
 
+  /**
+   * Loads map.
+   *
+   * @param path file path
+   * @return map
+   */
   public static List<List<Tile>> loadMap(String path) {
     List<List<Integer>> map;
     try (BufferedReader reader = new BufferedReader(new FileReader(path))) {

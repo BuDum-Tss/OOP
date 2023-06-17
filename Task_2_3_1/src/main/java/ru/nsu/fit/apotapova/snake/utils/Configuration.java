@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * Содержит конфигурацию игры(не меняется игроком).
+ * Contains the configuration of the game (not changed by the player).
  */
 public class Configuration {
 
@@ -18,6 +18,11 @@ public class Configuration {
   public static int MIN_SPEED = 500;
   public static int MAX_SPEED = 2000;
 
+  /**
+   * Loads configuration.
+   *
+   * @param configPath file path
+   */
   public void loadConfiguration(String configPath) {
     try {
       Properties properties = new Properties();

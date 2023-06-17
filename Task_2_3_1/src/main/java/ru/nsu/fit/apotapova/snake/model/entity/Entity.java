@@ -5,6 +5,9 @@ import javafx.geometry.Point2D;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Entity.
+ */
 public abstract class Entity {
 
   protected static final Logger entityLogger = LogManager.getLogger("Entity");

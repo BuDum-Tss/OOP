@@ -12,8 +12,17 @@ import ru.nsu.fit.apotapova.snake.model.entity.EntityType;
 import ru.nsu.fit.apotapova.snake.model.entity.dynamicentities.Direction;
 import ru.nsu.fit.apotapova.snake.view.tile.Tile;
 
+/**
+ * Map Parser.
+ */
 public class MapParser {
 
+  /**
+   * Finds snakes at map.
+   *
+   * @param map map
+   * @return map with id and snake segments
+   */
   public static Map<Integer, LinkedList<Point2D>> getSnakesPositionsFromMap(List<List<Tile>> map) {
     HashMap<Integer, LinkedList<Point2D>> snakesHashMap = new HashMap<>();
     Pair<List<Integer>, List<Point2D>> snakeHeadsData = findHeads(map);
@@ -21,7 +30,7 @@ public class MapParser {
     for (int i = 0; i < snakeHeadsData.getKey().size(); i++) {
       int id = snakeHeadsData.getKey().get(i);
       Point2D head = snakeHeadsData.getValue().get(i);
-      snakesHashMap.put(id, findBody(id, head, map));
+      snakesHashMap.put(id, findBody(head, map));
     }
     return snakesHashMap;
   }
@@ -41,15 +50,18 @@ public class MapParser {
     return new Pair<>(snakesIds, snakesPositions);
   }
 
-  private static LinkedList<Point2D> findBody(int id, Point2D headPosition, List<List<Tile>> map) {
+  private static LinkedList<Point2D> findBody(Point2D headPosition, List<List<Tile>> map) {
     LinkedList<Point2D> segments = new LinkedList<>();
     segments.add(headPosition);
     Point2D currSegment = headPosition;
     List<Point2D> neighbors = getNeighbors(currSegment, map);
     while (neighbors.size() > 1 || currSegment == headPosition) {
       int i = 0;
-      while (segments.contains(neighbors.get(i++)))
-        ;
+      while (segments.contains(neighbors.get(i))
+          && GameData.getGameData().getTileFromPosition(neighbors.get(i)).getEntityType()
+          == EntityType.SNAKE) {
+        i++;
+      }
       segments.add(neighbors.get(i));
       currSegment = neighbors.get(i);
       neighbors = getNeighbors(currSegment, map);
@@ -60,7 +72,7 @@ public class MapParser {
   private static List<Point2D> getNeighbors(Point2D currSegment, List<List<Tile>> map) {
     List<Point2D> neighbors = new ArrayList<>();
     List.of(Direction.DOWN, Direction.LEFT, Direction.UP, Direction.RIGHT).forEach(direction -> {
-      Point2D point = getPosition(currSegment, Direction.RIGHT);
+      Point2D point = getPosition(currSegment, direction);
       if (map.get((int) point.getX()).get((int) point.getY()).getEntityType() == EntityType.SNAKE) {
         neighbors.add(point);
       }

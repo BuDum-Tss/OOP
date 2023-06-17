@@ -24,6 +24,11 @@ public class SnakeSettingsController extends SnakeSettingsView {
     mainController.selectScene(SnakeMenuView.class);
   }
 
+  /**
+   * Selects level.
+   *
+   * @param actionEvent action event.
+   */
   public void selectLevel(ActionEvent actionEvent) {
     FileChooser fileChooser = new FileChooser();
     File file = fileChooser.showOpenDialog(new Stage());
@@ -32,6 +37,9 @@ public class SnakeSettingsController extends SnakeSettingsView {
     filename.setText(file.getName());
   }
 
+  /**
+   * Initializes settings listeners.
+   */
   @FXML
   public void initialize() {
     super.initialize();

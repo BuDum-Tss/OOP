@@ -11,6 +11,9 @@ import ru.nsu.fit.apotapova.snake.model.entity.staticentities.Food;
 import ru.nsu.fit.apotapova.snake.model.gamerules.GameRule;
 import ru.nsu.fit.apotapova.snake.view.tile.Tile;
 
+/**
+ * Game data.
+ */
 public class GameData {
 
   private static GameData GAME_DATA;
@@ -24,6 +27,11 @@ public class GameData {
     gameRules = new HashMap<>();
   }
 
+  /**
+   * Data getter.
+   *
+   * @return game data.
+   */
   public static GameData getGameData() {
     if (GAME_DATA == null) {
       GAME_DATA = new GameData();
@@ -88,6 +96,11 @@ public class GameData {
         .count();
   }
 
+  /**
+   * Returns result of the game.
+   *
+   * @return game result.
+   */
   public GameResult getGameResult() {
     if (gameRules.get(GameRule.VICTORY).get()) {
       return GameResult.VICTORY;
@@ -98,6 +111,12 @@ public class GameData {
     return GameResult.IN_PROGRESS;
   }
 
+  /**
+   * Returns number of tiles with some id.
+   *
+   * @param id tiles id.
+   * @return number of tiles.
+   */
   public int getTilesNumber(int id) {
     AtomicInteger k = new AtomicInteger();
     map.stream().map(tiles -> tiles.stream().filter(tile -> tile.getId() == id).count())

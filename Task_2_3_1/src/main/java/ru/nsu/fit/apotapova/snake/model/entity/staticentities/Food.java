@@ -6,6 +6,9 @@ import ru.nsu.fit.apotapova.snake.model.data.GameData;
 import ru.nsu.fit.apotapova.snake.model.entity.Entity;
 import ru.nsu.fit.apotapova.snake.model.entity.EntityType;
 
+/**
+ * Entity Food.
+ */
 public class Food extends Entity implements Static {
 
   private final Point2D position;

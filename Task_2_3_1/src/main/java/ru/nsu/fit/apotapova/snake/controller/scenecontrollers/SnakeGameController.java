@@ -44,16 +44,16 @@ public class SnakeGameController extends SnakeGameView {
             newScene.setOnKeyPressed(
                 event -> {
                   switch (event.getCode()) {
-                    case W -> player.setDirection(Direction.UP);
-                    case A -> player.setDirection(Direction.LEFT);
-                    case S -> player.setDirection(Direction.DOWN);
-                    case D -> player.setDirection(Direction.RIGHT);
+                    case W -> player.addDirection(Direction.UP);
+                    case A -> player.addDirection(Direction.LEFT);
+                    case S -> player.addDirection(Direction.DOWN);
+                    case D -> player.addDirection(Direction.RIGHT);
                     case ESCAPE -> {
                       if (GameData.getGameData().getGameState() == GameState.IN_PROGRESS) {
                         stopGame();
                         pauseMenu.setVisible(true);
                       } else {
-                        continueGame();
+                        continueBtn();
                         pauseMenu.setVisible(false);
                       }
                     }
@@ -108,7 +108,7 @@ public class SnakeGameController extends SnakeGameView {
   /**
    * Removes the game from pause.
    */
-  public void continueGame() {
+  public void continueBtn() {
     GameData.getGameData().setGameState(GameState.IN_PROGRESS);
     game.interrupt();
     pauseMenu.setVisible(false);
@@ -120,7 +120,7 @@ public class SnakeGameController extends SnakeGameView {
    *
    * @param actionEvent action event.
    */
-  public void quitGame(ActionEvent actionEvent) {
+  public void quitBtn(ActionEvent actionEvent) {
     closeGame();
     mainController.selectScene(SnakeMenuView.class);
     gameControllerLogger.info("Game closed");
@@ -155,7 +155,7 @@ public class SnakeGameController extends SnakeGameView {
    *
    * @param actionEvent action event.
    */
-  public void retry(ActionEvent actionEvent) {
+  public void retryBtn(ActionEvent actionEvent) {
     closeGame();
     newGame();
     prepareScene();

@@ -4,6 +4,9 @@ import java.util.List;
 import javafx.geometry.Point2D;
 import javafx.util.Pair;
 
+/**
+ * Dynamic entity interface.
+ */
 public interface Dynamic {
 
   void update();

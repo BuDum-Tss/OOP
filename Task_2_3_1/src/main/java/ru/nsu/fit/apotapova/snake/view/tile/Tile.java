@@ -38,6 +38,7 @@ public class Tile {
   private String pickColor() {
     return switch (TileType.getById(entityId)) {
       case EMPTY -> "000019";
+      case WALL -> "888888";
       case FOOD -> "FF0000";
       case SNAKE -> ((Snake) GameData.getGameData().getEntityById(Math.abs(entityId))).getColor();
     };

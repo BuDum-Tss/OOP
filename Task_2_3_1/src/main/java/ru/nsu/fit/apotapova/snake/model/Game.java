@@ -5,18 +5,21 @@ import java.beans.PropertyChangeSupport;
 import java.util.stream.Stream;
 import javafx.geometry.Point2D;
 import javafx.util.Pair;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.nsu.fit.apotapova.snake.RandomSystem;
 import ru.nsu.fit.apotapova.snake.model.data.GameData;
 import ru.nsu.fit.apotapova.snake.model.data.GameResult;
 import ru.nsu.fit.apotapova.snake.model.data.GameState;
 import ru.nsu.fit.apotapova.snake.model.entity.Entity;
 import ru.nsu.fit.apotapova.snake.model.entity.dynamicentities.Dynamic;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import ru.nsu.fit.apotapova.snake.model.entity.staticentities.Food;
 import ru.nsu.fit.apotapova.snake.utils.Settings;
 import ru.nsu.fit.apotapova.snake.view.tile.TileType;
 
+/**
+ * Main game thread.
+ */
 public class Game extends Thread {
 
   static final Logger rootLogger = LogManager.getRootLogger();
@@ -59,8 +62,8 @@ public class Game extends Thread {
   }
 
   private void addMissingFood() {
-    while (GameData.getGameData().getFoodNumber() < Settings.FOOD_NUMBER &&
-        GameData.getGameData().getTilesNumber(0) > 0) {
+    while (GameData.getGameData().getFoodNumber() < Settings.FOOD_NUMBER
+        && GameData.getGameData().getTilesNumber(0) > 0) {
       int id = getFreeId();
       Point2D position = getEmptyPosition();
       GameData.getGameData().addToGame(new Food(id, position));

@@ -5,6 +5,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import javafx.geometry.Point2D;
 
+/**
+ * Direction of movement.
+ */
 public enum Direction {
   UP(new Point2D(0, -1)),
   DOWN(new Point2D(0, 1)),
