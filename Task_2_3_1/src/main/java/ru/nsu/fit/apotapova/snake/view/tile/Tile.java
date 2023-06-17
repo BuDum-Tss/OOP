@@ -15,9 +15,9 @@ public class Tile {
   int entityId;
   Rectangle view;
 
-  public Tile(int entityId) {
+  public Tile(int entityId, int tileSize) {
     this.entityId = entityId;
-    view = new Rectangle(Configuration.TILE_WIDTH, Configuration.TILE_HEIGHT);
+    view = new Rectangle(tileSize, tileSize);
   }
 
   public EntityType getEntityType() {
@@ -35,7 +35,6 @@ public class Tile {
   public void updateViewById() {
     String color = pickColor();
     view.setStyle("-fx-fill:  #" + color);
-
   }
 
   private String pickColor() {

@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.nsu.fit.apotapova.snake.model.Game;
@@ -19,6 +22,7 @@ import ru.nsu.fit.apotapova.snake.utils.Configuration;
 import ru.nsu.fit.apotapova.snake.utils.MapParser;
 import ru.nsu.fit.apotapova.snake.utils.Settings;
 import ru.nsu.fit.apotapova.snake.view.scene.sceneview.SnakeGameView;
+import ru.nsu.fit.apotapova.snake.view.scene.sceneview.SnakeMenuView;
 import ru.nsu.fit.apotapova.snake.view.tile.TileType;
 
 public class SnakeGameController extends SnakeGameView {
@@ -35,7 +39,6 @@ public class SnakeGameController extends SnakeGameView {
             {
               newScene.setOnKeyPressed(
                   event -> {
-                    System.out.println("direction");
                     switch (event.getCode()) {
                       case W -> player.setDirection(Direction.UP);
                       case A -> player.setDirection(Direction.LEFT);
@@ -44,10 +47,10 @@ public class SnakeGameController extends SnakeGameView {
                       case ESCAPE -> {
                         if (GameData.getGameData().getGameState() == GameState.IN_PROGRESS) {
                           stopGame();
-                          GameData.getGameData().setGameState(GameState.PAUSE);
+                          pauseMenu.setVisible(true);
                         } else {
                           continueGame();
-                          GameData.getGameData().setGameState(GameState.IN_PROGRESS);
+                          pauseMenu.setVisible(false);
                         }
                       }
                     }
@@ -59,12 +62,13 @@ public class SnakeGameController extends SnakeGameView {
 
   public void newGame() {
     gameControllerLogger.info("Preparing game...");
-    GameData.getGameData().setMap(MapLoader.loadMap(Configuration.LEVELS_PATH + "level1.json"));
+    GameData.getGameData().setMap(MapLoader.loadMap(Configuration.LEVELS_PATH + "level3.json"));
     addSnakes();
     setGameRules();
     game = new Game();
     game.setName("Game");
     game.addPropertyChangeListener(this);
+    gameControllerLogger.info("New game prepared");
   }
 
   @Override
@@ -81,19 +85,29 @@ public class SnakeGameController extends SnakeGameView {
   }
 
   @Override
-  protected void continueGame() {
+  protected void closeGame() {
+    GameData.getGameData().setGameState(GameState.CLOSED);
+    game.interrupt();
+    try {
+      game.join();
+    } catch (InterruptedException e) {
+      throw new RuntimeException("Unexpected interruption while waiting thread Game");
+    }
+    GameData.getGameData().clearGameData();
+  }
+
+  public void continueGame() {
     GameData.getGameData().setGameState(GameState.IN_PROGRESS);
     game.interrupt();
+    pauseMenu.setVisible(false);
     gameControllerLogger.info("Game continued");
   }
 
-  @Override
-  protected void closeGame() {
-    GameData.getGameData().setGameState(GameState.LOSS);
-    game.interrupt();
+  public void quitGame(ActionEvent actionEvent) {
+    closeGame();
+    mainController.selectScene(SnakeMenuView.class);
     gameControllerLogger.info("Game closed");
   }
-
 
   private void addSnakes() {
     Map<Integer, LinkedList<Point2D>> snakesSegments = MapParser.getSnakesPositionsFromMap(
@@ -112,9 +126,17 @@ public class SnakeGameController extends SnakeGameView {
 
   private void setGameRules() {
     GameData.getGameData().addRule(GameRule.VICTORY,
-        () -> ((Snake) GameData.getGameData().getEntityById(Configuration.SNAKE_ID)).getLength()
+        () -> (GameData.getGameData().getEntityById(Configuration.SNAKE_ID) != null)
+            && ((Snake) GameData.getGameData().getEntityById(Configuration.SNAKE_ID)).getLength()
             >= Settings.MAX_LENGTH);
     GameData.getGameData().addRule(GameRule.LOSS,
         () -> GameData.getGameData().getEntityById(Configuration.SNAKE_ID) == null);
+  }
+
+  public void retry(ActionEvent actionEvent) {
+    closeGame();
+    newGame();
+    prepareScene();
+    startGame();
   }
 }

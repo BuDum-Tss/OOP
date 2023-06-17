@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="scene" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.fit.apotapova.snake.controller.scenecontrollers.SnakeGameController">
+<AnchorPane fx:id="scene" prefHeight="600.0" prefWidth="600.0" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.fit.apotapova.snake.controller.scenecontrollers.SnakeGameController">
   <children>
-    <GridPane fx:id="gameArea" alignment="CENTER" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+    <GridPane fx:id="gameArea" alignment="CENTER" styleClass="grid-pane" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
       <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -15,5 +18,38 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
     </GridPane>
+      <AnchorPane fx:id="pauseMenu" styleClass="transparent-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label styleClass="label-header" text="Pause">
+                     <font>
+                        <Font size="48.0" />
+                     </font></Label>
+                  <Button mnemonicParsing="false" onAction="#continueGame" prefHeight="25.0" prefWidth="200.0" text="Continue" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#quitGame" prefHeight="25.0" prefWidth="200.0" text="Quit" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="endMenu" styleClass="transparent-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label fx:id="label" styleClass="label-header" text="Label">
+                     <font>
+                        <Font size="48.0" />
+                     </font></Label>
+                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#retry" prefHeight="25.0" prefWidth="200.0" text="Retry" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin></Button>
+                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#quitGame" prefHeight="25.0" prefWidth="200.0" text="Quit" textAlignment="CENTER" />
+               </children></VBox>
+         </children>
+      </AnchorPane>
   </children>
 </AnchorPane>

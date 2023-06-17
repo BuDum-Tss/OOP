@@ -9,11 +9,9 @@ public abstract class SnakeMenuView extends SceneView {
 
   @Override
   public void openScene() {
-
   }
 
   @Override
   public void closeScene() {
-
   }
 }

@@ -11,11 +11,9 @@ public abstract class SnakeSettingsView extends SceneView {
 
   @Override
   public void openScene() {
-
   }
 
   @Override
   public void closeScene() {
-
   }
 }

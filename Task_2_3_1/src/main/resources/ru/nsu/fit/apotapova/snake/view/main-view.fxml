@@ -2,7 +2,7 @@
 
 <?import javafx.scene.layout.*?>
 
-<StackPane fx:id="mainPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.fit.apotapova.snake.controller.SnakeMainController">
+<StackPane fx:id="mainPane" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.fit.apotapova.snake.controller.SnakeMainController">
   <children>
     <fx:include fx:id="game" source="game-view.fxml" />
     <fx:include fx:id="settings" source="settings-view.fxml" />

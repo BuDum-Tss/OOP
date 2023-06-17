@@ -10,8 +10,8 @@ public class Food extends Entity implements Static {
 
   private final Point2D position;
 
-  public Food(int id,Point2D position) {
-    super(id);
+  public Food(int id, Point2D position) {
+    super(id, EntityType.FOOD);
     this.position = position;
   }
 
@@ -22,11 +22,11 @@ public class Food extends Entity implements Static {
 
   @Override
   public void interactWith(EntityType type) {
-    switch (type){
+    switch (type) {
       case SNAKE -> {
         GameData.getGameData().removeFromGame(this);
       }
-      default -> throw new IllegalArgumentException("Unexpected EntityType: "+type);
+      default -> throw new IllegalArgumentException("Unexpected EntityType: " + type);
     }
   }
 }

@@ -11,10 +11,8 @@ public class Configuration {
 
   public static int WINDOW_WIDTH = 800;
   public static int WINDOW_HEIGHT = 800;
-  public static double TILE_HEIGHT;
   public static String LEVELS_PATH = "src/main/resources/ru/nsu/fit/apotapova/snake/levels/";
   public static int SNAKE_ID = 10;
-  public static double TILE_WIDTH;
 
   public void loadConfiguration(String configPath) {
     try {
@@ -31,7 +29,5 @@ public class Configuration {
     WINDOW_HEIGHT = Integer.parseInt(properties.getProperty("WINDOW_HEIGHT"));
     SNAKE_ID = Integer.parseInt(properties.getProperty("SNAKE_ID"));
     LEVELS_PATH = properties.getProperty("LEVELS_PATH");
-    TILE_WIDTH = Double.parseDouble(properties.getProperty("TILE_WIDTH"));
-    TILE_HEIGHT = Double.parseDouble(properties.getProperty("TILE_HEIGHT"));
   }
 }

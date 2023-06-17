@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 import javafx.geometry.Point2D;
 import ru.nsu.fit.apotapova.snake.model.entity.Entity;
+import ru.nsu.fit.apotapova.snake.model.entity.staticentities.Food;
 import ru.nsu.fit.apotapova.snake.model.gamerules.GameRule;
 import ru.nsu.fit.apotapova.snake.view.tile.Tile;
 
@@ -15,11 +16,6 @@ public class GameData {
   private Map<GameRule, Supplier> gameRules;
   private List<List<Tile>> map;
   private final HashMap<Integer, Entity> entities;
-
-  public void setGameState(GameState gameState) {
-    this.gameState = gameState;
-  }
-
   private GameState gameState;
 
   public GameData() {
@@ -34,8 +30,16 @@ public class GameData {
     return GAME_DATA;
   }
 
+  public void clearGameData() {
+    GAME_DATA = null;
+  }
+
   public void setMap(List<List<Tile>> map) {
     this.map = map;
+  }
+
+  public void addRule(GameRule type, Supplier rule) {
+    gameRules.put(type, rule);
   }
 
   public void addToGame(Entity entity) {
@@ -48,10 +52,6 @@ public class GameData {
 
   public Tile getTileFromPosition(Point2D position) {
     return map.get((int) position.getX()).get((int) position.getY());
-  }
-
-  public Entity getEntityById(int id) {
-    return entities.get(id);
   }
 
   public double getMapWidth() {
@@ -70,21 +70,34 @@ public class GameData {
     return entities.values().stream().toList();
   }
 
+  public Entity getEntityById(int id) {
+    return entities.get(id);
+  }
+
   public List<Integer> getEntitiesId() {
     return entities.keySet().stream().toList();
   }
 
+  public synchronized void setGameState(GameState gameState) {
+    this.gameState = gameState;
+  }
+
   public GameState getGameState() {
-    if ((boolean) gameRules.get(GameRule.VICTORY).get()) {
-      return GameState.VICTORY;
-    }
-    if ((boolean) gameRules.get(GameRule.LOSS).get()) {
-      return GameState.LOSS;
-    }
     return gameState;
   }
 
-  public void addRule(GameRule type, Supplier rule) {
-    gameRules.put(type, rule);
+  public int getFoodNumber() {
+    return (int) entities.values().stream().filter(entity -> entity.getClass() == Food.class)
+        .count();
+  }
+
+  public GameResult getGameResult() {
+    if ((boolean) gameRules.get(GameRule.VICTORY).get()) {
+      return GameResult.VICTORY;
+    }
+    if ((boolean) gameRules.get(GameRule.LOSS).get()) {
+      return GameResult.LOSS;
+    }
+    return GameResult.IN_PROGRESS;
   }
 }

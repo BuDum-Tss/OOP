@@ -6,23 +6,22 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="scene" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.fit.apotapova.snake.controller.scenecontrollers.SnakeMenuController">
+<AnchorPane fx:id="scene" prefHeight="600.0" prefWidth="600.0" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.fit.apotapova.snake.controller.scenecontrollers.SnakeMenuController">
    <children>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Snake" textAlignment="CENTER" wrappingWidth="150.13671493530273">
+            <Label styleClass="label-header" text="Snake" textAlignment="CENTER">
                <font>
-                  <Font size="40.0" />
-               </font>
-            </Text>
-            <Button mnemonicParsing="false" onAction="#startBtn" prefHeight="30.0" prefWidth="88.0" text="Start">
+                  <Font size="48.0" />
+               </font></Label>
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#startBtn" prefHeight="30.0" prefWidth="200.0" text="Start">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button mnemonicParsing="false" onAction="#settingsBtn" prefHeight="30.0" prefWidth="88.0" text="Settings" />
+            <Button mnemonicParsing="false" onAction="#settingsBtn" prefHeight="30.0" prefWidth="200.0" text="Settings" />
          </children>
       </VBox>
    </children>

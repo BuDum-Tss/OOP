@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
+import ru.nsu.fit.apotapova.snake.utils.Configuration;
 import ru.nsu.fit.apotapova.snake.view.tile.Tile;
 
 public class MapLoader {
@@ -22,6 +23,7 @@ public class MapLoader {
   }
 
   private static List<List<Tile>> convertIdsToTiles(List<List<Integer>> map) {
-    return map.stream().map(list -> list.stream().map(Tile::new).toList()).toList();
+    int tileSize = (int) (Math.min(Configuration.WINDOW_HEIGHT / map.get(0).size(),Configuration.WINDOW_WIDTH/ map.size())*0.75);
+    return map.stream().map(list -> list.stream().map(id->new Tile(id,tileSize)).toList()).toList();
   }
 }

@@ -3,34 +3,42 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="scene" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.fit.apotapova.snake.controller.scenecontrollers.SnakeSettingsController">
+<AnchorPane fx:id="scene" prefHeight="600.0" prefWidth="600.0" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.fit.apotapova.snake.controller.scenecontrollers.SnakeSettingsController">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="461.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
          <top>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" textAlignment="CENTER" wrappingWidth="599.1366939544678" BorderPane.alignment="CENTER">
+            <Text disable="true" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-header" text="Settings" textAlignment="CENTER" wrappingWidth="599.1366939544678" BorderPane.alignment="CENTER">
                <font>
                   <Font size="24.0" />
                </font>
             </Text>
          </top>
          <center>
-            <HBox prefHeight="326.0" prefWidth="405.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="326.0" prefWidth="405.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox prefHeight="326.0" prefWidth="596.0" spacing="10.0">
+                  <VBox prefHeight="326.0" prefWidth="692.0" spacing="10.0">
                      <children>
-                        <ChoiceBox fx:id="windowmode_choicebox" prefHeight="26.0" prefWidth="150.0" />
-                        <ChoiceBox prefWidth="150.0" />
-                        <Slider />
-                        <Slider max="4.0" />
-                        <Slider max="4.0" />
-                        <ColorPicker editable="true" prefHeight="43.0" prefWidth="221.0">
-                           <value>
-                              <Color red="0.2357894778251648" green="0.5894736647605896" blue="0.3831579089164734" />
-                           </value>
-                        </ColorPicker>
+                        <VBox alignment="TOP_CENTER">
+                           <children>
+                              <Label styleClass="label-default" text="Selected Level:">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="filename" styleClass="label-default" text="file.json">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Button mnemonicParsing="false" onAction="#selectLevel" text="Select level" textAlignment="CENTER" />
+                           </children>
+                        </VBox>
+                        <Label styleClass="label-default" text="Food number" />
+                        <Slider max="4.0" onScrollFinished="#changeFoodNumber" />
+                        <Label styleClass="label-default" text="Speed" />
+                        <Slider onScrollFinished="#changeSpeed" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -44,7 +52,6 @@
                <children>
                   <Button mnemonicParsing="false" onAction="#saveBtn" text="Save" />
                   <Button mnemonicParsing="false" onAction="#closeBtn" text="Close" />
-                  <Button mnemonicParsing="false" onAction="#defaultBtn" text="Default" />
                </children>
                <padding>
                   <Insets right="10.0" />

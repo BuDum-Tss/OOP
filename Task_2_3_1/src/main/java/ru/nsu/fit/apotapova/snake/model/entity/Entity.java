@@ -9,7 +9,7 @@ public abstract class Entity {
 
   protected static final Logger entityLogger = LogManager.getLogger("Entity");
   protected int id;
-  protected static EntityType type;
+  protected final EntityType type;
 
   public abstract void interactWith(EntityType type);
 
@@ -17,8 +17,9 @@ public abstract class Entity {
     return id;
   }
 
-  public Entity(int id) {
+  public Entity(int id, EntityType type) {
     this.id = id;
+    this.type = type;
   }
 
   public EntityType getType() {

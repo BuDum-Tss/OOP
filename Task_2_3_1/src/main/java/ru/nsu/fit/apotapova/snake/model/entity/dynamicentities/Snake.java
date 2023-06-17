@@ -11,7 +11,6 @@ import ru.nsu.fit.apotapova.snake.model.entity.EntityType;
 
 public class Snake extends Entity implements Dynamic {
 
-  protected static EntityType type = EntityType.SNAKE;
   private Direction direction;
   private final LinkedList<Point2D> segments;
   private int growNumber = 0;
@@ -19,7 +18,7 @@ public class Snake extends Entity implements Dynamic {
   private List<Pair<Point2D, Integer>> changes;
 
   public Snake(int id, LinkedList<Point2D> snake, String color) {
-    super(id);
+    super(id, EntityType.SNAKE);
     segments = snake;
     direction = Direction.getByVector(segments.getFirst().add(segments.get(1).multiply(-1)));
     if (color.length() != 6) {
@@ -39,6 +38,7 @@ public class Snake extends Entity implements Dynamic {
     switch (type) {
       case SNAKE -> {
         GameData.getGameData().removeFromGame(this);
+        changes.clear();
         entityLogger.info("Snake removed from game");
       }
       case FOOD -> {
@@ -71,8 +71,10 @@ public class Snake extends Entity implements Dynamic {
 
   private Point2D nextPosition() {
     Point2D notCheckedPosition = segments.getFirst().add(direction.getDirection());
-    int x = (int) (Math.abs(notCheckedPosition.getX() + 8) % GameData.getGameData().getMapLength());
-    int y = (int) (Math.abs(notCheckedPosition.getY() + 8) % GameData.getGameData().getMapWidth());
+    int x = (int) (Math.abs(notCheckedPosition.getX() + GameData.getGameData().getMapLength())
+        % GameData.getGameData().getMapLength());
+    int y = (int) (Math.abs(notCheckedPosition.getY() + GameData.getGameData().getMapWidth())
+        % GameData.getGameData().getMapWidth());
     return new Point2D(x, y);
   }
 
@@ -87,6 +89,11 @@ public class Snake extends Entity implements Dynamic {
     if (interactingEntityType != null) {
       GameData.getGameData().getEntityById(id);
       interactWith(interactingEntityType);
+      Entity interactedEntity = GameData.getGameData()
+          .getEntityById(GameData.getGameData().getTileFromPosition(next).getId());
+      if (interactedEntity != null) {
+        interactedEntity.interactWith(this.getType());
+      }
     }
   }
 

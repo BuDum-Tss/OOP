@@ -1,0 +1,62 @@
+.background {
+  -fx-background-color: #000019;
+}
+.transparent-background {
+  -fx-background-color: rgb(00,00,25,0.5);
+}
+.label-header {
+  -fx-font-size: 48pt;
+  -fx-font-family: 'Arial';
+  -fx-text-fill: white;
+  -fx-opacity: 1;
+}
+.label-default {
+  -fx-font-size: 16pt;
+  -fx-font-family: 'Arial';
+  -fx-text-fill: white;
+  -fx-opacity: 1;
+}
+.button {
+  -fx-padding: 5 22 5 22;
+  -fx-border-color: #e2e2e2;
+  -fx-border-width: 2;
+  -fx-background-radius: 0;
+  -fx-background-color: #202042;
+  -fx-font-family: 'Arial';
+  -fx-font-size: 16pt;
+  -fx-text-fill: white;
+  -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+.button:pressed {
+  -fx-background-color: white;
+  -fx-text-fill: #1d1d1d;
+}
+
+.button:focused {
+  -fx-border-color: white, white;
+  -fx-border-width: 1, 1;
+  -fx-border-radius: 0, 0;
+  -fx-border-insets: 1 1 1 1, 0;
+}
+.button:disabled {
+  -fx-opacity: 0.4;
+  -fx-background-color: #1d1d1d;
+  -fx-text-fill: white;
+}
+.button:hover {
+  -fx-background-color: #00ffd0;
+}
+.text-field{
+  -fx-text-fill: white;
+  -fx-font-family: 'Arial';
+  -fx-background-color: #202042;
+  -fx-padding: 5 22 5 22;
+  -fx-border-color: #e2e2e2;
+  -fx-border-width: 2;
+  -fx-background-radius: 0;
+  -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+.grid-pane{
+  -fx-vgap: 10;
+  -fx-hgap: 10;
+}
