@@ -29,6 +29,6 @@ public enum TileType {
   public static TileType getById(int id) {
     return list.stream().filter(
             type -> type.idRange.getKey() <= Math.abs(id) && type.idRange.getValue() > Math.abs(id))
-        .findFirst().get();
+        .findFirst().orElse(null);
   }
 }

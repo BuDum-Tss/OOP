@@ -15,7 +15,7 @@ public class Snake extends Entity implements Dynamic {
   private final LinkedList<Point2D> segments;
   private int growNumber = 0;
   private final String color;
-  private List<Pair<Point2D, Integer>> changes;
+  private final List<Pair<Point2D, Integer>> changes;
 
   public Snake(int id, LinkedList<Point2D> snake, String color) {
     super(id, EntityType.SNAKE);

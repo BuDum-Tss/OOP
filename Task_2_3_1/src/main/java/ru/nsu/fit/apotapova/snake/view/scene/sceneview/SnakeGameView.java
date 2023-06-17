@@ -3,11 +3,9 @@ package ru.nsu.fit.apotapova.snake.view.scene.sceneview;
 import java.beans.PropertyChangeEvent;
 import java.util.List;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
@@ -16,7 +14,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.nsu.fit.apotapova.snake.model.Game;
 import ru.nsu.fit.apotapova.snake.model.data.GameData;
-import ru.nsu.fit.apotapova.snake.model.data.GameState;
 import ru.nsu.fit.apotapova.snake.view.scene.SceneView;
 import java.beans.PropertyChangeListener;
 import ru.nsu.fit.apotapova.snake.view.tile.Tile;
@@ -33,6 +30,7 @@ public abstract class SnakeGameView extends SceneView implements PropertyChangeL
 
   @Override
   public void openScene() {
+    gameViewLogger.info("GameScene opened");
     newGame();
     prepareScene();
     startGame();
@@ -57,6 +55,7 @@ public abstract class SnakeGameView extends SceneView implements PropertyChangeL
 
   @Override
   public void closeScene() {
+    gameViewLogger.info("GameScene closed");
   }
 
   protected abstract void newGame();

@@ -5,7 +5,6 @@ import javafx.scene.shape.Rectangle;
 import ru.nsu.fit.apotapova.snake.model.data.GameData;
 import ru.nsu.fit.apotapova.snake.model.entity.EntityType;
 import ru.nsu.fit.apotapova.snake.model.entity.dynamicentities.Snake;
-import ru.nsu.fit.apotapova.snake.utils.Configuration;
 
 /**
  * Класс,

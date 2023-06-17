@@ -14,7 +14,7 @@ public class MapLoader {
   public static List<List<Tile>> loadMap(String path) {
     List<List<Integer>> map;
     try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
-      map = new Gson().fromJson(reader, new TypeToken<List<List<Integer>>>() {
+      map = new Gson().fromJson(reader, new TypeToken<>() {
       });
     } catch (IOException e) {
       throw new RuntimeException(e);

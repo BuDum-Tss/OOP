@@ -7,7 +7,7 @@ import javafx.util.Pair;
 public class RandomSystem {
 
   private static RandomSystem RANDOM_SYSTEM;
-  private Random random;
+  private final Random random;
 
   private RandomSystem() {
     random = new Random();
