@@ -20,4 +20,9 @@ public abstract class SceneView {
     return scene.isVisible();
   }
 
+  public void openScene() {
+  }
+
+  public void closeScene() {
+  }
 }

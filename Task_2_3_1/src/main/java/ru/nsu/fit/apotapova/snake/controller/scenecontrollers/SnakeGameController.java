@@ -23,41 +23,49 @@ import ru.nsu.fit.apotapova.snake.view.scene.sceneview.SnakeGameView;
 import ru.nsu.fit.apotapova.snake.view.scene.sceneview.SnakeMenuView;
 import ru.nsu.fit.apotapova.snake.view.tile.TileType;
 
+/**
+ * Game Controller.
+ */
 public class SnakeGameController extends SnakeGameView {
 
   protected static final Logger gameControllerLogger = LogManager.getLogger("GameController");
   private Snake player;
 
+  /**
+   * Controller initialisation.
+   */
   @FXML
   public void initialize() {
     setVisible(false);
     scene.sceneProperty()
         .addListener((observable, oldScene, newScene) -> {
           if (newScene != null) {
-            {
-              newScene.setOnKeyPressed(
-                  event -> {
-                    switch (event.getCode()) {
-                      case W -> player.setDirection(Direction.UP);
-                      case A -> player.setDirection(Direction.LEFT);
-                      case S -> player.setDirection(Direction.DOWN);
-                      case D -> player.setDirection(Direction.RIGHT);
-                      case ESCAPE -> {
-                        if (GameData.getGameData().getGameState() == GameState.IN_PROGRESS) {
-                          stopGame();
-                          pauseMenu.setVisible(true);
-                        } else {
-                          continueGame();
-                          pauseMenu.setVisible(false);
-                        }
+            newScene.setOnKeyPressed(
+                event -> {
+                  switch (event.getCode()) {
+                    case W -> player.setDirection(Direction.UP);
+                    case A -> player.setDirection(Direction.LEFT);
+                    case S -> player.setDirection(Direction.DOWN);
+                    case D -> player.setDirection(Direction.RIGHT);
+                    case ESCAPE -> {
+                      if (GameData.getGameData().getGameState() == GameState.IN_PROGRESS) {
+                        stopGame();
+                        pauseMenu.setVisible(true);
+                      } else {
+                        continueGame();
+                        pauseMenu.setVisible(false);
                       }
                     }
-                  });
-            }
+                  }
+                });
+
           }
         });
   }
 
+  /**
+   * Prepares new game.
+   */
   public void newGame() {
     gameControllerLogger.info("Preparing game...");
     GameData.getGameData()
