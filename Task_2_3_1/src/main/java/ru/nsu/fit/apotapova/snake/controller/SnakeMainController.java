@@ -19,7 +19,6 @@ public class SnakeMainController extends SnakeMainView {
 
   @FXML
   public void initialize() {
-    App.setMainController(this);
     gameController.setMainController(this);
     settingsController.setMainController(this);
     menuController.setMainController(this);

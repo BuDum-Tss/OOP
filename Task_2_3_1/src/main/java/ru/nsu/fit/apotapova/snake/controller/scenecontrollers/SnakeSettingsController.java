@@ -11,6 +11,9 @@ import ru.nsu.fit.apotapova.snake.utils.Settings;
 import ru.nsu.fit.apotapova.snake.view.scene.sceneview.SnakeMenuView;
 import ru.nsu.fit.apotapova.snake.view.scene.sceneview.SnakeSettingsView;
 
+/**
+ * Snake Settings Controller.
+ */
 public class SnakeSettingsController extends SnakeSettingsView {
 
   public void saveBtn(ActionEvent actionEvent) {
