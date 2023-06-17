@@ -71,10 +71,10 @@ public class Snake extends Entity implements Dynamic {
 
   private Point2D nextPosition() {
     Point2D notCheckedPosition = segments.getFirst().add(direction.getDirection());
-    int x = (int) (Math.abs(notCheckedPosition.getX() + GameData.getGameData().getMapLength())
-        % GameData.getGameData().getMapLength());
-    int y = (int) (Math.abs(notCheckedPosition.getY() + GameData.getGameData().getMapWidth())
+    int x = (int) (Math.abs(notCheckedPosition.getX() + GameData.getGameData().getMapWidth())
         % GameData.getGameData().getMapWidth());
+    int y = (int) (Math.abs(notCheckedPosition.getY()  + GameData.getGameData().getMapLength())
+        % GameData.getGameData().getMapLength());
     return new Point2D(x, y);
   }
 
