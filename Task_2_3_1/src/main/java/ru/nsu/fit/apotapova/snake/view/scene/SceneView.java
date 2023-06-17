@@ -12,10 +12,6 @@ public abstract class SceneView {
     scene.setDisable(!value);
   }
 
-  public abstract void openScene();
-
-  public abstract void closeScene();
-
   public void setMainController(MainView mainController) {
     this.mainController = mainController;
   }

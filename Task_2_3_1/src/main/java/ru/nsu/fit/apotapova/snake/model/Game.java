@@ -59,8 +59,8 @@ public class Game extends Thread {
   }
 
   private void addMissingFood() {
-
-    while (GameData.getGameData().getFoodNumber() < Settings.FOOD_NUMBER) {
+    while (GameData.getGameData().getFoodNumber() < Settings.FOOD_NUMBER &&
+        GameData.getGameData().getTilesNumber(0) > 0) {
       int id = getFreeId();
       Point2D position = getEmptyPosition();
       GameData.getGameData().addToGame(new Food(id, position));

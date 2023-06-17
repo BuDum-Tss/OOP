@@ -9,10 +9,14 @@ import java.util.Properties;
  */
 public class Configuration {
 
+  public static double MAX_WIN_SNAKE_LENGTH = 100;
+  public static double MAX_FOOD_NUMBER = 10;
   public static int WINDOW_WIDTH = 800;
   public static int WINDOW_HEIGHT = 800;
   public static String LEVELS_PATH = "src/main/resources/ru/nsu/fit/apotapova/snake/levels/";
   public static int SNAKE_ID = 10;
+  public static int MIN_SPEED = 500;
+  public static int MAX_SPEED = 2000;
 
   public void loadConfiguration(String configPath) {
     try {
@@ -29,5 +33,9 @@ public class Configuration {
     WINDOW_HEIGHT = Integer.parseInt(properties.getProperty("WINDOW_HEIGHT"));
     SNAKE_ID = Integer.parseInt(properties.getProperty("SNAKE_ID"));
     LEVELS_PATH = properties.getProperty("LEVELS_PATH");
+    MIN_SPEED = Integer.parseInt(properties.getProperty("MIN_SPEED"));
+    MAX_SPEED = Integer.parseInt(properties.getProperty("MAX_SPEED"));
+    MAX_FOOD_NUMBER = Integer.parseInt(properties.getProperty("MAX_FOOD_NUMBER"));
+    MAX_WIN_SNAKE_LENGTH = Integer.parseInt(properties.getProperty("MAX_WIN_SNAKE_LENGTH"));
   }
 }

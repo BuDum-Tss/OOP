@@ -26,11 +26,11 @@
                      <font>
                         <Font size="48.0" />
                      </font></Label>
-                  <Button mnemonicParsing="false" onAction="#continueGame" prefHeight="25.0" prefWidth="200.0" text="Continue" textAlignment="CENTER">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#continueGame" prefHeight="25.0" prefWidth="200.0" text="Continue" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin></Button>
-                  <Button mnemonicParsing="false" onAction="#quitGame" prefHeight="25.0" prefWidth="200.0" text="Quit" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#quitGame" prefHeight="25.0" prefWidth="200.0" text="Quit" />
                </children>
             </VBox>
          </children>
@@ -47,7 +47,7 @@
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin></Button>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#quitGame" prefHeight="25.0" prefWidth="200.0" text="Quit" textAlignment="CENTER" />
+                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#quitGame" prefHeight="25.0" prefWidth="200.0" text="Quit" textAlignment="CENTER" />
                </children></VBox>
          </children>
       </AnchorPane>

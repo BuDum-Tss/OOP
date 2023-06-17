@@ -60,7 +60,8 @@ public class SnakeGameController extends SnakeGameView {
 
   public void newGame() {
     gameControllerLogger.info("Preparing game...");
-    GameData.getGameData().setMap(MapLoader.loadMap(Configuration.LEVELS_PATH + "level3.json"));
+    GameData.getGameData()
+        .setMap(MapLoader.loadMap(Configuration.LEVELS_PATH + Settings.LEVEL_PATH));
     addSnakes();
     setGameRules();
     game = new Game();
@@ -126,7 +127,7 @@ public class SnakeGameController extends SnakeGameView {
     GameData.getGameData().addRule(GameRule.VICTORY,
         () -> (GameData.getGameData().getEntityById(Configuration.SNAKE_ID) != null)
             && ((Snake) GameData.getGameData().getEntityById(Configuration.SNAKE_ID)).getLength()
-            >= Settings.MAX_LENGTH);
+            >= Settings.WIN_SNAKE_LENGTH);
     GameData.getGameData().addRule(GameRule.LOSS,
         () -> GameData.getGameData().getEntityById(Configuration.SNAKE_ID) == null);
   }

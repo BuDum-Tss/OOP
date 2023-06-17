@@ -44,7 +44,7 @@
   -fx-text-fill: white;
 }
 .button:hover {
-  -fx-background-color: #00ffd0;
+  -fx-background-color: #1aff00;
 }
 .text-field{
   -fx-text-fill: white;

@@ -23,7 +23,9 @@ public class MapLoader {
   }
 
   private static List<List<Tile>> convertIdsToTiles(List<List<Integer>> map) {
-    int tileSize = (int) (Math.min(Configuration.WINDOW_HEIGHT / map.get(0).size(),Configuration.WINDOW_WIDTH/ map.size())*0.75);
-    return map.stream().map(list -> list.stream().map(id->new Tile(id,tileSize)).toList()).toList();
+    int tileSize = (int) (Math.min(Configuration.WINDOW_HEIGHT / map.get(0).size(),
+        Configuration.WINDOW_WIDTH / map.size()) * 0.75);
+    return map.stream().map(list -> list.stream().map(id -> new Tile(id, tileSize)).toList())
+        .toList();
   }
 }

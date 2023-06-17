@@ -3,6 +3,7 @@ package ru.nsu.fit.apotapova.snake.model.data;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 import javafx.geometry.Point2D;
 import ru.nsu.fit.apotapova.snake.model.entity.Entity;
@@ -92,6 +93,7 @@ public class GameData {
   }
 
   public GameResult getGameResult() {
+    System.out.println(gameRules.get(GameRule.VICTORY).get());
     if ((boolean) gameRules.get(GameRule.VICTORY).get()) {
       return GameResult.VICTORY;
     }
@@ -99,5 +101,12 @@ public class GameData {
       return GameResult.LOSS;
     }
     return GameResult.IN_PROGRESS;
+  }
+
+  public int getTilesNumber(int id) {
+    AtomicInteger k = new AtomicInteger();
+    map.stream().map(tiles -> tiles.stream().filter(tile -> tile.getId() == id).count())
+        .forEach(number -> k.addAndGet(Math.toIntExact(number)));
+    return k.get();
   }
 }
