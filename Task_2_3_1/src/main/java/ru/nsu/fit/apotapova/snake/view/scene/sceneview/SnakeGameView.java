@@ -1,6 +1,7 @@
 package ru.nsu.fit.apotapova.snake.view.scene.sceneview;
 
 import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.List;
 import javafx.application.Platform;
 import javafx.geometry.Point2D;
@@ -16,9 +17,11 @@ import org.apache.logging.log4j.Logger;
 import ru.nsu.fit.apotapova.snake.model.Game;
 import ru.nsu.fit.apotapova.snake.model.data.GameData;
 import ru.nsu.fit.apotapova.snake.view.scene.SceneView;
-import java.beans.PropertyChangeListener;
 import ru.nsu.fit.apotapova.snake.view.tile.Tile;
 
+/**
+ * Snake game view.
+ */
 public abstract class SnakeGameView extends SceneView implements PropertyChangeListener {
 
   protected static final Logger gameViewLogger = LogManager.getLogger("GameView");
@@ -44,17 +47,6 @@ public abstract class SnakeGameView extends SceneView implements PropertyChangeL
     pauseMenu.setVisible(false);
   }
 
-  private void addTilesToPane() {
-    List<List<Tile>> map = GameData.getGameData().getMap();
-    for (int x = 0; x < GameData.getGameData().getMapWidth(); x++) {
-      for (int y = 0; y < GameData.getGameData().getMapLength(); y++) {
-        map.get(x).get(y).updateViewById();
-        Rectangle tile = map.get(x).get(y).getView();
-        gameArea.add(tile, x, y);
-      }
-    }
-  }
-
   @Override
   public void closeScene() {
     gameViewLogger.info("GameScene closed");
@@ -68,15 +60,33 @@ public abstract class SnakeGameView extends SceneView implements PropertyChangeL
 
   protected abstract void closeGame();
 
+  private void addTilesToPane() {
+    List<List<Tile>> map = GameData.getGameData().getMap();
+    for (int x = 0; x < GameData.getGameData().getMapWidth(); x++) {
+      for (int y = 0; y < GameData.getGameData().getMapLength(); y++) {
+        map.get(x).get(y).updateViewById();
+        Rectangle tile = map.get(x).get(y).getView();
+        tile.widthProperty().bind(gameArea.widthProperty().divide(map.size()).multiply(0.7));
+        tile.heightProperty()
+            .bind(gameArea.heightProperty().divide(map.get(0).size()).multiply(0.7));
+        gameArea.add(tile, x, y);
+      }
+    }
+  }
+
   private void prepareGameArea() {
     gameArea.setGridLinesVisible(true);
     gameArea.getColumnConstraints().clear();
     gameArea.getRowConstraints().clear();
     for (int i = 0; i < GameData.getGameData().getMapLength(); i++) {
-      gameArea.getRowConstraints().add(new RowConstraints());
+      RowConstraints row = new RowConstraints();
+      //row.setVgrow(Priority.ALWAYS);
+      gameArea.getRowConstraints().add(row);
     }
     for (int i = 0; i < GameData.getGameData().getMapWidth(); i++) {
-      gameArea.getColumnConstraints().add(new ColumnConstraints());
+      ColumnConstraints column = new ColumnConstraints();
+      //column.setHgrow(Priority.ALWAYS);
+      gameArea.getColumnConstraints().add(column);
     }
   }
 
@@ -87,7 +97,8 @@ public abstract class SnakeGameView extends SceneView implements PropertyChangeL
         Pair<Point2D, Integer> pointAndId = (Pair<Point2D, Integer>) evt.getNewValue();
         GameData.getGameData().getTileFromPosition(pointAndId.getKey())
             .setId(pointAndId.getValue());
-        Platform.runLater(() -> GameData.getGameData().getTileFromPosition(pointAndId.getKey()).updateViewById());
+        Platform.runLater(
+            () -> GameData.getGameData().getTileFromPosition(pointAndId.getKey()).updateViewById());
       }
       case "victory" -> {
         Platform.runLater(() -> label.setText("Victory"));

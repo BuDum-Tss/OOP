@@ -7,6 +7,9 @@ import javafx.stage.Stage;
 import ru.nsu.fit.apotapova.snake.utils.Configuration;
 import ru.nsu.fit.apotapova.snake.utils.Settings;
 
+/**
+ * Application.
+ */
 public class App extends Application {
   @Override
   public void start(Stage stage) throws Exception {
@@ -18,6 +21,11 @@ public class App extends Application {
     stage.show();
   }
 
+  /**
+   * Main method.
+   *
+   * @param args command line args
+   */
   public static void main(String[] args) {
     new Configuration().loadConfiguration("src/main/resources/config.ini");
     new Settings().loadSettings("src/main/resources/settings.ini");

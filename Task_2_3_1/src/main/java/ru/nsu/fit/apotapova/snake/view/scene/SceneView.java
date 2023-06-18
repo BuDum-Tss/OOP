@@ -2,6 +2,9 @@ package ru.nsu.fit.apotapova.snake.view.scene;
 
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * Scene View.
+ */
 public abstract class SceneView {
 
   public AnchorPane scene;

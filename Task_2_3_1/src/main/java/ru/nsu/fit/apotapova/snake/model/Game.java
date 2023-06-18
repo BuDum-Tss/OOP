@@ -14,6 +14,7 @@ import ru.nsu.fit.apotapova.snake.model.data.GameState;
 import ru.nsu.fit.apotapova.snake.model.entity.Entity;
 import ru.nsu.fit.apotapova.snake.model.entity.dynamicentities.Dynamic;
 import ru.nsu.fit.apotapova.snake.model.entity.staticentities.Food;
+import ru.nsu.fit.apotapova.snake.model.snakeai.SnakeAi;
 import ru.nsu.fit.apotapova.snake.utils.Settings;
 import ru.nsu.fit.apotapova.snake.view.tile.TileType;
 
@@ -31,6 +32,7 @@ public class Game extends Thread {
     rootLogger.info("Thread is running");
     while (!(GameData.getGameData().getGameState() == GameState.CLOSED)) {
       rootLogger.info("Next step");
+      GameData.getGameData().getAi().forEach(SnakeAi::chooseDirection);
       Stream<Entity> dynamicEntities = GameData.getGameData().getEntities().stream()
           .filter(entity -> entity instanceof Dynamic);
       dynamicEntities.map(entity -> (Dynamic) entity).forEach(entity -> {

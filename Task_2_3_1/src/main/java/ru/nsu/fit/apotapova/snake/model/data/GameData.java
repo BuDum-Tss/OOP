@@ -1,5 +1,6 @@
 package ru.nsu.fit.apotapova.snake.model.data;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import javafx.geometry.Point2D;
 import ru.nsu.fit.apotapova.snake.model.entity.Entity;
 import ru.nsu.fit.apotapova.snake.model.entity.staticentities.Food;
 import ru.nsu.fit.apotapova.snake.model.gamerules.GameRule;
+import ru.nsu.fit.apotapova.snake.model.snakeai.SnakeAi;
 import ru.nsu.fit.apotapova.snake.view.tile.Tile;
 
 /**
@@ -21,10 +23,12 @@ public class GameData {
   private List<List<Tile>> map;
   private final HashMap<Integer, Entity> entities;
   private GameState gameState;
+  private final List<SnakeAi> snakeAis;
 
-  public GameData() {
+  private GameData() {
     entities = new HashMap<>();
     gameRules = new HashMap<>();
+    snakeAis = new ArrayList<>();
   }
 
   /**
@@ -122,5 +126,18 @@ public class GameData {
     map.stream().map(tiles -> tiles.stream().filter(tile -> tile.getId() == id).count())
         .forEach(number -> k.addAndGet(Math.toIntExact(number)));
     return k.get();
+  }
+
+  public void addAi(SnakeAi snakeAi) {
+    snakeAis.add(snakeAi);
+  }
+
+  public List<SnakeAi> getAi() {
+    return snakeAis;
+  }
+
+  public List<Point2D> getFood() {
+    return entities.values().stream().filter(entity -> entity.getClass() == Food.class)
+        .map(entity -> entity.getPosition().get(0)).toList();
   }
 }

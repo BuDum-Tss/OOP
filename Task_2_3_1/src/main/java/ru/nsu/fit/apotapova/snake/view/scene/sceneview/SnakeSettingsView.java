@@ -8,6 +8,9 @@ import ru.nsu.fit.apotapova.snake.utils.Configuration;
 import ru.nsu.fit.apotapova.snake.utils.Settings;
 import ru.nsu.fit.apotapova.snake.view.scene.SceneView;
 
+/**
+ * Snake settings view.
+ */
 public abstract class SnakeSettingsView extends SceneView {
 
   public AnchorPane scene;
@@ -16,6 +19,9 @@ public abstract class SnakeSettingsView extends SceneView {
   public Label filename;
   public Slider winSlider;
 
+  /**
+   * Initialization.
+   */
   @FXML
   public void initialize() {
     filename.setText(Settings.LEVEL_PATH);

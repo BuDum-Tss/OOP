@@ -17,6 +17,7 @@ import ru.nsu.fit.apotapova.snake.model.entity.dynamicentities.Direction;
 import ru.nsu.fit.apotapova.snake.model.entity.dynamicentities.Snake;
 import ru.nsu.fit.apotapova.snake.model.gamerules.GameRule;
 import ru.nsu.fit.apotapova.snake.model.level.MapLoader;
+import ru.nsu.fit.apotapova.snake.model.snakeai.AstarAi;
 import ru.nsu.fit.apotapova.snake.utils.Configuration;
 import ru.nsu.fit.apotapova.snake.utils.MapParser;
 import ru.nsu.fit.apotapova.snake.utils.Settings;
@@ -139,6 +140,8 @@ public class SnakeGameController extends SnakeGameView {
         .forEach(id -> aiSnakes.add(new Snake(id, snakesSegments.get(id), "0000FF")));
 
     aiSnakes.forEach(snake -> GameData.getGameData().addToGame(snake));
+    aiSnakes.forEach(snake -> GameData.getGameData().addAi(new AstarAi(snake)));
+
   }
 
   private void setGameRules() {

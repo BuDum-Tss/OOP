@@ -6,7 +6,7 @@ import ru.nsu.fit.apotapova.snake.model.entity.EntityType;
 import ru.nsu.fit.apotapova.snake.model.entity.dynamicentities.Snake;
 
 /**
- * Класс,
+ * Tile.
  */
 public class Tile {
 
@@ -15,11 +15,15 @@ public class Tile {
 
   public Tile(int entityId, int tileSize) {
     this.entityId = entityId;
-    view = new Rectangle(tileSize, tileSize);
+    view = new Rectangle(10, 10);
   }
 
   public EntityType getEntityType() {
     return TileType.getById(entityId).getEntityType();
+  }
+
+  public TileType getType() {
+    return TileType.getById(entityId);
   }
 
   public Rectangle getView() {
@@ -40,7 +44,9 @@ public class Tile {
       case EMPTY -> "000019";
       case WALL -> "888888";
       case FOOD -> "FF0000";
-      case SNAKE -> ((Snake) GameData.getGameData().getEntityById(Math.abs(entityId))).getColor();
+      case SNAKE -> (GameData.getGameData().getEntityById(Math.abs(entityId)) != null
+          ? ((Snake) GameData.getGameData().getEntityById(Math.abs(entityId))).getColor()
+          : "000019");
     };
   }
 

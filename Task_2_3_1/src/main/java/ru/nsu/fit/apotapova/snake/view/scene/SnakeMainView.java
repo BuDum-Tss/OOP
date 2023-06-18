@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
+/**
+ * Snake main view.
+ */
 public abstract class SnakeMainView extends MainView {
 
   @FXML

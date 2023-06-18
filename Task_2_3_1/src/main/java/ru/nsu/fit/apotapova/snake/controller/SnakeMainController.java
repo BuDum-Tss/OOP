@@ -18,6 +18,7 @@ public class SnakeMainController extends SnakeMainView {
   private SnakeSettingsController settingsController;
   @FXML
   private SnakeGameController gameController;
+
   /**
    * Initializes main controller in all others controllers.
    */

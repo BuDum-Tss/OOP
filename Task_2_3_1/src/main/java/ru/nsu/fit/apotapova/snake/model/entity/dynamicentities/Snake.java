@@ -1,10 +1,10 @@
 package ru.nsu.fit.apotapova.snake.model.entity.dynamicentities;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 import javafx.geometry.Point2D;
 import javafx.util.Pair;
 import ru.nsu.fit.apotapova.snake.model.data.GameData;
@@ -20,7 +20,7 @@ public class Snake extends Entity implements Dynamic {
   private final LinkedList<Point2D> segments;
   private int growNumber = 0;
   private final String color;
-  private final List<Pair<Point2D, Integer>> changes;
+  private final Stack<Pair<Point2D, Integer>> changes;
   Queue<Direction> directionQueue;
 
   /**
@@ -39,7 +39,7 @@ public class Snake extends Entity implements Dynamic {
       throw new IllegalArgumentException("Illegal color");
     }
     this.color = color;
-    changes = new ArrayList<>();
+    changes = new Stack<>();
     directionQueue = new ArrayDeque<>();
   }
 
@@ -53,7 +53,9 @@ public class Snake extends Entity implements Dynamic {
     switch (type) {
       case SNAKE, WALL -> {
         GameData.getGameData().removeFromGame(this);
+        Stack<Pair<Point2D, Integer>> newChanges = getChangesTilesToEmpty();
         changes.clear();
+        changes.addAll(newChanges);
         entityLogger.info("Snake removed from game");
       }
       case FOOD -> {
@@ -62,6 +64,16 @@ public class Snake extends Entity implements Dynamic {
       }
       default -> throw new IllegalArgumentException("Unexpected EntityType: " + type);
     }
+  }
+
+  private Stack<Pair<Point2D, Integer>> getChangesTilesToEmpty() {
+    Stack<Pair<Point2D, Integer>> newChanges = new Stack<>();
+    if (changes.peek().getValue() == 0) {
+      newChanges.push(changes.pop());
+    }
+    segments.removeFirst();
+    segments.forEach(segment -> newChanges.add(new Pair<>(segment, 0)));
+    return newChanges;
   }
 
   @Override
@@ -75,7 +87,7 @@ public class Snake extends Entity implements Dynamic {
 
   private void move() {
     changes.add(new Pair<>(segments.getFirst(), -id));
-    segments.addFirst(nextPosition());
+    segments.addFirst(nextPosition(segments.getFirst(), direction));
     changes.add(new Pair<>(segments.getFirst(), id));
     if (growNumber == 0) {
       changes.add(new Pair<>(segments.getLast(), 0));
@@ -85,8 +97,15 @@ public class Snake extends Entity implements Dynamic {
     }
   }
 
-  private Point2D nextPosition() {
-    Point2D notCheckedPosition = segments.getFirst().add(direction.getDirection());
+  /**
+   * Calculates next position.
+   *
+   * @param point current position
+   * @param direction direction of movement
+   * @return new position
+   */
+  public static Point2D nextPosition(Point2D point, Direction direction) {
+    Point2D notCheckedPosition = point.add(direction.getDirection());
     int x = (int) (Math.abs(notCheckedPosition.getX() + GameData.getGameData().getMapWidth())
         % GameData.getGameData().getMapWidth());
     int y = (int) (Math.abs(notCheckedPosition.getY() + GameData.getGameData().getMapLength())
@@ -96,11 +115,11 @@ public class Snake extends Entity implements Dynamic {
 
   @Override
   public void update() {
-    if (directionQueue.peek() != null) {
+    if (directionQueue.peek() != null && !Direction.isOpposite(direction, directionQueue.peek())) {
       direction = directionQueue.poll();
     }
     changes.clear();
-    Point2D next = nextPosition();
+    Point2D next = nextPosition(segments.getFirst(), direction);
     move();
     Integer id = GameData.getGameData().getTileFromPosition(next).getId();
     EntityType interactingEntityType = GameData.getGameData().getTileFromPosition(next)

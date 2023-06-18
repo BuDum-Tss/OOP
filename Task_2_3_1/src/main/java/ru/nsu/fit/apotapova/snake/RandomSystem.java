@@ -4,6 +4,9 @@ import java.util.Random;
 import javafx.geometry.Point2D;
 import javafx.util.Pair;
 
+/**
+ * Random System.
+ */
 public class RandomSystem {
 
   private static RandomSystem RANDOM_SYSTEM;
@@ -13,6 +16,11 @@ public class RandomSystem {
     random = new Random();
   }
 
+  /**
+   * Getter.
+   *
+   * @return Random System.
+   */
   public static RandomSystem getRandomSystem() {
     if (RANDOM_SYSTEM == null) {
       RANDOM_SYSTEM = new RandomSystem();
