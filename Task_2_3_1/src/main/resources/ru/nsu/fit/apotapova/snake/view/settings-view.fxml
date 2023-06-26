@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="scene" prefHeight="600.0" prefWidth="600.0" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.nsu.fit.apotapova.snake.controller.scenecontrollers.SnakeSettingsController">
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="461.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <top>
+            <Text disable="true" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-header" text="Settings" textAlignment="CENTER" wrappingWidth="599.1366939544678" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </top>
+         <center>
+            <HBox alignment="CENTER" prefHeight="326.0" prefWidth="405.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="326.0" prefWidth="692.0" spacing="10.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER">
+                           <children>
+                              <Label styleClass="label-default" text="Selected Level:">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="filename" styleClass="label-default" text="file.json">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Button mnemonicParsing="false" onAction="#selectLevel" text="Select level" textAlignment="CENTER" />
+                           </children>
+                        </VBox>
+                        <Label styleClass="label-default" text="Food number" />
+                        <Slider fx:id="foodNumberSlider" max="0.0" />
+                        <Label styleClass="label-default" text="Speed" />
+                        <Slider fx:id="speedSlider" max="0.0" />
+                        <Label styleClass="label-default" text="The winning length of the snake" />
+                        <Slider fx:id="winSlider" />
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+         </center>
+         <bottom>
+            <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="599.0" spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#saveBtn" text="Save" />
+                  <Button mnemonicParsing="false" onAction="#closeBtn" text="Close" />
+               </children>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </HBox>
+         </bottom></BorderPane>
+   </children>
+</AnchorPane>
